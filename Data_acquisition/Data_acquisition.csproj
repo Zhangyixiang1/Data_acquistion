@@ -69,6 +69,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comm\Ctr_change.cs" />
+    <Compile Include="Ctrl\Gauge.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Ctrl\Gauge.Designer.cs">
+      <DependentUpon>Gauge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ctrl\Gauge_big.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Ctrl\Gauge_big.Designer.cs">
+      <DependentUpon>Gauge_big.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ctrl\ParaLine.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -93,8 +106,38 @@
     <Compile Include="Form_Main.Designer.cs">
       <DependentUpon>Form_Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Histrend.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Histrend.Designer.cs">
+      <DependentUpon>Frm_Histrend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Paraanalog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Paraanalog.Designer.cs">
+      <DependentUpon>Frm_Paraanalog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Paradigital.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Paradigital.Designer.cs">
+      <DependentUpon>Frm_Paradigital.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Realtrend.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Realtrend.Designer.cs">
+      <DependentUpon>Frm_Realtrend.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Ctrl\Gauge.resx">
+      <DependentUpon>Gauge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ctrl\Gauge_big.resx">
+      <DependentUpon>Gauge_big.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ctrl\ParaLine.resx">
       <DependentUpon>ParaLine.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,6 +146,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Main.resx">
       <DependentUpon>Form_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Paraanalog.resx">
+      <DependentUpon>Frm_Paraanalog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Paradigital.resx">
+      <DependentUpon>Frm_Paradigital.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Realtrend.resx">
+      <DependentUpon>Frm_Realtrend.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -127,6 +179,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Button-Play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\good.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -21,6 +21,21 @@ namespace Data_acquisition.Ctrl
             Y = this.Height;
             setTag(this);
         }
+
+        public Color Color
+        {
+            get { return label1.ForeColor; }
+            set
+            {
+                this.label1.ForeColor = value;
+                this.label2.ForeColor = value;
+                this.label3.ForeColor = value;
+            }
+        }
+
+
+
+
         private void setTag(Control ctrs)
         {
             foreach (Control ctr in ctrs.Controls)

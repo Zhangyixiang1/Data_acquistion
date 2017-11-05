@@ -66,11 +66,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Parashow";
-            this.Size = new System.Drawing.Size(146, 57);
+            this.Size = new System.Drawing.Size(144, 55);
             this.Resize += new System.EventHandler(this.Parashow_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
