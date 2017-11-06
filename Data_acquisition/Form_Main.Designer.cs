@@ -94,13 +94,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.radButton7 = new Telerik.WinControls.UI.RadButton();
             this.radButton8 = new Telerik.WinControls.UI.RadButton();
-            this.paraLine6 = new Data_acquisition.Ctrl.ParaLine();
-            this.paraLine5 = new Data_acquisition.Ctrl.ParaLine();
-            this.paraLine4 = new Data_acquisition.Ctrl.ParaLine();
-            this.paraLine3 = new Data_acquisition.Ctrl.ParaLine();
-            this.paraLine2 = new Data_acquisition.Ctrl.ParaLine();
-            this.paraLine1 = new Data_acquisition.Ctrl.ParaLine();
             this.timer_now = new System.Windows.Forms.Timer(this.components);
+            this.paraLine1 = new Data_acquisition.Ctrl.ParaLine();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton2)).BeginInit();
@@ -226,21 +221,21 @@
             // 视图1ToolStripMenuItem
             // 
             this.视图1ToolStripMenuItem.Name = "视图1ToolStripMenuItem";
-            this.视图1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.视图1ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.视图1ToolStripMenuItem.Text = "视图1";
             this.视图1ToolStripMenuItem.Click += new System.EventHandler(this.视图1ToolStripMenuItem_Click);
             // 
             // 视图2ToolStripMenuItem
             // 
             this.视图2ToolStripMenuItem.Name = "视图2ToolStripMenuItem";
-            this.视图2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.视图2ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.视图2ToolStripMenuItem.Text = "视图2";
             this.视图2ToolStripMenuItem.Click += new System.EventHandler(this.视图2ToolStripMenuItem_Click);
             // 
             // 视图3ToolStripMenuItem
             // 
             this.视图3ToolStripMenuItem.Name = "视图3ToolStripMenuItem";
-            this.视图3ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.视图3ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.视图3ToolStripMenuItem.Text = "视图3";
             this.视图3ToolStripMenuItem.Click += new System.EventHandler(this.视图3ToolStripMenuItem_Click);
             // 
@@ -370,7 +365,8 @@
             // 
             // parashow16
             // 
-            this.parashow16.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.parashow16.BackColor = System.Drawing.Color.Transparent;
+            this.parashow16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow16.Color = System.Drawing.Color.Black;
             this.parashow16.Location = new System.Drawing.Point(7, 933);
             this.parashow16.Name = "parashow16";
@@ -379,7 +375,8 @@
             // 
             // parashow15
             // 
-            this.parashow15.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.parashow15.BackColor = System.Drawing.Color.Transparent;
+            this.parashow15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow15.Color = System.Drawing.Color.Black;
             this.parashow15.Location = new System.Drawing.Point(6, 871);
             this.parashow15.Name = "parashow15";
@@ -388,7 +385,8 @@
             // 
             // parashow14
             // 
-            this.parashow14.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.parashow14.BackColor = System.Drawing.Color.Transparent;
+            this.parashow14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow14.Color = System.Drawing.Color.Black;
             this.parashow14.Location = new System.Drawing.Point(6, 809);
             this.parashow14.Name = "parashow14";
@@ -397,7 +395,8 @@
             // 
             // parashow13
             // 
-            this.parashow13.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.parashow13.BackColor = System.Drawing.Color.Transparent;
+            this.parashow13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow13.Color = System.Drawing.Color.Black;
             this.parashow13.Location = new System.Drawing.Point(6, 747);
             this.parashow13.Name = "parashow13";
@@ -406,7 +405,8 @@
             // 
             // parashow12
             // 
-            this.parashow12.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.parashow12.BackColor = System.Drawing.Color.Transparent;
+            this.parashow12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow12.Color = System.Drawing.Color.Black;
             this.parashow12.Location = new System.Drawing.Point(6, 685);
             this.parashow12.Name = "parashow12";
@@ -415,7 +415,8 @@
             // 
             // parashow11
             // 
-            this.parashow11.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.parashow11.BackColor = System.Drawing.Color.Transparent;
+            this.parashow11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow11.Color = System.Drawing.Color.Black;
             this.parashow11.Location = new System.Drawing.Point(6, 623);
             this.parashow11.Name = "parashow11";
@@ -424,7 +425,8 @@
             // 
             // parashow10
             // 
-            this.parashow10.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.parashow10.BackColor = System.Drawing.Color.Transparent;
+            this.parashow10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow10.Color = System.Drawing.Color.Black;
             this.parashow10.Location = new System.Drawing.Point(6, 561);
             this.parashow10.Name = "parashow10";
@@ -433,7 +435,8 @@
             // 
             // parashow9
             // 
-            this.parashow9.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.parashow9.BackColor = System.Drawing.Color.Transparent;
+            this.parashow9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow9.Color = System.Drawing.Color.Black;
             this.parashow9.Location = new System.Drawing.Point(6, 499);
             this.parashow9.Name = "parashow9";
@@ -442,7 +445,8 @@
             // 
             // parashow8
             // 
-            this.parashow8.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.parashow8.BackColor = System.Drawing.Color.Transparent;
+            this.parashow8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow8.Color = System.Drawing.Color.Black;
             this.parashow8.Location = new System.Drawing.Point(6, 437);
             this.parashow8.Name = "parashow8";
@@ -451,7 +455,8 @@
             // 
             // parashow7
             // 
-            this.parashow7.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.parashow7.BackColor = System.Drawing.Color.Transparent;
+            this.parashow7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow7.Color = System.Drawing.Color.Black;
             this.parashow7.Location = new System.Drawing.Point(6, 375);
             this.parashow7.Name = "parashow7";
@@ -460,7 +465,8 @@
             // 
             // parashow6
             // 
-            this.parashow6.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.parashow6.BackColor = System.Drawing.Color.Transparent;
+            this.parashow6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow6.Color = System.Drawing.Color.Black;
             this.parashow6.Location = new System.Drawing.Point(6, 313);
             this.parashow6.Name = "parashow6";
@@ -469,7 +475,8 @@
             // 
             // parashow5
             // 
-            this.parashow5.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.parashow5.BackColor = System.Drawing.Color.Transparent;
+            this.parashow5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow5.Color = System.Drawing.Color.Black;
             this.parashow5.Location = new System.Drawing.Point(6, 251);
             this.parashow5.Name = "parashow5";
@@ -478,7 +485,8 @@
             // 
             // parashow4
             // 
-            this.parashow4.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.parashow4.BackColor = System.Drawing.Color.Transparent;
+            this.parashow4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow4.Color = System.Drawing.Color.Black;
             this.parashow4.Location = new System.Drawing.Point(6, 189);
             this.parashow4.Name = "parashow4";
@@ -487,7 +495,8 @@
             // 
             // parashow3
             // 
-            this.parashow3.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.parashow3.BackColor = System.Drawing.Color.Transparent;
+            this.parashow3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow3.Color = System.Drawing.Color.Black;
             this.parashow3.Location = new System.Drawing.Point(6, 127);
             this.parashow3.Name = "parashow3";
@@ -496,7 +505,8 @@
             // 
             // parashow2
             // 
-            this.parashow2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.parashow2.BackColor = System.Drawing.Color.Transparent;
+            this.parashow2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow2.Color = System.Drawing.Color.Black;
             this.parashow2.Location = new System.Drawing.Point(6, 65);
             this.parashow2.Name = "parashow2";
@@ -505,7 +515,8 @@
             // 
             // parashow1
             // 
-            this.parashow1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.parashow1.BackColor = System.Drawing.Color.Transparent;
+            this.parashow1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow1.Color = System.Drawing.Color.Black;
             this.parashow1.Location = new System.Drawing.Point(6, 3);
             this.parashow1.Name = "parashow1";
@@ -529,60 +540,60 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Data_acquisition.Properties.Resources.good;
-            this.pictureBox1.Location = new System.Drawing.Point(1439, 34);
+            this.pictureBox1.BackColor = System.Drawing.Color.Lime;
+            this.pictureBox1.Location = new System.Drawing.Point(1556, 38);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox1.Size = new System.Drawing.Size(14, 30);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::Data_acquisition.Properties.Resources.good;
-            this.pictureBox2.Location = new System.Drawing.Point(1475, 34);
+            this.pictureBox2.BackColor = System.Drawing.Color.Lime;
+            this.pictureBox2.Location = new System.Drawing.Point(1576, 38);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox2.Size = new System.Drawing.Size(14, 30);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::Data_acquisition.Properties.Resources.good;
-            this.pictureBox3.Location = new System.Drawing.Point(1511, 34);
+            this.pictureBox3.BackColor = System.Drawing.Color.Lime;
+            this.pictureBox3.Location = new System.Drawing.Point(1596, 38);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox3.Size = new System.Drawing.Size(14, 30);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 6;
             this.pictureBox3.TabStop = false;
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::Data_acquisition.Properties.Resources.good;
-            this.pictureBox4.Location = new System.Drawing.Point(1547, 34);
+            this.pictureBox4.BackColor = System.Drawing.Color.Lime;
+            this.pictureBox4.Location = new System.Drawing.Point(1616, 38);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox4.Size = new System.Drawing.Size(14, 30);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 6;
             this.pictureBox4.TabStop = false;
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Image = global::Data_acquisition.Properties.Resources.good;
-            this.pictureBox5.Location = new System.Drawing.Point(1583, 34);
+            this.pictureBox5.BackColor = System.Drawing.Color.Lime;
+            this.pictureBox5.Location = new System.Drawing.Point(1636, 38);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox5.Size = new System.Drawing.Size(14, 30);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 6;
             this.pictureBox5.TabStop = false;
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Image = global::Data_acquisition.Properties.Resources.good;
-            this.pictureBox6.Location = new System.Drawing.Point(1619, 34);
+            this.pictureBox6.BackColor = System.Drawing.Color.Lime;
+            this.pictureBox6.Location = new System.Drawing.Point(1656, 38);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox6.Size = new System.Drawing.Size(14, 30);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox6.TabIndex = 6;
             this.pictureBox6.TabStop = false;
@@ -590,7 +601,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1402, 49);
+            this.label1.Location = new System.Drawing.Point(1519, 55);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 7;
@@ -599,7 +610,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1672, 49);
+            this.label2.Location = new System.Drawing.Point(1688, 55);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 13);
             this.label2.TabIndex = 8;
@@ -607,10 +618,10 @@
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Image = global::Data_acquisition.Properties.Resources.good;
-            this.pictureBox7.Location = new System.Drawing.Point(1709, 34);
+            this.pictureBox7.BackColor = System.Drawing.Color.Lime;
+            this.pictureBox7.Location = new System.Drawing.Point(1725, 38);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox7.Size = new System.Drawing.Size(14, 30);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox7.TabIndex = 9;
             this.pictureBox7.TabStop = false;
@@ -669,71 +680,31 @@
             this.radButton8.TabIndex = 14;
             this.radButton8.Text = "<html><p>下一</p><p>阶段</p></html>";
             // 
-            // paraLine6
-            // 
-            this.paraLine6.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.paraLine6.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.paraLine6.Location = new System.Drawing.Point(1042, 991);
-            this.paraLine6.Name = "paraLine6";
-            this.paraLine6.Size = new System.Drawing.Size(200, 54);
-            this.paraLine6.TabIndex = 5;
-            // 
-            // paraLine5
-            // 
-            this.paraLine5.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.paraLine5.Color = System.Drawing.Color.Black;
-            this.paraLine5.Location = new System.Drawing.Point(836, 991);
-            this.paraLine5.Name = "paraLine5";
-            this.paraLine5.Size = new System.Drawing.Size(200, 54);
-            this.paraLine5.TabIndex = 5;
-            // 
-            // paraLine4
-            // 
-            this.paraLine4.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.paraLine4.Color = System.Drawing.Color.Lime;
-            this.paraLine4.Location = new System.Drawing.Point(630, 991);
-            this.paraLine4.Name = "paraLine4";
-            this.paraLine4.Size = new System.Drawing.Size(200, 54);
-            this.paraLine4.TabIndex = 5;
-            // 
-            // paraLine3
-            // 
-            this.paraLine3.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.paraLine3.Color = System.Drawing.Color.Yellow;
-            this.paraLine3.Location = new System.Drawing.Point(424, 991);
-            this.paraLine3.Name = "paraLine3";
-            this.paraLine3.Size = new System.Drawing.Size(200, 54);
-            this.paraLine3.TabIndex = 5;
-            // 
-            // paraLine2
-            // 
-            this.paraLine2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.paraLine2.Color = System.Drawing.Color.Blue;
-            this.paraLine2.Location = new System.Drawing.Point(218, 991);
-            this.paraLine2.Name = "paraLine2";
-            this.paraLine2.Size = new System.Drawing.Size(200, 54);
-            this.paraLine2.TabIndex = 5;
-            // 
-            // paraLine1
-            // 
-            this.paraLine1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.paraLine1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.paraLine1.Location = new System.Drawing.Point(12, 991);
-            this.paraLine1.Name = "paraLine1";
-            this.paraLine1.Size = new System.Drawing.Size(200, 54);
-            this.paraLine1.TabIndex = 5;
-            // 
             // timer_now
             // 
             this.timer_now.Enabled = true;
             this.timer_now.Interval = 1000;
             this.timer_now.Tick += new System.EventHandler(this.timer_now_Tick);
             // 
+            // paraLine1
+            // 
+            this.paraLine1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.paraLine1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.paraLine1.Color = System.Drawing.SystemColors.ControlText;
+            this.paraLine1.Location = new System.Drawing.Point(12, 993);
+            this.paraLine1.max = "1000";
+            this.paraLine1.min = "0";
+            this.paraLine1.Name = "paraLine1";
+            this.paraLine1.Size = new System.Drawing.Size(202, 52);
+            this.paraLine1.TabIndex = 15;
+            this.paraLine1.Unit = "Mpa";
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1912, 1047);
+            this.Controls.Add(this.paraLine1);
             this.Controls.Add(this.radButton8);
             this.Controls.Add(this.radButton7);
             this.Controls.Add(this.lbl_now);
@@ -749,12 +720,6 @@
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.paraLine6);
-            this.Controls.Add(this.paraLine5);
-            this.Controls.Add(this.paraLine4);
-            this.Controls.Add(this.paraLine3);
-            this.Controls.Add(this.paraLine2);
-            this.Controls.Add(this.paraLine1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.lbl_time);
             this.Controls.Add(this.radButton6);
@@ -837,12 +802,6 @@
         private Ctrl.Parashow parashow3;
         private Ctrl.Parashow parashow2;
         private Ctrl.Parashow parashow1;
-        private Ctrl.ParaLine paraLine1;
-        private Ctrl.ParaLine paraLine2;
-        private Ctrl.ParaLine paraLine3;
-        private Ctrl.ParaLine paraLine4;
-        private Ctrl.ParaLine paraLine5;
-        private Ctrl.ParaLine paraLine6;
         private Telerik.WinControls.Themes.HighContrastBlackTheme highContrastBlackTheme1;
         private Telerik.WinControls.Themes.Office2013DarkTheme office2013DarkTheme1;
         private Telerik.WinControls.Themes.Windows8Theme windows8Theme1;
@@ -875,5 +834,6 @@
         private Telerik.WinControls.UI.RadButton radButton7;
         private Telerik.WinControls.UI.RadButton radButton8;
         private System.Windows.Forms.Timer timer_now;
+        private Ctrl.ParaLine paraLine1;
     }
 }

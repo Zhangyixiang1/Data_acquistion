@@ -34,8 +34,9 @@
             this.parashow3 = new Data_acquisition.Ctrl.Parashow();
             this.parashow4 = new Data_acquisition.Ctrl.Parashow();
             this.parashow5 = new Data_acquisition.Ctrl.Parashow();
-            this.parashow6 = new Data_acquisition.Ctrl.Parashow();
             this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // parashow1
@@ -53,7 +54,7 @@
             this.parashow2.BackColor = System.Drawing.SystemColors.ControlDark;
             this.parashow2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow2.Color = System.Drawing.SystemColors.ControlText;
-            this.parashow2.Location = new System.Drawing.Point(320, 1);
+            this.parashow2.Location = new System.Drawing.Point(348, 1);
             this.parashow2.Name = "parashow2";
             this.parashow2.Size = new System.Drawing.Size(318, 128);
             this.parashow2.TabIndex = 1;
@@ -63,7 +64,7 @@
             this.parashow3.BackColor = System.Drawing.SystemColors.ControlDark;
             this.parashow3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow3.Color = System.Drawing.SystemColors.ControlText;
-            this.parashow3.Location = new System.Drawing.Point(639, 1);
+            this.parashow3.Location = new System.Drawing.Point(695, 1);
             this.parashow3.Name = "parashow3";
             this.parashow3.Size = new System.Drawing.Size(318, 128);
             this.parashow3.TabIndex = 1;
@@ -73,7 +74,7 @@
             this.parashow4.BackColor = System.Drawing.SystemColors.ControlDark;
             this.parashow4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow4.Color = System.Drawing.SystemColors.ControlText;
-            this.parashow4.Location = new System.Drawing.Point(958, 1);
+            this.parashow4.Location = new System.Drawing.Point(1042, 1);
             this.parashow4.Name = "parashow4";
             this.parashow4.Size = new System.Drawing.Size(318, 128);
             this.parashow4.TabIndex = 1;
@@ -83,20 +84,10 @@
             this.parashow5.BackColor = System.Drawing.SystemColors.ControlDark;
             this.parashow5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow5.Color = System.Drawing.SystemColors.ControlText;
-            this.parashow5.Location = new System.Drawing.Point(1277, 1);
+            this.parashow5.Location = new System.Drawing.Point(1389, 1);
             this.parashow5.Name = "parashow5";
             this.parashow5.Size = new System.Drawing.Size(318, 128);
             this.parashow5.TabIndex = 1;
-            // 
-            // parashow6
-            // 
-            this.parashow6.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.parashow6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.parashow6.Color = System.Drawing.SystemColors.ControlText;
-            this.parashow6.Location = new System.Drawing.Point(1596, 1);
-            this.parashow6.Name = "parashow6";
-            this.parashow6.Size = new System.Drawing.Size(318, 128);
-            this.parashow6.TabIndex = 1;
             // 
             // zedGraphControl1
             // 
@@ -112,12 +103,33 @@
             this.zedGraphControl1.Size = new System.Drawing.Size(1920, 943);
             this.zedGraphControl1.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("宋体", 20F);
+            this.label1.Location = new System.Drawing.Point(1792, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 27);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "阶段号";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("宋体", 40F);
+            this.label2.Location = new System.Drawing.Point(1815, 61);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 54);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "1";
+            // 
             // Frm_Realtrend
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Controls.Add(this.parashow6);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.parashow5);
             this.Controls.Add(this.parashow4);
             this.Controls.Add(this.parashow3);
@@ -131,6 +143,7 @@
             this.Text = "Frm_Trend";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Frm_Realtrend_KeyDown);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -141,7 +154,8 @@
         private Ctrl.Parashow parashow3;
         private Ctrl.Parashow parashow4;
         private Ctrl.Parashow parashow5;
-        private Ctrl.Parashow parashow6;
         private ZedGraph.ZedGraphControl zedGraphControl1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

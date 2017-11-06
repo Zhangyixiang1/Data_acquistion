@@ -130,6 +130,12 @@
     <Compile Include="Frm_Realtrend.Designer.cs">
       <DependentUpon>Frm_Realtrend.cs</DependentUpon>
     </Compile>
+    <Compile Include="Para_choose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Para_choose.Designer.cs">
+      <DependentUpon>Para_choose.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Ctrl\Gauge.resx">
@@ -155,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Realtrend.resx">
       <DependentUpon>Frm_Realtrend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Para_choose.resx">
+      <DependentUpon>Para_choose.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -55,7 +55,7 @@
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(200, 54);
+            this.shapeContainer1.Size = new System.Drawing.Size(202, 52);
             this.shapeContainer1.TabIndex = 1;
             this.shapeContainer1.TabStop = false;
             // 
@@ -79,8 +79,7 @@
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(27, 44);
+            this.label3.Location = new System.Drawing.Point(31, 39);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(11, 12);
             this.label3.TabIndex = 2;
@@ -97,12 +96,12 @@
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(174, 39);
+            this.label6.Location = new System.Drawing.Point(149, 39);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(23, 12);
+            this.label6.Size = new System.Drawing.Size(53, 12);
             this.label6.TabIndex = 2;
             this.label6.Text = "Mpa";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // checkBox1
             // 
@@ -118,6 +117,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
@@ -126,7 +126,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.shapeContainer1);
             this.Name = "ParaLine";
-            this.Size = new System.Drawing.Size(200, 54);
+            this.Size = new System.Drawing.Size(202, 52);
+            this.Click += new System.EventHandler(this.ParaLine_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,13 +135,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox checkBox1;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Label label6;
     }
 }
