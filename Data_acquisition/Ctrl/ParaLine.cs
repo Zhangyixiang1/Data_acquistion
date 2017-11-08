@@ -6,45 +6,66 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace Data_acquisition.Ctrl
 {
     public partial class ParaLine : UserControl
     {
+     private string tagname,min,max,unit;
+
         public ParaLine()
         {
             InitializeComponent();
+           
+            
         }
         public Color Color
         {
             get { return lineShape1.BorderColor; }
             set { this.lineShape1.BorderColor = value; }
         }
-        public string tagname
+        public string Tagname
         {
-           // get { return label1.Text; }
-            set { this.label1.Text = value; }
+            get { return tagname; }
+            set { this.tagname = value; }
         }
-        public string min
+        public string Min
         {
-            get { return label2.Text; }
-            set { this.label1.Text = value; }
+            get { return min; }
+            set { this.min = value; }
         }
-        public string max
+        public string Max
         {
-            get { return label4.Text; }
-            set { this.label4.Text = value; }
+            get { return max; }
+            set { this.max = value; }
         }
         public string Unit
         {
-            get { return label6.Text; }
-            set { this.label6.Text = value; }
+            get { return unit; }
+            set { this.unit = value; }
         }
         private void ParaLine_Click(object sender, EventArgs e)
         {
             Para_choose frm=new Para_choose (this);
             frm.ShowDialog();
         }
+        public void refresh(){
+    
+      
+        label1.Text=tagname;
+        label2.Text=min;label4.Text=max;label6.Text=unit;
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+           CheckBox ctr=sender as CheckBox;
+           if (Application.OpenForms["Form_Main"]!=null){
+               ((Form_Main)Application.OpenForms["Form_Main"]).trend_refresh(ctr.Checked, this.Name);
+           }
+        }
+
+     
     }
 
 }

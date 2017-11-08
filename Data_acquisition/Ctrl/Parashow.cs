@@ -13,7 +13,9 @@ namespace Data_acquisition.Ctrl
     {
 
         float X, Y;
-        private int min, max;
+        private string tagname, unit;
+        public string Tagname{get{return tagname;} set{tagname=value;}}
+        public string Unit { get{return unit;} set{unit=value;} }
         public Parashow()
         {
             InitializeComponent();
@@ -21,7 +23,10 @@ namespace Data_acquisition.Ctrl
             Y = this.Height;
             setTag(this);
         }
-
+        public void refresh(){
+        this.label1.Text=tagname;this.label3.Text=unit;
+        
+        }
         public Color Color
         {
             get { return label1.ForeColor; }
@@ -78,6 +83,20 @@ namespace Data_acquisition.Ctrl
             float newx = (this.Width) / X;
             float newy = (this.Height) / Y;
             setControls(newx, newy, this);
+        }
+
+        private void Parashow_Click(object sender, EventArgs e)
+        {
+            Para_choose frm=new Para_choose(this);
+            frm.ShowDialog();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {   
+        try{
+        int num=Convert.ToInt16(this.Tag);
+            label2.Text=Form_Main.Paralist[DateTime.Now.ToString()][num].ToString();}
+            catch{}
         }
     }
 }

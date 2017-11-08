@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -56,10 +58,15 @@
             // 
             this.label3.Location = new System.Drawing.Point(111, 33);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 23);
+            this.label3.Size = new System.Drawing.Size(56, 23);
             this.label3.TabIndex = 2;
             this.label3.Text = "Mpa";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Parashow
             // 
@@ -71,7 +78,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Parashow";
-            this.Size = new System.Drawing.Size(144, 55);
+            this.Size = new System.Drawing.Size(170, 55);
+            this.Click += new System.EventHandler(this.Parashow_Click);
             this.Resize += new System.EventHandler(this.Parashow_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -83,5 +91,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Timer timer1;
     }
 }

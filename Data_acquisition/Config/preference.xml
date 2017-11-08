@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <Form>
+    <!--首界面-->
+    <Name>Form_Main</Name>
+    <Controlsline>
+      <Control name="paraLine1" tagname="绞车" min="1" max="50" unit="" index="0"/>
+      <Control name="paraLine2" tagname="顶驱" min="2" max="100" unit="" index="0"/>
+      <Control name="paraLine3" tagname="泥浆泵" min="3" max="150" unit="" index="0"/>
+      <Control name="paraLine4" tagname="综合钻井" min="4" max="500" unit="" index="0"/>
+      <Control name="paraLine5" tagname="转盘" min="5" max="200" unit="" index="0"/>
+      <Control name="paraLine6" tagname="转盘" min="6" max="300" unit="" index="0"/>
+    </Controlsline>
+    <Controlsshow>
+      <Control name="parashow1" tagname="绞车" unit=""  index="0"/>
+      <Control name="parashow2" tagname="绞车" unit=""  index="1"/>
+      <Control name="parashow3" tagname="绞车" unit=""  index="2"/>
+      <Control name="parashow4" tagname="绞车" unit=""  index="3"/>
+      <Control name="parashow5" tagname="绞车" unit=""  index="4"/>
+      <Control name="parashow6" tagname="绞车" unit=""  index="5"/>
+      <Control name="parashow7" tagname="绞车" unit=""  index="6"/>
+      <Control name="parashow8" tagname="绞车" unit=""  index="0"/>
+      <Control name="parashow9" tagname="绞车" unit=""  index="0"/>
+      <Control name="parashow10" tagname="绞车" unit=""  index="0"/>
+      <Control name="parashow11" tagname="绞车" unit=""  index="0"/>
+      <Control name="parashow12" tagname="绞车" unit=""  index="0"/>
+      <Control name="parashow13" tagname="绞车" unit=""  index="0"/>
+      <Control name="parashow14" tagname="绞车" unit=""  index="0"/>
+      <Control name="parashow15" tagname="绞车" unit=""  index="0"/>
+      <Control name="parashow16" tagname="绞车" unit=""  index="0"/>
+      <Control name="parashow17" tagname="绞车" unit=""  index="0"/>
+      <Control name="parashow18" tagname="绞车" unit=""  index="0"/>
+      <Control name="parashow19" tagname="绞车" unit=""  index="0"/>
+      <Control name="parashow20" tagname="绞车" unit=""  index="0"/>
+      <Control name="parashow21" tagname="绞车" unit=""  index="0"/>
+      <Control name="parashow22" tagname="绞车" unit=""  index="0"/>
+      <Control name="parashow23" tagname="绞车" unit=""  index="0"/>
+      <Control name="parashow24" tagname="绞车" unit=""  index="0"/>
+      <Control name="parashow25" tagname="绞车" unit=""  index="0"/>
+      <Control name="parashow26" tagname="绞车" unit=""  index="0"/>
+      <Control name="parashow27" tagname="绞车" unit=""  index="0"/>
+      <Control name="parashow28" tagname="绞车" unit=""  index="0"/>
+      <Control name="parashow29" tagname="绞车" unit=""  index="0"/>
+      <Control name="parashow30" tagname="绞车" unit=""  index="0"/>
+      <Control name="parashow31" tagname="绞车" unit=""  index="0"/>
+      <Control name="parashow32" tagname="绞车" unit=""  index="0"/>
+    </Controlsshow>
+  </Form>
+</root>
