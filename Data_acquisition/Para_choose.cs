@@ -38,7 +38,7 @@ namespace Data_acquisition
         {
             int x = 6, y = 6;
             //从配置文件中读取通道标签
-            string path = Application.StartupPath + "\\" + "test.xml";
+            string path = Application.StartupPath + "\\Config\\" + "test.xml";
             XmlDocument xml = new XmlDocument();
             xml.Load(path);
             XmlNodeList list = xml.GetElementsByTagName("item");
@@ -148,7 +148,7 @@ namespace Data_acquisition
             }
             //保存修改的量程到配置文件
      
-            string path2 = Application.StartupPath + "\\" + "test.xml";
+            string path2 = Application.StartupPath + "\\Config\\" + "test.xml";
             XmlDocument xml = new XmlDocument();
             xml.Load(path2);
             XmlNodeList list = xml.GetElementsByTagName("item");

@@ -56,7 +56,7 @@
             this.radRadialGauge1.Location = new System.Drawing.Point(0, 0);
             this.radRadialGauge1.Name = "radRadialGauge1";
             this.radRadialGauge1.RangeEnd = 180D;
-            this.radRadialGauge1.Size = new System.Drawing.Size(640, 540);
+            this.radRadialGauge1.Size = new System.Drawing.Size(960, 810);
             this.radRadialGauge1.StartAngle = 130D;
             this.radRadialGauge1.SweepAngle = 280D;
             this.radRadialGauge1.TabIndex = 7;
@@ -66,7 +66,7 @@
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.Silver;
-            this.label2.Location = new System.Drawing.Point(536, 528);
+            this.label2.Location = new System.Drawing.Point(818, 798);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 8;
@@ -76,9 +76,9 @@
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Silver;
-            this.label1.Location = new System.Drawing.Point(76, 517);
+            this.label1.Location = new System.Drawing.Point(102, 787);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(501, 23);
+            this.label1.Size = new System.Drawing.Size(757, 23);
             this.label1.TabIndex = 7;
             this.label1.Text = "油压";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -164,7 +164,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.radRadialGauge1);
             this.Name = "Gauge_big";
-            this.Size = new System.Drawing.Size(640, 540);
+            this.Size = new System.Drawing.Size(960, 810);
             ((System.ComponentModel.ISupportInitialize)(this.radRadialGauge1)).EndInit();
             this.radRadialGauge1.ResumeLayout(false);
             this.ResumeLayout(false);

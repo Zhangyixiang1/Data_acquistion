@@ -61,11 +61,8 @@
       <HintPath>C:\Program Files (x86)\Telerik\UI for WinForms R2 2017\Bin40\TelerikCommon.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ZcLibrary">
-      <HintPath>F:\web测试\Chart_test\Chart_test\bin\Debug\ZcLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="ZedGraph">
-      <HintPath>F:\web测试\Chart_test\Chart_test\bin\Debug\ZedGraph.dll</HintPath>
+      <HintPath>D:\浏览器下载\Data_acquistion-master\Data_acquisition\ZedGraph.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

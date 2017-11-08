@@ -20,7 +20,12 @@ namespace Data_acquisition
 
         private void Frm_Paradigital_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape) this.Close(); 
+            if (e.KeyCode == Keys.Escape) this.Close();
+        }
+
+        private void parashow4_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
