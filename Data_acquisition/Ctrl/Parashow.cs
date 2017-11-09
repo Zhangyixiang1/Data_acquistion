@@ -95,7 +95,8 @@ namespace Data_acquisition.Ctrl
         {   
         try{
         int num=Convert.ToInt16(this.Tag);
-            label2.Text=Form_Main.Paralist[DateTime.Now.ToString()][num].ToString();}
+            label2.Text=Form_Main.Paralist.Values.Last()[num].ToString();}
+           
             catch{}
         }
     }

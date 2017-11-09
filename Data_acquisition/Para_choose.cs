@@ -14,15 +14,17 @@ namespace Data_acquisition
     {
         public ParaLine ctr_line;
         public Parashow ctr_show;
-        Button btn_s;
+        Button btn_s;string tag_num;
         public Para_choose(ParaLine ctr)
         {
             this.ctr_line = ctr;
+            tag_num=ctr.Tag.ToString();
             InitializeComponent();
         }
         public Para_choose(Parashow ctr)
         {
             this.ctr_show = ctr;
+            tag_num = ctr.Tag.ToString();
             InitializeComponent();
         }
         private void Para_choose_Load(object sender, EventArgs e)
@@ -32,11 +34,14 @@ namespace Data_acquisition
             backgroundWorker1.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker1_RunWorkerCompleted);
             backgroundWorker1.WorkerSupportsCancellation = true;    //声明是否支持取消线程
             backgroundWorker1.RunWorkerAsync(); //开始
+
+            
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             int x = 6, y = 6;
+            
             //从配置文件中读取通道标签
             string path = Application.StartupPath + "\\Config\\" + "test.xml";
             XmlDocument xml = new XmlDocument();
@@ -55,16 +60,23 @@ namespace Data_acquisition
                 btn.Tag = Index + "," + Unit_en + "," + Unit_me + "," + max + "," + min;
                 btn.Text = Name;
                 btn.Size = new Size(120, 23);
+               
                 btn.Location = new Point(x + 131 * (i % 4), y + 29 * (i / 4));
                 btn.Click += btnClick;
                 this.tabPage2.Controls.Add(btn);
+                if (tag_num == Index) { btn_s = btn; btn_s.BackColor = Color.Gray;
+                }
             }
 
         }
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+       
             backgroundWorker1.CancelAsync();
-
+        if(btn_s!=null){
+            string[] message = btn_s.Tag.ToString().Split(',');
+            txb_max.Text = message[3]; txb_min.Text = message[4];
+        }
         }
         private void btnClick(object sender, EventArgs e)
         {
@@ -88,7 +100,7 @@ namespace Data_acquisition
                     ctr_line.Max = txb_max.Text;
                     ctr_line.Min = txb_min.Text;
                     //保存修改到偏好配置文件
-                    //保存修改到偏好设置
+                    
                     string path = Application.StartupPath + "\\Config\\preference.xml";
                     XmlDocument doc = new XmlDocument();
                     doc.Load(path);
@@ -104,6 +116,7 @@ namespace Data_acquisition
                             node.SelectSingleNode("@min").InnerText = ctr_line.Min;
                             node.SelectSingleNode("@max").InnerText = ctr_line.Max;
                             node.SelectSingleNode("@unit").InnerText = ctr_line.Unit;
+                            node.SelectSingleNode("@index").InnerText = ctr_line.Tag.ToString();
 
                         }
 
@@ -121,7 +134,7 @@ namespace Data_acquisition
                     ctr_show.Unit = message[2];
                  
                     //保存修改到偏好配置文件
-                    //保存修改到偏好设置
+                  
                     string path = Application.StartupPath + "\\Config\\preference.xml";
                     XmlDocument doc = new XmlDocument();
                     doc.Load(path);
@@ -136,6 +149,7 @@ namespace Data_acquisition
                             node.SelectSingleNode("@tagname").InnerText = ctr_show.Tagname;
                        
                             node.SelectSingleNode("@unit").InnerText = ctr_show.Unit;
+                            node.SelectSingleNode("@index").InnerText = ctr_show.Tag.ToString();
 
                         }
 

@@ -76,9 +76,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lbl_stage = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.radButton7 = new Telerik.WinControls.UI.RadButton();
             this.radButton8 = new Telerik.WinControls.UI.RadButton();
             this.timer_now = new System.Windows.Forms.Timer(this.components);
+            this.timer_trend = new System.Windows.Forms.Timer(this.components);
+            this.label5 = new System.Windows.Forms.Label();
+            this.lbl_stagetime = new System.Windows.Forms.Label();
+            this.radButton7 = new Telerik.WinControls.UI.RadButton();
             this.paraLine1 = new Data_acquisition.Ctrl.ParaLine();
             this.paraLine6 = new Data_acquisition.Ctrl.ParaLine();
             this.paraLine5 = new Data_acquisition.Ctrl.ParaLine();
@@ -135,8 +138,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -151,8 +154,9 @@
             this.zedGraphControl1.ScrollMinX = 0D;
             this.zedGraphControl1.ScrollMinY = 0D;
             this.zedGraphControl1.ScrollMinY2 = 0D;
-            this.zedGraphControl1.Size = new System.Drawing.Size(1700, 890);
+            this.zedGraphControl1.Size = new System.Drawing.Size(1700, 879);
             this.zedGraphControl1.TabIndex = 0;
+            this.zedGraphControl1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.zedGraphControl1_MouseMove);
             // 
             // menuStrip1
             // 
@@ -356,11 +360,12 @@
             this.tabControl1.Location = new System.Drawing.Point(1718, 28);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(194, 1023);
+            this.tabControl1.Size = new System.Drawing.Size(194, 1008);
             this.tabControl1.TabIndex = 4;
             // 
             // tabPage1
             // 
+            this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage1.Controls.Add(this.parashow16);
             this.tabPage1.Controls.Add(this.parashow15);
             this.tabPage1.Controls.Add(this.parashow14);
@@ -380,13 +385,14 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(186, 997);
+            this.tabPage1.Size = new System.Drawing.Size(186, 982);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "CH 1-16";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
+            this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage2.Controls.Add(this.parashow17);
             this.tabPage2.Controls.Add(this.parashow18);
             this.tabPage2.Controls.Add(this.parashow19);
@@ -406,7 +412,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(186, 997);
+            this.tabPage2.Size = new System.Drawing.Size(186, 982);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "CH 17-32";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -418,7 +424,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Lime;
+            this.pictureBox1.BackColor = System.Drawing.Color.SeaGreen;
             this.pictureBox1.Location = new System.Drawing.Point(1496, 38);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(14, 30);
@@ -428,7 +434,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Lime;
+            this.pictureBox2.BackColor = System.Drawing.Color.SeaGreen;
             this.pictureBox2.Location = new System.Drawing.Point(1516, 38);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(14, 30);
@@ -438,7 +444,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Lime;
+            this.pictureBox3.BackColor = System.Drawing.Color.SeaGreen;
             this.pictureBox3.Location = new System.Drawing.Point(1536, 38);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(14, 30);
@@ -448,7 +454,7 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Lime;
+            this.pictureBox4.BackColor = System.Drawing.Color.SeaGreen;
             this.pictureBox4.Location = new System.Drawing.Point(1556, 38);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(14, 30);
@@ -458,7 +464,7 @@
             // 
             // pictureBox5
             // 
-            this.pictureBox5.BackColor = System.Drawing.Color.Lime;
+            this.pictureBox5.BackColor = System.Drawing.Color.SeaGreen;
             this.pictureBox5.Location = new System.Drawing.Point(1576, 38);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(14, 30);
@@ -468,7 +474,7 @@
             // 
             // pictureBox6
             // 
-            this.pictureBox6.BackColor = System.Drawing.Color.Lime;
+            this.pictureBox6.BackColor = System.Drawing.Color.SeaGreen;
             this.pictureBox6.Location = new System.Drawing.Point(1596, 38);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(14, 30);
@@ -496,7 +502,7 @@
             // 
             // pictureBox7
             // 
-            this.pictureBox7.BackColor = System.Drawing.Color.Lime;
+            this.pictureBox7.BackColor = System.Drawing.Color.SeaGreen;
             this.pictureBox7.Location = new System.Drawing.Point(1665, 38);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(14, 30);
@@ -506,28 +512,29 @@
             // 
             // lbl_now
             // 
-            this.lbl_now.AutoSize = true;
             this.lbl_now.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_now.Location = new System.Drawing.Point(1534, 1018);
+            this.lbl_now.Location = new System.Drawing.Point(1528, 1014);
             this.lbl_now.Name = "lbl_now";
             this.lbl_now.Size = new System.Drawing.Size(179, 22);
             this.lbl_now.TabIndex = 10;
             this.lbl_now.Text = "2017/01/01 00:00:00";
+            this.lbl_now.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1476, 1000);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label4.Location = new System.Drawing.Point(1446, 991);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 13);
+            this.label4.Size = new System.Drawing.Size(61, 21);
             this.label4.TabIndex = 11;
-            this.label4.Text = "阶段号";
+            this.label4.Text = "阶段号:";
             // 
             // lbl_stage
             // 
             this.lbl_stage.AutoSize = true;
             this.lbl_stage.Font = new System.Drawing.Font("Times New Roman", 15F);
-            this.lbl_stage.Location = new System.Drawing.Point(1534, 994);
+            this.lbl_stage.Location = new System.Drawing.Point(1510, 990);
             this.lbl_stage.Name = "lbl_stage";
             this.lbl_stage.Size = new System.Drawing.Size(20, 22);
             this.lbl_stage.TabIndex = 12;
@@ -536,23 +543,16 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1464, 1023);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label3.Location = new System.Drawing.Point(1430, 1015);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.Size = new System.Drawing.Size(77, 21);
             this.label3.TabIndex = 13;
-            this.label3.Text = "当前时间";
-            // 
-            // radButton7
-            // 
-            this.radButton7.Location = new System.Drawing.Point(470, 28);
-            this.radButton7.Name = "radButton7";
-            this.radButton7.Size = new System.Drawing.Size(40, 40);
-            this.radButton7.TabIndex = 14;
-            this.radButton7.Text = "<html><p>上一</p><p>阶段</p></html>";
+            this.label3.Text = "当前时间:";
             // 
             // radButton8
             // 
-            this.radButton8.Location = new System.Drawing.Point(516, 28);
+            this.radButton8.Location = new System.Drawing.Point(470, 28);
             this.radButton8.Name = "radButton8";
             this.radButton8.Size = new System.Drawing.Size(40, 40);
             this.radButton8.TabIndex = 14;
@@ -564,12 +564,45 @@
             this.timer_now.Interval = 1000;
             this.timer_now.Tick += new System.EventHandler(this.timer_now_Tick);
             // 
+            // timer_trend
+            // 
+            this.timer_trend.Interval = 1000;
+            this.timer_trend.Tick += new System.EventHandler(this.timer_trend_Tick);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label5.Location = new System.Drawing.Point(1545, 991);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(77, 21);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "阶段时间:";
+            // 
+            // lbl_stagetime
+            // 
+            this.lbl_stagetime.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_stagetime.Location = new System.Drawing.Point(1625, 990);
+            this.lbl_stagetime.Name = "lbl_stagetime";
+            this.lbl_stagetime.Size = new System.Drawing.Size(82, 22);
+            this.lbl_stagetime.TabIndex = 11;
+            this.lbl_stagetime.Text = "00:00:00";
+            this.lbl_stagetime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // radButton7
+            // 
+            this.radButton7.Location = new System.Drawing.Point(516, 29);
+            this.radButton7.Name = "radButton7";
+            this.radButton7.Size = new System.Drawing.Size(40, 40);
+            this.radButton7.TabIndex = 14;
+            this.radButton7.Text = "清零";
+            // 
             // paraLine1
             // 
             this.paraLine1.BackColor = System.Drawing.Color.Transparent;
             this.paraLine1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.paraLine1.Color = System.Drawing.Color.Red;
-            this.paraLine1.Location = new System.Drawing.Point(12, 988);
+            this.paraLine1.Location = new System.Drawing.Point(12, 983);
             this.paraLine1.Max = null;
             this.paraLine1.Min = null;
             this.paraLine1.Name = "paraLine1";
@@ -583,7 +616,7 @@
             this.paraLine6.BackColor = System.Drawing.Color.Transparent;
             this.paraLine6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.paraLine6.Color = System.Drawing.Color.Purple;
-            this.paraLine6.Location = new System.Drawing.Point(1052, 988);
+            this.paraLine6.Location = new System.Drawing.Point(1052, 983);
             this.paraLine6.Max = "1000";
             this.paraLine6.Min = "0";
             this.paraLine6.Name = "paraLine6";
@@ -597,7 +630,7 @@
             this.paraLine5.BackColor = System.Drawing.Color.Transparent;
             this.paraLine5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.paraLine5.Color = System.Drawing.Color.SeaGreen;
-            this.paraLine5.Location = new System.Drawing.Point(844, 988);
+            this.paraLine5.Location = new System.Drawing.Point(844, 983);
             this.paraLine5.Max = "1000";
             this.paraLine5.Min = "0";
             this.paraLine5.Name = "paraLine5";
@@ -611,7 +644,7 @@
             this.paraLine4.BackColor = System.Drawing.Color.Transparent;
             this.paraLine4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.paraLine4.Color = System.Drawing.Color.DarkBlue;
-            this.paraLine4.Location = new System.Drawing.Point(636, 988);
+            this.paraLine4.Location = new System.Drawing.Point(636, 983);
             this.paraLine4.Max = "1000";
             this.paraLine4.Min = "0";
             this.paraLine4.Name = "paraLine4";
@@ -625,7 +658,7 @@
             this.paraLine3.BackColor = System.Drawing.Color.Transparent;
             this.paraLine3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.paraLine3.Color = System.Drawing.Color.Blue;
-            this.paraLine3.Location = new System.Drawing.Point(428, 988);
+            this.paraLine3.Location = new System.Drawing.Point(428, 983);
             this.paraLine3.Max = "1000";
             this.paraLine3.Min = "0";
             this.paraLine3.Name = "paraLine3";
@@ -639,7 +672,7 @@
             this.paraLine2.BackColor = System.Drawing.Color.Transparent;
             this.paraLine2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.paraLine2.Color = System.Drawing.Color.Black;
-            this.paraLine2.Location = new System.Drawing.Point(220, 988);
+            this.paraLine2.Location = new System.Drawing.Point(220, 983);
             this.paraLine2.Max = "1000";
             this.paraLine2.Min = "0";
             this.paraLine2.Name = "paraLine2";
@@ -653,10 +686,10 @@
             this.parashow16.BackColor = System.Drawing.Color.Transparent;
             this.parashow16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow16.Color = System.Drawing.Color.Black;
-            this.parashow16.Location = new System.Drawing.Point(7, 933);
+            this.parashow16.Location = new System.Drawing.Point(1, 916);
             this.parashow16.Name = "parashow16";
-            this.parashow16.Size = new System.Drawing.Size(173, 57);
-            this.parashow16.TabIndex = 0;
+            this.parashow16.Size = new System.Drawing.Size(178, 60);
+            this.parashow16.TabIndex = 1;
             this.parashow16.Tagname = null;
             this.parashow16.Unit = null;
             // 
@@ -665,9 +698,9 @@
             this.parashow15.BackColor = System.Drawing.Color.Transparent;
             this.parashow15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow15.Color = System.Drawing.Color.Black;
-            this.parashow15.Location = new System.Drawing.Point(6, 871);
+            this.parashow15.Location = new System.Drawing.Point(1, 855);
             this.parashow15.Name = "parashow15";
-            this.parashow15.Size = new System.Drawing.Size(173, 57);
+            this.parashow15.Size = new System.Drawing.Size(178, 60);
             this.parashow15.TabIndex = 0;
             this.parashow15.Tagname = null;
             this.parashow15.Unit = null;
@@ -677,9 +710,9 @@
             this.parashow14.BackColor = System.Drawing.Color.Transparent;
             this.parashow14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow14.Color = System.Drawing.Color.Black;
-            this.parashow14.Location = new System.Drawing.Point(6, 809);
+            this.parashow14.Location = new System.Drawing.Point(1, 794);
             this.parashow14.Name = "parashow14";
-            this.parashow14.Size = new System.Drawing.Size(173, 57);
+            this.parashow14.Size = new System.Drawing.Size(178, 60);
             this.parashow14.TabIndex = 0;
             this.parashow14.Tagname = null;
             this.parashow14.Unit = null;
@@ -689,9 +722,9 @@
             this.parashow13.BackColor = System.Drawing.Color.Transparent;
             this.parashow13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow13.Color = System.Drawing.Color.Black;
-            this.parashow13.Location = new System.Drawing.Point(6, 747);
+            this.parashow13.Location = new System.Drawing.Point(1, 733);
             this.parashow13.Name = "parashow13";
-            this.parashow13.Size = new System.Drawing.Size(173, 57);
+            this.parashow13.Size = new System.Drawing.Size(178, 60);
             this.parashow13.TabIndex = 0;
             this.parashow13.Tagname = null;
             this.parashow13.Unit = null;
@@ -701,9 +734,9 @@
             this.parashow12.BackColor = System.Drawing.Color.Transparent;
             this.parashow12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow12.Color = System.Drawing.Color.Black;
-            this.parashow12.Location = new System.Drawing.Point(6, 685);
+            this.parashow12.Location = new System.Drawing.Point(1, 672);
             this.parashow12.Name = "parashow12";
-            this.parashow12.Size = new System.Drawing.Size(173, 57);
+            this.parashow12.Size = new System.Drawing.Size(178, 60);
             this.parashow12.TabIndex = 0;
             this.parashow12.Tagname = null;
             this.parashow12.Unit = null;
@@ -713,9 +746,9 @@
             this.parashow11.BackColor = System.Drawing.Color.Transparent;
             this.parashow11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow11.Color = System.Drawing.Color.Black;
-            this.parashow11.Location = new System.Drawing.Point(6, 623);
+            this.parashow11.Location = new System.Drawing.Point(1, 611);
             this.parashow11.Name = "parashow11";
-            this.parashow11.Size = new System.Drawing.Size(173, 57);
+            this.parashow11.Size = new System.Drawing.Size(178, 60);
             this.parashow11.TabIndex = 0;
             this.parashow11.Tagname = null;
             this.parashow11.Unit = null;
@@ -725,9 +758,9 @@
             this.parashow10.BackColor = System.Drawing.Color.Transparent;
             this.parashow10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow10.Color = System.Drawing.Color.Black;
-            this.parashow10.Location = new System.Drawing.Point(6, 561);
+            this.parashow10.Location = new System.Drawing.Point(1, 550);
             this.parashow10.Name = "parashow10";
-            this.parashow10.Size = new System.Drawing.Size(173, 57);
+            this.parashow10.Size = new System.Drawing.Size(178, 60);
             this.parashow10.TabIndex = 0;
             this.parashow10.Tagname = null;
             this.parashow10.Unit = null;
@@ -737,9 +770,9 @@
             this.parashow9.BackColor = System.Drawing.Color.Transparent;
             this.parashow9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow9.Color = System.Drawing.Color.Black;
-            this.parashow9.Location = new System.Drawing.Point(6, 499);
+            this.parashow9.Location = new System.Drawing.Point(1, 489);
             this.parashow9.Name = "parashow9";
-            this.parashow9.Size = new System.Drawing.Size(173, 57);
+            this.parashow9.Size = new System.Drawing.Size(178, 60);
             this.parashow9.TabIndex = 0;
             this.parashow9.Tagname = null;
             this.parashow9.Unit = null;
@@ -749,9 +782,9 @@
             this.parashow8.BackColor = System.Drawing.Color.Transparent;
             this.parashow8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow8.Color = System.Drawing.Color.Black;
-            this.parashow8.Location = new System.Drawing.Point(6, 437);
+            this.parashow8.Location = new System.Drawing.Point(1, 428);
             this.parashow8.Name = "parashow8";
-            this.parashow8.Size = new System.Drawing.Size(173, 57);
+            this.parashow8.Size = new System.Drawing.Size(178, 60);
             this.parashow8.TabIndex = 0;
             this.parashow8.Tagname = null;
             this.parashow8.Unit = null;
@@ -761,9 +794,9 @@
             this.parashow7.BackColor = System.Drawing.Color.Transparent;
             this.parashow7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow7.Color = System.Drawing.Color.Black;
-            this.parashow7.Location = new System.Drawing.Point(6, 375);
+            this.parashow7.Location = new System.Drawing.Point(1, 367);
             this.parashow7.Name = "parashow7";
-            this.parashow7.Size = new System.Drawing.Size(173, 57);
+            this.parashow7.Size = new System.Drawing.Size(178, 60);
             this.parashow7.TabIndex = 0;
             this.parashow7.Tagname = null;
             this.parashow7.Unit = null;
@@ -773,9 +806,9 @@
             this.parashow6.BackColor = System.Drawing.Color.Transparent;
             this.parashow6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow6.Color = System.Drawing.Color.Black;
-            this.parashow6.Location = new System.Drawing.Point(6, 313);
+            this.parashow6.Location = new System.Drawing.Point(1, 306);
             this.parashow6.Name = "parashow6";
-            this.parashow6.Size = new System.Drawing.Size(173, 57);
+            this.parashow6.Size = new System.Drawing.Size(178, 60);
             this.parashow6.TabIndex = 0;
             this.parashow6.Tagname = null;
             this.parashow6.Unit = null;
@@ -785,9 +818,9 @@
             this.parashow5.BackColor = System.Drawing.Color.Transparent;
             this.parashow5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow5.Color = System.Drawing.Color.Black;
-            this.parashow5.Location = new System.Drawing.Point(6, 251);
+            this.parashow5.Location = new System.Drawing.Point(1, 245);
             this.parashow5.Name = "parashow5";
-            this.parashow5.Size = new System.Drawing.Size(173, 57);
+            this.parashow5.Size = new System.Drawing.Size(178, 60);
             this.parashow5.TabIndex = 0;
             this.parashow5.Tagname = null;
             this.parashow5.Unit = null;
@@ -797,9 +830,9 @@
             this.parashow4.BackColor = System.Drawing.Color.Transparent;
             this.parashow4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow4.Color = System.Drawing.Color.Black;
-            this.parashow4.Location = new System.Drawing.Point(6, 189);
+            this.parashow4.Location = new System.Drawing.Point(1, 184);
             this.parashow4.Name = "parashow4";
-            this.parashow4.Size = new System.Drawing.Size(173, 57);
+            this.parashow4.Size = new System.Drawing.Size(178, 60);
             this.parashow4.TabIndex = 0;
             this.parashow4.Tagname = null;
             this.parashow4.Unit = null;
@@ -809,9 +842,9 @@
             this.parashow3.BackColor = System.Drawing.Color.Transparent;
             this.parashow3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow3.Color = System.Drawing.Color.Black;
-            this.parashow3.Location = new System.Drawing.Point(6, 127);
+            this.parashow3.Location = new System.Drawing.Point(1, 123);
             this.parashow3.Name = "parashow3";
-            this.parashow3.Size = new System.Drawing.Size(173, 57);
+            this.parashow3.Size = new System.Drawing.Size(178, 60);
             this.parashow3.TabIndex = 0;
             this.parashow3.Tagname = null;
             this.parashow3.Unit = null;
@@ -821,9 +854,9 @@
             this.parashow2.BackColor = System.Drawing.Color.Transparent;
             this.parashow2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow2.Color = System.Drawing.Color.Black;
-            this.parashow2.Location = new System.Drawing.Point(6, 65);
+            this.parashow2.Location = new System.Drawing.Point(1, 62);
             this.parashow2.Name = "parashow2";
-            this.parashow2.Size = new System.Drawing.Size(173, 57);
+            this.parashow2.Size = new System.Drawing.Size(178, 60);
             this.parashow2.TabIndex = 0;
             this.parashow2.Tagname = null;
             this.parashow2.Unit = null;
@@ -833,9 +866,9 @@
             this.parashow1.BackColor = System.Drawing.Color.Transparent;
             this.parashow1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parashow1.Color = System.Drawing.Color.Black;
-            this.parashow1.Location = new System.Drawing.Point(6, 3);
+            this.parashow1.Location = new System.Drawing.Point(1, 1);
             this.parashow1.Name = "parashow1";
-            this.parashow1.Size = new System.Drawing.Size(173, 57);
+            this.parashow1.Size = new System.Drawing.Size(178, 60);
             this.parashow1.TabIndex = 0;
             this.parashow1.Tagname = null;
             this.parashow1.Unit = null;
@@ -1043,9 +1076,11 @@
             this.Controls.Add(this.paraLine4);
             this.Controls.Add(this.paraLine3);
             this.Controls.Add(this.paraLine2);
-            this.Controls.Add(this.radButton8);
             this.Controls.Add(this.radButton7);
+            this.Controls.Add(this.radButton8);
             this.Controls.Add(this.lbl_now);
+            this.Controls.Add(this.lbl_stagetime);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lbl_stage);
             this.Controls.Add(this.label3);
@@ -1098,8 +1133,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1125,7 +1160,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private Ctrl.Parashow parashow16;
         private Ctrl.Parashow parashow15;
         private Ctrl.Parashow parashow14;
         private Ctrl.Parashow parashow13;
@@ -1170,7 +1204,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lbl_stage;
         private System.Windows.Forms.Label label3;
-        private Telerik.WinControls.UI.RadButton radButton7;
         private Telerik.WinControls.UI.RadButton radButton8;
         private System.Windows.Forms.Timer timer_now;
         private Ctrl.ParaLine paraLine2;
@@ -1195,5 +1228,10 @@
         private Ctrl.Parashow parashow30;
         private Ctrl.Parashow parashow31;
         private Ctrl.Parashow parashow32;
+        private System.Windows.Forms.Timer timer_trend;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbl_stagetime;
+        private Telerik.WinControls.UI.RadButton radButton7;
+        private Ctrl.Parashow parashow16;
     }
 }
