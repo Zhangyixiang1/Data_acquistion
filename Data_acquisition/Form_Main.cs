@@ -14,7 +14,7 @@ namespace Data_acquisition
 {
     public partial class Form_Main : Telerik.WinControls.UI.RadForm
     {
-    ToolTip toolTip1;
+        ToolTip toolTip1;
         DateTime time;
         DateTime time_stage;
         bool run;//是否记录数据
@@ -31,7 +31,7 @@ namespace Data_acquisition
 
         private void Form_Main_Load(object sender, EventArgs e)
         {
-        toolTip1=new ToolTip ();
+            toolTip1 = new ToolTip();
             Paralist = new Dictionary<string, double[]>();
             xml_load();//读取偏好设置文件
             chart_initial();//初始化图表控件
@@ -111,6 +111,7 @@ namespace Data_acquisition
         {
             lbl_now.Text = DateTime.Now.ToString();
         }
+        #region 初始化zed控件
         /// <summary>
         /// 初始化图表控件
         /// </summary>
@@ -174,36 +175,37 @@ namespace Data_acquisition
             myPane.Y2Axis.Title.Text = paraLine4.Tagname + "(" + paraLine4.Unit + ")";
 
             // Make up some data points based on the Sine function
-            PointPairList vList = new PointPairList();
-            PointPairList aList = new PointPairList();
-            PointPairList dList = new PointPairList();
-            PointPairList eList = new PointPairList();
+            PointPairList List1 = new PointPairList();
+            PointPairList List2 = new PointPairList();
+            PointPairList List3 = new PointPairList();
+            PointPairList List4 = new PointPairList();
+            PointPairList List5 = new PointPairList();
+            PointPairList List6 = new PointPairList();
+            // 测试用，用蓝色曲线做测试
+            Random rd = new Random();
+            for (int i = 0; i <= 1800; i++)
+            {
+                List1.Add(i / 60, i/10  + 10);
+                List2.Add(i / 60, i / 10 + 10);
+                List3.Add(i / 60, i / 10 + 10);
+                List4.Add(i / 60, i / 10 + 10);
+                List5.Add(i / 60, i / 10 + 10);
+                List6.Add(i / 60, i / 10 + 10);
 
-            // Fabricate some data values
-            //for (int i = 0; i < 30; i++)
-            //{
-            //    double time = (double)i;
-            //    double acceleration = 2.0;
-            //    double velocity = acceleration * time;
-            //    double distance = acceleration * time * time / 2.0;
-            //    double energy = 100.0 * velocity * velocity / 2.0;
-            //    aList.Add(time, acceleration);
-            //    vList.Add(time, velocity);
-            //    eList.Add(time, energy);
-            //    dList.Add(time, distance);
+            }
 
             //}
 
             // Generate a blue curve with diamond symbols, and "Velocity" in the legend
             LineItem myCurve = myPane.AddCurve("Velocity",
-               vList, Color.Blue, SymbolType.None);
+               List1, Color.Blue, SymbolType.None);
             myCurve.Line.Width = 2;
             // Fill the symbols with white
             // myCurve.Symbol.Fill = new Fill(Color.White);
 
             // Generate a darkblue curve with circle symbols, and "Acceleration" in the legend
             myCurve = myPane.AddCurve("Acceleration",
-               aList, Color.DarkBlue, SymbolType.None);
+               List2, Color.DarkBlue, SymbolType.None);
             myCurve.Line.Width = 2;
             // Fill the symbols with white
             // myCurve.Symbol.Fill = new Fill(Color.White);
@@ -212,7 +214,7 @@ namespace Data_acquisition
 
             // Generate a black curve with square symbols, and "Distance" in the legend
             myCurve = myPane.AddCurve("Distance",
-               dList, Color.Black, SymbolType.None);
+               List3, Color.Black, SymbolType.None);
             myCurve.Line.Width = 2;
             // Fill the symbols with white
             //   myCurve.Symbol.Fill = new Fill(Color.White);
@@ -221,7 +223,7 @@ namespace Data_acquisition
 
             // Generate a green curve with triangle symbols, and "Energy" in the legend
             myCurve = myPane.AddCurve("Energy",
-               eList, Color.SeaGreen, SymbolType.None);
+               List4, Color.SeaGreen, SymbolType.None);
             myCurve.Line.Width = 2;
             // Fill the symbols with white
             //myCurve.Symbol.Fill = new Fill(Color.White);
@@ -232,7 +234,7 @@ namespace Data_acquisition
 
             // Generate a red curve with square symbols, and "Distance" in the legend
             myCurve = myPane.AddCurve("Distance",
-               dList, Color.Red, SymbolType.None);
+               List5, Color.Red, SymbolType.None);
             myCurve.Line.Width = 2;
             // Fill the symbols with white
             //  myCurve.Symbol.Fill = new Fill(Color.White);
@@ -241,7 +243,7 @@ namespace Data_acquisition
 
             // Generate a purple curve with triangle symbols, and "Energy" in the legend
             myCurve = myPane.AddCurve("Energy",
-               eList, Color.Purple, SymbolType.None);
+               List6, Color.Purple, SymbolType.None);
             myCurve.Line.Width = 2;
             // Fill the symbols with white
             //  myCurve.Symbol.Fill = new Fill(Color.White);
@@ -371,7 +373,7 @@ namespace Data_acquisition
 
 
         }
-
+        #endregion
         private void 视图1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Frm_Realtrend frm = new Frm_Realtrend();
@@ -559,7 +561,7 @@ namespace Data_acquisition
             {
                 return;
             }
-            
+
             Scale xScale = zedGraphControl1.GraphPane.XAxis.Scale;
             double factor = xScale.Max * 60;
             //添加数据
@@ -571,7 +573,7 @@ namespace Data_acquisition
             list6.Add(count / factor, (new Random()).Next(50));
             count++;
 
-            if (count/factor > xScale.Max)
+            if (count / factor > xScale.Max)
             {
                 xScale.Max = xScale.Max + 30;
                 xScale.MajorStep = xScale.Max / 6;//X轴大步长为5，也就是显示文字的大间隔
@@ -592,28 +594,113 @@ namespace Data_acquisition
             zedGraphControl1.Invalidate();
         }
 
-        private void zedGraphControl1_MouseMove(object sender, MouseEventArgs e)
+        private void pnl_setting_VisibleChanged(object sender, EventArgs e)
         {
-            // Save the mouse location  
-            PointF mousePt = new PointF(e.X, e.Y);
-
-            string tooltip = string.Empty;
-
-            // Find the Chart rect that contains the current mouse location  
-            GraphPane pane = ((ZedGraphControl)sender).MasterPane.FindChartRect(mousePt);
-
-            // If pane is non-null, we have a valid location.  Otherwise, the mouse is not  
-            // within any chart rect.  
-            if (pane != null)
+            if (pnl_setting.Visible)
             {
-                double x, y;
-                // Convert the mouse location to X, and Y scale values  
-                pane.ReverseTransform(mousePt, out x, out y);
-                // 获取横纵坐标信息  
-                tooltip = "(" + x.ToString("f2") + ", " + y.ToString("f2") + ")";
+                cmb_line.Items.Add(paraLine1.Tagname); cmb_line.Items.Add(paraLine2.Tagname); cmb_line.Items.Add(paraLine3.Tagname);
+                cmb_line.Items.Add(paraLine4.Tagname); cmb_line.Items.Add(paraLine5.Tagname); cmb_line.Items.Add(paraLine6.Tagname);
+            }
+            else { cmb_line.Items.Clear(); }
+        }
+
+        private void 图像编辑ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pnl_setting.Visible = true;
+        }
+
+        private void cmb_line_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chk_time_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_time.Checked) { txb_start.Enabled = false; txb_end.Enabled = false; }
+            else { txb_start.Enabled = true; txb_end.Enabled = true; }
+        }
+        #region 图像编辑相关算法
+
+        private void btn_ok_Click(object sender, EventArgs e)
+        {
+            //不编辑被选中，则隐藏面板
+            if (rab_none.Checked) { pnl_setting.Visible = false; return; }
+
+            int sel_line = 0;
+            //获取选取的曲线编号
+            switch (cmb_line.SelectedIndex)
+            {
+                case (0): { sel_line = 4; break; }
+                case (1): { sel_line = 2; break; }
+                case (2): { sel_line = 0; break; }
+                case (3): { sel_line = 1; break; }
+                case (4): { sel_line = 3; break; }
+                case (5): { sel_line = 5; break; }
+
+
+            }
+            IPointListEdit list = zedGraphControl1.GraphPane.CurveList[sel_line].Points as IPointListEdit;
+            //根据不同的算法做出相应的修改
+
+            // 取得时间轴的最大值最小值
+            int scale_max, scale_min;
+            //判断是否选取了应用整个时间通道
+            if (chk_time.Checked)
+            {
+                scale_max = list.Count - 1; scale_min = 0;
+            }
+            else { scale_max = int.Parse(txb_end.Text); scale_min = int.Parse(txb_start.Text); }
+            //插值方法
+            if (rab_interpolation.Checked)
+            {
+
+                //求出一次函数y=kx+b的斜率k,偏移量b
+                double k = (list[scale_max].Y - list[scale_min].Y) / (list[scale_max].X - list[scale_min].X);
+                double b = list[scale_max].Y - k * list[scale_max].X;
+                //修改数据点
+                for (int i = scale_min; i <= scale_max; i++)
+                {
+                    list[i] = new ZedGraph.PointPair((double)i / 60, k * i / 60 + b);
+                }
+            }
+            //设置方法
+            if (rab_set.Checked)
+            {
+                for (int i = scale_min; i <= scale_max; i++)
+                {
+
+                    list[i] = new ZedGraph.PointPair((double)i / 60, double.Parse(txb_set.Text));
+                }
+
+            }
+            //递推平均方法
+            if (rab_recurrence.Checked)
+            {
+                //取得采样长度N
+                int N = int.Parse(txb_recurrence.Text);
+                List<double> filter = new List<double>();
+                //初始化采样队列
+                for (int i = 0; i < N; i++) filter.Add(list[scale_min + i].Y);
+                //滤波
+                for (int i = 0; i < scale_max - scale_min - N; i++)
+                {
+                    filter.RemoveAt(0);
+                    filter.Add(list[scale_min + N + i].Y);
+                    double sum = 0;
+                    foreach (double item in filter) { sum = item + sum; }
+                    list[scale_min + N + i].Y = sum / N;
+
+                }
+
             }
 
-            toolTip1.SetToolTip(zedGraphControl1, tooltip);  
+            zedGraphControl1.AxisChange();
+            zedGraphControl1.Invalidate();
+        }
+        #endregion
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            pnl_setting.Visible = false;
         }
     }
 }

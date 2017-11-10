@@ -82,6 +82,28 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lbl_stagetime = new System.Windows.Forms.Label();
             this.radButton7 = new Telerik.WinControls.UI.RadButton();
+            this.pnl_setting = new System.Windows.Forms.Panel();
+            this.图像编辑ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txb_start = new System.Windows.Forms.TextBox();
+            this.txb_end = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmb_line = new System.Windows.Forms.ComboBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.rab_interpolation = new System.Windows.Forms.RadioButton();
+            this.rab_set = new System.Windows.Forms.RadioButton();
+            this.txb_set = new System.Windows.Forms.TextBox();
+            this.rab_recurrence = new System.Windows.Forms.RadioButton();
+            this.rab_none = new System.Windows.Forms.RadioButton();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txb_recurrence = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btn_ok = new System.Windows.Forms.Button();
+            this.btn_cancel = new System.Windows.Forms.Button();
+            this.chk_time = new System.Windows.Forms.CheckBox();
+            this.chk_line = new System.Windows.Forms.CheckBox();
             this.paraLine1 = new Data_acquisition.Ctrl.ParaLine();
             this.paraLine6 = new Data_acquisition.Ctrl.ParaLine();
             this.paraLine5 = new Data_acquisition.Ctrl.ParaLine();
@@ -140,6 +162,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton7)).BeginInit();
+            this.pnl_setting.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,7 +182,6 @@
             this.zedGraphControl1.ScrollMinY2 = 0D;
             this.zedGraphControl1.Size = new System.Drawing.Size(1700, 879);
             this.zedGraphControl1.TabIndex = 0;
-            this.zedGraphControl1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.zedGraphControl1_MouseMove);
             // 
             // menuStrip1
             // 
@@ -217,7 +242,8 @@
             // 
             this.设置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.系统设置ToolStripMenuItem,
-            this.参数校准ToolStripMenuItem});
+            this.参数校准ToolStripMenuItem,
+            this.图像编辑ToolStripMenuItem});
             this.设置ToolStripMenuItem.Name = "设置ToolStripMenuItem";
             this.设置ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.设置ToolStripMenuItem.Text = "设置";
@@ -596,6 +622,225 @@
             this.radButton7.Size = new System.Drawing.Size(40, 40);
             this.radButton7.TabIndex = 14;
             this.radButton7.Text = "清零";
+            // 
+            // pnl_setting
+            // 
+            this.pnl_setting.Controls.Add(this.btn_cancel);
+            this.pnl_setting.Controls.Add(this.btn_ok);
+            this.pnl_setting.Controls.Add(this.groupBox3);
+            this.pnl_setting.Controls.Add(this.groupBox2);
+            this.pnl_setting.Controls.Add(this.groupBox1);
+            this.pnl_setting.Location = new System.Drawing.Point(1230, 191);
+            this.pnl_setting.Name = "pnl_setting";
+            this.pnl_setting.Size = new System.Drawing.Size(311, 323);
+            this.pnl_setting.TabIndex = 17;
+            this.pnl_setting.Visible = false;
+            this.pnl_setting.VisibleChanged += new System.EventHandler(this.pnl_setting_VisibleChanged);
+            // 
+            // 图像编辑ToolStripMenuItem
+            // 
+            this.图像编辑ToolStripMenuItem.Name = "图像编辑ToolStripMenuItem";
+            this.图像编辑ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.图像编辑ToolStripMenuItem.Text = "图像编辑";
+            this.图像编辑ToolStripMenuItem.Click += new System.EventHandler(this.图像编辑ToolStripMenuItem_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 22);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(66, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "开始时间(s)";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 47);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(66, 13);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "结束时间(s)";
+            // 
+            // txb_start
+            // 
+            this.txb_start.Location = new System.Drawing.Point(95, 19);
+            this.txb_start.Name = "txb_start";
+            this.txb_start.Size = new System.Drawing.Size(100, 21);
+            this.txb_start.TabIndex = 1;
+            // 
+            // txb_end
+            // 
+            this.txb_end.Location = new System.Drawing.Point(95, 44);
+            this.txb_end.Name = "txb_end";
+            this.txb_end.Size = new System.Drawing.Size(100, 21);
+            this.txb_end.TabIndex = 1;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.chk_time);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.txb_end);
+            this.groupBox1.Controls.Add(this.txb_start);
+            this.groupBox1.Location = new System.Drawing.Point(7, 5);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(297, 86);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "时间范围";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.chk_line);
+            this.groupBox2.Controls.Add(this.cmb_line);
+            this.groupBox2.Location = new System.Drawing.Point(7, 97);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(297, 55);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "曲线选择";
+            // 
+            // cmb_line
+            // 
+            this.cmb_line.FormattingEnabled = true;
+            this.cmb_line.Location = new System.Drawing.Point(9, 21);
+            this.cmb_line.Name = "cmb_line";
+            this.cmb_line.Size = new System.Drawing.Size(121, 20);
+            this.cmb_line.TabIndex = 3;
+            this.cmb_line.SelectedIndexChanged += new System.EventHandler(this.cmb_line_SelectedIndexChanged);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.txb_recurrence);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.txb_set);
+            this.groupBox3.Controls.Add(this.rab_none);
+            this.groupBox3.Controls.Add(this.rab_recurrence);
+            this.groupBox3.Controls.Add(this.rab_set);
+            this.groupBox3.Controls.Add(this.rab_interpolation);
+            this.groupBox3.Location = new System.Drawing.Point(7, 167);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(297, 121);
+            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "编辑模式";
+            // 
+            // rab_interpolation
+            // 
+            this.rab_interpolation.AutoSize = true;
+            this.rab_interpolation.Location = new System.Drawing.Point(9, 21);
+            this.rab_interpolation.Name = "rab_interpolation";
+            this.rab_interpolation.Size = new System.Drawing.Size(61, 17);
+            this.rab_interpolation.TabIndex = 3;
+            this.rab_interpolation.Text = "插值法";
+            this.rab_interpolation.UseVisualStyleBackColor = true;
+            // 
+            // rab_set
+            // 
+            this.rab_set.AutoSize = true;
+            this.rab_set.Location = new System.Drawing.Point(9, 44);
+            this.rab_set.Name = "rab_set";
+            this.rab_set.Size = new System.Drawing.Size(61, 17);
+            this.rab_set.TabIndex = 4;
+            this.rab_set.Text = "设置值";
+            this.rab_set.UseVisualStyleBackColor = true;
+            // 
+            // txb_set
+            // 
+            this.txb_set.Location = new System.Drawing.Point(188, 39);
+            this.txb_set.Name = "txb_set";
+            this.txb_set.Size = new System.Drawing.Size(100, 21);
+            this.txb_set.TabIndex = 5;
+            // 
+            // rab_recurrence
+            // 
+            this.rab_recurrence.AutoSize = true;
+            this.rab_recurrence.Location = new System.Drawing.Point(9, 67);
+            this.rab_recurrence.Name = "rab_recurrence";
+            this.rab_recurrence.Size = new System.Drawing.Size(73, 17);
+            this.rab_recurrence.TabIndex = 4;
+            this.rab_recurrence.Text = "递推平均";
+            this.rab_recurrence.UseVisualStyleBackColor = true;
+            // 
+            // rab_none
+            // 
+            this.rab_none.AutoSize = true;
+            this.rab_none.Checked = true;
+            this.rab_none.Location = new System.Drawing.Point(9, 90);
+            this.rab_none.Name = "rab_none";
+            this.rab_none.Size = new System.Drawing.Size(61, 17);
+            this.rab_none.TabIndex = 4;
+            this.rab_none.TabStop = true;
+            this.rab_none.Text = "不编辑";
+            this.rab_none.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(131, 46);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(19, 13);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "值";
+            // 
+            // txb_recurrence
+            // 
+            this.txb_recurrence.Location = new System.Drawing.Point(188, 64);
+            this.txb_recurrence.Name = "txb_recurrence";
+            this.txb_recurrence.Size = new System.Drawing.Size(100, 21);
+            this.txb_recurrence.TabIndex = 5;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(131, 71);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(31, 13);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "数量";
+            // 
+            // btn_ok
+            // 
+            this.btn_ok.Location = new System.Drawing.Point(16, 294);
+            this.btn_ok.Name = "btn_ok";
+            this.btn_ok.Size = new System.Drawing.Size(75, 23);
+            this.btn_ok.TabIndex = 6;
+            this.btn_ok.Text = "确认";
+            this.btn_ok.UseVisualStyleBackColor = true;
+            this.btn_ok.Click += new System.EventHandler(this.btn_ok_Click);
+            // 
+            // btn_cancel
+            // 
+            this.btn_cancel.Location = new System.Drawing.Point(102, 294);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
+            this.btn_cancel.TabIndex = 6;
+            this.btn_cancel.Text = "取消";
+            this.btn_cancel.UseVisualStyleBackColor = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
+            // 
+            // chk_time
+            // 
+            this.chk_time.AutoSize = true;
+            this.chk_time.Location = new System.Drawing.Point(213, 22);
+            this.chk_time.Name = "chk_time";
+            this.chk_time.Size = new System.Drawing.Size(74, 17);
+            this.chk_time.TabIndex = 3;
+            this.chk_time.Text = "整个时间";
+            this.chk_time.UseVisualStyleBackColor = true;
+            this.chk_time.CheckedChanged += new System.EventHandler(this.chk_time_CheckedChanged);
+            // 
+            // chk_line
+            // 
+            this.chk_line.AutoSize = true;
+            this.chk_line.Location = new System.Drawing.Point(213, 24);
+            this.chk_line.Name = "chk_line";
+            this.chk_line.Size = new System.Drawing.Size(74, 17);
+            this.chk_line.TabIndex = 3;
+            this.chk_line.Text = "所有曲线";
+            this.chk_line.UseVisualStyleBackColor = true;
             // 
             // paraLine1
             // 
@@ -1070,6 +1315,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1912, 1047);
+            this.Controls.Add(this.pnl_setting);
             this.Controls.Add(this.paraLine1);
             this.Controls.Add(this.paraLine6);
             this.Controls.Add(this.paraLine5);
@@ -1135,6 +1381,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton7)).EndInit();
+            this.pnl_setting.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1233,5 +1486,27 @@
         private System.Windows.Forms.Label lbl_stagetime;
         private Telerik.WinControls.UI.RadButton radButton7;
         private Ctrl.Parashow parashow16;
+        private System.Windows.Forms.ToolStripMenuItem 图像编辑ToolStripMenuItem;
+        private System.Windows.Forms.Panel pnl_setting;
+        private System.Windows.Forms.TextBox txb_start;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txb_end;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txb_recurrence;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txb_set;
+        private System.Windows.Forms.RadioButton rab_none;
+        private System.Windows.Forms.RadioButton rab_recurrence;
+        private System.Windows.Forms.RadioButton rab_set;
+        private System.Windows.Forms.RadioButton rab_interpolation;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ComboBox cmb_line;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btn_cancel;
+        private System.Windows.Forms.Button btn_ok;
+        private System.Windows.Forms.CheckBox chk_time;
+        private System.Windows.Forms.CheckBox chk_line;
     }
 }
