@@ -42,6 +42,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 9F);
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(3, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
@@ -51,6 +52,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(5, 37);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(11, 12);
@@ -59,6 +61,7 @@
             // 
             // label3
             // 
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(31, 37);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(11, 12);
@@ -68,6 +71,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(57, 37);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 12);
@@ -76,7 +80,8 @@
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(147, 37);
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(90, 37);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 12);
             this.label6.TabIndex = 2;
@@ -88,7 +93,7 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(182, 7);
+            this.checkBox1.Location = new System.Drawing.Point(135, 7);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(15, 14);
             this.checkBox1.TabIndex = 3;
@@ -102,7 +107,7 @@
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(200, 50);
+            this.shapeContainer1.Size = new System.Drawing.Size(150, 50);
             this.shapeContainer1.TabIndex = 1;
             this.shapeContainer1.TabStop = false;
             // 
@@ -110,8 +115,8 @@
             // 
             this.lineShape1.BorderWidth = 2;
             this.lineShape1.Name = "lineShape1";
-            this.lineShape1.X1 = 1;
-            this.lineShape1.X2 = 170;
+            this.lineShape1.X1 = -3;
+            this.lineShape1.X2 = 100;
             this.lineShape1.Y1 = 28;
             this.lineShape1.Y2 = 28;
             // 
@@ -129,7 +134,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.shapeContainer1);
             this.Name = "ParaLine";
-            this.Size = new System.Drawing.Size(200, 50);
+            this.Size = new System.Drawing.Size(150, 50);
             this.Click += new System.EventHandler(this.ParaLine_Click);
             this.ResumeLayout(false);
             this.PerformLayout();

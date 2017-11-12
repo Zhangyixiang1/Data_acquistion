@@ -158,14 +158,16 @@ namespace Data_acquisition
             zedGraphControl1.IsEnableHPan = false; zedGraphControl1.IsEnableVPan = false;
             zedGraphControl1.IsEnableHZoom = false; zedGraphControl1.IsEnableZoom = false;
             GraphPane myPane = zedGraphControl1.GraphPane;
-
+            myPane.Fill = new Fill(Color.FromArgb(28,29,31));
+            myPane.Chart.Fill = new Fill(Color.FromArgb(49, 49, 49));
             // Set the titles and axis labels
             myPane.Legend.IsVisible = false;
             myPane.Title.Text = "";
-
+          
             myPane.XAxis.Title.Text = "时间(分钟)";
-            myPane.XAxis.Scale.FontSpec.Size = 10;
-            myPane.XAxis.Title.FontSpec.Size = 10;
+            
+            myPane.XAxis.Scale.FontSpec.Size = 5;
+            myPane.XAxis.Title.FontSpec.Size = 5;
             myPane.XAxis.Scale.Min = 0; //X轴最小值0
             myPane.XAxis.Scale.Max = 30; //X轴最大30
 
@@ -367,6 +369,15 @@ namespace Data_acquisition
             yAxis6.Scale.Min = int.Parse(paraLine6.Min);
             // Fill the axis background with a gradient
             //  myPane.Chart.Fill = new Fill(Color.White, Color.LightGoldenrodYellow, 45.0f);
+
+            //新增，y轴不显示名称
+            foreach (YAxis y in myPane.YAxisList) {
+                y.Title.IsVisible = false;
+            }
+            foreach (Y2Axis y in myPane.Y2AxisList)
+            {
+                y.Title.IsVisible = false;
+            }
 
             zedGraphControl1.AxisChange();
 
