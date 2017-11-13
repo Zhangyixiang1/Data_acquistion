@@ -28,18 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gauge17 = new Data_acquisition.Ctrl.Gauge();
-            this.gauge18 = new Data_acquisition.Ctrl.Gauge();
             this.gauge19 = new Data_acquisition.Ctrl.Gauge();
             this.gauge20 = new Data_acquisition.Ctrl.Gauge();
-            this.gauge13 = new Data_acquisition.Ctrl.Gauge();
-            this.gauge15 = new Data_acquisition.Ctrl.Gauge();
-            this.gauge9 = new Data_acquisition.Ctrl.Gauge();
-            this.gauge_big4 = new Data_acquisition.Ctrl.Gauge_big();
-            this.gauge4 = new Data_acquisition.Ctrl.Gauge();
-            this.gauge3 = new Data_acquisition.Ctrl.Gauge();
-            this.gauge2 = new Data_acquisition.Ctrl.Gauge();
-            this.gauge1 = new Data_acquisition.Ctrl.Gauge();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.parashow3 = new Data_acquisition.Ctrl.Parashow();
@@ -75,104 +65,64 @@
             this.parashow30 = new Data_acquisition.Ctrl.Parashow();
             this.parashow31 = new Data_acquisition.Ctrl.Parashow();
             this.parashow32 = new Data_acquisition.Ctrl.Parashow();
+            this.gauge2 = new Data_acquisition.Ctrl.Gauge();
+            this.gauge_mid1 = new Data_acquisition.Ctrl.Gauge_mid();
+            this.gauge1 = new Data_acquisition.Ctrl.Gauge();
+            this.parashow33 = new Data_acquisition.Ctrl.Parashow();
+            this.parashow34 = new Data_acquisition.Ctrl.Parashow();
+            this.parashow35 = new Data_acquisition.Ctrl.Parashow();
+            this.parashow36 = new Data_acquisition.Ctrl.Parashow();
+            this.parashow37 = new Data_acquisition.Ctrl.Parashow();
+            this.parashow38 = new Data_acquisition.Ctrl.Parashow();
+            this.parashow39 = new Data_acquisition.Ctrl.Parashow();
+            this.parashow40 = new Data_acquisition.Ctrl.Parashow();
+            this.parashow41 = new Data_acquisition.Ctrl.Parashow();
+            this.parashow42 = new Data_acquisition.Ctrl.Parashow();
+            this.parashow43 = new Data_acquisition.Ctrl.Parashow();
+            this.parashow44 = new Data_acquisition.Ctrl.Parashow();
+            this.parashow45 = new Data_acquisition.Ctrl.Parashow();
+            this.parashow46 = new Data_acquisition.Ctrl.Parashow();
+            this.parashow47 = new Data_acquisition.Ctrl.Parashow();
+            this.parashow48 = new Data_acquisition.Ctrl.Parashow();
+            this.parashow49 = new Data_acquisition.Ctrl.Parashow();
+            this.parashow50 = new Data_acquisition.Ctrl.Parashow();
+            this.parashow51 = new Data_acquisition.Ctrl.Parashow();
+            this.parashow52 = new Data_acquisition.Ctrl.Parashow();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // gauge17
-            // 
-            this.gauge17.Location = new System.Drawing.Point(1280, 810);
-            this.gauge17.Name = "gauge17";
-            this.gauge17.Size = new System.Drawing.Size(320, 270);
-            this.gauge17.TabIndex = 12;
-            // 
-            // gauge18
-            // 
-            this.gauge18.Location = new System.Drawing.Point(1280, 540);
-            this.gauge18.Name = "gauge18";
-            this.gauge18.Size = new System.Drawing.Size(320, 270);
-            this.gauge18.TabIndex = 13;
             // 
             // gauge19
             // 
-            this.gauge19.Location = new System.Drawing.Point(1280, 270);
+            this.gauge19.Location = new System.Drawing.Point(1598, 270);
             this.gauge19.Name = "gauge19";
             this.gauge19.Size = new System.Drawing.Size(320, 270);
             this.gauge19.TabIndex = 14;
             // 
             // gauge20
             // 
-            this.gauge20.Location = new System.Drawing.Point(1280, 0);
+            this.gauge20.Location = new System.Drawing.Point(1598, 2);
             this.gauge20.Name = "gauge20";
             this.gauge20.Size = new System.Drawing.Size(320, 270);
             this.gauge20.TabIndex = 15;
-            // 
-            // gauge13
-            // 
-            this.gauge13.Location = new System.Drawing.Point(960, 810);
-            this.gauge13.Name = "gauge13";
-            this.gauge13.Size = new System.Drawing.Size(320, 270);
-            this.gauge13.TabIndex = 10;
-            // 
-            // gauge15
-            // 
-            this.gauge15.Location = new System.Drawing.Point(640, 810);
-            this.gauge15.Name = "gauge15";
-            this.gauge15.Size = new System.Drawing.Size(320, 270);
-            this.gauge15.TabIndex = 8;
-            // 
-            // gauge9
-            // 
-            this.gauge9.Location = new System.Drawing.Point(320, 810);
-            this.gauge9.Name = "gauge9";
-            this.gauge9.Size = new System.Drawing.Size(320, 270);
-            this.gauge9.TabIndex = 4;
-            // 
-            // gauge_big4
-            // 
-            this.gauge_big4.Location = new System.Drawing.Point(320, 0);
-            this.gauge_big4.Name = "gauge_big4";
-            this.gauge_big4.Size = new System.Drawing.Size(960, 810);
-            this.gauge_big4.TabIndex = 2;
-            // 
-            // gauge4
-            // 
-            this.gauge4.Location = new System.Drawing.Point(0, 810);
-            this.gauge4.Name = "gauge4";
-            this.gauge4.Size = new System.Drawing.Size(320, 270);
-            this.gauge4.TabIndex = 1;
-            // 
-            // gauge3
-            // 
-            this.gauge3.Location = new System.Drawing.Point(0, 540);
-            this.gauge3.Name = "gauge3";
-            this.gauge3.Size = new System.Drawing.Size(320, 270);
-            this.gauge3.TabIndex = 1;
-            // 
-            // gauge2
-            // 
-            this.gauge2.Location = new System.Drawing.Point(0, 270);
-            this.gauge2.Name = "gauge2";
-            this.gauge2.Size = new System.Drawing.Size(320, 270);
-            this.gauge2.TabIndex = 1;
-            // 
-            // gauge1
-            // 
-            this.gauge1.Location = new System.Drawing.Point(0, 0);
-            this.gauge1.Name = "gauge1";
-            this.gauge1.Size = new System.Drawing.Size(320, 270);
-            this.gauge1.TabIndex = 1;
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(1606, 0);
+            this.tabControl1.Location = new System.Drawing.Point(1197, 412);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(314, 1080);
+            this.tabControl1.Size = new System.Drawing.Size(314, 88);
             this.tabControl1.TabIndex = 16;
+            this.tabControl1.Visible = false;
             // 
             // tabPage1
             // 
@@ -196,7 +146,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(306, 1054);
+            this.tabPage1.Size = new System.Drawing.Size(306, 62);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "CH 1-16";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -415,7 +365,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(303, 1054);
+            this.tabPage2.Size = new System.Drawing.Size(306, 62);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "CH 17-32";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -612,24 +562,344 @@
             this.parashow32.Tagname = null;
             this.parashow32.Unit = null;
             // 
+            // gauge2
+            // 
+            this.gauge2.Location = new System.Drawing.Point(631, 2);
+            this.gauge2.Name = "gauge2";
+            this.gauge2.Size = new System.Drawing.Size(320, 270);
+            this.gauge2.TabIndex = 18;
+            // 
+            // gauge_mid1
+            // 
+            this.gauge_mid1.Location = new System.Drawing.Point(955, 0);
+            this.gauge_mid1.Name = "gauge_mid1";
+            this.gauge_mid1.Size = new System.Drawing.Size(640, 540);
+            this.gauge_mid1.TabIndex = 19;
+            // 
+            // gauge1
+            // 
+            this.gauge1.Location = new System.Drawing.Point(631, 270);
+            this.gauge1.Name = "gauge1";
+            this.gauge1.Size = new System.Drawing.Size(320, 270);
+            this.gauge1.TabIndex = 18;
+            // 
+            // parashow33
+            // 
+            this.parashow33.BackColor = System.Drawing.Color.Transparent;
+            this.parashow33.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.parashow33.Color = System.Drawing.Color.Blue;
+            this.parashow33.Location = new System.Drawing.Point(674, 569);
+            this.parashow33.Name = "parashow33";
+            this.parashow33.Size = new System.Drawing.Size(222, 99);
+            this.parashow33.TabIndex = 20;
+            this.parashow33.Tagname = null;
+            this.parashow33.Unit = null;
+            // 
+            // parashow34
+            // 
+            this.parashow34.BackColor = System.Drawing.Color.Transparent;
+            this.parashow34.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.parashow34.Color = System.Drawing.Color.Blue;
+            this.parashow34.Location = new System.Drawing.Point(919, 569);
+            this.parashow34.Name = "parashow34";
+            this.parashow34.Size = new System.Drawing.Size(222, 99);
+            this.parashow34.TabIndex = 20;
+            this.parashow34.Tagname = null;
+            this.parashow34.Unit = null;
+            // 
+            // parashow35
+            // 
+            this.parashow35.BackColor = System.Drawing.Color.Transparent;
+            this.parashow35.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.parashow35.Color = System.Drawing.Color.Blue;
+            this.parashow35.Location = new System.Drawing.Point(1165, 569);
+            this.parashow35.Name = "parashow35";
+            this.parashow35.Size = new System.Drawing.Size(222, 99);
+            this.parashow35.TabIndex = 20;
+            this.parashow35.Tagname = null;
+            this.parashow35.Unit = null;
+            // 
+            // parashow36
+            // 
+            this.parashow36.BackColor = System.Drawing.Color.Transparent;
+            this.parashow36.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.parashow36.Color = System.Drawing.Color.Blue;
+            this.parashow36.Location = new System.Drawing.Point(1412, 569);
+            this.parashow36.Name = "parashow36";
+            this.parashow36.Size = new System.Drawing.Size(222, 99);
+            this.parashow36.TabIndex = 20;
+            this.parashow36.Tagname = null;
+            this.parashow36.Unit = null;
+            // 
+            // parashow37
+            // 
+            this.parashow37.BackColor = System.Drawing.Color.Transparent;
+            this.parashow37.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.parashow37.Color = System.Drawing.Color.Blue;
+            this.parashow37.Location = new System.Drawing.Point(1661, 569);
+            this.parashow37.Name = "parashow37";
+            this.parashow37.Size = new System.Drawing.Size(222, 99);
+            this.parashow37.TabIndex = 20;
+            this.parashow37.Tagname = null;
+            this.parashow37.Unit = null;
+            // 
+            // parashow38
+            // 
+            this.parashow38.BackColor = System.Drawing.Color.Transparent;
+            this.parashow38.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.parashow38.Color = System.Drawing.Color.Red;
+            this.parashow38.Location = new System.Drawing.Point(674, 688);
+            this.parashow38.Name = "parashow38";
+            this.parashow38.Size = new System.Drawing.Size(222, 99);
+            this.parashow38.TabIndex = 20;
+            this.parashow38.Tagname = null;
+            this.parashow38.Unit = null;
+            // 
+            // parashow39
+            // 
+            this.parashow39.BackColor = System.Drawing.Color.Transparent;
+            this.parashow39.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.parashow39.Color = System.Drawing.Color.Red;
+            this.parashow39.Location = new System.Drawing.Point(919, 688);
+            this.parashow39.Name = "parashow39";
+            this.parashow39.Size = new System.Drawing.Size(222, 99);
+            this.parashow39.TabIndex = 20;
+            this.parashow39.Tagname = null;
+            this.parashow39.Unit = null;
+            // 
+            // parashow40
+            // 
+            this.parashow40.BackColor = System.Drawing.Color.Transparent;
+            this.parashow40.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.parashow40.Color = System.Drawing.Color.Red;
+            this.parashow40.Location = new System.Drawing.Point(1165, 688);
+            this.parashow40.Name = "parashow40";
+            this.parashow40.Size = new System.Drawing.Size(222, 99);
+            this.parashow40.TabIndex = 20;
+            this.parashow40.Tagname = null;
+            this.parashow40.Unit = null;
+            // 
+            // parashow41
+            // 
+            this.parashow41.BackColor = System.Drawing.Color.Transparent;
+            this.parashow41.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.parashow41.Color = System.Drawing.Color.Red;
+            this.parashow41.Location = new System.Drawing.Point(1412, 688);
+            this.parashow41.Name = "parashow41";
+            this.parashow41.Size = new System.Drawing.Size(222, 99);
+            this.parashow41.TabIndex = 20;
+            this.parashow41.Tagname = null;
+            this.parashow41.Unit = null;
+            // 
+            // parashow42
+            // 
+            this.parashow42.BackColor = System.Drawing.Color.Transparent;
+            this.parashow42.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.parashow42.Color = System.Drawing.Color.Red;
+            this.parashow42.Location = new System.Drawing.Point(1661, 688);
+            this.parashow42.Name = "parashow42";
+            this.parashow42.Size = new System.Drawing.Size(222, 99);
+            this.parashow42.TabIndex = 20;
+            this.parashow42.Tagname = null;
+            this.parashow42.Unit = null;
+            // 
+            // parashow43
+            // 
+            this.parashow43.BackColor = System.Drawing.Color.Transparent;
+            this.parashow43.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.parashow43.Color = System.Drawing.Color.Yellow;
+            this.parashow43.Location = new System.Drawing.Point(674, 811);
+            this.parashow43.Name = "parashow43";
+            this.parashow43.Size = new System.Drawing.Size(222, 99);
+            this.parashow43.TabIndex = 20;
+            this.parashow43.Tagname = null;
+            this.parashow43.Unit = null;
+            // 
+            // parashow44
+            // 
+            this.parashow44.BackColor = System.Drawing.Color.Transparent;
+            this.parashow44.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.parashow44.Color = System.Drawing.Color.Yellow;
+            this.parashow44.Location = new System.Drawing.Point(919, 811);
+            this.parashow44.Name = "parashow44";
+            this.parashow44.Size = new System.Drawing.Size(222, 99);
+            this.parashow44.TabIndex = 20;
+            this.parashow44.Tagname = null;
+            this.parashow44.Unit = null;
+            // 
+            // parashow45
+            // 
+            this.parashow45.BackColor = System.Drawing.Color.Transparent;
+            this.parashow45.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.parashow45.Color = System.Drawing.Color.Yellow;
+            this.parashow45.Location = new System.Drawing.Point(1165, 811);
+            this.parashow45.Name = "parashow45";
+            this.parashow45.Size = new System.Drawing.Size(222, 99);
+            this.parashow45.TabIndex = 20;
+            this.parashow45.Tagname = null;
+            this.parashow45.Unit = null;
+            // 
+            // parashow46
+            // 
+            this.parashow46.BackColor = System.Drawing.Color.Transparent;
+            this.parashow46.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.parashow46.Color = System.Drawing.Color.Yellow;
+            this.parashow46.Location = new System.Drawing.Point(1412, 811);
+            this.parashow46.Name = "parashow46";
+            this.parashow46.Size = new System.Drawing.Size(222, 99);
+            this.parashow46.TabIndex = 20;
+            this.parashow46.Tagname = null;
+            this.parashow46.Unit = null;
+            // 
+            // parashow47
+            // 
+            this.parashow47.BackColor = System.Drawing.Color.Transparent;
+            this.parashow47.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.parashow47.Color = System.Drawing.Color.Yellow;
+            this.parashow47.Location = new System.Drawing.Point(1661, 811);
+            this.parashow47.Name = "parashow47";
+            this.parashow47.Size = new System.Drawing.Size(222, 99);
+            this.parashow47.TabIndex = 20;
+            this.parashow47.Tagname = null;
+            this.parashow47.Unit = null;
+            // 
+            // parashow48
+            // 
+            this.parashow48.BackColor = System.Drawing.Color.Transparent;
+            this.parashow48.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.parashow48.Color = System.Drawing.Color.Green;
+            this.parashow48.Location = new System.Drawing.Point(674, 937);
+            this.parashow48.Name = "parashow48";
+            this.parashow48.Size = new System.Drawing.Size(222, 99);
+            this.parashow48.TabIndex = 20;
+            this.parashow48.Tagname = null;
+            this.parashow48.Unit = null;
+            // 
+            // parashow49
+            // 
+            this.parashow49.BackColor = System.Drawing.Color.Transparent;
+            this.parashow49.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.parashow49.Color = System.Drawing.Color.Green;
+            this.parashow49.Location = new System.Drawing.Point(919, 937);
+            this.parashow49.Name = "parashow49";
+            this.parashow49.Size = new System.Drawing.Size(222, 99);
+            this.parashow49.TabIndex = 20;
+            this.parashow49.Tagname = null;
+            this.parashow49.Unit = null;
+            // 
+            // parashow50
+            // 
+            this.parashow50.BackColor = System.Drawing.Color.Transparent;
+            this.parashow50.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.parashow50.Color = System.Drawing.Color.Green;
+            this.parashow50.Location = new System.Drawing.Point(1165, 937);
+            this.parashow50.Name = "parashow50";
+            this.parashow50.Size = new System.Drawing.Size(222, 99);
+            this.parashow50.TabIndex = 20;
+            this.parashow50.Tagname = null;
+            this.parashow50.Unit = null;
+            // 
+            // parashow51
+            // 
+            this.parashow51.BackColor = System.Drawing.Color.Transparent;
+            this.parashow51.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.parashow51.Color = System.Drawing.Color.Green;
+            this.parashow51.Location = new System.Drawing.Point(1412, 937);
+            this.parashow51.Name = "parashow51";
+            this.parashow51.Size = new System.Drawing.Size(222, 99);
+            this.parashow51.TabIndex = 20;
+            this.parashow51.Tagname = null;
+            this.parashow51.Unit = null;
+            // 
+            // parashow52
+            // 
+            this.parashow52.BackColor = System.Drawing.Color.Transparent;
+            this.parashow52.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.parashow52.Color = System.Drawing.Color.Green;
+            this.parashow52.Location = new System.Drawing.Point(1661, 937);
+            this.parashow52.Name = "parashow52";
+            this.parashow52.Size = new System.Drawing.Size(222, 99);
+            this.parashow52.TabIndex = 20;
+            this.parashow52.Tagname = null;
+            this.parashow52.Unit = null;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Data_acquisition.Properties.Resources.hhlogo;
+            this.pictureBox2.Location = new System.Drawing.Point(213, 132);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(402, 272);
+            this.pictureBox2.TabIndex = 22;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Data_acquisition.Properties.Resources._24压力泵;
+            this.pictureBox1.Location = new System.Drawing.Point(133, 618);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(515, 274);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 21;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("宋体", 60F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label1.Location = new System.Drawing.Point(238, 373);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(358, 80);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "宏华电气";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("宋体", 60F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label2.Location = new System.Drawing.Point(12, 956);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(403, 80);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "iFracView";
+            // 
             // Frm_Paraanalog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(29)))), ((int)(((byte)(31)))));
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.parashow52);
+            this.Controls.Add(this.parashow47);
+            this.Controls.Add(this.parashow42);
+            this.Controls.Add(this.parashow37);
+            this.Controls.Add(this.parashow51);
+            this.Controls.Add(this.parashow46);
+            this.Controls.Add(this.parashow41);
+            this.Controls.Add(this.parashow36);
+            this.Controls.Add(this.parashow50);
+            this.Controls.Add(this.parashow45);
+            this.Controls.Add(this.parashow40);
+            this.Controls.Add(this.parashow35);
+            this.Controls.Add(this.parashow49);
+            this.Controls.Add(this.parashow44);
+            this.Controls.Add(this.parashow39);
+            this.Controls.Add(this.parashow34);
+            this.Controls.Add(this.parashow48);
+            this.Controls.Add(this.parashow43);
+            this.Controls.Add(this.parashow38);
+            this.Controls.Add(this.parashow33);
+            this.Controls.Add(this.gauge_mid1);
+            this.Controls.Add(this.gauge1);
+            this.Controls.Add(this.gauge2);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.gauge17);
-            this.Controls.Add(this.gauge18);
             this.Controls.Add(this.gauge19);
             this.Controls.Add(this.gauge20);
-            this.Controls.Add(this.gauge13);
-            this.Controls.Add(this.gauge15);
-            this.Controls.Add(this.gauge9);
-            this.Controls.Add(this.gauge_big4);
-            this.Controls.Add(this.gauge4);
-            this.Controls.Add(this.gauge3);
-            this.Controls.Add(this.gauge2);
-            this.Controls.Add(this.gauge1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Name = "Frm_Paraanalog";
@@ -639,24 +909,17 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private Ctrl.Gauge gauge1;
-        private Ctrl.Gauge gauge2;
-        private Ctrl.Gauge gauge3;
-        private Ctrl.Gauge gauge4;
-        private Ctrl.Gauge gauge9;
-        private Ctrl.Gauge gauge13;
-        private Ctrl.Gauge gauge15;
-        private Ctrl.Gauge gauge17;
-        private Ctrl.Gauge gauge18;
         private Ctrl.Gauge gauge19;
         private Ctrl.Gauge gauge20;
-        private Ctrl.Gauge_big gauge_big4;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private Ctrl.Parashow parashow16;
@@ -692,6 +955,33 @@
         private Ctrl.Parashow parashow30;
         private Ctrl.Parashow parashow31;
         private Ctrl.Parashow parashow32;
+        private Ctrl.Gauge gauge2;
+        private Ctrl.Gauge_mid gauge_mid1;
+        private Ctrl.Gauge gauge1;
+        private Ctrl.Parashow parashow33;
+        private Ctrl.Parashow parashow34;
+        private Ctrl.Parashow parashow35;
+        private Ctrl.Parashow parashow36;
+        private Ctrl.Parashow parashow37;
+        private Ctrl.Parashow parashow38;
+        private Ctrl.Parashow parashow39;
+        private Ctrl.Parashow parashow40;
+        private Ctrl.Parashow parashow41;
+        private Ctrl.Parashow parashow42;
+        private Ctrl.Parashow parashow43;
+        private Ctrl.Parashow parashow44;
+        private Ctrl.Parashow parashow45;
+        private Ctrl.Parashow parashow46;
+        private Ctrl.Parashow parashow47;
+        private Ctrl.Parashow parashow48;
+        private Ctrl.Parashow parashow49;
+        private Ctrl.Parashow parashow50;
+        private Ctrl.Parashow parashow51;
+        private Ctrl.Parashow parashow52;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
 
 
     }

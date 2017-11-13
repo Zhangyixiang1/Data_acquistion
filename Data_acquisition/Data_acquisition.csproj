@@ -80,6 +80,12 @@
     <Compile Include="Ctrl\Gauge_big.Designer.cs">
       <DependentUpon>Gauge_big.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ctrl\Gauge_mid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Ctrl\Gauge_mid.Designer.cs">
+      <DependentUpon>Gauge_mid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ctrl\ParaLine.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -104,11 +110,11 @@
     <Compile Include="Form_Main.Designer.cs">
       <DependentUpon>Form_Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm_Histrend.cs">
+    <Compile Include="Frm_Realtrend2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm_Histrend.Designer.cs">
-      <DependentUpon>Frm_Histrend.cs</DependentUpon>
+    <Compile Include="Frm_Realtrend2.Designer.cs">
+      <DependentUpon>Frm_Realtrend2.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_Paraanalog.cs">
       <SubType>Form</SubType>
@@ -142,6 +148,9 @@
     <EmbeddedResource Include="Ctrl\Gauge_big.resx">
       <DependentUpon>Gauge_big.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ctrl\Gauge_mid.resx">
+      <DependentUpon>Gauge_mid.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ctrl\ParaLine.resx">
       <DependentUpon>ParaLine.cs</DependentUpon>
     </EmbeddedResource>
@@ -159,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Realtrend.resx">
       <DependentUpon>Frm_Realtrend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Realtrend2.resx">
+      <DependentUpon>Frm_Realtrend2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Para_choose.resx">
       <DependentUpon>Para_choose.cs</DependentUpon>
@@ -197,6 +209,10 @@
     <Content Include="Config\test.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\hhlogo.png" />
+    <None Include="Resources\24压力泵.jpg" />
+    <None Include="Resources\Button-Last.png" />
+    <None Include="Resources\Button-First.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

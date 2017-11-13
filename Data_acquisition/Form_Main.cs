@@ -160,21 +160,35 @@ namespace Data_acquisition
             GraphPane myPane = zedGraphControl1.GraphPane;
             myPane.Fill = new Fill(Color.FromArgb(28,29,31));
             myPane.Chart.Fill = new Fill(Color.FromArgb(49, 49, 49));
+            
+            myPane.Border.IsVisible=false;
             // Set the titles and axis labels
             myPane.Legend.IsVisible = false;
             myPane.Title.Text = "";
-          
+          //x轴
             myPane.XAxis.Title.Text = "时间(分钟)";
-            
-            myPane.XAxis.Scale.FontSpec.Size = 5;
-            myPane.XAxis.Title.FontSpec.Size = 5;
+            myPane.XAxis.MajorGrid.Color=Color.White;
+            myPane.XAxis.Scale.FontSpec.FontColor = Color.White;
+            myPane.XAxis.Title.FontSpec.Size = 10;
+            myPane.XAxis.Title.FontSpec.FontColor=Color.White;
             myPane.XAxis.Scale.Min = 0; //X轴最小值0
             myPane.XAxis.Scale.Max = 30; //X轴最大30
-
+            myPane.XAxis.MajorTic.IsInside=false;
+            myPane.XAxis.MinorTic.IsInside = false;
+            myPane.XAxis.MajorTic.IsOpposite=false;
+            myPane.XAxis.MinorTic.IsOpposite = false;
+            myPane.XAxis.MajorTic.Color=Color.White;
+            myPane.XAxis.MinorTic.Color = Color.White;
             myPane.XAxis.Scale.MajorStep = 5;//X轴大步长为5，也就是显示文字的大间隔
-
-            myPane.YAxis.Title.Text = paraLine3.Tagname + "(" + paraLine3.Unit + ")";
-            myPane.Y2Axis.Title.Text = paraLine4.Tagname + "(" + paraLine4.Unit + ")";
+            //y轴
+            myPane.YAxis.MajorTic.IsInside = false;
+            myPane.YAxis.MajorGrid.Color=Color.White;
+            myPane.YAxis.MinorTic.IsInside = false;
+            myPane.Y2Axis.MajorTic.IsInside = false;
+            myPane.Y2Axis.MajorGrid.Color = Color.White;
+            myPane.Y2Axis.MinorTic.IsInside = false;
+          //  myPane.YAxis.Title.Text = paraLine3.Tagname + "(" + paraLine3.Unit + ")";
+          //  myPane.Y2Axis.Title.Text = paraLine4.Tagname + "(" + paraLine4.Unit + ")";
 
             // Make up some data points based on the Sine function
             PointPairList List1 = new PointPairList();
@@ -183,18 +197,18 @@ namespace Data_acquisition
             PointPairList List4 = new PointPairList();
             PointPairList List5 = new PointPairList();
             PointPairList List6 = new PointPairList();
-            // 测试用，用蓝色曲线做测试
-            Random rd = new Random();
-            for (int i = 0; i <= 1800; i++)
-            {
-                List1.Add(i / 60, i/10  + 10);
-                List2.Add(i / 60, i / 10 + 10);
-                List3.Add(i / 60, i / 10 + 10);
-                List4.Add(i / 60, i / 10 + 10);
-                List5.Add(i / 60, i / 10 + 10);
-                List6.Add(i / 60, i / 10 + 10);
+            // 测试用
+            //Random rd = new Random();
+            //for (int i = 0; i <= 1800; i++)
+            //{
+            //    List1.Add(i / 60, i/10  + 10);
+            //    List2.Add(i / 60, i / 10 + 10);
+            //    List3.Add(i / 60, i / 10 + 10);
+            //    List4.Add(i / 60, i / 10 + 10);
+            //    List5.Add(i / 60, i / 10 + 10);
+            //    List6.Add(i / 60, i / 10 + 10);
 
-            }
+            //}
 
             //}
 
@@ -205,18 +219,18 @@ namespace Data_acquisition
             // Fill the symbols with white
             // myCurve.Symbol.Fill = new Fill(Color.White);
 
-            // Generate a darkblue curve with circle symbols, and "Acceleration" in the legend
+            // Generate a Lime curve with circle symbols, and "Acceleration" in the legend
             myCurve = myPane.AddCurve("Acceleration",
-               List2, Color.DarkBlue, SymbolType.None);
+               List2, Color.Lime, SymbolType.None);
             myCurve.Line.Width = 2;
             // Fill the symbols with white
             // myCurve.Symbol.Fill = new Fill(Color.White);
             // Associate this curve with the Y2 axis
             myCurve.IsY2Axis = true;
 
-            // Generate a black curve with square symbols, and "Distance" in the legend
+            // Generate a Yellow curve with square symbols, and "Distance" in the legend
             myCurve = myPane.AddCurve("Distance",
-               List3, Color.Black, SymbolType.None);
+               List3, Color.Yellow, SymbolType.None);
             myCurve.Line.Width = 2;
             // Fill the symbols with white
             //   myCurve.Symbol.Fill = new Fill(Color.White);
@@ -243,9 +257,9 @@ namespace Data_acquisition
             // Associate this curve with the second Y axis
             myCurve.YAxisIndex = 2;
 
-            // Generate a purple curve with triangle symbols, and "Energy" in the legend
+            // Generate a Skyblue curve with triangle symbols, and "Energy" in the legend
             myCurve = myPane.AddCurve("Energy",
-               List6, Color.Purple, SymbolType.None);
+               List6, Color.SkyBlue, SymbolType.None);
             myCurve.Line.Width = 2;
             // Fill the symbols with white
             //  myCurve.Symbol.Fill = new Fill(Color.White);
@@ -266,7 +280,9 @@ namespace Data_acquisition
             myPane.YAxis.Color = Color.Blue;
             // turn off the opposite tics so the Y tics don't show up on the Y2 axis
             myPane.YAxis.MajorTic.IsOpposite = false;
+            myPane.YAxis.MajorTic.Color=Color.Blue;
             myPane.YAxis.MinorTic.IsOpposite = false;
+            myPane.YAxis.MinorTic.Color = Color.Blue;
             // Don't display the Y zero line
             myPane.YAxis.MajorGrid.IsZeroLine = false;
             // Align the Y axis labels so they are flush to the axis
@@ -274,17 +290,19 @@ namespace Data_acquisition
             myPane.YAxis.Scale.Max = int.Parse(paraLine3.Max);
             myPane.YAxis.Scale.Min = int.Parse(paraLine3.Min);
 
-            // Enable the Y2 axis DarkBlue
+            // Enable the Y2 axis Lime
             myPane.Y2Axis.IsVisible = true;
             // Make the Y2 axis scale black
-            myPane.Y2Axis.Scale.FontSpec.FontColor = Color.DarkBlue;
+            myPane.Y2Axis.Scale.FontSpec.FontColor = Color.Lime;
             myPane.Y2Axis.Scale.FontSpec.Size = 10;
-            myPane.Y2Axis.Title.FontSpec.FontColor = Color.DarkBlue;
+            myPane.Y2Axis.Title.FontSpec.FontColor = Color.Lime;
             myPane.Y2Axis.Title.FontSpec.Size = 10;
-            myPane.Y2Axis.Color = Color.DarkBlue;
+            myPane.Y2Axis.Color = Color.Lime;
             // turn off the opposite tics so the Y2 tics don't show up on the Y axis
             myPane.Y2Axis.MajorTic.IsOpposite = false;
+            myPane.Y2Axis.MajorTic.Color=Color.Lime;
             myPane.Y2Axis.MinorTic.IsOpposite = false;
+            myPane.Y2Axis.MinorTic.Color = Color.Lime;
             // Display the Y2 axis grid lines
             myPane.Y2Axis.MajorGrid.IsVisible = true;
             // Align the Y2 axis labels so they are flush to the axis
@@ -292,19 +310,21 @@ namespace Data_acquisition
             myPane.Y2Axis.Scale.Max = int.Parse(paraLine4.Max);
             myPane.Y2Axis.Scale.Min = int.Parse(paraLine4.Min);
 
-            // Create a second Y Axis, black
+            // Create a second Y Axis, Yellow
             YAxis yAxis3 = new YAxis(paraLine2.Tagname + "(" + paraLine2.Unit + ")");
             myPane.YAxisList.Add(yAxis3);
-            yAxis3.Scale.FontSpec.FontColor = Color.Black;
+            yAxis3.Scale.FontSpec.FontColor = Color.Yellow;
             yAxis3.Scale.FontSpec.Size = 10;
-            yAxis3.Title.FontSpec.FontColor = Color.Black;
+            yAxis3.Title.FontSpec.FontColor = Color.Yellow;
             yAxis3.Title.FontSpec.Size = 10;
-            yAxis3.Color = Color.Black;
+            yAxis3.Color = Color.Yellow;
             // turn off the opposite tics so the Y2 tics don't show up on the Y axis
             yAxis3.MajorTic.IsInside = false;
             yAxis3.MinorTic.IsInside = false;
             yAxis3.MajorTic.IsOpposite = false;
+            yAxis3.MajorTic.Color=Color.Yellow;
             yAxis3.MinorTic.IsOpposite = false;
+            yAxis3.MinorTic.Color = Color.Yellow;
             // Align the Y2 axis labels so they are flush to the axis
             yAxis3.Scale.Align = AlignP.Inside;
             yAxis3.Scale.Max = int.Parse(paraLine2.Max);
@@ -323,7 +343,9 @@ namespace Data_acquisition
             yAxis5.MajorTic.IsInside = false;
             yAxis5.MinorTic.IsInside = false;
             yAxis5.MajorTic.IsOpposite = false;
+            yAxis5.MajorTic.Color=Color.Red;
             yAxis5.MinorTic.IsOpposite = false;
+            yAxis5.MinorTic.Color = Color.Red;
             // Align the Y2 axis labels so they are flush to the axis
             yAxis5.Scale.Align = AlignP.Inside;
             yAxis5.Scale.Max = int.Parse(paraLine1.Max);
@@ -343,26 +365,30 @@ namespace Data_acquisition
             yAxis4.MajorTic.IsInside = false;
             yAxis4.MinorTic.IsInside = false;
             yAxis4.MajorTic.IsOpposite = false;
+             yAxis4.MajorTic.Color=Color.SeaGreen;
             yAxis4.MinorTic.IsOpposite = false;
+            yAxis4.MinorTic.Color = Color.SeaGreen;
             // Align the Y2 axis labels so they are flush to the axis
             yAxis4.Scale.Align = AlignP.Inside;
             yAxis4.Scale.Max = int.Parse(paraLine5.Max);
             yAxis4.Scale.Min = int.Parse(paraLine5.Min);
 
-            // Create a third Y2 Axis, purple
+            // Create a third Y2 Axis, Skyblue
             Y2Axis yAxis6 = new Y2Axis(paraLine6.Tagname + "(" + paraLine6.Unit + ")");
             yAxis6.IsVisible = true;
             myPane.Y2AxisList.Add(yAxis6);
-            yAxis6.Scale.FontSpec.FontColor = Color.Purple;
+            yAxis6.Scale.FontSpec.FontColor = Color.SkyBlue;
             yAxis6.Scale.FontSpec.Size = 10;
-            yAxis6.Title.FontSpec.FontColor = Color.Purple;
+            yAxis6.Title.FontSpec.FontColor = Color.SkyBlue;
             yAxis6.Title.FontSpec.Size = 10;
-            yAxis6.Color = Color.Purple;
+            yAxis6.Color = Color.SkyBlue;
             // turn off the opposite tics so the Y2 tics don't show up on the Y axis
             yAxis6.MajorTic.IsInside = false;
             yAxis6.MinorTic.IsInside = false;
             yAxis6.MajorTic.IsOpposite = false;
+            yAxis6.MajorTic.Color=Color.SkyBlue;
             yAxis6.MinorTic.IsOpposite = false;
+            yAxis6.MinorTic.Color = Color.SkyBlue;
             // Align the Y2 axis labels so they are flush to the axis
             yAxis6.Scale.Align = AlignP.Inside;
             yAxis6.Scale.Max = int.Parse(paraLine6.Max);
@@ -387,8 +413,8 @@ namespace Data_acquisition
         #endregion
         private void 视图1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_Realtrend frm = new Frm_Realtrend();
-            frm.Location = new Point(0, 0);
+            Frm_Realtrend frm = new Frm_Realtrend(zedGraphControl1.GraphPane);
+            frm.Location = new Point(1921, 0);
             frm.Show();
         }
 
@@ -575,6 +601,8 @@ namespace Data_acquisition
 
             Scale xScale = zedGraphControl1.GraphPane.XAxis.Scale;
             double factor = xScale.Max * 60;
+
+            factor=1;//测试用
             //添加数据
             list1.Add(count / factor, (new Random()).Next(50));
             list2.Add(count / factor, (new Random()).Next(50));
@@ -713,6 +741,38 @@ namespace Data_acquisition
         {
             pnl_setting.Visible = false;
         }
+
+        private void 退出ToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+        Application.Exit();
+        }
+
+        private void 视图1ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Frm_Realtrend frm=new Frm_Realtrend(zedGraphControl1.GraphPane);
+            frm.Location=new Point(1921,0);
+            frm.Show();
+        }
+
+        private void 视图2ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Frm_Realtrend2 frm=new Frm_Realtrend2 (zedGraphControl1.GraphPane);
+            frm.Show();
+        }
+
+        private void 视图3ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Frm_Paradigital frm = new Frm_Paradigital();
+            frm.Show();
+        }
+
+        private void 视图4ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Paraanalog frm=new Frm_Paraanalog ();
+            frm.Show();
+        }
+
+       
     }
 }
 

@@ -43,7 +43,7 @@
             // 
             // radRadialGauge1
             // 
-            this.radRadialGauge1.BackColor = System.Drawing.Color.White;
+            this.radRadialGauge1.BackColor = System.Drawing.Color.Transparent;
             this.radRadialGauge1.Controls.Add(this.label2);
             this.radRadialGauge1.Controls.Add(this.label1);
             this.radRadialGauge1.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -65,7 +65,8 @@
             // 
             // label2
             // 
-            this.label2.BackColor = System.Drawing.Color.Silver;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(818, 798);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
@@ -75,7 +76,8 @@
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.Silver;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(102, 787);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(757, 23);

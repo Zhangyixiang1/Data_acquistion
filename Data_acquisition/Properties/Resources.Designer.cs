@@ -63,6 +63,36 @@ namespace Data_acquisition.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap _24压力泵 {
+            get {
+                object obj = ResourceManager.GetObject("24压力泵", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Button_First {
+            get {
+                object obj = ResourceManager.GetObject("Button-First", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Button_Last {
+            get {
+                object obj = ResourceManager.GetObject("Button-Last", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap Button_Play {
             get {
                 object obj = ResourceManager.GetObject("Button-Play", resourceCulture);
@@ -76,6 +106,16 @@ namespace Data_acquisition.Properties {
         internal static System.Drawing.Bitmap good {
             get {
                 object obj = ResourceManager.GetObject("good", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap hhlogo {
+            get {
+                object obj = ResourceManager.GetObject("hhlogo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
