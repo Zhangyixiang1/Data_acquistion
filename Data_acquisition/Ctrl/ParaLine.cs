@@ -12,18 +12,23 @@ namespace Data_acquisition.Ctrl
 {
     public partial class ParaLine : UserControl
     {
-     private string tagname,min,max,unit;
+        private string tagname, min, max, unit;
 
         public ParaLine()
         {
             InitializeComponent();
-           
-            
+
+
         }
         public Color Color
         {
             get { return lineShape1.BorderColor; }
             set { this.lineShape1.BorderColor = value; }
+        }
+        public bool Line_Enabled
+        {
+            get { return checkBox1.Enabled; }
+            set { checkBox1.Enabled = value; }
         }
         public string Tagname
         {
@@ -45,27 +50,31 @@ namespace Data_acquisition.Ctrl
             get { return unit; }
             set { this.unit = value; }
         }
-        private void ParaLine_Click(object sender, EventArgs e)
+       
+        public void refresh()
         {
-            Para_choose frm=new Para_choose (this);
-            frm.ShowDialog();
-        }
-        public void refresh(){
-    
-      
-        label1.Text=tagname;
-        label2.Text=min;label4.Text=max;label6.Text=unit;
+
+
+            label1.Text = tagname;
+            label2.Text = min; label4.Text = max; label6.Text = unit;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-           CheckBox ctr=sender as CheckBox;
-           if (Application.OpenForms["Form_Main"]!=null){
-               ((Form_Main)Application.OpenForms["Form_Main"]).trend_refresh(ctr.Checked, this.Name);
-           }
+            CheckBox ctr = sender as CheckBox;
+            if (Application.OpenForms["Form_Main"] != null)
+            {
+                ((Form_Main)Application.OpenForms["Form_Main"]).trend_refresh(ctr.Checked, this.Name);
+            }
         }
 
-     
+        private void label1_Click(object sender, EventArgs e)
+        {
+            Para_choose frm = new Para_choose(this, this.ParentForm.Name);
+            frm.ShowDialog();
+        }
+
+
     }
 
 }

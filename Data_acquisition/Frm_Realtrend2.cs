@@ -16,6 +16,7 @@ namespace Data_acquisition
             InitializeComponent();
             zedGraphControl1 = new ZedGraphControl();
             zedGraphControl1.Size = new System.Drawing.Size(1920, 540);
+            zedGraphControl1.Location=new Point(0,0);
             //初始化相关属性
             zedGraphControl1.IsShowContextMenu = false;
             zedGraphControl1.IsEnableHPan = false; zedGraphControl1.IsEnableVPan = false;
@@ -24,8 +25,13 @@ namespace Data_acquisition
             myPane.Fill = new Fill(Color.FromArgb(28, 29, 31));
             myPane.Chart.Fill = new Fill(Color.FromArgb(49, 49, 49));
             myPane.Border.IsVisible = false;
+            //legend 相关属性
+            myPane.Legend.Fill = new Fill(Color.FromArgb(28, 29, 31));
+            myPane.Legend.Border.IsVisible=false;
+            myPane.Legend.Position = LegendPos.TopCenter;
+            myPane.Legend.FontSpec.FontColor = Color.White;
+             myPane.Legend.FontSpec.Size=15;
             // Set the titles and axis labels
-            myPane.Legend.IsVisible = false;
             myPane.Title.Text = "";
             myPane.YAxisList.Clear();
             for (int i = 0; i < panel.YAxisList.Count; i++) { myPane.YAxisList.Add(panel.YAxisList[i]); }

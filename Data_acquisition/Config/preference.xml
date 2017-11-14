@@ -46,4 +46,93 @@
       <Control name="parashow32" tagname="绞车" unit="" index="0" />
     </Controlsshow>
   </Form>
+  <Form>
+    <!--数字参数界面-->
+    <Name>Frm_Paradigital</Name>
+    
+    <Controlsshow>
+      <Control name="parashow21" tagname="井口油压" unit="Mpa" index="2" />
+      <Control name="parashow22" tagname="井口套压" unit="Mpa" index="3" />
+      <Control name="parashow23" tagname="井口密度" unit="Mpa" index="4" />
+      <Control name="parashow24" tagname="井口排除流量" unit="m3/min" index="5" />
+      <Control name="parashow25" tagname="混合液密度" unit="g/cc" index="6" />
+      <Control name="parashow26" tagname="砂密度" unit="KgPA" index="7" />
+      <Control name="parashow27" tagname="吸入压力" unit="Mpa" index="8" />
+      <Control name="parashow28" tagname="排除压力" unit="Mpa" index="9" />
+      <Control name="parashow29" tagname="吸入排量" unit="m3/min" index="10" />
+      <Control name="parashow210" tagname="排出排量" unit="m3/min" index="11" />
+      <Control name="parashow211" tagname="绞龙1转速" unit="RPM" index="12" />
+      <Control name="parashow212" tagname="绞龙2速率" unit="Kg/Min" index="16" />
+      <Control name="parashow213" tagname="液添3流量" unit="LPM" index="21" />
+      <Control name="parashow214" tagname="吸入阶段总量" unit="m3" index="34" />
+      <Control name="parashow215" tagname="液添3阶段总量" unit="m3" index="42" />
+      <Control name="parashow216" tagname="干添1流量" unit="Kg/Min" index="30" />
+      <Control name="parashow217" tagname="绞车" unit="" index="0" />
+      <Control name="parashow218" tagname="绞车" unit="" index="0" />
+      <Control name="parashow219" tagname="绞车" unit="" index="0" />
+      <Control name="parashow220" tagname="绞车" unit="" index="0" />
+      <Control name="parashow221" tagname="绞车" unit="" index="0" />
+      <Control name="parashow222" tagname="绞车" unit="" index="0" />
+      <Control name="parashow223" tagname="绞车" unit="" index="0" />
+      <Control name="parashow224" tagname="绞车" unit="" index="0" />
+      <Control name="parashow225" tagname="绞车" unit="" index="0" />
+      <Control name="parashow226" tagname="绞车" unit="" index="0" />
+      <Control name="parashow227" tagname="绞车" unit="" index="0" />
+      <Control name="parashow228" tagname="绞车" unit="" index="0" />
+      <Control name="parashow229" tagname="绞车" unit="" index="0" />
+      <Control name="parashow310" tagname="绞车" unit="" index="0" />
+      <Control name="parashow331" tagname="绞车" unit="" index="0" />
+      <Control name="parashow332" tagname="绞车" unit="" index="0" />
+    </Controlsshow>
+  </Form>
+  <Form>
+    <!--模拟参数界面-->
+    <Name>Frm_Paraanalog</Name>
+
+    <Controlsshow>
+      <Control name="parashow21" tagname="井口油压" unit="Mpa" index="2" />
+      <Control name="parashow22" tagname="井口套压" unit="Mpa" index="3" />
+      <Control name="parashow23" tagname="井口密度" unit="Mpa" index="4" />
+      <Control name="parashow24" tagname="井口排除流量" unit="m3/min" index="5" />
+      <Control name="parashow25" tagname="混合液密度" unit="g/cc" index="6" />
+      <Control name="parashow26" tagname="砂密度" unit="KgPA" index="7" />
+      <Control name="parashow27" tagname="吸入压力" unit="Mpa" index="8" />
+      <Control name="parashow28" tagname="排除压力" unit="Mpa" index="9" />
+      <Control name="parashow29" tagname="吸入排量" unit="m3/min" index="10" />
+      <Control name="parashow210" tagname="排出排量" unit="m3/min" index="11" />
+      <Control name="parashow211" tagname="绞龙1转速" unit="RPM" index="12" />
+      <Control name="parashow212" tagname="绞龙2速率" unit="Kg/Min" index="16" />
+      <Control name="parashow213" tagname="液添3流量" unit="LPM" index="21" />
+      <Control name="parashow214" tagname="吸入阶段总量" unit="m3" index="34" />
+      <Control name="parashow215" tagname="液添3阶段总量" unit="m3" index="42" />
+      <Control name="parashow216" tagname="干添1流量" unit="Kg/Min" index="30" />
+      <Control name="parashow217" tagname="绞车" unit="" index="0" />
+      <Control name="parashow218" tagname="绞车" unit="" index="0" />
+      <Control name="parashow219" tagname="绞车" unit="" index="0" />
+      <Control name="parashow220" tagname="绞车" unit="" index="0" />
+      <Control name="parashow221" tagname="绞车" unit="" index="0" />
+      <Control name="parashow222" tagname="绞车" unit="" index="0" />
+      <Control name="parashow223" tagname="绞车" unit="" index="0" />
+      <Control name="parashow224" tagname="绞车" unit="" index="0" />
+      <Control name="parashow225" tagname="绞车" unit="" index="0" />
+      <Control name="parashow226" tagname="绞车" unit="" index="0" />
+      <Control name="parashow227" tagname="绞车" unit="" index="0" />
+      <Control name="parashow228" tagname="绞车" unit="" index="0" />
+      <Control name="parashow229" tagname="绞车" unit="" index="0" />
+      <Control name="parashow310" tagname="绞车" unit="" index="0" />
+      <Control name="parashow331" tagname="绞车" unit="" index="0" />
+      <Control name="parashow332" tagname="绞车" unit="" index="0" />
+    </Controlsshow>
+    <Controlsgauge>
+      <Control name="gauge1" tagname="井口油压" min="0" max="500" unit="Mpa" index="2" />
+      <Control name="gauge2" tagname="井口套压" min="0" max="400" unit="Mpa" index="3" />
+      <Control name="gauge3" tagname="井口密度" min="0" max="300" unit="Mpa" index="4" />
+      <Control name="gauge4" tagname="井口排除流量" min="0" max="200" unit="m3/min" index="5" />
+      <Control name="gauge5" tagname="混合液密度" min="0" max="100" unit="g/cc" index="6" />
+      <Control name="gauge6" tagname="砂密度" min="0" max="50" unit="KgPA" index="7" />
+</Controlsgauge>
+  </Form>
+
+
+
 </root>

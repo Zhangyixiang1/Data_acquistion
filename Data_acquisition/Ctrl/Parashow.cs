@@ -87,7 +87,7 @@ namespace Data_acquisition.Ctrl
 
         private void Parashow_Click(object sender, EventArgs e)
         {
-            Para_choose frm=new Para_choose(this);
+            Para_choose frm=new Para_choose(this,this.ParentForm.Name);
             frm.ShowDialog();
         }
 

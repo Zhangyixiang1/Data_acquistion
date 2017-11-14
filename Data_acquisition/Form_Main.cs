@@ -42,23 +42,30 @@ namespace Data_acquisition
             th.Start();
             //开启用户控件定时器
 
-            foreach (Control ctrl in this.tabControl1.Controls)
-            {
-                if (ctrl is TabPage)
-                {
-                    TabPage ctrl2 = ctrl as TabPage;
-                    foreach (Control ctr in ctrl2.Controls)
-                    {
-                        if (ctr is Parashow)
-                        {
-                            Parashow ctr2 = ctr as Parashow;
-                            ctr2.timer1.Enabled = true;
-                        }
-                    }
-                }
-            }
+            //foreach (Control ctrl in this.tabControl1.Controls)
+            //{
+            //    if (ctrl is TabPage)
+            //    {
+            //        TabPage ctrl2 = ctrl as TabPage;
+            //        foreach (Control ctr in ctrl2.Controls)
+            //        {
+            //            if (ctr is Parashow)
+            //            {
+            //                Parashow ctr2 = ctr as Parashow;
+            //                ctr2.timer1.Enabled = true;
+            //            }
+            //        }
+            //    }
+            //}
 
-
+             foreach (Control ctrl in this.Controls)
+             {
+                 if (ctrl is Parashow)
+                 {
+                     Parashow ctr2 = ctrl as Parashow;
+                     ctr2.timer1.Enabled = true;
+                 }
+             }
 
         }
         /// <summary>
@@ -158,37 +165,37 @@ namespace Data_acquisition
             zedGraphControl1.IsEnableHPan = false; zedGraphControl1.IsEnableVPan = false;
             zedGraphControl1.IsEnableHZoom = false; zedGraphControl1.IsEnableZoom = false;
             GraphPane myPane = zedGraphControl1.GraphPane;
-            myPane.Fill = new Fill(Color.FromArgb(28,29,31));
+            myPane.Fill = new Fill(Color.FromArgb(28, 29, 31));
             myPane.Chart.Fill = new Fill(Color.FromArgb(49, 49, 49));
-            
-            myPane.Border.IsVisible=false;
+
+            myPane.Border.IsVisible = false;
             // Set the titles and axis labels
             myPane.Legend.IsVisible = false;
             myPane.Title.Text = "";
-          //x轴
+            //x轴
             myPane.XAxis.Title.Text = "时间(分钟)";
-            myPane.XAxis.MajorGrid.Color=Color.White;
+            myPane.XAxis.MajorGrid.Color = Color.White;
             myPane.XAxis.Scale.FontSpec.FontColor = Color.White;
             myPane.XAxis.Title.FontSpec.Size = 10;
-            myPane.XAxis.Title.FontSpec.FontColor=Color.White;
+            myPane.XAxis.Title.FontSpec.FontColor = Color.White;
             myPane.XAxis.Scale.Min = 0; //X轴最小值0
             myPane.XAxis.Scale.Max = 30; //X轴最大30
-            myPane.XAxis.MajorTic.IsInside=false;
+            myPane.XAxis.MajorTic.IsInside = false;
             myPane.XAxis.MinorTic.IsInside = false;
-            myPane.XAxis.MajorTic.IsOpposite=false;
+            myPane.XAxis.MajorTic.IsOpposite = false;
             myPane.XAxis.MinorTic.IsOpposite = false;
-            myPane.XAxis.MajorTic.Color=Color.White;
+            myPane.XAxis.MajorTic.Color = Color.White;
             myPane.XAxis.MinorTic.Color = Color.White;
             myPane.XAxis.Scale.MajorStep = 5;//X轴大步长为5，也就是显示文字的大间隔
             //y轴
             myPane.YAxis.MajorTic.IsInside = false;
-            myPane.YAxis.MajorGrid.Color=Color.White;
+            myPane.YAxis.MajorGrid.Color = Color.White;
             myPane.YAxis.MinorTic.IsInside = false;
             myPane.Y2Axis.MajorTic.IsInside = false;
             myPane.Y2Axis.MajorGrid.Color = Color.White;
             myPane.Y2Axis.MinorTic.IsInside = false;
-          //  myPane.YAxis.Title.Text = paraLine3.Tagname + "(" + paraLine3.Unit + ")";
-          //  myPane.Y2Axis.Title.Text = paraLine4.Tagname + "(" + paraLine4.Unit + ")";
+            //  myPane.YAxis.Title.Text = paraLine3.Tagname + "(" + paraLine3.Unit + ")";
+            //  myPane.Y2Axis.Title.Text = paraLine4.Tagname + "(" + paraLine4.Unit + ")";
 
             // Make up some data points based on the Sine function
             PointPairList List1 = new PointPairList();
@@ -213,14 +220,14 @@ namespace Data_acquisition
             //}
 
             // Generate a blue curve with diamond symbols, and "Velocity" in the legend
-            LineItem myCurve = myPane.AddCurve("Velocity",
+            LineItem myCurve = myPane.AddCurve(paraLine3.Tagname,
                List1, Color.Blue, SymbolType.None);
             myCurve.Line.Width = 2;
             // Fill the symbols with white
             // myCurve.Symbol.Fill = new Fill(Color.White);
 
             // Generate a Lime curve with circle symbols, and "Acceleration" in the legend
-            myCurve = myPane.AddCurve("Acceleration",
+            myCurve = myPane.AddCurve(paraLine4.Tagname,
                List2, Color.Lime, SymbolType.None);
             myCurve.Line.Width = 2;
             // Fill the symbols with white
@@ -229,7 +236,7 @@ namespace Data_acquisition
             myCurve.IsY2Axis = true;
 
             // Generate a Yellow curve with square symbols, and "Distance" in the legend
-            myCurve = myPane.AddCurve("Distance",
+            myCurve = myPane.AddCurve(paraLine2.Tagname,
                List3, Color.Yellow, SymbolType.None);
             myCurve.Line.Width = 2;
             // Fill the symbols with white
@@ -238,7 +245,7 @@ namespace Data_acquisition
             myCurve.YAxisIndex = 1;
 
             // Generate a green curve with triangle symbols, and "Energy" in the legend
-            myCurve = myPane.AddCurve("Energy",
+            myCurve = myPane.AddCurve(paraLine5.Tagname,
                List4, Color.SeaGreen, SymbolType.None);
             myCurve.Line.Width = 2;
             // Fill the symbols with white
@@ -249,7 +256,7 @@ namespace Data_acquisition
             myCurve.YAxisIndex = 1;
 
             // Generate a red curve with square symbols, and "Distance" in the legend
-            myCurve = myPane.AddCurve("Distance",
+            myCurve = myPane.AddCurve(paraLine1.Tagname,
                List5, Color.Red, SymbolType.None);
             myCurve.Line.Width = 2;
             // Fill the symbols with white
@@ -258,7 +265,7 @@ namespace Data_acquisition
             myCurve.YAxisIndex = 2;
 
             // Generate a Skyblue curve with triangle symbols, and "Energy" in the legend
-            myCurve = myPane.AddCurve("Energy",
+            myCurve = myPane.AddCurve(paraLine6.Tagname,
                List6, Color.SkyBlue, SymbolType.None);
             myCurve.Line.Width = 2;
             // Fill the symbols with white
@@ -280,7 +287,7 @@ namespace Data_acquisition
             myPane.YAxis.Color = Color.Blue;
             // turn off the opposite tics so the Y tics don't show up on the Y2 axis
             myPane.YAxis.MajorTic.IsOpposite = false;
-            myPane.YAxis.MajorTic.Color=Color.Blue;
+            myPane.YAxis.MajorTic.Color = Color.Blue;
             myPane.YAxis.MinorTic.IsOpposite = false;
             myPane.YAxis.MinorTic.Color = Color.Blue;
             // Don't display the Y zero line
@@ -300,7 +307,7 @@ namespace Data_acquisition
             myPane.Y2Axis.Color = Color.Lime;
             // turn off the opposite tics so the Y2 tics don't show up on the Y axis
             myPane.Y2Axis.MajorTic.IsOpposite = false;
-            myPane.Y2Axis.MajorTic.Color=Color.Lime;
+            myPane.Y2Axis.MajorTic.Color = Color.Lime;
             myPane.Y2Axis.MinorTic.IsOpposite = false;
             myPane.Y2Axis.MinorTic.Color = Color.Lime;
             // Display the Y2 axis grid lines
@@ -322,7 +329,7 @@ namespace Data_acquisition
             yAxis3.MajorTic.IsInside = false;
             yAxis3.MinorTic.IsInside = false;
             yAxis3.MajorTic.IsOpposite = false;
-            yAxis3.MajorTic.Color=Color.Yellow;
+            yAxis3.MajorTic.Color = Color.Yellow;
             yAxis3.MinorTic.IsOpposite = false;
             yAxis3.MinorTic.Color = Color.Yellow;
             // Align the Y2 axis labels so they are flush to the axis
@@ -343,7 +350,7 @@ namespace Data_acquisition
             yAxis5.MajorTic.IsInside = false;
             yAxis5.MinorTic.IsInside = false;
             yAxis5.MajorTic.IsOpposite = false;
-            yAxis5.MajorTic.Color=Color.Red;
+            yAxis5.MajorTic.Color = Color.Red;
             yAxis5.MinorTic.IsOpposite = false;
             yAxis5.MinorTic.Color = Color.Red;
             // Align the Y2 axis labels so they are flush to the axis
@@ -365,7 +372,7 @@ namespace Data_acquisition
             yAxis4.MajorTic.IsInside = false;
             yAxis4.MinorTic.IsInside = false;
             yAxis4.MajorTic.IsOpposite = false;
-             yAxis4.MajorTic.Color=Color.SeaGreen;
+            yAxis4.MajorTic.Color = Color.SeaGreen;
             yAxis4.MinorTic.IsOpposite = false;
             yAxis4.MinorTic.Color = Color.SeaGreen;
             // Align the Y2 axis labels so they are flush to the axis
@@ -386,7 +393,7 @@ namespace Data_acquisition
             yAxis6.MajorTic.IsInside = false;
             yAxis6.MinorTic.IsInside = false;
             yAxis6.MajorTic.IsOpposite = false;
-            yAxis6.MajorTic.Color=Color.SkyBlue;
+            yAxis6.MajorTic.Color = Color.SkyBlue;
             yAxis6.MinorTic.IsOpposite = false;
             yAxis6.MinorTic.Color = Color.SkyBlue;
             // Align the Y2 axis labels so they are flush to the axis
@@ -397,7 +404,8 @@ namespace Data_acquisition
             //  myPane.Chart.Fill = new Fill(Color.White, Color.LightGoldenrodYellow, 45.0f);
 
             //新增，y轴不显示名称
-            foreach (YAxis y in myPane.YAxisList) {
+            foreach (YAxis y in myPane.YAxisList)
+            {
                 y.Title.IsVisible = false;
             }
             foreach (Y2Axis y in myPane.Y2AxisList)
@@ -439,28 +447,38 @@ namespace Data_acquisition
             switch (num)
             {
                 case "1":
+                    zedGraphControl1.GraphPane.CurveList[4].Label.Text = paraLine1.Tagname;
                     zedGraphControl1.GraphPane.YAxisList[2].Title.Text = paraLine1.Tagname + "(" + paraLine1.Unit + ")";
                     zedGraphControl1.GraphPane.YAxisList[2].Scale.Min = int.Parse(paraLine1.Min);
                     zedGraphControl1.GraphPane.YAxisList[2].Scale.Max = int.Parse(paraLine1.Max);
                     break;
                 case "2":
+                    zedGraphControl1.GraphPane.CurveList[2].Label.Text = paraLine2.Tagname;
                     zedGraphControl1.GraphPane.YAxisList[1].Title.Text = paraLine2.Tagname + "(" + paraLine2.Unit + ")";
                     zedGraphControl1.GraphPane.YAxisList[1].Scale.Min = int.Parse(paraLine2.Min);
                     zedGraphControl1.GraphPane.YAxisList[1].Scale.Max = int.Parse(paraLine2.Max);
                     break;
-                case "3": zedGraphControl1.GraphPane.YAxisList[0].Title.Text = paraLine3.Tagname + "(" + paraLine3.Unit + ")";
+                case "3":
+                    zedGraphControl1.GraphPane.CurveList[0].Label.Text = paraLine3.Tagname;
+                    zedGraphControl1.GraphPane.YAxisList[0].Title.Text = paraLine3.Tagname + "(" + paraLine3.Unit + ")";
                     zedGraphControl1.GraphPane.YAxisList[0].Scale.Min = int.Parse(paraLine3.Min);
                     zedGraphControl1.GraphPane.YAxisList[0].Scale.Max = int.Parse(paraLine3.Max);
                     break;
-                case "4": zedGraphControl1.GraphPane.Y2AxisList[0].Title.Text = paraLine4.Tagname + "(" + paraLine4.Unit + ")";
+                case "4":
+                    zedGraphControl1.GraphPane.CurveList[1].Label.Text = paraLine4.Tagname;
+                    zedGraphControl1.GraphPane.Y2AxisList[0].Title.Text = paraLine4.Tagname + "(" + paraLine4.Unit + ")";
                     zedGraphControl1.GraphPane.Y2AxisList[0].Scale.Min = int.Parse(paraLine4.Min);
                     zedGraphControl1.GraphPane.Y2AxisList[0].Scale.Max = int.Parse(paraLine4.Max);
                     break;
-                case "5": zedGraphControl1.GraphPane.Y2AxisList[1].Title.Text = paraLine5.Tagname + "(" + paraLine5.Unit + ")";
+                case "5":
+                    zedGraphControl1.GraphPane.CurveList[3].Label.Text = paraLine5.Tagname;
+                    zedGraphControl1.GraphPane.Y2AxisList[1].Title.Text = paraLine5.Tagname + "(" + paraLine5.Unit + ")";
                     zedGraphControl1.GraphPane.Y2AxisList[1].Scale.Min = int.Parse(paraLine5.Min);
                     zedGraphControl1.GraphPane.Y2AxisList[1].Scale.Max = int.Parse(paraLine5.Max);
                     break;
-                case "6": zedGraphControl1.GraphPane.Y2AxisList[2].Title.Text = paraLine6.Tagname + "(" + paraLine6.Unit + ")";
+                case "6":
+                    zedGraphControl1.GraphPane.CurveList[5].Label.Text = paraLine6.Tagname;
+                    zedGraphControl1.GraphPane.Y2AxisList[2].Title.Text = paraLine6.Tagname + "(" + paraLine6.Unit + ")";
                     zedGraphControl1.GraphPane.Y2AxisList[2].Scale.Min = int.Parse(paraLine6.Min);
                     zedGraphControl1.GraphPane.Y2AxisList[2].Scale.Max = int.Parse(paraLine6.Max);
                     break;
@@ -535,31 +553,53 @@ namespace Data_acquisition
                 }
                 //再读取parashow控件的信息
                 nodeList = root.SelectNodes("Form[Name='Form_Main']//Controlsshow//Control");
-                foreach (Control ctrl in this.tabControl1.Controls)
+                //1115新增
+                foreach (Control ctr in this.Controls)
                 {
-                    if (ctrl is TabPage)
+                    if (ctr is Parashow)
                     {
-                        TabPage ctrl2 = ctrl as TabPage;
-                        foreach (Control ctr in ctrl2.Controls)
+                        Parashow ctr2 = ctr as Parashow;
+                        foreach (XmlNode node in nodeList)
                         {
-                            if (ctr is Parashow)
+                            if (ctr2.Name == node.SelectSingleNode("@name").InnerText)
                             {
-                                Parashow ctr2 = ctr as Parashow;
-                                foreach (XmlNode node in nodeList)
-                                {
-                                    if (ctr2.Name == node.SelectSingleNode("@name").InnerText)
-                                    {
-                                        ctr2.Tagname = node.SelectSingleNode("@tagname").InnerText;
-                                        ctr2.Unit = node.SelectSingleNode("@unit").InnerText;
-                                        ctr2.Tag = node.SelectSingleNode("@index").InnerText;
-                                        ctr2.refresh();
-                                    }
-
-                                }
+                                ctr2.Tagname = node.SelectSingleNode("@tagname").InnerText;
+                                ctr2.Unit = node.SelectSingleNode("@unit").InnerText;
+                                ctr2.Tag = node.SelectSingleNode("@index").InnerText;
+                                ctr2.refresh();
                             }
+
                         }
                     }
                 }
+
+
+
+                //foreach (Control ctrl in this.tabControl1.Controls)
+                //{
+                //    if (ctrl is TabPage)
+                //    {
+                //        TabPage ctrl2 = ctrl as TabPage;
+                //        foreach (Control ctr in ctrl2.Controls)
+                //        {
+                //            if (ctr is Parashow)
+                //            {
+                //                Parashow ctr2 = ctr as Parashow;
+                //                foreach (XmlNode node in nodeList)
+                //                {
+                //                    if (ctr2.Name == node.SelectSingleNode("@name").InnerText)
+                //                    {
+                //                        ctr2.Tagname = node.SelectSingleNode("@tagname").InnerText;
+                //                        ctr2.Unit = node.SelectSingleNode("@unit").InnerText;
+                //                        ctr2.Tag = node.SelectSingleNode("@index").InnerText;
+                //                        ctr2.refresh();
+                //                    }
+
+                //                }
+                //            }
+                //        }
+                //    }
+                //}
             }
             catch (Exception ex)
             {
@@ -602,7 +642,7 @@ namespace Data_acquisition
             Scale xScale = zedGraphControl1.GraphPane.XAxis.Scale;
             double factor = xScale.Max * 60;
 
-            factor=1;//测试用
+            factor = 1;//测试用
             //添加数据
             list1.Add(count / factor, (new Random()).Next(50));
             list2.Add(count / factor, (new Random()).Next(50));
@@ -744,19 +784,19 @@ namespace Data_acquisition
 
         private void 退出ToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-        Application.Exit();
+            Application.Exit();
         }
 
         private void 视图1ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Frm_Realtrend frm=new Frm_Realtrend(zedGraphControl1.GraphPane);
-            frm.Location=new Point(1921,0);
+            Frm_Realtrend frm = new Frm_Realtrend(zedGraphControl1.GraphPane);
+            frm.Location = new Point(1921, 0);
             frm.Show();
         }
 
         private void 视图2ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Frm_Realtrend2 frm=new Frm_Realtrend2 (zedGraphControl1.GraphPane);
+            Frm_Realtrend2 frm = new Frm_Realtrend2(zedGraphControl1.GraphPane);
             frm.Show();
         }
 
@@ -768,11 +808,11 @@ namespace Data_acquisition
 
         private void 视图4ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_Paraanalog frm=new Frm_Paraanalog ();
+            Frm_Paraanalog frm = new Frm_Paraanalog();
             frm.Show();
         }
 
-       
+
     }
 }
 

@@ -48,6 +48,7 @@
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "套管压力";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -135,7 +136,6 @@
             this.Controls.Add(this.shapeContainer1);
             this.Name = "ParaLine";
             this.Size = new System.Drawing.Size(150, 50);
-            this.Click += new System.EventHandler(this.ParaLine_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
 
