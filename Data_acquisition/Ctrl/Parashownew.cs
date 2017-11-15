@@ -9,14 +9,14 @@ using System.Windows.Forms;
 
 namespace Data_acquisition.Ctrl
 {
-    public partial class Parashow2 : UserControl
+    public partial class Parashownew : UserControl
     {
         float X, Y;
         private Color tagcolor;
         private string tagname, unit;
         public string Tagname { get { return tagname; } set { tagname = value; } }
         public string Unit { get { return unit; } set { unit = value; } }
-        public Parashow2()
+        public Parashownew()
         {
             InitializeComponent();
             X = this.Width;

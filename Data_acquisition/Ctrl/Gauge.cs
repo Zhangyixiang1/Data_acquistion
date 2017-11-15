@@ -48,6 +48,7 @@ namespace Data_acquisition.Ctrl
             {
                 int num = Convert.ToInt16(this.Tag);
                radRadialGauge1.Value = (float)Form_Main.Paralist.Values.Last()[num];
+               label3.Text=Form_Main.Paralist.Values.Last()[num].ToString();
             }
 
             catch { }

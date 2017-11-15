@@ -58,14 +58,14 @@ namespace Data_acquisition
             //    }
             //}
 
-             foreach (Control ctrl in this.Controls)
-             {
-                 if (ctrl is Parashow)
-                 {
-                     Parashow ctr2 = ctrl as Parashow;
-                     ctr2.timer1.Enabled = true;
-                 }
-             }
+            foreach (Control ctrl in this.Controls)
+            {
+                if (ctrl is Parashow)
+                {
+                    Parashow ctr2 = ctrl as Parashow;
+                    ctr2.timer1.Enabled = true;
+                }
+            }
 
         }
         /// <summary>
@@ -412,6 +412,10 @@ namespace Data_acquisition
             {
                 y.Title.IsVisible = false;
             }
+            //新增，读取配置文件的曲线颜色信息，更新曲线
+            trend_refresh("1"); trend_refresh("2"); trend_refresh("3");
+            trend_refresh("4"); trend_refresh("5"); trend_refresh("6");
+
 
             zedGraphControl1.AxisChange();
 
@@ -448,41 +452,72 @@ namespace Data_acquisition
             {
                 case "1":
                     zedGraphControl1.GraphPane.CurveList[4].Label.Text = paraLine1.Tagname;
+                    zedGraphControl1.GraphPane.CurveList[4].Color = paraLine1.Color;
+                    zedGraphControl1.GraphPane.YAxisList[2].MajorTic.Color = paraLine1.Color;
+                    zedGraphControl1.GraphPane.YAxisList[2].MinorTic.Color = paraLine1.Color;
+                    zedGraphControl1.GraphPane.YAxisList[2].Color = paraLine1.Color;
+                    zedGraphControl1.GraphPane.YAxisList[2].Scale.FontSpec.FontColor = paraLine1.Color;
                     zedGraphControl1.GraphPane.YAxisList[2].Title.Text = paraLine1.Tagname + "(" + paraLine1.Unit + ")";
                     zedGraphControl1.GraphPane.YAxisList[2].Scale.Min = int.Parse(paraLine1.Min);
                     zedGraphControl1.GraphPane.YAxisList[2].Scale.Max = int.Parse(paraLine1.Max);
                     break;
                 case "2":
                     zedGraphControl1.GraphPane.CurveList[2].Label.Text = paraLine2.Tagname;
+                    zedGraphControl1.GraphPane.CurveList[2].Color = paraLine2.Color;
+                    zedGraphControl1.GraphPane.YAxisList[1].MajorTic.Color = paraLine2.Color;
+                    zedGraphControl1.GraphPane.YAxisList[1].MinorTic.Color = paraLine2.Color;
+                    zedGraphControl1.GraphPane.YAxisList[1].Color = paraLine2.Color;
+                    zedGraphControl1.GraphPane.YAxisList[1].Scale.FontSpec.FontColor = paraLine2.Color;
                     zedGraphControl1.GraphPane.YAxisList[1].Title.Text = paraLine2.Tagname + "(" + paraLine2.Unit + ")";
                     zedGraphControl1.GraphPane.YAxisList[1].Scale.Min = int.Parse(paraLine2.Min);
                     zedGraphControl1.GraphPane.YAxisList[1].Scale.Max = int.Parse(paraLine2.Max);
                     break;
                 case "3":
                     zedGraphControl1.GraphPane.CurveList[0].Label.Text = paraLine3.Tagname;
+                    zedGraphControl1.GraphPane.CurveList[0].Color = paraLine3.Color;
+                    zedGraphControl1.GraphPane.YAxisList[0].MajorTic.Color = paraLine3.Color;
+                    zedGraphControl1.GraphPane.YAxisList[0].MinorTic.Color = paraLine3.Color;
+                    zedGraphControl1.GraphPane.YAxisList[0].Color = paraLine3.Color;
+                    zedGraphControl1.GraphPane.YAxisList[0].Scale.FontSpec.FontColor = paraLine3.Color;
                     zedGraphControl1.GraphPane.YAxisList[0].Title.Text = paraLine3.Tagname + "(" + paraLine3.Unit + ")";
                     zedGraphControl1.GraphPane.YAxisList[0].Scale.Min = int.Parse(paraLine3.Min);
                     zedGraphControl1.GraphPane.YAxisList[0].Scale.Max = int.Parse(paraLine3.Max);
                     break;
                 case "4":
                     zedGraphControl1.GraphPane.CurveList[1].Label.Text = paraLine4.Tagname;
+                    zedGraphControl1.GraphPane.CurveList[1].Color = paraLine4.Color;
+                    zedGraphControl1.GraphPane.Y2AxisList[0].MajorTic.Color = paraLine4.Color;
+                    zedGraphControl1.GraphPane.Y2AxisList[0].MinorTic.Color = paraLine4.Color;
+                    zedGraphControl1.GraphPane.Y2AxisList[0].Color = paraLine4.Color;
+                    zedGraphControl1.GraphPane.Y2AxisList[0].Scale.FontSpec.FontColor = paraLine4.Color;
                     zedGraphControl1.GraphPane.Y2AxisList[0].Title.Text = paraLine4.Tagname + "(" + paraLine4.Unit + ")";
                     zedGraphControl1.GraphPane.Y2AxisList[0].Scale.Min = int.Parse(paraLine4.Min);
                     zedGraphControl1.GraphPane.Y2AxisList[0].Scale.Max = int.Parse(paraLine4.Max);
                     break;
                 case "5":
                     zedGraphControl1.GraphPane.CurveList[3].Label.Text = paraLine5.Tagname;
+                    zedGraphControl1.GraphPane.CurveList[3].Color = paraLine5.Color;
+                    zedGraphControl1.GraphPane.Y2AxisList[1].MajorTic.Color = paraLine5.Color;
+                    zedGraphControl1.GraphPane.Y2AxisList[1].MinorTic.Color = paraLine5.Color;
+                    zedGraphControl1.GraphPane.Y2AxisList[1].Color = paraLine5.Color;
+                    zedGraphControl1.GraphPane.Y2AxisList[1].Scale.FontSpec.FontColor = paraLine5.Color;
                     zedGraphControl1.GraphPane.Y2AxisList[1].Title.Text = paraLine5.Tagname + "(" + paraLine5.Unit + ")";
                     zedGraphControl1.GraphPane.Y2AxisList[1].Scale.Min = int.Parse(paraLine5.Min);
                     zedGraphControl1.GraphPane.Y2AxisList[1].Scale.Max = int.Parse(paraLine5.Max);
                     break;
                 case "6":
                     zedGraphControl1.GraphPane.CurveList[5].Label.Text = paraLine6.Tagname;
+                    zedGraphControl1.GraphPane.CurveList[5].Color = paraLine6.Color;
+                    zedGraphControl1.GraphPane.Y2AxisList[2].MajorTic.Color = paraLine6.Color;
+                    zedGraphControl1.GraphPane.Y2AxisList[2].MinorTic.Color = paraLine6.Color;
+                    zedGraphControl1.GraphPane.Y2AxisList[2].Color = paraLine6.Color;
+                    zedGraphControl1.GraphPane.Y2AxisList[2].Scale.FontSpec.FontColor = paraLine6.Color;
                     zedGraphControl1.GraphPane.Y2AxisList[2].Title.Text = paraLine6.Tagname + "(" + paraLine6.Unit + ")";
                     zedGraphControl1.GraphPane.Y2AxisList[2].Scale.Min = int.Parse(paraLine6.Min);
                     zedGraphControl1.GraphPane.Y2AxisList[2].Scale.Max = int.Parse(paraLine6.Max);
                     break;
             }
+
             zedGraphControl1.AxisChange();
             zedGraphControl1.Refresh();
         }
@@ -544,6 +579,7 @@ namespace Data_acquisition
                                 ctr.Max = node.SelectSingleNode("@max").InnerText;
                                 ctr.Unit = node.SelectSingleNode("@unit").InnerText;
                                 ctr.Tag = node.SelectSingleNode("@index").InnerText;
+                                ctr.Color = Comm.ReadColor.getcolor(node.SelectSingleNode("@color").InnerText);
                                 ctr.refresh();
 
                             }
@@ -551,6 +587,7 @@ namespace Data_acquisition
                         }
                     }
                 }
+
                 //再读取parashow控件的信息
                 nodeList = root.SelectNodes("Form[Name='Form_Main']//Controlsshow//Control");
                 //1115新增
@@ -816,8 +853,8 @@ namespace Data_acquisition
         {
             DataGridView dgv = (DataGridView)Application.OpenForms["Frm_Realtrend2"].Controls.Find("dataGridView1", true)[0];
             dgv.Rows.Clear();
-            for(int i=0;i<dataGridView1.Rows.Count;i++){dgv.Rows.Add(dataGridView1.Rows[i].Clone());}
-            
+            for (int i = 0; i < dataGridView1.Rows.Count; i++) { dgv.Rows.Add(dataGridView1.Rows[i].Clone()); }
+
         }
 
 

@@ -31,40 +31,40 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.parashow228 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow221 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow214 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow227 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow220 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow213 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow226 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow219 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow212 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow225 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow218 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow211 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow222 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow223 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow224 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow215 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow216 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow217 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow28 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow29 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow210 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow27 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow26 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow25 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow22 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow24 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow21 = new Data_acquisition.Ctrl.Parashow2();
-            this.parashow23 = new Data_acquisition.Ctrl.Parashow2();
-            this.gauge_mid1 = new Data_acquisition.Ctrl.Gauge_mid();
+            this.label3 = new System.Windows.Forms.Label();
+            this.parashownew7 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew6 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew5 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew2 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew4 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew28 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew25 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew22 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew19 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew16 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew13 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew10 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew27 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew24 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew21 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew18 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew15 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew12 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew9 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew26 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew23 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew20 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew17 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew14 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew11 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew8 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew1 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew3 = new Data_acquisition.Ctrl.Parashownew();
+            this.gauge0 = new Data_acquisition.Ctrl.Gauge_mid();
             this.gauge1 = new Data_acquisition.Ctrl.Gauge();
             this.gauge2 = new Data_acquisition.Ctrl.Gauge();
             this.gauge4 = new Data_acquisition.Ctrl.Gauge();
             this.gauge3 = new Data_acquisition.Ctrl.Gauge();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,320 +99,335 @@
             this.pictureBox2.TabIndex = 22;
             this.pictureBox2.TabStop = false;
             // 
-            // parashow228
+            // label3
             // 
-            this.parashow228.BackColor = System.Drawing.Color.Transparent;
-            this.parashow228.Color = System.Drawing.Color.Red;
-            this.parashow228.Location = new System.Drawing.Point(1654, 936);
-            this.parashow228.Name = "parashow228";
-            this.parashow228.Size = new System.Drawing.Size(222, 100);
-            this.parashow228.TabIndex = 25;
-            this.parashow228.Tagname = null;
-            this.parashow228.Unit = null;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("宋体", 25F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label3.Location = new System.Drawing.Point(191, 476);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(303, 34);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "HONGHUA ELECTRIC";
             // 
-            // parashow221
+            // parashownew7
             // 
-            this.parashow221.BackColor = System.Drawing.Color.Transparent;
-            this.parashow221.Color = System.Drawing.Color.Lime;
-            this.parashow221.Location = new System.Drawing.Point(1654, 814);
-            this.parashow221.Name = "parashow221";
-            this.parashow221.Size = new System.Drawing.Size(222, 100);
-            this.parashow221.TabIndex = 25;
-            this.parashow221.Tagname = null;
-            this.parashow221.Unit = null;
+            this.parashownew7.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew7.Color = System.Drawing.Color.Blue;
+            this.parashownew7.Location = new System.Drawing.Point(1654, 572);
+            this.parashownew7.Name = "parashownew7";
+            this.parashownew7.Size = new System.Drawing.Size(222, 100);
+            this.parashownew7.TabIndex = 24;
+            this.parashownew7.Tagname = null;
+            this.parashownew7.Unit = null;
             // 
-            // parashow214
+            // parashownew6
             // 
-            this.parashow214.BackColor = System.Drawing.Color.Transparent;
-            this.parashow214.Color = System.Drawing.Color.Navy;
-            this.parashow214.Location = new System.Drawing.Point(1654, 691);
-            this.parashow214.Name = "parashow214";
-            this.parashow214.Size = new System.Drawing.Size(222, 100);
-            this.parashow214.TabIndex = 25;
-            this.parashow214.Tagname = null;
-            this.parashow214.Unit = null;
+            this.parashownew6.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew6.Color = System.Drawing.Color.Blue;
+            this.parashownew6.Location = new System.Drawing.Point(1387, 572);
+            this.parashownew6.Name = "parashownew6";
+            this.parashownew6.Size = new System.Drawing.Size(222, 100);
+            this.parashownew6.TabIndex = 24;
+            this.parashownew6.Tagname = null;
+            this.parashownew6.Unit = null;
             // 
-            // parashow227
+            // parashownew5
             // 
-            this.parashow227.BackColor = System.Drawing.Color.Transparent;
-            this.parashow227.Color = System.Drawing.Color.Red;
-            this.parashow227.Location = new System.Drawing.Point(1387, 936);
-            this.parashow227.Name = "parashow227";
-            this.parashow227.Size = new System.Drawing.Size(222, 100);
-            this.parashow227.TabIndex = 26;
-            this.parashow227.Tagname = null;
-            this.parashow227.Unit = null;
+            this.parashownew5.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew5.Color = System.Drawing.Color.Blue;
+            this.parashownew5.Location = new System.Drawing.Point(1120, 572);
+            this.parashownew5.Name = "parashownew5";
+            this.parashownew5.Size = new System.Drawing.Size(222, 100);
+            this.parashownew5.TabIndex = 24;
+            this.parashownew5.Tagname = null;
+            this.parashownew5.Unit = null;
             // 
-            // parashow220
+            // parashownew2
             // 
-            this.parashow220.BackColor = System.Drawing.Color.Transparent;
-            this.parashow220.Color = System.Drawing.Color.Lime;
-            this.parashow220.Location = new System.Drawing.Point(1387, 814);
-            this.parashow220.Name = "parashow220";
-            this.parashow220.Size = new System.Drawing.Size(222, 100);
-            this.parashow220.TabIndex = 26;
-            this.parashow220.Tagname = null;
-            this.parashow220.Unit = null;
+            this.parashownew2.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew2.Color = System.Drawing.Color.Blue;
+            this.parashownew2.Location = new System.Drawing.Point(319, 572);
+            this.parashownew2.Name = "parashownew2";
+            this.parashownew2.Size = new System.Drawing.Size(222, 100);
+            this.parashownew2.TabIndex = 24;
+            this.parashownew2.Tagname = null;
+            this.parashownew2.Unit = null;
             // 
-            // parashow213
+            // parashownew4
             // 
-            this.parashow213.BackColor = System.Drawing.Color.Transparent;
-            this.parashow213.Color = System.Drawing.Color.Navy;
-            this.parashow213.Location = new System.Drawing.Point(1387, 691);
-            this.parashow213.Name = "parashow213";
-            this.parashow213.Size = new System.Drawing.Size(222, 100);
-            this.parashow213.TabIndex = 26;
-            this.parashow213.Tagname = null;
-            this.parashow213.Unit = null;
+            this.parashownew4.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew4.Color = System.Drawing.Color.Blue;
+            this.parashownew4.Location = new System.Drawing.Point(853, 572);
+            this.parashownew4.Name = "parashownew4";
+            this.parashownew4.Size = new System.Drawing.Size(222, 100);
+            this.parashownew4.TabIndex = 24;
+            this.parashownew4.Tagname = null;
+            this.parashownew4.Unit = null;
             // 
-            // parashow226
+            // parashownew28
             // 
-            this.parashow226.BackColor = System.Drawing.Color.Transparent;
-            this.parashow226.Color = System.Drawing.Color.Red;
-            this.parashow226.Location = new System.Drawing.Point(1120, 936);
-            this.parashow226.Name = "parashow226";
-            this.parashow226.Size = new System.Drawing.Size(222, 100);
-            this.parashow226.TabIndex = 27;
-            this.parashow226.Tagname = null;
-            this.parashow226.Unit = null;
+            this.parashownew28.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew28.Color = System.Drawing.Color.Blue;
+            this.parashownew28.Location = new System.Drawing.Point(1654, 936);
+            this.parashownew28.Name = "parashownew28";
+            this.parashownew28.Size = new System.Drawing.Size(222, 100);
+            this.parashownew28.TabIndex = 24;
+            this.parashownew28.Tagname = null;
+            this.parashownew28.Unit = null;
             // 
-            // parashow219
+            // parashownew25
             // 
-            this.parashow219.BackColor = System.Drawing.Color.Transparent;
-            this.parashow219.Color = System.Drawing.Color.Lime;
-            this.parashow219.Location = new System.Drawing.Point(1120, 814);
-            this.parashow219.Name = "parashow219";
-            this.parashow219.Size = new System.Drawing.Size(222, 100);
-            this.parashow219.TabIndex = 27;
-            this.parashow219.Tagname = null;
-            this.parashow219.Unit = null;
+            this.parashownew25.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew25.Color = System.Drawing.Color.Blue;
+            this.parashownew25.Location = new System.Drawing.Point(1387, 936);
+            this.parashownew25.Name = "parashownew25";
+            this.parashownew25.Size = new System.Drawing.Size(222, 100);
+            this.parashownew25.TabIndex = 24;
+            this.parashownew25.Tagname = null;
+            this.parashownew25.Unit = null;
             // 
-            // parashow212
+            // parashownew22
             // 
-            this.parashow212.BackColor = System.Drawing.Color.Transparent;
-            this.parashow212.Color = System.Drawing.Color.Navy;
-            this.parashow212.Location = new System.Drawing.Point(1120, 691);
-            this.parashow212.Name = "parashow212";
-            this.parashow212.Size = new System.Drawing.Size(222, 100);
-            this.parashow212.TabIndex = 27;
-            this.parashow212.Tagname = null;
-            this.parashow212.Unit = null;
+            this.parashownew22.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew22.Color = System.Drawing.Color.Blue;
+            this.parashownew22.Location = new System.Drawing.Point(1120, 936);
+            this.parashownew22.Name = "parashownew22";
+            this.parashownew22.Size = new System.Drawing.Size(222, 100);
+            this.parashownew22.TabIndex = 24;
+            this.parashownew22.Tagname = null;
+            this.parashownew22.Unit = null;
             // 
-            // parashow225
+            // parashownew19
             // 
-            this.parashow225.BackColor = System.Drawing.Color.Transparent;
-            this.parashow225.Color = System.Drawing.Color.Red;
-            this.parashow225.Location = new System.Drawing.Point(853, 936);
-            this.parashow225.Name = "parashow225";
-            this.parashow225.Size = new System.Drawing.Size(222, 100);
-            this.parashow225.TabIndex = 28;
-            this.parashow225.Tagname = null;
-            this.parashow225.Unit = null;
+            this.parashownew19.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew19.Color = System.Drawing.Color.Blue;
+            this.parashownew19.Location = new System.Drawing.Point(853, 936);
+            this.parashownew19.Name = "parashownew19";
+            this.parashownew19.Size = new System.Drawing.Size(222, 100);
+            this.parashownew19.TabIndex = 24;
+            this.parashownew19.Tagname = null;
+            this.parashownew19.Unit = null;
             // 
-            // parashow218
+            // parashownew16
             // 
-            this.parashow218.BackColor = System.Drawing.Color.Transparent;
-            this.parashow218.Color = System.Drawing.Color.Lime;
-            this.parashow218.Location = new System.Drawing.Point(853, 814);
-            this.parashow218.Name = "parashow218";
-            this.parashow218.Size = new System.Drawing.Size(222, 100);
-            this.parashow218.TabIndex = 28;
-            this.parashow218.Tagname = null;
-            this.parashow218.Unit = null;
+            this.parashownew16.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew16.Color = System.Drawing.Color.Blue;
+            this.parashownew16.Location = new System.Drawing.Point(586, 936);
+            this.parashownew16.Name = "parashownew16";
+            this.parashownew16.Size = new System.Drawing.Size(222, 100);
+            this.parashownew16.TabIndex = 24;
+            this.parashownew16.Tagname = null;
+            this.parashownew16.Unit = null;
             // 
-            // parashow211
+            // parashownew13
             // 
-            this.parashow211.BackColor = System.Drawing.Color.Transparent;
-            this.parashow211.Color = System.Drawing.Color.Navy;
-            this.parashow211.Location = new System.Drawing.Point(853, 691);
-            this.parashow211.Name = "parashow211";
-            this.parashow211.Size = new System.Drawing.Size(222, 100);
-            this.parashow211.TabIndex = 28;
-            this.parashow211.Tagname = null;
-            this.parashow211.Unit = null;
+            this.parashownew13.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew13.Color = System.Drawing.Color.Blue;
+            this.parashownew13.Location = new System.Drawing.Point(319, 936);
+            this.parashownew13.Name = "parashownew13";
+            this.parashownew13.Size = new System.Drawing.Size(222, 100);
+            this.parashownew13.TabIndex = 24;
+            this.parashownew13.Tagname = null;
+            this.parashownew13.Unit = null;
             // 
-            // parashow222
+            // parashownew10
             // 
-            this.parashow222.BackColor = System.Drawing.Color.Transparent;
-            this.parashow222.Color = System.Drawing.Color.Red;
-            this.parashow222.Location = new System.Drawing.Point(52, 937);
-            this.parashow222.Name = "parashow222";
-            this.parashow222.Size = new System.Drawing.Size(222, 100);
-            this.parashow222.TabIndex = 29;
-            this.parashow222.Tagname = null;
-            this.parashow222.Unit = null;
+            this.parashownew10.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew10.Color = System.Drawing.Color.Blue;
+            this.parashownew10.Location = new System.Drawing.Point(52, 936);
+            this.parashownew10.Name = "parashownew10";
+            this.parashownew10.Size = new System.Drawing.Size(222, 100);
+            this.parashownew10.TabIndex = 24;
+            this.parashownew10.Tagname = null;
+            this.parashownew10.Unit = null;
             // 
-            // parashow223
+            // parashownew27
             // 
-            this.parashow223.BackColor = System.Drawing.Color.Transparent;
-            this.parashow223.Color = System.Drawing.Color.Red;
-            this.parashow223.Location = new System.Drawing.Point(319, 936);
-            this.parashow223.Name = "parashow223";
-            this.parashow223.Size = new System.Drawing.Size(222, 100);
-            this.parashow223.TabIndex = 29;
-            this.parashow223.Tagname = null;
-            this.parashow223.Unit = null;
+            this.parashownew27.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew27.Color = System.Drawing.Color.Blue;
+            this.parashownew27.Location = new System.Drawing.Point(1654, 814);
+            this.parashownew27.Name = "parashownew27";
+            this.parashownew27.Size = new System.Drawing.Size(222, 100);
+            this.parashownew27.TabIndex = 24;
+            this.parashownew27.Tagname = null;
+            this.parashownew27.Unit = null;
             // 
-            // parashow224
+            // parashownew24
             // 
-            this.parashow224.BackColor = System.Drawing.Color.Transparent;
-            this.parashow224.Color = System.Drawing.Color.Red;
-            this.parashow224.Location = new System.Drawing.Point(586, 936);
-            this.parashow224.Name = "parashow224";
-            this.parashow224.Size = new System.Drawing.Size(222, 100);
-            this.parashow224.TabIndex = 29;
-            this.parashow224.Tagname = null;
-            this.parashow224.Unit = null;
+            this.parashownew24.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew24.Color = System.Drawing.Color.Blue;
+            this.parashownew24.Location = new System.Drawing.Point(1387, 814);
+            this.parashownew24.Name = "parashownew24";
+            this.parashownew24.Size = new System.Drawing.Size(222, 100);
+            this.parashownew24.TabIndex = 24;
+            this.parashownew24.Tagname = null;
+            this.parashownew24.Unit = null;
             // 
-            // parashow215
+            // parashownew21
             // 
-            this.parashow215.BackColor = System.Drawing.Color.Transparent;
-            this.parashow215.Color = System.Drawing.Color.Lime;
-            this.parashow215.Location = new System.Drawing.Point(52, 814);
-            this.parashow215.Name = "parashow215";
-            this.parashow215.Size = new System.Drawing.Size(222, 100);
-            this.parashow215.TabIndex = 29;
-            this.parashow215.Tagname = null;
-            this.parashow215.Unit = null;
+            this.parashownew21.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew21.Color = System.Drawing.Color.Blue;
+            this.parashownew21.Location = new System.Drawing.Point(1120, 814);
+            this.parashownew21.Name = "parashownew21";
+            this.parashownew21.Size = new System.Drawing.Size(222, 100);
+            this.parashownew21.TabIndex = 24;
+            this.parashownew21.Tagname = null;
+            this.parashownew21.Unit = null;
             // 
-            // parashow216
+            // parashownew18
             // 
-            this.parashow216.BackColor = System.Drawing.Color.Transparent;
-            this.parashow216.Color = System.Drawing.Color.Lime;
-            this.parashow216.Location = new System.Drawing.Point(319, 814);
-            this.parashow216.Name = "parashow216";
-            this.parashow216.Size = new System.Drawing.Size(222, 100);
-            this.parashow216.TabIndex = 29;
-            this.parashow216.Tagname = null;
-            this.parashow216.Unit = null;
+            this.parashownew18.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew18.Color = System.Drawing.Color.Blue;
+            this.parashownew18.Location = new System.Drawing.Point(853, 814);
+            this.parashownew18.Name = "parashownew18";
+            this.parashownew18.Size = new System.Drawing.Size(222, 100);
+            this.parashownew18.TabIndex = 24;
+            this.parashownew18.Tagname = null;
+            this.parashownew18.Unit = null;
             // 
-            // parashow217
+            // parashownew15
             // 
-            this.parashow217.BackColor = System.Drawing.Color.Transparent;
-            this.parashow217.Color = System.Drawing.Color.Lime;
-            this.parashow217.Location = new System.Drawing.Point(586, 814);
-            this.parashow217.Name = "parashow217";
-            this.parashow217.Size = new System.Drawing.Size(222, 100);
-            this.parashow217.TabIndex = 29;
-            this.parashow217.Tagname = null;
-            this.parashow217.Unit = null;
+            this.parashownew15.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew15.Color = System.Drawing.Color.Blue;
+            this.parashownew15.Location = new System.Drawing.Point(586, 814);
+            this.parashownew15.Name = "parashownew15";
+            this.parashownew15.Size = new System.Drawing.Size(222, 100);
+            this.parashownew15.TabIndex = 24;
+            this.parashownew15.Tagname = null;
+            this.parashownew15.Unit = null;
             // 
-            // parashow28
+            // parashownew12
             // 
-            this.parashow28.BackColor = System.Drawing.Color.Transparent;
-            this.parashow28.Color = System.Drawing.Color.Navy;
-            this.parashow28.Location = new System.Drawing.Point(52, 691);
-            this.parashow28.Name = "parashow28";
-            this.parashow28.Size = new System.Drawing.Size(222, 100);
-            this.parashow28.TabIndex = 29;
-            this.parashow28.Tagname = null;
-            this.parashow28.Unit = null;
+            this.parashownew12.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew12.Color = System.Drawing.Color.Blue;
+            this.parashownew12.Location = new System.Drawing.Point(319, 814);
+            this.parashownew12.Name = "parashownew12";
+            this.parashownew12.Size = new System.Drawing.Size(222, 100);
+            this.parashownew12.TabIndex = 24;
+            this.parashownew12.Tagname = null;
+            this.parashownew12.Unit = null;
             // 
-            // parashow29
+            // parashownew9
             // 
-            this.parashow29.BackColor = System.Drawing.Color.Transparent;
-            this.parashow29.Color = System.Drawing.Color.Navy;
-            this.parashow29.Location = new System.Drawing.Point(319, 691);
-            this.parashow29.Name = "parashow29";
-            this.parashow29.Size = new System.Drawing.Size(222, 100);
-            this.parashow29.TabIndex = 29;
-            this.parashow29.Tagname = null;
-            this.parashow29.Unit = null;
+            this.parashownew9.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew9.Color = System.Drawing.Color.Blue;
+            this.parashownew9.Location = new System.Drawing.Point(52, 814);
+            this.parashownew9.Name = "parashownew9";
+            this.parashownew9.Size = new System.Drawing.Size(222, 100);
+            this.parashownew9.TabIndex = 24;
+            this.parashownew9.Tagname = null;
+            this.parashownew9.Unit = null;
             // 
-            // parashow210
+            // parashownew26
             // 
-            this.parashow210.BackColor = System.Drawing.Color.Transparent;
-            this.parashow210.Color = System.Drawing.Color.Navy;
-            this.parashow210.Location = new System.Drawing.Point(586, 691);
-            this.parashow210.Name = "parashow210";
-            this.parashow210.Size = new System.Drawing.Size(222, 100);
-            this.parashow210.TabIndex = 29;
-            this.parashow210.Tagname = null;
-            this.parashow210.Unit = null;
+            this.parashownew26.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew26.Color = System.Drawing.Color.Blue;
+            this.parashownew26.Location = new System.Drawing.Point(1654, 691);
+            this.parashownew26.Name = "parashownew26";
+            this.parashownew26.Size = new System.Drawing.Size(222, 100);
+            this.parashownew26.TabIndex = 24;
+            this.parashownew26.Tagname = null;
+            this.parashownew26.Unit = null;
             // 
-            // parashow27
+            // parashownew23
             // 
-            this.parashow27.BackColor = System.Drawing.Color.Transparent;
-            this.parashow27.Color = System.Drawing.Color.Blue;
-            this.parashow27.Location = new System.Drawing.Point(1654, 572);
-            this.parashow27.Name = "parashow27";
-            this.parashow27.Size = new System.Drawing.Size(222, 100);
-            this.parashow27.TabIndex = 24;
-            this.parashow27.Tagname = null;
-            this.parashow27.Unit = null;
+            this.parashownew23.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew23.Color = System.Drawing.Color.Blue;
+            this.parashownew23.Location = new System.Drawing.Point(1387, 691);
+            this.parashownew23.Name = "parashownew23";
+            this.parashownew23.Size = new System.Drawing.Size(222, 100);
+            this.parashownew23.TabIndex = 24;
+            this.parashownew23.Tagname = null;
+            this.parashownew23.Unit = null;
             // 
-            // parashow26
+            // parashownew20
             // 
-            this.parashow26.BackColor = System.Drawing.Color.Transparent;
-            this.parashow26.Color = System.Drawing.Color.Blue;
-            this.parashow26.Location = new System.Drawing.Point(1387, 572);
-            this.parashow26.Name = "parashow26";
-            this.parashow26.Size = new System.Drawing.Size(222, 100);
-            this.parashow26.TabIndex = 24;
-            this.parashow26.Tagname = null;
-            this.parashow26.Unit = null;
+            this.parashownew20.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew20.Color = System.Drawing.Color.Blue;
+            this.parashownew20.Location = new System.Drawing.Point(1120, 691);
+            this.parashownew20.Name = "parashownew20";
+            this.parashownew20.Size = new System.Drawing.Size(222, 100);
+            this.parashownew20.TabIndex = 24;
+            this.parashownew20.Tagname = null;
+            this.parashownew20.Unit = null;
             // 
-            // parashow25
+            // parashownew17
             // 
-            this.parashow25.BackColor = System.Drawing.Color.Transparent;
-            this.parashow25.Color = System.Drawing.Color.Blue;
-            this.parashow25.Location = new System.Drawing.Point(1120, 572);
-            this.parashow25.Name = "parashow25";
-            this.parashow25.Size = new System.Drawing.Size(222, 100);
-            this.parashow25.TabIndex = 24;
-            this.parashow25.Tagname = null;
-            this.parashow25.Unit = null;
+            this.parashownew17.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew17.Color = System.Drawing.Color.Blue;
+            this.parashownew17.Location = new System.Drawing.Point(853, 691);
+            this.parashownew17.Name = "parashownew17";
+            this.parashownew17.Size = new System.Drawing.Size(222, 100);
+            this.parashownew17.TabIndex = 24;
+            this.parashownew17.Tagname = null;
+            this.parashownew17.Unit = null;
             // 
-            // parashow22
+            // parashownew14
             // 
-            this.parashow22.BackColor = System.Drawing.Color.Transparent;
-            this.parashow22.Color = System.Drawing.Color.Blue;
-            this.parashow22.Location = new System.Drawing.Point(319, 572);
-            this.parashow22.Name = "parashow22";
-            this.parashow22.Size = new System.Drawing.Size(222, 100);
-            this.parashow22.TabIndex = 24;
-            this.parashow22.Tagname = null;
-            this.parashow22.Unit = null;
+            this.parashownew14.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew14.Color = System.Drawing.Color.Blue;
+            this.parashownew14.Location = new System.Drawing.Point(586, 691);
+            this.parashownew14.Name = "parashownew14";
+            this.parashownew14.Size = new System.Drawing.Size(222, 100);
+            this.parashownew14.TabIndex = 24;
+            this.parashownew14.Tagname = null;
+            this.parashownew14.Unit = null;
             // 
-            // parashow24
+            // parashownew11
             // 
-            this.parashow24.BackColor = System.Drawing.Color.Transparent;
-            this.parashow24.Color = System.Drawing.Color.Blue;
-            this.parashow24.Location = new System.Drawing.Point(853, 572);
-            this.parashow24.Name = "parashow24";
-            this.parashow24.Size = new System.Drawing.Size(222, 100);
-            this.parashow24.TabIndex = 24;
-            this.parashow24.Tagname = null;
-            this.parashow24.Unit = null;
+            this.parashownew11.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew11.Color = System.Drawing.Color.Blue;
+            this.parashownew11.Location = new System.Drawing.Point(319, 691);
+            this.parashownew11.Name = "parashownew11";
+            this.parashownew11.Size = new System.Drawing.Size(222, 100);
+            this.parashownew11.TabIndex = 24;
+            this.parashownew11.Tagname = null;
+            this.parashownew11.Unit = null;
             // 
-            // parashow21
+            // parashownew8
             // 
-            this.parashow21.BackColor = System.Drawing.Color.Transparent;
-            this.parashow21.Color = System.Drawing.Color.Blue;
-            this.parashow21.Location = new System.Drawing.Point(52, 572);
-            this.parashow21.Name = "parashow21";
-            this.parashow21.Size = new System.Drawing.Size(222, 100);
-            this.parashow21.TabIndex = 24;
-            this.parashow21.Tagname = null;
-            this.parashow21.Unit = null;
+            this.parashownew8.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew8.Color = System.Drawing.Color.Blue;
+            this.parashownew8.Location = new System.Drawing.Point(52, 691);
+            this.parashownew8.Name = "parashownew8";
+            this.parashownew8.Size = new System.Drawing.Size(222, 100);
+            this.parashownew8.TabIndex = 24;
+            this.parashownew8.Tagname = null;
+            this.parashownew8.Unit = null;
             // 
-            // parashow23
+            // parashownew1
             // 
-            this.parashow23.BackColor = System.Drawing.Color.Transparent;
-            this.parashow23.Color = System.Drawing.Color.Blue;
-            this.parashow23.Location = new System.Drawing.Point(586, 572);
-            this.parashow23.Name = "parashow23";
-            this.parashow23.Size = new System.Drawing.Size(222, 100);
-            this.parashow23.TabIndex = 24;
-            this.parashow23.Tagname = null;
-            this.parashow23.Unit = null;
+            this.parashownew1.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew1.Color = System.Drawing.Color.Blue;
+            this.parashownew1.Location = new System.Drawing.Point(52, 572);
+            this.parashownew1.Name = "parashownew1";
+            this.parashownew1.Size = new System.Drawing.Size(222, 100);
+            this.parashownew1.TabIndex = 24;
+            this.parashownew1.Tagname = null;
+            this.parashownew1.Unit = null;
             // 
-            // gauge_mid1
+            // parashownew3
             // 
-            this.gauge_mid1.Location = new System.Drawing.Point(955, 0);
-            this.gauge_mid1.Name = "gauge_mid1";
-            this.gauge_mid1.Size = new System.Drawing.Size(640, 540);
-            this.gauge_mid1.TabIndex = 19;
+            this.parashownew3.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew3.Color = System.Drawing.Color.Blue;
+            this.parashownew3.Location = new System.Drawing.Point(586, 572);
+            this.parashownew3.Name = "parashownew3";
+            this.parashownew3.Size = new System.Drawing.Size(222, 100);
+            this.parashownew3.TabIndex = 24;
+            this.parashownew3.Tagname = null;
+            this.parashownew3.Unit = null;
+            // 
+            // gauge0
+            // 
+            this.gauge0.Location = new System.Drawing.Point(955, 0);
+            this.gauge0.Max = null;
+            this.gauge0.Min = null;
+            this.gauge0.Name = "gauge0";
+            this.gauge0.Size = new System.Drawing.Size(640, 540);
+            this.gauge0.TabIndex = 19;
+            this.gauge0.Tagname = null;
+            this.gauge0.Unit = null;
             // 
             // gauge1
             // 
@@ -458,56 +473,45 @@
             this.gauge3.Tagname = null;
             this.gauge3.Unit = null;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("宋体", 25F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label3.Location = new System.Drawing.Point(191, 476);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(303, 34);
-            this.label3.TabIndex = 23;
-            this.label3.Text = "HONGHUA ELECTRIC";
-            // 
             // Frm_Paraanalog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(29)))), ((int)(((byte)(31)))));
             this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Controls.Add(this.parashow228);
-            this.Controls.Add(this.parashow221);
-            this.Controls.Add(this.parashow214);
-            this.Controls.Add(this.parashow227);
-            this.Controls.Add(this.parashow220);
-            this.Controls.Add(this.parashow213);
-            this.Controls.Add(this.parashow226);
-            this.Controls.Add(this.parashow219);
-            this.Controls.Add(this.parashow212);
-            this.Controls.Add(this.parashow225);
-            this.Controls.Add(this.parashow218);
-            this.Controls.Add(this.parashow211);
-            this.Controls.Add(this.parashow222);
-            this.Controls.Add(this.parashow223);
-            this.Controls.Add(this.parashow224);
-            this.Controls.Add(this.parashow215);
-            this.Controls.Add(this.parashow216);
-            this.Controls.Add(this.parashow217);
-            this.Controls.Add(this.parashow28);
-            this.Controls.Add(this.parashow29);
-            this.Controls.Add(this.parashow210);
-            this.Controls.Add(this.parashow27);
-            this.Controls.Add(this.parashow26);
-            this.Controls.Add(this.parashow25);
-            this.Controls.Add(this.parashow22);
-            this.Controls.Add(this.parashow24);
-            this.Controls.Add(this.parashow21);
-            this.Controls.Add(this.parashow23);
+            this.Controls.Add(this.parashownew7);
+            this.Controls.Add(this.parashownew6);
+            this.Controls.Add(this.parashownew5);
+            this.Controls.Add(this.parashownew2);
+            this.Controls.Add(this.parashownew4);
+            this.Controls.Add(this.parashownew28);
+            this.Controls.Add(this.parashownew25);
+            this.Controls.Add(this.parashownew22);
+            this.Controls.Add(this.parashownew19);
+            this.Controls.Add(this.parashownew16);
+            this.Controls.Add(this.parashownew13);
+            this.Controls.Add(this.parashownew10);
+            this.Controls.Add(this.parashownew27);
+            this.Controls.Add(this.parashownew24);
+            this.Controls.Add(this.parashownew21);
+            this.Controls.Add(this.parashownew18);
+            this.Controls.Add(this.parashownew15);
+            this.Controls.Add(this.parashownew12);
+            this.Controls.Add(this.parashownew9);
+            this.Controls.Add(this.parashownew26);
+            this.Controls.Add(this.parashownew23);
+            this.Controls.Add(this.parashownew20);
+            this.Controls.Add(this.parashownew17);
+            this.Controls.Add(this.parashownew14);
+            this.Controls.Add(this.parashownew11);
+            this.Controls.Add(this.parashownew8);
+            this.Controls.Add(this.parashownew1);
+            this.Controls.Add(this.parashownew3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.gauge_mid1);
+            this.Controls.Add(this.gauge0);
             this.Controls.Add(this.gauge1);
             this.Controls.Add(this.gauge2);
             this.Controls.Add(this.gauge4);
@@ -530,40 +534,40 @@
         private Ctrl.Gauge gauge4;
         private Ctrl.Gauge gauge3;
         private Ctrl.Gauge gauge2;
-        private Ctrl.Gauge_mid gauge_mid1;
+        private Ctrl.Gauge_mid gauge0;
         private Ctrl.Gauge gauge1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private Ctrl.Parashow2 parashow23;
-        private Ctrl.Parashow2 parashow24;
-        private Ctrl.Parashow2 parashow25;
-        private Ctrl.Parashow2 parashow26;
-        private Ctrl.Parashow2 parashow27;
-        private Ctrl.Parashow2 parashow214;
-        private Ctrl.Parashow2 parashow213;
-        private Ctrl.Parashow2 parashow212;
-        private Ctrl.Parashow2 parashow211;
-        private Ctrl.Parashow2 parashow210;
-        private Ctrl.Parashow2 parashow217;
-        private Ctrl.Parashow2 parashow218;
-        private Ctrl.Parashow2 parashow219;
-        private Ctrl.Parashow2 parashow220;
-        private Ctrl.Parashow2 parashow221;
-        private Ctrl.Parashow2 parashow224;
-        private Ctrl.Parashow2 parashow225;
-        private Ctrl.Parashow2 parashow226;
-        private Ctrl.Parashow2 parashow227;
-        private Ctrl.Parashow2 parashow228;
-        private Ctrl.Parashow2 parashow21;
-        private Ctrl.Parashow2 parashow22;
-        private Ctrl.Parashow2 parashow29;
-        private Ctrl.Parashow2 parashow28;
-        private Ctrl.Parashow2 parashow216;
-        private Ctrl.Parashow2 parashow215;
-        private Ctrl.Parashow2 parashow223;
-        private Ctrl.Parashow2 parashow222;
+        private Ctrl.Parashownew parashownew3;
+        private Ctrl.Parashownew parashownew4;
+        private Ctrl.Parashownew parashownew5;
+        private Ctrl.Parashownew parashownew6;
+        private Ctrl.Parashownew parashownew7;
+        private Ctrl.Parashownew parashownew1;
+        private Ctrl.Parashownew parashownew2;
         private System.Windows.Forms.Label label3;
+        private Ctrl.Parashownew parashownew8;
+        private Ctrl.Parashownew parashownew9;
+        private Ctrl.Parashownew parashownew10;
+        private Ctrl.Parashownew parashownew11;
+        private Ctrl.Parashownew parashownew12;
+        private Ctrl.Parashownew parashownew13;
+        private Ctrl.Parashownew parashownew14;
+        private Ctrl.Parashownew parashownew15;
+        private Ctrl.Parashownew parashownew16;
+        private Ctrl.Parashownew parashownew17;
+        private Ctrl.Parashownew parashownew18;
+        private Ctrl.Parashownew parashownew19;
+        private Ctrl.Parashownew parashownew20;
+        private Ctrl.Parashownew parashownew21;
+        private Ctrl.Parashownew parashownew22;
+        private Ctrl.Parashownew parashownew23;
+        private Ctrl.Parashownew parashownew24;
+        private Ctrl.Parashownew parashownew25;
+        private Ctrl.Parashownew parashownew26;
+        private Ctrl.Parashownew parashownew27;
+        private Ctrl.Parashownew parashownew28;
 
 
     }

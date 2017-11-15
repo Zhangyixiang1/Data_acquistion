@@ -1,6 +1,6 @@
 ﻿namespace Data_acquisition.Ctrl
 {
-    partial class Parashow2
+    partial class Parashownew
     {
         /// <summary> 
         /// 必需的设计器变量。

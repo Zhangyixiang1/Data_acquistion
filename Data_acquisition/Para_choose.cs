@@ -14,15 +14,18 @@ namespace Data_acquisition
     {
         public ParaLine ctr_line;
         public Parashow ctr_show;
-        public Parashow2 ctr_show2;
+        public Parashownew ctr_show2;
         public Gauge ctr_gauge;
+        public Gauge_mid ctr_gaugemid;
         string Frm_name;
         Button btn_s; string tag_num;
+        Color tag_color;
         public Para_choose(ParaLine ctr, string name)
         {
             Frm_name = name;
             this.ctr_line = ctr;
             tag_num = ctr.Tag.ToString();
+            tag_color=ctr.Color;
             InitializeComponent();
         }
         public Para_choose(Parashow ctr, string name)
@@ -30,14 +33,19 @@ namespace Data_acquisition
             Frm_name = name;
             this.ctr_show = ctr;
             tag_num = ctr.Tag.ToString();
+            tag_color = ctr.Color;
             InitializeComponent();
         }
-        public Para_choose(Parashow2 ctr, string name)
+        public Para_choose(Parashownew ctr, string name)
         {
             Frm_name = name;
             this.ctr_show2 = ctr;
             tag_num = ctr.Tag.ToString();
+            tag_color = ctr.Color;
             InitializeComponent();
+            //如果是数字显示控件，不开放上下限设置
+            txb_max.Enabled=false; txb_min.Enabled=false;   
+
         }
         public Para_choose(Gauge ctr, string name)
         {
@@ -45,14 +53,25 @@ namespace Data_acquisition
             this.ctr_gauge = ctr;
             tag_num = ctr_gauge.Tag.ToString();
             InitializeComponent();
+            //如果是数字显示控件，不开放颜色选取
+            btn_color.Visible=false;
         }
-
+        public Para_choose(Gauge_mid ctr, string name)
+        {
+            Frm_name = name;
+            this.ctr_gaugemid = ctr;
+            tag_num = ctr_gaugemid.Tag.ToString();
+            InitializeComponent();
+            //如果是数字显示控件，不开放颜色选取
+            btn_color.Visible = false;
+        }
 
 
 
         private void Para_choose_Load(object sender, EventArgs e)
         {
 
+            btn_color.BackColor=tag_color;
             backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
             backgroundWorker1.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker1_RunWorkerCompleted);
             backgroundWorker1.WorkerSupportsCancellation = true;    //声明是否支持取消线程
@@ -143,6 +162,8 @@ namespace Data_acquisition
                             node.SelectSingleNode("@max").InnerText = ctr_line.Max;
                             node.SelectSingleNode("@unit").InnerText = ctr_line.Unit;
                             node.SelectSingleNode("@index").InnerText = ctr_line.Tag.ToString();
+                            node.SelectSingleNode("@color").InnerText = ctr_line.Color.R.ToString() + "," +
+                           ctr_line.Color.G.ToString() + "," + ctr_line.Color.B.ToString();
 
                         }
 
@@ -191,7 +212,7 @@ namespace Data_acquisition
                     ctr_show2.Tagname = btn_s.Text;
                     ctr_show2.Tag = message[0];
                     ctr_show2.Unit = message[2];
-
+                   ctr_show2.Color=tag_color;
                     //保存修改到偏好配置文件
 
                     string path = Application.StartupPath + "\\Config\\preference.xml";
@@ -206,10 +227,10 @@ namespace Data_acquisition
                         if (ctr_show2.Name == node.SelectSingleNode("@name").InnerText)
                         {
                             node.SelectSingleNode("@tagname").InnerText = ctr_show2.Tagname;
-
                             node.SelectSingleNode("@unit").InnerText = ctr_show2.Unit;
                             node.SelectSingleNode("@index").InnerText = ctr_show2.Tag.ToString();
-
+                            node.SelectSingleNode("@color").InnerText=ctr_show2.Color.R.ToString()+","+
+                            ctr_show2.Color.G.ToString()+","+ctr_show2.Color.B.ToString();
                         }
 
                     }
@@ -225,7 +246,8 @@ namespace Data_acquisition
                     ctr_gauge.Tagname = btn_s.Text;
                     ctr_gauge.Tag = message[0];
                     ctr_gauge.Unit = message[2];
-
+                    ctr_gauge.Max=txb_max.Text;
+                    ctr_gauge.Min=txb_min.Text;
                     //保存修改到偏好配置文件
 
                     string path = Application.StartupPath + "\\Config\\preference.xml";
@@ -250,8 +272,43 @@ namespace Data_acquisition
                     doc.Save(path);
 
 
-                    ctr_show2.refresh();
+                    ctr_gauge.refresh();
                 }
+
+                if (ctr_gaugemid != null)
+                {
+                    ctr_gaugemid.Tagname = btn_s.Text;
+                    ctr_gaugemid.Tag = message[0];
+                    ctr_gaugemid.Unit = message[2];
+                    ctr_gaugemid.Max = txb_max.Text;
+                    ctr_gaugemid.Min = txb_min.Text;
+                    //保存修改到偏好配置文件
+
+                    string path = Application.StartupPath + "\\Config\\preference.xml";
+                    XmlDocument doc = new XmlDocument();
+                    doc.Load(path);
+                    XmlNode root = doc.DocumentElement;
+                    XmlNodeList nodeList = root.SelectNodes("Form[Name='" + Frm_name + "']//Controlgauge//Control");
+
+
+                    foreach (XmlNode node in nodeList)
+                    {
+                        if (ctr_gauge.Name == node.SelectSingleNode("@name").InnerText)
+                        {
+                            node.SelectSingleNode("@tagname").InnerText = ctr_gauge.Tagname;
+
+                            node.SelectSingleNode("@unit").InnerText = ctr_gauge.Unit;
+                            node.SelectSingleNode("@index").InnerText = ctr_gauge.Tag.ToString();
+
+                        }
+
+                    }
+                    doc.Save(path);
+
+
+                    ctr_gaugemid.refresh();
+                }
+
             }
 
             //保存修改的量程到配置文件
@@ -277,6 +334,17 @@ namespace Data_acquisition
 
 
             this.Close();
+        }
+
+        private void btn_color_Click(object sender, EventArgs e)
+        {
+            ColorDialog loColorForm = new ColorDialog();
+            if (loColorForm.ShowDialog() == DialogResult.OK)
+            {
+               
+                btn_color.BackColor=loColorForm.Color;
+                tag_color = loColorForm.Color;
+            }
         }
     }
 }

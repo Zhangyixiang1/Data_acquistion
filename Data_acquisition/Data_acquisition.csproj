@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comm\Ctr_change.cs" />
+    <Compile Include="Comm\ReadColor.cs" />
     <Compile Include="Ctrl\Gauge.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -98,11 +99,11 @@
     <Compile Include="Ctrl\Parashow.Designer.cs">
       <DependentUpon>Parashow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ctrl\Parashow2.cs">
+    <Compile Include="Ctrl\Parashownew.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Ctrl\Parashow2.Designer.cs">
-      <DependentUpon>Parashow2.cs</DependentUpon>
+    <Compile Include="Ctrl\Parashownew.Designer.cs">
+      <DependentUpon>Parashownew.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -163,8 +164,8 @@
     <EmbeddedResource Include="Ctrl\Parashow.resx">
       <DependentUpon>Parashow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ctrl\Parashow2.resx">
-      <DependentUpon>Parashow2.cs</DependentUpon>
+    <EmbeddedResource Include="Ctrl\Parashownew.resx">
+      <DependentUpon>Parashownew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -221,6 +222,8 @@
     <Content Include="Config\test.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="preference.xml" />
+    <Content Include="test.xml" />
     <None Include="Resources\捕获.PNG" />
     <None Include="Resources\hhlogo.png" />
     <None Include="Resources\24压力泵.jpg" />

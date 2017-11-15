@@ -42,6 +42,7 @@
             this.txb_min = new System.Windows.Forms.TextBox();
             this.txb_max = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.btn_color = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -139,7 +140,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(421, 405);
+            this.label1.Location = new System.Drawing.Point(354, 405);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 2;
@@ -148,7 +149,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(247, 405);
+            this.label2.Location = new System.Drawing.Point(201, 405);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 2;
@@ -156,23 +157,33 @@
             // 
             // txb_min
             // 
-            this.txb_min.Location = new System.Drawing.Point(294, 401);
+            this.txb_min.Location = new System.Drawing.Point(248, 401);
             this.txb_min.Name = "txb_min";
             this.txb_min.Size = new System.Drawing.Size(100, 21);
             this.txb_min.TabIndex = 3;
             // 
             // txb_max
             // 
-            this.txb_max.Location = new System.Drawing.Point(468, 401);
+            this.txb_max.Location = new System.Drawing.Point(401, 401);
             this.txb_max.Name = "txb_max";
             this.txb_max.Size = new System.Drawing.Size(100, 21);
             this.txb_max.TabIndex = 3;
+            // 
+            // btn_color
+            // 
+            this.btn_color.Location = new System.Drawing.Point(538, 396);
+            this.btn_color.Name = "btn_color";
+            this.btn_color.Size = new System.Drawing.Size(30, 30);
+            this.btn_color.TabIndex = 4;
+            this.btn_color.UseVisualStyleBackColor = true;
+            this.btn_color.Click += new System.EventHandler(this.btn_color_Click);
             // 
             // Para_choose
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(598, 433);
+            this.ClientSize = new System.Drawing.Size(584, 433);
+            this.Controls.Add(this.btn_color);
             this.Controls.Add(this.txb_max);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txb_min);
@@ -207,5 +218,6 @@
         private System.Windows.Forms.TextBox txb_min;
         private System.Windows.Forms.TextBox txb_max;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button btn_color;
     }
 }

@@ -39,6 +39,7 @@
             this.radialGaugeLabels1 = new Telerik.WinControls.UI.Gauges.RadialGaugeLabels();
             this.radialGaugeNeedle1 = new Telerik.WinControls.UI.Gauges.RadialGaugeNeedle();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.radRadialGauge1)).BeginInit();
             this.radRadialGauge1.SuspendLayout();
             this.SuspendLayout();
@@ -46,6 +47,7 @@
             // radRadialGauge1
             // 
             this.radRadialGauge1.BackColor = System.Drawing.Color.Transparent;
+            this.radRadialGauge1.Controls.Add(this.label3);
             this.radRadialGauge1.Controls.Add(this.label2);
             this.radRadialGauge1.Controls.Add(this.label1);
             this.radRadialGauge1.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -58,9 +60,9 @@
             this.radRadialGauge1.Location = new System.Drawing.Point(0, 0);
             this.radRadialGauge1.Name = "radRadialGauge1";
             this.radRadialGauge1.RangeEnd = 180D;
-            this.radRadialGauge1.Size = new System.Drawing.Size(320, 270);
-            this.radRadialGauge1.StartAngle = 130D;
-            this.radRadialGauge1.SweepAngle = 280D;
+            this.radRadialGauge1.Size = new System.Drawing.Size(320, 377);
+            this.radRadialGauge1.StartAngle = 180D;
+            this.radRadialGauge1.SweepAngle = 180D;
             this.radRadialGauge1.TabIndex = 6;
             this.radRadialGauge1.Text = "radRadialGauge1";
             this.radRadialGauge1.Value = 5F;
@@ -69,7 +71,7 @@
             // 
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(230, 256);
+            this.label2.Location = new System.Drawing.Point(235, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 8;
@@ -80,7 +82,7 @@
             // 
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(48, 247);
+            this.label1.Location = new System.Drawing.Point(51, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(225, 23);
             this.label1.TabIndex = 7;
@@ -120,7 +122,7 @@
             this.radialGaugeTicks1.DrawText = false;
             this.radialGaugeTicks1.Name = "radialGaugeTicks1";
             this.radialGaugeTicks1.TickColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.radialGaugeTicks1.TicksCount = 18;
+            this.radialGaugeTicks1.TicksCount = 6;
             this.radialGaugeTicks1.TicksLenghtPercentage = 4F;
             this.radialGaugeTicks1.TicksRadiusPercentage = 83F;
             this.radialGaugeTicks1.TickThickness = 1F;
@@ -131,7 +133,7 @@
             this.radialGaugeLabels1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.radialGaugeLabels1.LabelFontSize = 5F;
             this.radialGaugeLabels1.LabelRadiusPercentage = 68F;
-            this.radialGaugeLabels1.LabelsCount = 9;
+            this.radialGaugeLabels1.LabelsCount = 6;
             this.radialGaugeLabels1.Name = "radialGaugeLabels1";
             // 
             // radialGaugeNeedle1
@@ -151,6 +153,17 @@
             // 
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 40F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(53, 208);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(223, 62);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "######";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Gauge
             // 
@@ -177,6 +190,7 @@
         private Telerik.WinControls.UI.Gauges.RadialGaugeLabels radialGaugeLabels1;
         private Telerik.WinControls.UI.Gauges.RadialGaugeNeedle radialGaugeNeedle1;
         public System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label3;
 
     }
 }

@@ -50,7 +50,7 @@ namespace Data_acquisition.Ctrl
             get { return unit; }
             set { this.unit = value; }
         }
-       
+
         public void refresh()
         {
 
