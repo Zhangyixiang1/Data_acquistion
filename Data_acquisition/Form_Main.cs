@@ -812,6 +812,14 @@ namespace Data_acquisition
             frm.Show();
         }
 
+        private void btn_schedulesave_Click(object sender, EventArgs e)
+        {
+            DataGridView dgv = (DataGridView)Application.OpenForms["Frm_Realtrend2"].Controls.Find("dataGridView1", true)[0];
+            dgv.Rows.Clear();
+            for(int i=0;i<dataGridView1.Rows.Count;i++){dgv.Rows.Add(dataGridView1.Rows[i].Clone());}
+            
+        }
+
 
     }
 }

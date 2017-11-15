@@ -135,6 +135,9 @@
             this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel12 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel13 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.radButton9 = new Telerik.WinControls.UI.RadButton();
+            this.btn_schedulesave = new Telerik.WinControls.UI.RadButton();
             this.parashow16 = new Data_acquisition.Ctrl.Parashow();
             this.parashow15 = new Data_acquisition.Ctrl.Parashow();
             this.parashow14 = new Data_acquisition.Ctrl.Parashow();
@@ -174,6 +177,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_schedulesave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -683,12 +689,13 @@
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 15F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ColumnHeadersHeight = 40;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Stage,
             this.Sand,
@@ -701,18 +708,18 @@
             this.SandType});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 15F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 615);
+            this.dataGridView1.Location = new System.Drawing.Point(16, 29);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 15F);
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -725,7 +732,7 @@
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1719, 435);
+            this.dataGridView1.Size = new System.Drawing.Size(1585, 365);
             this.dataGridView1.TabIndex = 18;
             // 
             // Stage
@@ -929,7 +936,7 @@
             this.toolStripStatusLabel6,
             this.toolStripStatusLabel12,
             this.toolStripStatusLabel13});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 1048);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 1058);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1920, 22);
             this.statusStrip1.TabIndex = 24;
@@ -1053,6 +1060,41 @@
             this.toolStripStatusLabel13.Name = "toolStripStatusLabel13";
             this.toolStripStatusLabel13.Size = new System.Drawing.Size(12, 18);
             this.toolStripStatusLabel13.Text = " ";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.btn_schedulesave);
+            this.groupBox4.Controls.Add(this.radButton9);
+            this.groupBox4.Controls.Add(this.dataGridView1);
+            this.groupBox4.Font = new System.Drawing.Font("宋体", 15F);
+            this.groupBox4.ForeColor = System.Drawing.Color.White;
+            this.groupBox4.Location = new System.Drawing.Point(12, 634);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(1719, 416);
+            this.groupBox4.TabIndex = 25;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "计划";
+            // 
+            // radButton9
+            // 
+            this.radButton9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.radButton9.ForeColor = System.Drawing.Color.White;
+            this.radButton9.Location = new System.Drawing.Point(1607, 29);
+            this.radButton9.Name = "radButton9";
+            this.radButton9.Size = new System.Drawing.Size(106, 40);
+            this.radButton9.TabIndex = 19;
+            this.radButton9.Text = "导入";
+            // 
+            // btn_schedulesave
+            // 
+            this.btn_schedulesave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.btn_schedulesave.ForeColor = System.Drawing.Color.White;
+            this.btn_schedulesave.Location = new System.Drawing.Point(1607, 75);
+            this.btn_schedulesave.Name = "btn_schedulesave";
+            this.btn_schedulesave.Size = new System.Drawing.Size(106, 40);
+            this.btn_schedulesave.TabIndex = 19;
+            this.btn_schedulesave.Text = "保存";
+            this.btn_schedulesave.Click += new System.EventHandler(this.btn_schedulesave_Click);
             // 
             // parashow16
             // 
@@ -1341,7 +1383,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(29)))), ((int)(((byte)(31)))));
-            this.ClientSize = new System.Drawing.Size(1920, 1070);
+            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.parashow16);
             this.Controls.Add(this.parashow15);
@@ -1359,7 +1402,6 @@
             this.Controls.Add(this.parashow3);
             this.Controls.Add(this.parashow1);
             this.Controls.Add(this.parashow2);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.pnl_setting);
             this.Controls.Add(this.paraLine1);
             this.Controls.Add(this.paraLine6);
@@ -1414,6 +1456,9 @@
             this.menuStrip2.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radButton9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_schedulesave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1544,5 +1589,8 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel13;
         private System.Windows.Forms.ToolStripMenuItem 图像编辑ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 视图4ToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private Telerik.WinControls.UI.RadButton btn_schedulesave;
+        private Telerik.WinControls.UI.RadButton radButton9;
     }
 }

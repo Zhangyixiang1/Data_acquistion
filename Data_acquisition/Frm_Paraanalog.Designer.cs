@@ -64,17 +64,18 @@
             this.gauge2 = new Data_acquisition.Ctrl.Gauge();
             this.gauge4 = new Data_acquisition.Ctrl.Gauge();
             this.gauge3 = new Data_acquisition.Ctrl.Gauge();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("宋体", 60F, System.Drawing.FontStyle.Bold);
+            this.label1.Font = new System.Drawing.Font("宋体", 50F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label1.Location = new System.Drawing.Point(167, 396);
+            this.label1.Location = new System.Drawing.Point(192, 398);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(358, 80);
+            this.label1.Size = new System.Drawing.Size(301, 67);
             this.label1.TabIndex = 23;
             this.label1.Text = "宏华电气";
             // 
@@ -416,6 +417,8 @@
             // gauge1
             // 
             this.gauge1.Location = new System.Drawing.Point(631, 270);
+            this.gauge1.Max = null;
+            this.gauge1.Min = null;
             this.gauge1.Name = "gauge1";
             this.gauge1.Size = new System.Drawing.Size(320, 270);
             this.gauge1.TabIndex = 18;
@@ -425,6 +428,8 @@
             // gauge2
             // 
             this.gauge2.Location = new System.Drawing.Point(631, 2);
+            this.gauge2.Max = null;
+            this.gauge2.Min = null;
             this.gauge2.Name = "gauge2";
             this.gauge2.Size = new System.Drawing.Size(320, 270);
             this.gauge2.TabIndex = 18;
@@ -434,6 +439,8 @@
             // gauge4
             // 
             this.gauge4.Location = new System.Drawing.Point(1598, 270);
+            this.gauge4.Max = null;
+            this.gauge4.Min = null;
             this.gauge4.Name = "gauge4";
             this.gauge4.Size = new System.Drawing.Size(320, 270);
             this.gauge4.TabIndex = 14;
@@ -443,11 +450,24 @@
             // gauge3
             // 
             this.gauge3.Location = new System.Drawing.Point(1598, 2);
+            this.gauge3.Max = null;
+            this.gauge3.Min = null;
             this.gauge3.Name = "gauge3";
             this.gauge3.Size = new System.Drawing.Size(320, 270);
             this.gauge3.TabIndex = 15;
             this.gauge3.Tagname = null;
             this.gauge3.Unit = null;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("宋体", 25F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label3.Location = new System.Drawing.Point(191, 476);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(303, 34);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "HONGHUA ELECTRIC";
             // 
             // Frm_Paraanalog
             // 
@@ -484,6 +504,7 @@
             this.Controls.Add(this.parashow21);
             this.Controls.Add(this.parashow23);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.gauge_mid1);
@@ -542,6 +563,7 @@
         private Ctrl.Parashow2 parashow215;
         private Ctrl.Parashow2 parashow223;
         private Ctrl.Parashow2 parashow222;
+        private System.Windows.Forms.Label label3;
 
 
     }
