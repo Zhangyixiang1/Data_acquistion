@@ -279,7 +279,7 @@ namespace Data_acquisition
                     XmlDocument doc = new XmlDocument();
                     doc.Load(path);
                     XmlNode root = doc.DocumentElement;
-                    XmlNodeList nodeList = root.SelectNodes("Form[Name='" + Frm_name + "']//Controlgauge//Control");
+                    XmlNodeList nodeList = root.SelectNodes("Form[Name='" + Frm_name + "']//Controlsgauge//Control");
 
 
                     foreach (XmlNode node in nodeList)

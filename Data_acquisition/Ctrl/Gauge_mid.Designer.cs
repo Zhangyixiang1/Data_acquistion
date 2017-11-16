@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.radRadialGauge1 = new Telerik.WinControls.UI.Gauges.RadRadialGauge();
+            this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,7 +41,6 @@
             this.radialGaugeTicks1 = new Telerik.WinControls.UI.Gauges.RadialGaugeTicks();
             this.radialGaugeLabels1 = new Telerik.WinControls.UI.Gauges.RadialGaugeLabels();
             this.radialGaugeNeedle1 = new Telerik.WinControls.UI.Gauges.RadialGaugeNeedle();
-            this.label5 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.radRadialGauge1)).BeginInit();
             this.radRadialGauge1.SuspendLayout();
@@ -70,6 +70,17 @@
             this.radRadialGauge1.TabIndex = 8;
             this.radRadialGauge1.Text = "radRadialGauge1";
             this.radRadialGauge1.Value = 0F;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 45F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(182, 452);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(288, 55);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "######";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
@@ -181,6 +192,7 @@
             this.radialGaugeNeedle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
             this.radialGaugeNeedle1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
             this.radialGaugeNeedle1.BackLenghtPercentage = 0D;
+            this.radialGaugeNeedle1.BindValue = true;
             this.radialGaugeNeedle1.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             this.radialGaugeNeedle1.InnerPointRadiusPercentage = 0D;
             this.radialGaugeNeedle1.LenghtPercentage = 70D;
@@ -189,18 +201,7 @@
             this.radialGaugeNeedle1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             this.radialGaugeNeedle1.Thickness = 1.5D;
             this.radialGaugeNeedle1.UseCompatibleTextRendering = false;
-            this.radialGaugeNeedle1.Value = 130F;
-            // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 45F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(182, 452);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(288, 55);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "######";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radialGaugeNeedle1.Value = 0F;
             // 
             // timer1
             // 

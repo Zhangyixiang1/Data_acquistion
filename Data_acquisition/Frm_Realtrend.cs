@@ -16,7 +16,7 @@ namespace Data_acquisition
         {
             InitializeComponent();
             zedGraphControl1 = new ZedGraphControl();
-            zedGraphControl1.Size = new System.Drawing.Size(1440, 900);
+            zedGraphControl1.Size = new System.Drawing.Size(1920, 1080);
             //初始化相关属性
             zedGraphControl1.IsShowContextMenu = false;
             zedGraphControl1.IsEnableHPan = false; zedGraphControl1.IsEnableVPan = false;

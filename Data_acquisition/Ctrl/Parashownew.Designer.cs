@@ -38,11 +38,11 @@
             // 
             // radPanel1
             // 
-            this.radPanel1.Font = new System.Drawing.Font("Segoe UI", 25F);
+            this.radPanel1.Font = new System.Drawing.Font("Times New Roman", 20F);
             this.radPanel1.ForeColor = System.Drawing.Color.White;
             this.radPanel1.Location = new System.Drawing.Point(0, 29);
             this.radPanel1.Name = "radPanel1";
-            this.radPanel1.Size = new System.Drawing.Size(170, 33);
+            this.radPanel1.Size = new System.Drawing.Size(170, 36);
             this.radPanel1.TabIndex = 0;
             this.radPanel1.Text = "######";
             this.radPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -89,7 +89,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.radPanel1);
             this.Name = "Parashownew";
-            this.Size = new System.Drawing.Size(170, 63);
+            this.Size = new System.Drawing.Size(170, 68);
             this.Load += new System.EventHandler(this.Parashow2_Load);
             this.Resize += new System.EventHandler(this.Parashow2_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();
