@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.radRadialGauge1 = new Telerik.WinControls.UI.Gauges.RadRadialGauge();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.radialGaugeArc1 = new Telerik.WinControls.UI.Gauges.RadialGaugeArc();
@@ -39,7 +40,6 @@
             this.radialGaugeLabels1 = new Telerik.WinControls.UI.Gauges.RadialGaugeLabels();
             this.radialGaugeNeedle1 = new Telerik.WinControls.UI.Gauges.RadialGaugeNeedle();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.radRadialGauge1)).BeginInit();
             this.radRadialGauge1.SuspendLayout();
             this.SuspendLayout();
@@ -47,9 +47,9 @@
             // radRadialGauge1
             // 
             this.radRadialGauge1.BackColor = System.Drawing.Color.Transparent;
-            this.radRadialGauge1.Controls.Add(this.label3);
             this.radRadialGauge1.Controls.Add(this.label2);
             this.radRadialGauge1.Controls.Add(this.label1);
+            this.radRadialGauge1.Controls.Add(this.label3);
             this.radRadialGauge1.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radialGaugeArc1,
             this.radialGaugeArc2,
@@ -67,27 +67,39 @@
             this.radRadialGauge1.Text = "radRadialGauge1";
             this.radRadialGauge1.Value = 5F;
             // 
+            // label3
+            // 
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 30F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(20, 210);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(286, 50);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "######";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label2
             // 
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(235, 25);
+            this.label2.Location = new System.Drawing.Point(24, 244);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
+            this.label2.Size = new System.Drawing.Size(73, 12);
             this.label2.TabIndex = 8;
             this.label2.Text = "Psi";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(51, 14);
+            this.label1.Location = new System.Drawing.Point(24, 215);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(225, 23);
+            this.label1.Size = new System.Drawing.Size(73, 23);
             this.label1.TabIndex = 7;
             this.label1.Text = "油压";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // radialGaugeArc1
@@ -153,17 +165,6 @@
             // 
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 40F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(53, 208);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(223, 62);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "######";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Gauge
             // 

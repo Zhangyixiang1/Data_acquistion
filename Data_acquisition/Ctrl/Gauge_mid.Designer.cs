@@ -51,8 +51,6 @@
             this.radRadialGauge1.BackColor = System.Drawing.Color.Transparent;
             this.radRadialGauge1.Controls.Add(this.label5);
             this.radRadialGauge1.Controls.Add(this.label3);
-            this.radRadialGauge1.Controls.Add(this.label4);
-            this.radRadialGauge1.Controls.Add(this.label2);
             this.radRadialGauge1.Controls.Add(this.label1);
             this.radRadialGauge1.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radialGaugeArc1,
@@ -61,10 +59,10 @@
             this.radialGaugeTicks1,
             this.radialGaugeLabels1,
             this.radialGaugeNeedle1});
-            this.radRadialGauge1.Location = new System.Drawing.Point(0, 0);
+            this.radRadialGauge1.Location = new System.Drawing.Point(3, 37);
             this.radRadialGauge1.Name = "radRadialGauge1";
             this.radRadialGauge1.RangeEnd = 180D;
-            this.radRadialGauge1.Size = new System.Drawing.Size(640, 540);
+            this.radRadialGauge1.Size = new System.Drawing.Size(640, 514);
             this.radRadialGauge1.StartAngle = 130D;
             this.radRadialGauge1.SweepAngle = 280D;
             this.radRadialGauge1.TabIndex = 8;
@@ -75,7 +73,7 @@
             // 
             this.label5.Font = new System.Drawing.Font("Times New Roman", 45F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(182, 452);
+            this.label5.Location = new System.Drawing.Point(182, 436);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(288, 55);
             this.label5.TabIndex = 11;
@@ -86,7 +84,7 @@
             // 
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(596, 528);
+            this.label3.Location = new System.Drawing.Point(487, 528);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 12);
             this.label3.TabIndex = 10;
@@ -97,9 +95,9 @@
             // 
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(0, 517);
+            this.label4.Location = new System.Drawing.Point(99, 14);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(640, 23);
+            this.label4.Size = new System.Drawing.Size(446, 23);
             this.label4.TabIndex = 9;
             this.label4.Text = "油压";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -107,9 +105,9 @@
             // 
             // label2
             // 
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(818, 798);
+            this.label2.Location = new System.Drawing.Point(469, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 8;
@@ -212,7 +210,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.radRadialGauge1);
+            this.Controls.Add(this.label4);
             this.Name = "Gauge_mid";
             this.Size = new System.Drawing.Size(640, 540);
             ((System.ComponentModel.ISupportInitialize)(this.radRadialGauge1)).EndInit();

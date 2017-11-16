@@ -82,11 +82,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("宋体", 60F, System.Drawing.FontStyle.Bold);
+            this.label2.Font = new System.Drawing.Font("宋体", 40F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label2.Location = new System.Drawing.Point(139, 27);
+            this.label2.Location = new System.Drawing.Point(205, 50);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(403, 80);
+            this.label2.Size = new System.Drawing.Size(275, 54);
             this.label2.TabIndex = 23;
             this.label2.Text = "iFracView";
             // 
@@ -442,7 +442,7 @@
             // 
             // gauge2
             // 
-            this.gauge2.Location = new System.Drawing.Point(631, 2);
+            this.gauge2.Location = new System.Drawing.Point(631, 0);
             this.gauge2.Max = null;
             this.gauge2.Min = null;
             this.gauge2.Name = "gauge2";
@@ -464,7 +464,7 @@
             // 
             // gauge3
             // 
-            this.gauge3.Location = new System.Drawing.Point(1598, 2);
+            this.gauge3.Location = new System.Drawing.Point(1598, 0);
             this.gauge3.Max = null;
             this.gauge3.Min = null;
             this.gauge3.Name = "gauge3";
