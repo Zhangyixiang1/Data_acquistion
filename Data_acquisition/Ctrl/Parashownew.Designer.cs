@@ -40,7 +40,7 @@
             // 
             this.radPanel1.Font = new System.Drawing.Font("Segoe UI", 25F);
             this.radPanel1.ForeColor = System.Drawing.Color.White;
-            this.radPanel1.Location = new System.Drawing.Point(0, 27);
+            this.radPanel1.Location = new System.Drawing.Point(0, 29);
             this.radPanel1.Name = "radPanel1";
             this.radPanel1.Size = new System.Drawing.Size(170, 33);
             this.radPanel1.TabIndex = 0;
@@ -51,6 +51,8 @@
             ((Telerik.WinControls.Primitives.FillPrimitive)(this.radPanel1.GetChildAt(0).GetChildAt(0))).BackColor3 = System.Drawing.Color.Blue;
             ((Telerik.WinControls.Primitives.FillPrimitive)(this.radPanel1.GetChildAt(0).GetChildAt(0))).BackColor4 = System.Drawing.Color.Blue;
             ((Telerik.WinControls.Primitives.FillPrimitive)(this.radPanel1.GetChildAt(0).GetChildAt(0))).BackColor = System.Drawing.Color.Blue;
+            ((Telerik.WinControls.Primitives.BorderPrimitive)(this.radPanel1.GetChildAt(0).GetChildAt(1))).BoxStyle = Telerik.WinControls.BorderBoxStyle.OuterInnerBorders;
+            ((Telerik.WinControls.Primitives.BorderPrimitive)(this.radPanel1.GetChildAt(0).GetChildAt(1))).BorderDrawMode = Telerik.WinControls.BorderDrawModes.VerticalOverHorizontal;
             // 
             // timer1
             // 
@@ -78,7 +80,7 @@
             this.label1.Text = "油压";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // Parashow2
+            // Parashownew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -86,8 +88,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.radPanel1);
-            this.Name = "Parashow2";
-            this.Size = new System.Drawing.Size(170, 60);
+            this.Name = "Parashownew";
+            this.Size = new System.Drawing.Size(170, 63);
             this.Load += new System.EventHandler(this.Parashow2_Load);
             this.Resize += new System.EventHandler(this.Parashow2_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();

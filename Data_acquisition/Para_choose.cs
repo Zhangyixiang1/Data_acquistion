@@ -25,7 +25,7 @@ namespace Data_acquisition
             Frm_name = name;
             this.ctr_line = ctr;
             tag_num = ctr.Tag.ToString();
-            tag_color=ctr.Color;
+            tag_color = ctr.Color;
             InitializeComponent();
         }
         public Para_choose(Parashow ctr, string name)
@@ -44,7 +44,7 @@ namespace Data_acquisition
             tag_color = ctr.Color;
             InitializeComponent();
             //如果是数字显示控件，不开放上下限设置
-            txb_max.Enabled=false; txb_min.Enabled=false;   
+            txb_max.Enabled = false; txb_min.Enabled = false;
 
         }
         public Para_choose(Gauge ctr, string name)
@@ -54,7 +54,7 @@ namespace Data_acquisition
             tag_num = ctr_gauge.Tag.ToString();
             InitializeComponent();
             //如果是数字显示控件，不开放颜色选取
-            btn_color.Visible=false;
+            btn_color.Visible = false;
         }
         public Para_choose(Gauge_mid ctr, string name)
         {
@@ -71,7 +71,7 @@ namespace Data_acquisition
         private void Para_choose_Load(object sender, EventArgs e)
         {
 
-            btn_color.BackColor=tag_color;
+            btn_color.BackColor = tag_color;
             backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
             backgroundWorker1.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker1_RunWorkerCompleted);
             backgroundWorker1.WorkerSupportsCancellation = true;    //声明是否支持取消线程
@@ -102,10 +102,34 @@ namespace Data_acquisition
                 btn.Tag = Index + "," + Unit_en + "," + Unit_me + "," + max + "," + min;
                 btn.Text = Name;
                 btn.Size = new Size(120, 23);
-
-                btn.Location = new Point(x + 131 * (i % 4), y + 29 * (i / 4));
                 btn.Click += btnClick;
-                this.tabPage2.Controls.Add(btn);
+                if (i >= 0 && i < 34)
+                {
+                    btn.Location = new Point(x + 131 * (i % 4), y + 29 * (i / 4));
+                    if (tabPage1.InvokeRequired)
+                    {
+
+                        tabPage1.Invoke(new Action(() => { this.tabPage1.Controls.Add(btn); }));
+                    }
+                }
+
+                if (i >= 34 && i < 106)
+                {
+                    btn.Location = new Point(x + 131 * ((i - 34) % 4), y + 29 * ((i - 34) / 4));
+                    if (tabPage2.InvokeRequired)
+                    {
+                        tabPage2.Invoke(new Action(() => { this.tabPage2.Controls.Add(btn); }));
+                    }
+                }
+                if (i >= 106 && i < list.Count)
+                {
+                    btn.Location = new Point(x + 131 * ((i - 106) % 4), y + 29 * ((i - 106) / 4));
+                    if (tabPage3.InvokeRequired)
+                    {
+                        tabPage3.Invoke(new Action(() => { this.tabPage3.Controls.Add(btn); }));
+                    }
+                }
+
                 if (tag_num == Index)
                 {
                     btn_s = btn; btn_s.BackColor = Color.Gray;
@@ -179,7 +203,7 @@ namespace Data_acquisition
                     ctr_show.Tagname = btn_s.Text;
                     ctr_show.Tag = message[0];
                     ctr_show.Unit = message[2];
-
+                    ctr_show.Color = tag_color;
                     //保存修改到偏好配置文件
 
                     string path = Application.StartupPath + "\\Config\\preference.xml";
@@ -197,7 +221,8 @@ namespace Data_acquisition
 
                             node.SelectSingleNode("@unit").InnerText = ctr_show.Unit;
                             node.SelectSingleNode("@index").InnerText = ctr_show.Tag.ToString();
-
+                            node.SelectSingleNode("@color").InnerText = ctr_show.Color.R.ToString() + "," +
+                            ctr_show.Color.G.ToString() + "," + ctr_show.Color.B.ToString();
                         }
 
                     }
@@ -212,7 +237,7 @@ namespace Data_acquisition
                     ctr_show2.Tagname = btn_s.Text;
                     ctr_show2.Tag = message[0];
                     ctr_show2.Unit = message[2];
-                   ctr_show2.Color=tag_color;
+                    ctr_show2.Color = tag_color;
                     //保存修改到偏好配置文件
 
                     string path = Application.StartupPath + "\\Config\\preference.xml";
@@ -229,8 +254,8 @@ namespace Data_acquisition
                             node.SelectSingleNode("@tagname").InnerText = ctr_show2.Tagname;
                             node.SelectSingleNode("@unit").InnerText = ctr_show2.Unit;
                             node.SelectSingleNode("@index").InnerText = ctr_show2.Tag.ToString();
-                            node.SelectSingleNode("@color").InnerText=ctr_show2.Color.R.ToString()+","+
-                            ctr_show2.Color.G.ToString()+","+ctr_show2.Color.B.ToString();
+                            node.SelectSingleNode("@color").InnerText = ctr_show2.Color.R.ToString() + "," +
+                            ctr_show2.Color.G.ToString() + "," + ctr_show2.Color.B.ToString();
                         }
 
                     }
@@ -246,8 +271,8 @@ namespace Data_acquisition
                     ctr_gauge.Tagname = btn_s.Text;
                     ctr_gauge.Tag = message[0];
                     ctr_gauge.Unit = message[2];
-                    ctr_gauge.Max=txb_max.Text;
-                    ctr_gauge.Min=txb_min.Text;
+                    ctr_gauge.Max = txb_max.Text;
+                    ctr_gauge.Min = txb_min.Text;
                     //保存修改到偏好配置文件
 
                     string path = Application.StartupPath + "\\Config\\preference.xml";
@@ -341,8 +366,8 @@ namespace Data_acquisition
             ColorDialog loColorForm = new ColorDialog();
             if (loColorForm.ShowDialog() == DialogResult.OK)
             {
-               
-                btn_color.BackColor=loColorForm.Color;
+
+                btn_color.BackColor = loColorForm.Color;
                 tag_color = loColorForm.Color;
             }
         }

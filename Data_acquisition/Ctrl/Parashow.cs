@@ -99,5 +99,11 @@ namespace Data_acquisition.Ctrl
            
             catch{}
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            Para_choose frm = new Para_choose(this, this.ParentForm.Name);
+            frm.ShowDialog();
+        }
     }
 }

@@ -73,14 +73,14 @@ namespace Data_acquisition
         /// </summary>
         private void intialdata()
         {
-            double[] test = new double[100];
+            double[] test = new double[200];
             Random rd = new Random();
             while (true)
             {
                 try
                 {
                     Thread.Sleep(500);
-                    for (int i = 0; i < 100; i++)
+                    for (int i = 0; i < 200; i++)
                     {
                         test[i] = rd.Next(0, 1000);
                     }
@@ -603,6 +603,7 @@ namespace Data_acquisition
                                 ctr2.Tagname = node.SelectSingleNode("@tagname").InnerText;
                                 ctr2.Unit = node.SelectSingleNode("@unit").InnerText;
                                 ctr2.Tag = node.SelectSingleNode("@index").InnerText;
+                                ctr2.Color = Comm.ReadColor.getcolor(node.SelectSingleNode("@color").InnerText);
                                 ctr2.refresh();
                             }
 
@@ -840,6 +841,8 @@ namespace Data_acquisition
         private void 视图3ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Frm_Paradigital frm = new Frm_Paradigital();
+            frm.Location = new Point(1921, 0);
+            
             frm.Show();
         }
 

@@ -32,9 +32,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
             this.btn_OK = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,9 +48,6 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -88,35 +82,8 @@
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(552, 353);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "压裂泵1";
+            this.tabPage3.Text = "压裂泵";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(552, 353);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "压裂泵2";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(552, 353);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "压裂泵3";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // tabPage6
-            // 
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(552, 353);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "压裂泵4";
-            this.tabPage6.UseVisualStyleBackColor = true;
             // 
             // btn_OK
             // 
@@ -208,9 +175,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.Button btn_OK;
         private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.Label label1;
