@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Xml;
 using Telerik.WinControls;
 using ZedGraph;
+using NPOI;
+using Data_acquisition.DAL;
 namespace Data_acquisition
 {
     public partial class Form_Main : Telerik.WinControls.UI.RadForm
@@ -34,6 +36,7 @@ namespace Data_acquisition
             toolTip1 = new ToolTip();
             Paralist = new Dictionary<string, double[]>();
             xml_load();//读取偏好设置文件
+         //   schedule_load();//从数据库读取计划信息
             chart_initial();//初始化图表控件
 
             //测试用，在子线程中生成随机数填充paralist
@@ -166,9 +169,11 @@ namespace Data_acquisition
             zedGraphControl1.IsEnableHZoom = false; zedGraphControl1.IsEnableZoom = false;
             GraphPane myPane = zedGraphControl1.GraphPane;
             myPane.Fill = new Fill(Color.FromArgb(28, 29, 31));
-            myPane.Chart.Fill = new Fill(Color.FromArgb(49, 49, 49));
-
-            myPane.Border.IsVisible = false;
+           // myPane.Chart.Fill = new Fill(Color.FromArgb(49, 49, 49));
+           myPane.Chart.Fill=new Fill(Color.Black);
+            myPane.IsFontsScaled = false;
+          //  myPane.Border.IsVisible = false;
+          myPane.Border.Color=Color.White;
             // Set the titles and axis labels
             myPane.Legend.IsVisible = false;
             myPane.Title.Text = "";
@@ -176,7 +181,8 @@ namespace Data_acquisition
             myPane.XAxis.Title.Text = "时间(分钟)";
             myPane.XAxis.MajorGrid.Color = Color.White;
             myPane.XAxis.Scale.FontSpec.FontColor = Color.White;
-            myPane.XAxis.Title.FontSpec.Size = 10;
+            myPane.XAxis.Scale.FontSpec.Size = 15;
+            myPane.XAxis.Title.FontSpec.Size = 15;
             myPane.XAxis.Title.FontSpec.FontColor = Color.White;
             myPane.XAxis.Scale.Min = 0; //X轴最小值0
             myPane.XAxis.Scale.Max = 30; //X轴最大30
@@ -281,9 +287,9 @@ namespace Data_acquisition
 
             // Make the Y axis blue
             myPane.YAxis.Scale.FontSpec.FontColor = Color.Blue;
-            myPane.YAxis.Scale.FontSpec.Size = 10;
+            myPane.YAxis.Scale.FontSpec.Size = 15;
             myPane.YAxis.Title.FontSpec.FontColor = Color.Blue;
-            myPane.YAxis.Title.FontSpec.Size = 10;
+            myPane.YAxis.Title.FontSpec.Size = 15;
             myPane.YAxis.Color = Color.Blue;
             // turn off the opposite tics so the Y tics don't show up on the Y2 axis
             myPane.YAxis.MajorTic.IsOpposite = false;
@@ -301,9 +307,9 @@ namespace Data_acquisition
             myPane.Y2Axis.IsVisible = true;
             // Make the Y2 axis scale black
             myPane.Y2Axis.Scale.FontSpec.FontColor = Color.Lime;
-            myPane.Y2Axis.Scale.FontSpec.Size = 10;
+            myPane.Y2Axis.Scale.FontSpec.Size = 15;
             myPane.Y2Axis.Title.FontSpec.FontColor = Color.Lime;
-            myPane.Y2Axis.Title.FontSpec.Size = 10;
+            myPane.Y2Axis.Title.FontSpec.Size = 15;
             myPane.Y2Axis.Color = Color.Lime;
             // turn off the opposite tics so the Y2 tics don't show up on the Y axis
             myPane.Y2Axis.MajorTic.IsOpposite = false;
@@ -321,9 +327,9 @@ namespace Data_acquisition
             YAxis yAxis3 = new YAxis(paraLine2.Tagname + "(" + paraLine2.Unit + ")");
             myPane.YAxisList.Add(yAxis3);
             yAxis3.Scale.FontSpec.FontColor = Color.Yellow;
-            yAxis3.Scale.FontSpec.Size = 10;
+            yAxis3.Scale.FontSpec.Size = 15;
             yAxis3.Title.FontSpec.FontColor = Color.Yellow;
-            yAxis3.Title.FontSpec.Size = 10;
+            yAxis3.Title.FontSpec.Size = 15;
             yAxis3.Color = Color.Yellow;
             // turn off the opposite tics so the Y2 tics don't show up on the Y axis
             yAxis3.MajorTic.IsInside = false;
@@ -342,9 +348,9 @@ namespace Data_acquisition
             YAxis yAxis5 = new YAxis(paraLine1.Tagname + "(" + paraLine1.Unit + ")");
             myPane.YAxisList.Add(yAxis5);
             yAxis5.Scale.FontSpec.FontColor = Color.Red;
-            yAxis5.Scale.FontSpec.Size = 10;
+            yAxis5.Scale.FontSpec.Size = 15;
             yAxis5.Title.FontSpec.FontColor = Color.Red;
-            yAxis5.Title.FontSpec.Size = 10;
+            yAxis5.Title.FontSpec.Size = 15;
             yAxis5.Color = Color.Red;
             // turn off the opposite tics so the Y2 tics don't show up on the Y axis
             yAxis5.MajorTic.IsInside = false;
@@ -364,9 +370,9 @@ namespace Data_acquisition
             yAxis4.IsVisible = true;
             myPane.Y2AxisList.Add(yAxis4);
             yAxis4.Scale.FontSpec.FontColor = Color.SeaGreen;
-            yAxis4.Scale.FontSpec.Size = 10;
+            yAxis4.Scale.FontSpec.Size = 15;
             yAxis4.Title.FontSpec.FontColor = Color.SeaGreen;
-            yAxis4.Title.FontSpec.Size = 10;
+            yAxis4.Title.FontSpec.Size = 15;
             yAxis4.Color = Color.SeaGreen;
             // turn off the opposite tics so the Y2 tics don't show up on the Y axis
             yAxis4.MajorTic.IsInside = false;
@@ -385,9 +391,9 @@ namespace Data_acquisition
             yAxis6.IsVisible = true;
             myPane.Y2AxisList.Add(yAxis6);
             yAxis6.Scale.FontSpec.FontColor = Color.SkyBlue;
-            yAxis6.Scale.FontSpec.Size = 10;
+            yAxis6.Scale.FontSpec.Size = 15;
             yAxis6.Title.FontSpec.FontColor = Color.SkyBlue;
-            yAxis6.Title.FontSpec.Size = 10;
+            yAxis6.Title.FontSpec.Size = 15;
             yAxis6.Color = Color.SkyBlue;
             // turn off the opposite tics so the Y2 tics don't show up on the Y axis
             yAxis6.MajorTic.IsInside = false;
@@ -682,7 +688,7 @@ namespace Data_acquisition
 
             factor = 1;//测试用
             //添加数据
-            list1.Add(count / factor, (new Random()).Next(50));
+            list1.Add(count / factor, Math.Sin(0.1*count));
             list2.Add(count / factor, (new Random()).Next(50));
             list3.Add(count / factor, (new Random()).Next(50));
             list4.Add(count / factor, (new Random()).Next(50));
@@ -858,6 +864,46 @@ namespace Data_acquisition
             dgv.Rows.Clear();
             for (int i = 0; i < dataGridView1.Rows.Count; i++) { dgv.Rows.Add(dataGridView1.Rows[i].Clone()); }
 
+        }
+
+        private void radButton9_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "Excel(*.xlsx)|*.xlsx|Excel(*.xls)|*.xls";
+            openFile.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            openFile.Multiselect = false;
+            if (openFile.ShowDialog() == DialogResult.Cancel) return ;
+            var filePath = openFile.FileName;
+            string fileType = System.IO.Path.GetExtension(filePath);
+            if (string.IsNullOrEmpty(fileType)) return ;
+
+
+            try
+            {
+                using (ExcelHelper excelHelper = new ExcelHelper(filePath))
+                {
+                    DataTable dt = excelHelper.ExcelToDataTable("MySheet", true);
+                 
+                    dataGridView1.DataSource=dt;
+                }
+            }
+            catch (Exception ex)
+            {
+               
+            }
+        }
+
+        private void test1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        Frm_Paradigital2 frm=new Frm_Paradigital2 ();
+        frm.Location = new Point(1921, 0);
+        frm.Show();
+        }
+
+        private void test2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Paraanalog2 frm=new Frm_Paraanalog2 ();
+            frm.Show();
         }
 
 

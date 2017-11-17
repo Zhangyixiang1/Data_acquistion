@@ -30,10 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.radRadialGauge1 = new Telerik.WinControls.UI.Gauges.RadRadialGauge();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.radialGaugeArc1 = new Telerik.WinControls.UI.Gauges.RadialGaugeArc();
             this.radialGaugeArc2 = new Telerik.WinControls.UI.Gauges.RadialGaugeArc();
@@ -49,8 +48,9 @@
             // radRadialGauge1
             // 
             this.radRadialGauge1.BackColor = System.Drawing.Color.Transparent;
+            this.radRadialGauge1.Controls.Add(this.label2);
+            this.radRadialGauge1.Controls.Add(this.label4);
             this.radRadialGauge1.Controls.Add(this.label5);
-            this.radRadialGauge1.Controls.Add(this.label3);
             this.radRadialGauge1.Controls.Add(this.label1);
             this.radRadialGauge1.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radialGaugeArc1,
@@ -59,60 +59,52 @@
             this.radialGaugeTicks1,
             this.radialGaugeLabels1,
             this.radialGaugeNeedle1});
-            this.radRadialGauge1.Location = new System.Drawing.Point(3, 37);
+            this.radRadialGauge1.Location = new System.Drawing.Point(0, 0);
             this.radRadialGauge1.Name = "radRadialGauge1";
             this.radRadialGauge1.RangeEnd = 180D;
-            this.radRadialGauge1.Size = new System.Drawing.Size(640, 514);
+            this.radRadialGauge1.Size = new System.Drawing.Size(640, 540);
             this.radRadialGauge1.StartAngle = 130D;
             this.radRadialGauge1.SweepAngle = 280D;
             this.radRadialGauge1.TabIndex = 8;
             this.radRadialGauge1.Text = "radRadialGauge1";
             this.radRadialGauge1.Value = 0F;
             // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 45F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(182, 436);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(288, 55);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "######";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(487, 528);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 12);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Psi";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label4
-            // 
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(99, 14);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(446, 23);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "油压";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
             // label2
             // 
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("宋体", 12F);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(469, 22);
+            this.label2.Location = new System.Drawing.Point(435, 515);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
+            this.label2.Size = new System.Drawing.Size(115, 23);
             this.label2.TabIndex = 8;
             this.label2.Text = "Psi";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("宋体", 12F);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(90, 515);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(125, 23);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "油压";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // label5
+            // 
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 45F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(85, 470);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(467, 70);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "######";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
@@ -210,9 +202,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.radRadialGauge1);
-            this.Controls.Add(this.label4);
             this.Name = "Gauge_mid";
             this.Size = new System.Drawing.Size(640, 540);
             ((System.ComponentModel.ISupportInitialize)(this.radRadialGauge1)).EndInit();
@@ -232,7 +222,6 @@
         private Telerik.WinControls.UI.Gauges.RadialGaugeTicks radialGaugeTicks1;
         private Telerik.WinControls.UI.Gauges.RadialGaugeLabels radialGaugeLabels1;
         private Telerik.WinControls.UI.Gauges.RadialGaugeNeedle radialGaugeNeedle1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.Timer timer1;

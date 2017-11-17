@@ -23,7 +23,7 @@ namespace Data_acquisition
             zedGraphControl1.IsEnableHZoom = false; zedGraphControl1.IsEnableZoom = false;
             GraphPane myPane = zedGraphControl1.GraphPane;
             myPane.Fill = new Fill(Color.FromArgb(28, 29, 31));
-            myPane.Chart.Fill = new Fill(Color.FromArgb(49, 49, 49));
+            myPane.Chart.Fill = new Fill(Color.Black);
             myPane.Border.IsVisible = false;
             // Set the titles and axis labels
             //    myPane.Legend.IsVisible = false;
@@ -32,8 +32,8 @@ namespace Data_acquisition
             myPane.Legend.Position = LegendPos.TopCenter;
             myPane.Legend.FontSpec.FontColor = Color.White;
             myPane.Legend.Border.IsVisible = false;
-            myPane.Legend.FontSpec.Size = 10;
-
+            myPane.Legend.FontSpec.Size = 15;
+            myPane.IsFontsScaled = false;
             myPane.Title.Text = "";
             myPane.YAxisList.Clear();
             for (int i = 0; i < panel.YAxisList.Count; i++) { myPane.YAxisList.Add(panel.YAxisList[i]); }
@@ -47,7 +47,8 @@ namespace Data_acquisition
             myPane.XAxis.MinorGrid.Color = Color.White;
             // myPane.XAxis.MinorGrid.IsVisible = true;
             myPane.XAxis.Scale.FontSpec.FontColor = Color.White;
-            myPane.XAxis.Title.FontSpec.Size = 10;
+            myPane.XAxis.Scale.FontSpec.Size = 15;
+            myPane.XAxis.Title.FontSpec.Size = 15;
             myPane.XAxis.Title.FontSpec.FontColor = Color.White;
             myPane.XAxis.Scale.Min = panel.XAxis.Scale.Min; //X轴最小值0
             myPane.XAxis.Scale.Max = panel.XAxis.Scale.Max; //X轴最大30
@@ -60,7 +61,8 @@ namespace Data_acquisition
             myPane.XAxis.Scale.MajorStep = 5;//X轴大步长为5，也就是显示文字的大间隔
             //曲线
             myPane.CurveList = panel.CurveList;
-
+         
+      
         }
 
 

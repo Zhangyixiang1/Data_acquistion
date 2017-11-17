@@ -23,8 +23,10 @@ namespace Data_acquisition
             zedGraphControl1.IsEnableHZoom = false; zedGraphControl1.IsEnableZoom = false;
             GraphPane myPane = zedGraphControl1.GraphPane;
             myPane.Fill = new Fill(Color.FromArgb(28, 29, 31));
-            myPane.Chart.Fill = new Fill(Color.FromArgb(49, 49, 49));
-            myPane.Border.IsVisible = false;
+            myPane.Chart.Fill = new Fill(Color.Black);
+         //   myPane.Border.IsVisible = false;
+         myPane.Border.Color=Color.White;
+            myPane.IsFontsScaled = false;
             //legend 相关属性
             myPane.Legend.Fill = new Fill(Color.FromArgb(28, 29, 31));
             myPane.Legend.Border.IsVisible=false;
@@ -45,7 +47,8 @@ namespace Data_acquisition
             myPane.XAxis.MinorGrid.Color = Color.White;
             // myPane.XAxis.MinorGrid.IsVisible = true;
             myPane.XAxis.Scale.FontSpec.FontColor = Color.White;
-            myPane.XAxis.Title.FontSpec.Size = 10;
+            myPane.XAxis.Title.FontSpec.Size = 15;
+            myPane.XAxis.Scale.FontSpec.Size = 15;
             myPane.XAxis.Title.FontSpec.FontColor = Color.White;
             myPane.XAxis.Scale.Min = panel.XAxis.Scale.Min; //X轴最小值0
             myPane.XAxis.Scale.Max = panel.XAxis.Scale.Max; //X轴最大30

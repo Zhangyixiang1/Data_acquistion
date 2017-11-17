@@ -21,6 +21,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,8 +34,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aspose.Cells">
+      <HintPath>C:\Users\zhangyx1\Downloads\NPOI-Lib\Aspose.Cells.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\zhangyx1\Desktop\driver_mysql\v4.0\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>C:\Users\zhangyx1\Downloads\NPOI-Lib\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML">
+      <HintPath>C:\Users\zhangyx1\Downloads\NPOI-Lib\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net">
+      <HintPath>C:\Users\zhangyx1\Downloads\NPOI-Lib\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats">
+      <HintPath>C:\Users\zhangyx1\Downloads\NPOI-Lib\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
@@ -105,6 +129,8 @@
     <Compile Include="Ctrl\Parashownew.Designer.cs">
       <DependentUpon>Parashownew.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAL\DbManager.cs" />
+    <Compile Include="DAL\ExcelHelper.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +142,18 @@
     </Compile>
     <Compile Include="Form_Main.Designer.cs">
       <DependentUpon>Form_Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Paraanalog2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Paraanalog2.Designer.cs">
+      <DependentUpon>Frm_Paraanalog2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Paradigital2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Paradigital2.Designer.cs">
+      <DependentUpon>Frm_Paradigital2.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_Realtrend2.cs">
       <SubType>Form</SubType>
@@ -176,8 +214,14 @@
     <EmbeddedResource Include="Frm_Paraanalog.resx">
       <DependentUpon>Frm_Paraanalog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Paraanalog2.resx">
+      <DependentUpon>Frm_Paraanalog2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Paradigital.resx">
       <DependentUpon>Frm_Paradigital.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Paradigital2.resx">
+      <DependentUpon>Frm_Paradigital2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Realtrend.resx">
       <DependentUpon>Frm_Realtrend.cs</DependentUpon>
@@ -229,6 +273,9 @@
     <None Include="Resources\24压力泵.jpg" />
     <None Include="Resources\Button-Last.png" />
     <None Include="Resources\Button-First.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="template\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

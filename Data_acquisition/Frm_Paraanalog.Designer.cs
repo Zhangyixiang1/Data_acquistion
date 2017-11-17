@@ -32,25 +32,33 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.parashownew36 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew7 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew35 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew6 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew5 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew2 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew34 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew4 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew33 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew28 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew25 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew22 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew19 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew16 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew13 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew32 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew10 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew31 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew27 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew24 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew21 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew18 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew15 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew12 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew30 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew9 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew29 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew26 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew23 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew20 = new Data_acquisition.Ctrl.Parashownew();
@@ -60,11 +68,9 @@
             this.parashownew8 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew1 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew3 = new Data_acquisition.Ctrl.Parashownew();
-            this.gauge0 = new Data_acquisition.Ctrl.Gauge_mid();
             this.gauge1 = new Data_acquisition.Ctrl.Gauge();
             this.gauge2 = new Data_acquisition.Ctrl.Gauge();
-            this.gauge4 = new Data_acquisition.Ctrl.Gauge();
-            this.gauge3 = new Data_acquisition.Ctrl.Gauge();
+            this.gauge0 = new Data_acquisition.Ctrl.Gauge_mid();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,7 +79,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 50F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label1.Location = new System.Drawing.Point(192, 398);
+            this.label1.Location = new System.Drawing.Point(129, 388);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(301, 67);
             this.label1.TabIndex = 23;
@@ -84,7 +90,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 40F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label2.Location = new System.Drawing.Point(205, 50);
+            this.label2.Location = new System.Drawing.Point(132, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(275, 54);
             this.label2.TabIndex = 23;
@@ -93,9 +99,10 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Data_acquisition.Properties.Resources.hhlogo;
-            this.pictureBox2.Location = new System.Drawing.Point(139, 154);
+            this.pictureBox2.Location = new System.Drawing.Point(69, 131);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(402, 272);
+            this.pictureBox2.Size = new System.Drawing.Size(400, 230);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 22;
             this.pictureBox2.TabStop = false;
             // 
@@ -104,11 +111,22 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("宋体", 25F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label3.Location = new System.Drawing.Point(191, 476);
+            this.label3.Location = new System.Drawing.Point(127, 471);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(303, 34);
             this.label3.TabIndex = 23;
             this.label3.Text = "HONGHUA ELECTRIC";
+            // 
+            // parashownew36
+            // 
+            this.parashownew36.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew36.Color = System.Drawing.Color.Blue;
+            this.parashownew36.Location = new System.Drawing.Point(1654, 50);
+            this.parashownew36.Name = "parashownew36";
+            this.parashownew36.Size = new System.Drawing.Size(222, 100);
+            this.parashownew36.TabIndex = 24;
+            this.parashownew36.Tagname = null;
+            this.parashownew36.Unit = null;
             // 
             // parashownew7
             // 
@@ -120,6 +138,17 @@
             this.parashownew7.TabIndex = 24;
             this.parashownew7.Tagname = null;
             this.parashownew7.Unit = null;
+            // 
+            // parashownew35
+            // 
+            this.parashownew35.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew35.Color = System.Drawing.Color.Blue;
+            this.parashownew35.Location = new System.Drawing.Point(1387, 50);
+            this.parashownew35.Name = "parashownew35";
+            this.parashownew35.Size = new System.Drawing.Size(222, 100);
+            this.parashownew35.TabIndex = 24;
+            this.parashownew35.Tagname = null;
+            this.parashownew35.Unit = null;
             // 
             // parashownew6
             // 
@@ -154,6 +183,17 @@
             this.parashownew2.Tagname = null;
             this.parashownew2.Unit = null;
             // 
+            // parashownew34
+            // 
+            this.parashownew34.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew34.Color = System.Drawing.Color.Blue;
+            this.parashownew34.Location = new System.Drawing.Point(1654, 444);
+            this.parashownew34.Name = "parashownew34";
+            this.parashownew34.Size = new System.Drawing.Size(222, 100);
+            this.parashownew34.TabIndex = 24;
+            this.parashownew34.Tagname = null;
+            this.parashownew34.Unit = null;
+            // 
             // parashownew4
             // 
             this.parashownew4.BackColor = System.Drawing.Color.Transparent;
@@ -164,6 +204,17 @@
             this.parashownew4.TabIndex = 24;
             this.parashownew4.Tagname = null;
             this.parashownew4.Unit = null;
+            // 
+            // parashownew33
+            // 
+            this.parashownew33.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew33.Color = System.Drawing.Color.Blue;
+            this.parashownew33.Location = new System.Drawing.Point(1387, 444);
+            this.parashownew33.Name = "parashownew33";
+            this.parashownew33.Size = new System.Drawing.Size(222, 100);
+            this.parashownew33.TabIndex = 24;
+            this.parashownew33.Tagname = null;
+            this.parashownew33.Unit = null;
             // 
             // parashownew28
             // 
@@ -231,6 +282,17 @@
             this.parashownew13.Tagname = null;
             this.parashownew13.Unit = null;
             // 
+            // parashownew32
+            // 
+            this.parashownew32.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew32.Color = System.Drawing.Color.Blue;
+            this.parashownew32.Location = new System.Drawing.Point(1654, 312);
+            this.parashownew32.Name = "parashownew32";
+            this.parashownew32.Size = new System.Drawing.Size(222, 100);
+            this.parashownew32.TabIndex = 24;
+            this.parashownew32.Tagname = null;
+            this.parashownew32.Unit = null;
+            // 
             // parashownew10
             // 
             this.parashownew10.BackColor = System.Drawing.Color.Transparent;
@@ -241,6 +303,17 @@
             this.parashownew10.TabIndex = 24;
             this.parashownew10.Tagname = null;
             this.parashownew10.Unit = null;
+            // 
+            // parashownew31
+            // 
+            this.parashownew31.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew31.Color = System.Drawing.Color.Blue;
+            this.parashownew31.Location = new System.Drawing.Point(1387, 312);
+            this.parashownew31.Name = "parashownew31";
+            this.parashownew31.Size = new System.Drawing.Size(222, 100);
+            this.parashownew31.TabIndex = 24;
+            this.parashownew31.Tagname = null;
+            this.parashownew31.Unit = null;
             // 
             // parashownew27
             // 
@@ -308,6 +381,17 @@
             this.parashownew12.Tagname = null;
             this.parashownew12.Unit = null;
             // 
+            // parashownew30
+            // 
+            this.parashownew30.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew30.Color = System.Drawing.Color.Blue;
+            this.parashownew30.Location = new System.Drawing.Point(1654, 181);
+            this.parashownew30.Name = "parashownew30";
+            this.parashownew30.Size = new System.Drawing.Size(222, 100);
+            this.parashownew30.TabIndex = 24;
+            this.parashownew30.Tagname = null;
+            this.parashownew30.Unit = null;
+            // 
             // parashownew9
             // 
             this.parashownew9.BackColor = System.Drawing.Color.Transparent;
@@ -318,6 +402,17 @@
             this.parashownew9.TabIndex = 24;
             this.parashownew9.Tagname = null;
             this.parashownew9.Unit = null;
+            // 
+            // parashownew29
+            // 
+            this.parashownew29.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew29.Color = System.Drawing.Color.Blue;
+            this.parashownew29.Location = new System.Drawing.Point(1387, 181);
+            this.parashownew29.Name = "parashownew29";
+            this.parashownew29.Size = new System.Drawing.Size(222, 100);
+            this.parashownew29.TabIndex = 24;
+            this.parashownew29.Tagname = null;
+            this.parashownew29.Unit = null;
             // 
             // parashownew26
             // 
@@ -418,20 +513,9 @@
             this.parashownew3.Tagname = null;
             this.parashownew3.Unit = null;
             // 
-            // gauge0
-            // 
-            this.gauge0.Location = new System.Drawing.Point(955, 0);
-            this.gauge0.Max = null;
-            this.gauge0.Min = null;
-            this.gauge0.Name = "gauge0";
-            this.gauge0.Size = new System.Drawing.Size(640, 540);
-            this.gauge0.TabIndex = 19;
-            this.gauge0.Tagname = null;
-            this.gauge0.Unit = null;
-            // 
             // gauge1
             // 
-            this.gauge1.Location = new System.Drawing.Point(631, 270);
+            this.gauge1.Location = new System.Drawing.Point(503, 258);
             this.gauge1.Max = null;
             this.gauge1.Min = null;
             this.gauge1.Name = "gauge1";
@@ -442,7 +526,7 @@
             // 
             // gauge2
             // 
-            this.gauge2.Location = new System.Drawing.Point(631, 0);
+            this.gauge2.Location = new System.Drawing.Point(503, -12);
             this.gauge2.Max = null;
             this.gauge2.Min = null;
             this.gauge2.Name = "gauge2";
@@ -451,27 +535,16 @@
             this.gauge2.Tagname = null;
             this.gauge2.Unit = null;
             // 
-            // gauge4
+            // gauge0
             // 
-            this.gauge4.Location = new System.Drawing.Point(1598, 270);
-            this.gauge4.Max = null;
-            this.gauge4.Min = null;
-            this.gauge4.Name = "gauge4";
-            this.gauge4.Size = new System.Drawing.Size(320, 270);
-            this.gauge4.TabIndex = 14;
-            this.gauge4.Tagname = null;
-            this.gauge4.Unit = null;
-            // 
-            // gauge3
-            // 
-            this.gauge3.Location = new System.Drawing.Point(1598, 0);
-            this.gauge3.Max = null;
-            this.gauge3.Min = null;
-            this.gauge3.Name = "gauge3";
-            this.gauge3.Size = new System.Drawing.Size(320, 270);
-            this.gauge3.TabIndex = 15;
-            this.gauge3.Tagname = null;
-            this.gauge3.Unit = null;
+            this.gauge0.Location = new System.Drawing.Point(776, -15);
+            this.gauge0.Max = null;
+            this.gauge0.Min = null;
+            this.gauge0.Name = "gauge0";
+            this.gauge0.Size = new System.Drawing.Size(640, 540);
+            this.gauge0.TabIndex = 19;
+            this.gauge0.Tagname = null;
+            this.gauge0.Unit = null;
             // 
             // Frm_Paraanalog
             // 
@@ -479,25 +552,33 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(29)))), ((int)(((byte)(31)))));
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.parashownew36);
             this.Controls.Add(this.parashownew7);
+            this.Controls.Add(this.parashownew35);
             this.Controls.Add(this.parashownew6);
             this.Controls.Add(this.parashownew5);
             this.Controls.Add(this.parashownew2);
+            this.Controls.Add(this.parashownew34);
             this.Controls.Add(this.parashownew4);
+            this.Controls.Add(this.parashownew33);
             this.Controls.Add(this.parashownew28);
             this.Controls.Add(this.parashownew25);
             this.Controls.Add(this.parashownew22);
             this.Controls.Add(this.parashownew19);
             this.Controls.Add(this.parashownew16);
             this.Controls.Add(this.parashownew13);
+            this.Controls.Add(this.parashownew32);
             this.Controls.Add(this.parashownew10);
+            this.Controls.Add(this.parashownew31);
             this.Controls.Add(this.parashownew27);
             this.Controls.Add(this.parashownew24);
             this.Controls.Add(this.parashownew21);
             this.Controls.Add(this.parashownew18);
             this.Controls.Add(this.parashownew15);
             this.Controls.Add(this.parashownew12);
+            this.Controls.Add(this.parashownew30);
             this.Controls.Add(this.parashownew9);
+            this.Controls.Add(this.parashownew29);
             this.Controls.Add(this.parashownew26);
             this.Controls.Add(this.parashownew23);
             this.Controls.Add(this.parashownew20);
@@ -511,11 +592,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.gauge0);
             this.Controls.Add(this.gauge1);
             this.Controls.Add(this.gauge2);
-            this.Controls.Add(this.gauge4);
-            this.Controls.Add(this.gauge3);
+            this.Controls.Add(this.gauge0);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Name = "Frm_Paraanalog";
@@ -531,8 +610,6 @@
 
         #endregion
 
-        private Ctrl.Gauge gauge4;
-        private Ctrl.Gauge gauge3;
         private Ctrl.Gauge gauge2;
         private Ctrl.Gauge_mid gauge0;
         private Ctrl.Gauge gauge1;
@@ -568,6 +645,14 @@
         private Ctrl.Parashownew parashownew26;
         private Ctrl.Parashownew parashownew27;
         private Ctrl.Parashownew parashownew28;
+        private Ctrl.Parashownew parashownew29;
+        private Ctrl.Parashownew parashownew30;
+        private Ctrl.Parashownew parashownew31;
+        private Ctrl.Parashownew parashownew32;
+        private Ctrl.Parashownew parashownew33;
+        private Ctrl.Parashownew parashownew34;
+        private Ctrl.Parashownew parashownew35;
+        private Ctrl.Parashownew parashownew36;
 
 
     }

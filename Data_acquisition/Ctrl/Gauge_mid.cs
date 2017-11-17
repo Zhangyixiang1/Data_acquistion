@@ -32,7 +32,7 @@ namespace Data_acquisition.Ctrl
         }
         public void refresh()
         {
-            this.label4.Text = tagname; this.label3.Text = unit;
+            this.label4.Text = tagname; this.label2.Text = unit;
             radRadialGauge1.RangeStart = int.Parse(min);
             radRadialGauge1.RangeEnd = int.Parse(max);
             radialGaugeArc1.RangeEnd = double.Parse(max) / 3;

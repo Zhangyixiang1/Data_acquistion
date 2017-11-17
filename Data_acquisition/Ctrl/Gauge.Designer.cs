@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.radRadialGauge1 = new Telerik.WinControls.UI.Gauges.RadRadialGauge();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.radialGaugeArc1 = new Telerik.WinControls.UI.Gauges.RadialGaugeArc();
             this.radialGaugeArc2 = new Telerik.WinControls.UI.Gauges.RadialGaugeArc();
             this.radialGaugeArc3 = new Telerik.WinControls.UI.Gauges.RadialGaugeArc();
@@ -60,47 +60,47 @@
             this.radRadialGauge1.Location = new System.Drawing.Point(0, 0);
             this.radRadialGauge1.Name = "radRadialGauge1";
             this.radRadialGauge1.RangeEnd = 180D;
-            this.radRadialGauge1.Size = new System.Drawing.Size(320, 377);
+            this.radRadialGauge1.Size = new System.Drawing.Size(320, 380);
             this.radRadialGauge1.StartAngle = 180D;
             this.radRadialGauge1.SweepAngle = 180D;
             this.radRadialGauge1.TabIndex = 6;
             this.radRadialGauge1.Text = "radRadialGauge1";
             this.radRadialGauge1.Value = 5F;
             // 
-            // label3
-            // 
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 30F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(20, 210);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(286, 50);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "######";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(24, 244);
+            this.label2.Location = new System.Drawing.Point(231, 248);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 12);
+            this.label2.Size = new System.Drawing.Size(73, 19);
             this.label2.TabIndex = 8;
             this.label2.Text = "Psi";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(24, 215);
+            this.label1.Location = new System.Drawing.Point(24, 248);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 23);
+            this.label1.Size = new System.Drawing.Size(73, 19);
             this.label1.TabIndex = 7;
             this.label1.Text = "油压";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label3
+            // 
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 30F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(20, 220);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(286, 50);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "######";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // radialGaugeArc1
             // 
