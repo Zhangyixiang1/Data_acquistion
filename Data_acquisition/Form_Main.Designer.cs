@@ -104,8 +104,6 @@
             this.视图ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.视图1ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.视图2ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.视图3ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.视图4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.test1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.test2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -779,19 +777,19 @@
             // 系统设置ToolStripMenuItem1
             // 
             this.系统设置ToolStripMenuItem1.Name = "系统设置ToolStripMenuItem1";
-            this.系统设置ToolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
+            this.系统设置ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.系统设置ToolStripMenuItem1.Text = "系统设置";
             // 
             // 通道设置ToolStripMenuItem
             // 
             this.通道设置ToolStripMenuItem.Name = "通道设置ToolStripMenuItem";
-            this.通道设置ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.通道设置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.通道设置ToolStripMenuItem.Text = "通道设置";
             // 
             // 图像编辑ToolStripMenuItem1
             // 
             this.图像编辑ToolStripMenuItem1.Name = "图像编辑ToolStripMenuItem1";
-            this.图像编辑ToolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
+            this.图像编辑ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.图像编辑ToolStripMenuItem1.Text = "图像编辑";
             this.图像编辑ToolStripMenuItem1.Click += new System.EventHandler(this.图像编辑ToolStripMenuItem_Click);
             // 
@@ -800,8 +798,6 @@
             this.视图ToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.视图1ToolStripMenuItem1,
             this.视图2ToolStripMenuItem1,
-            this.视图3ToolStripMenuItem1,
-            this.视图4ToolStripMenuItem,
             this.test1ToolStripMenuItem,
             this.test2ToolStripMenuItem});
             this.视图ToolStripMenuItem1.Name = "视图ToolStripMenuItem1";
@@ -811,44 +807,30 @@
             // 视图1ToolStripMenuItem1
             // 
             this.视图1ToolStripMenuItem1.Name = "视图1ToolStripMenuItem1";
-            this.视图1ToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
+            this.视图1ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.视图1ToolStripMenuItem1.Text = "视图1";
             this.视图1ToolStripMenuItem1.Click += new System.EventHandler(this.视图1ToolStripMenuItem1_Click);
             // 
             // 视图2ToolStripMenuItem1
             // 
             this.视图2ToolStripMenuItem1.Name = "视图2ToolStripMenuItem1";
-            this.视图2ToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
+            this.视图2ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.视图2ToolStripMenuItem1.Text = "视图2";
             this.视图2ToolStripMenuItem1.Click += new System.EventHandler(this.视图2ToolStripMenuItem1_Click);
-            // 
-            // 视图3ToolStripMenuItem1
-            // 
-            this.视图3ToolStripMenuItem1.Name = "视图3ToolStripMenuItem1";
-            this.视图3ToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
-            this.视图3ToolStripMenuItem1.Text = "视图3";
-            this.视图3ToolStripMenuItem1.Click += new System.EventHandler(this.视图3ToolStripMenuItem1_Click);
-            // 
-            // 视图4ToolStripMenuItem
-            // 
-            this.视图4ToolStripMenuItem.Name = "视图4ToolStripMenuItem";
-            this.视图4ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.视图4ToolStripMenuItem.Text = "视图4";
-            this.视图4ToolStripMenuItem.Click += new System.EventHandler(this.视图4ToolStripMenuItem_Click);
             // 
             // test1ToolStripMenuItem
             // 
             this.test1ToolStripMenuItem.Name = "test1ToolStripMenuItem";
-            this.test1ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.test1ToolStripMenuItem.Text = "test1";
-            this.test1ToolStripMenuItem.Click += new System.EventHandler(this.test1ToolStripMenuItem_Click);
+            this.test1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.test1ToolStripMenuItem.Text = "视图3";
+            this.test1ToolStripMenuItem.Click += new System.EventHandler(this.视图3ToolStripMenuItem1_Click);
             // 
             // test2ToolStripMenuItem
             // 
             this.test2ToolStripMenuItem.Name = "test2ToolStripMenuItem";
-            this.test2ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.test2ToolStripMenuItem.Text = "test2";
-            this.test2ToolStripMenuItem.Click += new System.EventHandler(this.test2ToolStripMenuItem_Click);
+            this.test2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.test2ToolStripMenuItem.Text = "视图4";
+            this.test2ToolStripMenuItem.Click += new System.EventHandler(this.视图4ToolStripMenuItem_Click);
             // 
             // 关于ToolStripMenuItem1
             // 
@@ -1506,7 +1488,6 @@
         private System.Windows.Forms.ToolStripMenuItem 视图ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 视图1ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 视图2ToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem 视图3ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 帮助ToolStripMenuItem1;
         private System.Windows.Forms.StatusStrip statusStrip1;
@@ -1527,7 +1508,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel12;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel13;
         private System.Windows.Forms.ToolStripMenuItem 图像编辑ToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem 视图4ToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox4;
         private Telerik.WinControls.UI.RadButton btn_schedulesave;
         private Telerik.WinControls.UI.RadButton radButton9;

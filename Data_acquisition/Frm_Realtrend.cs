@@ -69,8 +69,9 @@ namespace Data_acquisition
 
         private void Frm_Realtrend_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
-                this.Visible = false;
+            if (e.KeyCode == Keys.Escape){
+                this.Location=new Point(1921,0);
+                this.BringToFront();}
         }
 
         private void Frm_Realtrend_Load(object sender, EventArgs e)

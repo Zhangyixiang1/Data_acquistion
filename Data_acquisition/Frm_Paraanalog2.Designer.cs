@@ -43,9 +43,9 @@
             this.parashownew7 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew6 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew5 = new Data_acquisition.Ctrl.Parashownew();
+            this.parashownew4 = new Data_acquisition.Ctrl.Parashownew();
             this.parashownew17 = new Data_acquisition.Ctrl.Parashownew();
             this.gauge0 = new Data_acquisition.Ctrl.Gauge_mid();
-            this.parashownew4 = new Data_acquisition.Ctrl.Parashownew();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -213,6 +213,17 @@
             this.parashownew5.Tagname = null;
             this.parashownew5.Unit = null;
             // 
+            // parashownew4
+            // 
+            this.parashownew4.BackColor = System.Drawing.Color.Transparent;
+            this.parashownew4.Color = System.Drawing.Color.Blue;
+            this.parashownew4.Location = new System.Drawing.Point(63, 656);
+            this.parashownew4.Name = "parashownew4";
+            this.parashownew4.Size = new System.Drawing.Size(430, 175);
+            this.parashownew4.TabIndex = 32;
+            this.parashownew4.Tagname = null;
+            this.parashownew4.Unit = null;
+            // 
             // parashownew17
             // 
             this.parashownew17.BackColor = System.Drawing.Color.Transparent;
@@ -234,17 +245,6 @@
             this.gauge0.TabIndex = 27;
             this.gauge0.Tagname = null;
             this.gauge0.Unit = null;
-            // 
-            // parashownew4
-            // 
-            this.parashownew4.BackColor = System.Drawing.Color.Transparent;
-            this.parashownew4.Color = System.Drawing.Color.Blue;
-            this.parashownew4.Location = new System.Drawing.Point(63, 656);
-            this.parashownew4.Name = "parashownew4";
-            this.parashownew4.Size = new System.Drawing.Size(430, 175);
-            this.parashownew4.TabIndex = 32;
-            this.parashownew4.Tagname = null;
-            this.parashownew4.Unit = null;
             // 
             // Frm_Paraanalog2
             // 
@@ -271,8 +271,12 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.gauge0);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "Frm_Paraanalog2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Frm_Paraanalog2";
+            this.Load += new System.EventHandler(this.Frm_Paraanalog2_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Frm_Paraanalog2_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

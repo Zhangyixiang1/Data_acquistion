@@ -37,14 +37,23 @@
     <Reference Include="Aspose.Cells">
       <HintPath>C:\Users\zhangyx1\Downloads\NPOI-Lib\Aspose.Cells.dll</HintPath>
     </Reference>
+    <Reference Include="Interop.OPCAutomation">
+      <HintPath>C:\Windows\System32\Interop.OPCAutomation.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualBasic">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\zhangyx1\Desktop\driver_mysql\v4.0\MySql.Data.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="NPOI">
       <HintPath>C:\Users\zhangyx1\Downloads\NPOI-Lib\NPOI.dll</HintPath>
@@ -63,7 +72,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
@@ -73,11 +84,21 @@
       <HintPath>C:\Program Files (x86)\Telerik\UI for WinForms R2 2017\Bin40\Telerik.WinControls.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.WinControls.GridView, Version=2017.2.613.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.WinControls.SpellChecker, Version=2017.2.613.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.WinControls.Themes.HighContrastBlack, Version=2017.2.613.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.WinControls.Themes.Office2013Dark, Version=2017.2.613.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.WinControls.Themes.Windows8, Version=2017.2.613.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.GridView, Version=2017.2.613.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.SpellChecker, Version=2017.2.613.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.Themes.HighContrastBlack, Version=2017.2.613.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.Themes.Office2013Dark, Version=2017.2.613.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.Themes.Windows8, Version=2017.2.613.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Telerik.WinControls.UI, Version=2017.2.613.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <HintPath>C:\Program Files (x86)\Telerik\UI for WinForms R2 2017\Bin40\Telerik.WinControls.UI.dll</HintPath>
       <Private>True</Private>
@@ -92,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comm\Ctr_change.cs" />
+    <Compile Include="Comm\Kep_initial.cs" />
     <Compile Include="Comm\ReadColor.cs" />
     <Compile Include="Ctrl\Gauge.cs">
       <SubType>UserControl</SubType>
@@ -260,14 +282,15 @@
     <None Include="Resources\good.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Config\Kepware.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Config\preference.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\test.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="preference.xml" />
-    <Content Include="test.xml" />
     <None Include="Resources\捕获.PNG" />
     <None Include="Resources\hhlogo.png" />
     <None Include="Resources\24压力泵.jpg" />

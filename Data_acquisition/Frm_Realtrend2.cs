@@ -10,13 +10,14 @@ using ZedGraph;
 namespace Data_acquisition
 {
     public partial class Frm_Realtrend2 : Form
-    {private ZedGraphControl zedGraphControl1;
+    {
+        private ZedGraphControl zedGraphControl1;
         public Frm_Realtrend2(GraphPane panel)
         {
             InitializeComponent();
             zedGraphControl1 = new ZedGraphControl();
             zedGraphControl1.Size = new System.Drawing.Size(1920, 540);
-            zedGraphControl1.Location=new Point(0,0);
+            zedGraphControl1.Location = new Point(0, 0);
             //初始化相关属性
             zedGraphControl1.IsShowContextMenu = false;
             zedGraphControl1.IsEnableHPan = false; zedGraphControl1.IsEnableVPan = false;
@@ -24,15 +25,15 @@ namespace Data_acquisition
             GraphPane myPane = zedGraphControl1.GraphPane;
             myPane.Fill = new Fill(Color.FromArgb(28, 29, 31));
             myPane.Chart.Fill = new Fill(Color.Black);
-         //   myPane.Border.IsVisible = false;
-         myPane.Border.Color=Color.White;
+            //   myPane.Border.IsVisible = false;
+            myPane.Border.Color = Color.White;
             myPane.IsFontsScaled = false;
             //legend 相关属性
             myPane.Legend.Fill = new Fill(Color.FromArgb(28, 29, 31));
-            myPane.Legend.Border.IsVisible=false;
+            myPane.Legend.Border.IsVisible = false;
             myPane.Legend.Position = LegendPos.TopCenter;
             myPane.Legend.FontSpec.FontColor = Color.White;
-             myPane.Legend.FontSpec.Size=15;
+            myPane.Legend.FontSpec.Size = 15;
             // Set the titles and axis labels
             myPane.Title.Text = "";
             myPane.YAxisList.Clear();
@@ -75,7 +76,33 @@ namespace Data_acquisition
         private void Frm_Realtrend2_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
-                this.Visible = false;
+                this.Location = new Point(1921, 0); this.BringToFront();
+        }
+        public void grid_refresh()
+        {
+            DbManager db = new DbManager();
+            db.ConnStr = "Data Source=localhost;" +
+                    "Initial Catalog=ifracview;User Id=root;Password=hhdq;";
+            string sql = "select Stage,Sand,LA1,LA2,LA3,LA4,DA1,Cleanvol from schedule";
+            DataTable tb = db.ExcuteDataTable(sql);
+            dataGridView1.Columns.Clear();
+            dataGridView1.DataSource = tb;
+
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Scale xScale = zedGraphControl1.GraphPane.XAxis.Scale;
+            double factor = xScale.Max * 60;
+            factor = 1; //测试用
+            if (zedGraphControl1.GraphPane.CurveList[0].Points.Count / factor > xScale.Max)
+            {
+                xScale.Max = xScale.Max + 30;
+                xScale.MajorStep = xScale.Max / 6;//X轴大步长为5，也就是显示文字的大间隔
+            }
+            zedGraphControl1.AxisChange();
+            zedGraphControl1.Refresh();
         }
     }
 }

@@ -22,14 +22,17 @@ namespace Data_acquisition
             set { this.connStr = value; }
         }
 
-        private DbManager() { }
+        public DbManager() { }
 
-        //DbManager单实例
-        private static DbManager _instance = null;
-        public static DbManager Ins
-        {
-            get { if (_instance == null) { _instance = new DbManager(); } return _instance; }
-        }
+        ////DbManager单实例
+        //private static DbManager _instance = null;
+        //public static DbManager Ins
+        //{
+        //    get { if (_instance == null) { _instance = new DbManager(); } return _instance; }
+        //}
+
+
+
 
         /// <summary>
         /// 需要获得多个结果集的时候用该方法，返回DataSet对象。
@@ -234,7 +237,7 @@ namespace Data_acquisition
 
                 Dictionary<int,string> retNameList = new Dictionary<int,string>();
                 string sql = "   SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'monitor_value' and table_type='base table'";
-                MySqlDataAdapter dap = new MySqlDataAdapter(sql, DbManager.Ins.ConnStr);
+                MySqlDataAdapter dap = new MySqlDataAdapter(sql, this.ConnStr);
                 DataTable dt = new DataTable();
                 dap.Fill(dt);
                 int index=0;

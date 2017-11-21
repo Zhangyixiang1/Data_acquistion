@@ -12,6 +12,7 @@ using Telerik.WinControls;
 using ZedGraph;
 using NPOI;
 using Data_acquisition.DAL;
+using MySql.Data.MySqlClient;
 namespace Data_acquisition
 {
     public partial class Form_Main : Telerik.WinControls.UI.RadForm
@@ -36,7 +37,7 @@ namespace Data_acquisition
             toolTip1 = new ToolTip();
             Paralist = new Dictionary<string, double[]>();
             xml_load();//读取偏好设置文件
-         //   schedule_load();//从数据库读取计划信息
+            //   schedule_load();//从数据库读取计划信息
             chart_initial();//初始化图表控件
 
             //测试用，在子线程中生成随机数填充paralist
@@ -69,6 +70,24 @@ namespace Data_acquisition
                     ctr2.timer1.Enabled = true;
                 }
             }
+
+            //主界面加载完成后，依次打开其他页面
+
+            Frm_Realtrend frm1 = new Frm_Realtrend(zedGraphControl1.GraphPane);
+            frm1.Location = new Point(1921, 0);
+            frm1.Show();
+
+            Frm_Realtrend2 frm2 = new Frm_Realtrend2(zedGraphControl1.GraphPane);
+            frm2.Location = new Point(1921, 0);
+            frm2.Show();
+
+            Frm_Paradigital2 frm3 = new Frm_Paradigital2();
+            frm3.Location = new Point(3842, 0);
+            frm3.Show();
+
+            Frm_Paraanalog2 frm4 = new Frm_Paraanalog2();
+            frm4.Location = new Point(3842, 0);
+            frm4.Show();
 
         }
         /// <summary>
@@ -169,11 +188,11 @@ namespace Data_acquisition
             zedGraphControl1.IsEnableHZoom = false; zedGraphControl1.IsEnableZoom = false;
             GraphPane myPane = zedGraphControl1.GraphPane;
             myPane.Fill = new Fill(Color.FromArgb(28, 29, 31));
-           // myPane.Chart.Fill = new Fill(Color.FromArgb(49, 49, 49));
-           myPane.Chart.Fill=new Fill(Color.Black);
+            // myPane.Chart.Fill = new Fill(Color.FromArgb(49, 49, 49));
+            myPane.Chart.Fill = new Fill(Color.Black);
             myPane.IsFontsScaled = false;
-          //  myPane.Border.IsVisible = false;
-          myPane.Border.Color=Color.White;
+            //  myPane.Border.IsVisible = false;
+            myPane.Border.Color = Color.White;
             // Set the titles and axis labels
             myPane.Legend.IsVisible = false;
             myPane.Title.Text = "";
@@ -688,7 +707,7 @@ namespace Data_acquisition
 
             factor = 1;//测试用
             //添加数据
-            list1.Add(count / factor, Math.Sin(0.1*count));
+            list1.Add(count / factor, Math.Sin(0.1 * count));
             list2.Add(count / factor, (new Random()).Next(50));
             list3.Add(count / factor, (new Random()).Next(50));
             list4.Add(count / factor, (new Random()).Next(50));
@@ -833,37 +852,62 @@ namespace Data_acquisition
 
         private void 视图1ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Frm_Realtrend frm = new Frm_Realtrend(zedGraphControl1.GraphPane);
-            frm.Location = new Point(1921, 0);
-            frm.Show();
+            Application.OpenForms["Frm_Realtrend"].Location=new Point(0,0);
+            Application.OpenForms["Frm_Realtrend"].BringToFront();
+
         }
 
         private void 视图2ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Frm_Realtrend2 frm = new Frm_Realtrend2(zedGraphControl1.GraphPane);
-            frm.Show();
+            Application.OpenForms["Frm_Realtrend2"].Location = new Point(0, 0);
+            Application.OpenForms["Frm_Realtrend2"].BringToFront();
         }
 
         private void 视图3ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Frm_Paradigital frm = new Frm_Paradigital();
-            frm.Location = new Point(1921, 0);
-            
-            frm.Show();
+            Application.OpenForms["Frm_Paradigital2"].Location = new Point(0, 0);
+            Application.OpenForms["Frm_Paradigital2"].BringToFront();
         }
 
         private void 视图4ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_Paraanalog frm = new Frm_Paraanalog();
-            frm.Show();
+            Application.OpenForms["Frm_Paraanalog2"].Location = new Point(0, 0);
+            Application.OpenForms["Frm_Paraanalog2"].BringToFront();
         }
 
         private void btn_schedulesave_Click(object sender, EventArgs e)
         {
-            DataGridView dgv = (DataGridView)Application.OpenForms["Frm_Realtrend2"].Controls.Find("dataGridView1", true)[0];
-            dgv.Rows.Clear();
-            for (int i = 0; i < dataGridView1.Rows.Count; i++) { dgv.Rows.Add(dataGridView1.Rows[i].Clone()); }
 
+            try
+            {
+                //同步计划数据，先删除表中数据，再重新插入
+                DbManager db = new DbManager();
+                db.ConnStr = "Data Source=localhost;" +
+                "Initial Catalog=ifracview;User Id=root;Password=hhdq;";
+                string sql = "delete from schedule";
+                db.ExecuteNonquery(sql);
+                string sql2 = "insert into schedule(Stage,Sand,LA1,LA2,LA3,LA4,DA1,Cleanvol) values(@stage,@sand,@la1,@la2,@la3,@la4,@da1,@vol)";
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    List<MySqlParameter> Paramter = new List<MySqlParameter>();
+                    Paramter.Add(new MySqlParameter("@stage", dataGridView1.Rows[i].Cells[0].Value.ToString()));
+                    Paramter.Add(new MySqlParameter("@sand", dataGridView1.Rows[i].Cells[1].Value.ToString()));
+                    Paramter.Add(new MySqlParameter("@la1", dataGridView1.Rows[i].Cells[2].Value.ToString()));
+                    Paramter.Add(new MySqlParameter("@la2", dataGridView1.Rows[i].Cells[3].Value.ToString()));
+                    Paramter.Add(new MySqlParameter("@la3", dataGridView1.Rows[i].Cells[4].Value.ToString()));
+                    Paramter.Add(new MySqlParameter("@la4", dataGridView1.Rows[i].Cells[5].Value.ToString()));
+                    Paramter.Add(new MySqlParameter("@da1", dataGridView1.Rows[i].Cells[6].Value.ToString()));
+                    Paramter.Add(new MySqlParameter("@vol", dataGridView1.Rows[i].Cells[7].Value.ToString()));
+                    db.ExecuteNonquery(sql2, Paramter.ToArray());
+                }
+                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).grid_refresh();
+
+            }
+            catch (Exception ex)
+            {
+                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).grid_refresh();
+                //MessageBox.Show(ex.ToString());
+            }
         }
 
         private void radButton9_Click(object sender, EventArgs e)
@@ -872,10 +916,10 @@ namespace Data_acquisition
             openFile.Filter = "Excel(*.xlsx)|*.xlsx|Excel(*.xls)|*.xls";
             openFile.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             openFile.Multiselect = false;
-            if (openFile.ShowDialog() == DialogResult.Cancel) return ;
+            if (openFile.ShowDialog() == DialogResult.Cancel) return;
             var filePath = openFile.FileName;
             string fileType = System.IO.Path.GetExtension(filePath);
-            if (string.IsNullOrEmpty(fileType)) return ;
+            if (string.IsNullOrEmpty(fileType)) return;
 
 
             try
@@ -883,27 +927,46 @@ namespace Data_acquisition
                 using (ExcelHelper excelHelper = new ExcelHelper(filePath))
                 {
                     DataTable dt = excelHelper.ExcelToDataTable("MySheet", true);
-                 
-                    dataGridView1.DataSource=dt;
+
+                    dataGridView1.DataSource = dt;
                 }
             }
             catch (Exception ex)
             {
-               
+
             }
         }
 
         private void test1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        Frm_Paradigital2 frm=new Frm_Paradigital2 ();
-        frm.Location = new Point(1921, 0);
-        frm.Show();
+            Frm_Paradigital2 frm = new Frm_Paradigital2();
+            frm.Location = new Point(1921, 0);
+            frm.Show();
         }
 
         private void test2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_Paraanalog2 frm=new Frm_Paraanalog2 ();
+            Frm_Paraanalog2 frm = new Frm_Paraanalog2();
+            frm.Location = new Point(0, 0);
             frm.Show();
+
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog s = new SaveFileDialog();
+            s.Filter = "图片保存默认类型(*.png)|*.png";
+            s.ShowDialog();
+            string name = s.FileName;
+            if (s.FileName.ToString().Trim() != "")
+            {
+                GraphPane myPane = zedGraphControl1.GraphPane;
+                myPane.Fill = new Fill(Color.White);
+                // myPane.Chart.Fill = new Fill(Color.FromArgb(49, 49, 49));
+                myPane.Chart.Fill = new Fill(Color.White);
+                zedGraphControl1.GetImage().Save(name);
+            }
         }
 
 

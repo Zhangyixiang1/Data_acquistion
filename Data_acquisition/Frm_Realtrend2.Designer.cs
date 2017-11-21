@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -44,6 +45,7 @@
             this.DA1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cleanvol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SandType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -53,9 +55,9 @@
             this.groupBox4.Controls.Add(this.dataGridView1);
             this.groupBox4.Font = new System.Drawing.Font("宋体", 15F);
             this.groupBox4.ForeColor = System.Drawing.Color.White;
-            this.groupBox4.Location = new System.Drawing.Point(23, 568);
+            this.groupBox4.Location = new System.Drawing.Point(4, 568);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1885, 500);
+            this.groupBox4.Size = new System.Drawing.Size(1904, 500);
             this.groupBox4.TabIndex = 26;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "计划";
@@ -93,7 +95,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 29);
+            this.dataGridView1.Location = new System.Drawing.Point(20, 29);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
@@ -110,7 +112,7 @@
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1853, 455);
+            this.dataGridView1.Size = new System.Drawing.Size(1866, 455);
             this.dataGridView1.TabIndex = 18;
             // 
             // Stage
@@ -164,6 +166,12 @@
             this.SandType.HeaderText = "SandType";
             this.SandType.Name = "SandType";
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 500;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Frm_Realtrend2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -196,6 +204,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DA1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cleanvol;
         private System.Windows.Forms.DataGridViewTextBoxColumn SandType;
+        private System.Windows.Forms.Timer timer1;
 
     }
 }

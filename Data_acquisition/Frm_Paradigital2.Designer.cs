@@ -297,9 +297,12 @@
             this.Controls.Add(this.parashownew6);
             this.Controls.Add(this.parashownew5);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "Frm_Paradigital2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Frm_Paradigital2";
+            this.Load += new System.EventHandler(this.Frm_Paradigital2_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Frm_Paradigital2_KeyDown);
             this.ResumeLayout(false);
 
         }
