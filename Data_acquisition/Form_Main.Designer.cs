@@ -809,21 +809,21 @@
             this.视图1ToolStripMenuItem1.Name = "视图1ToolStripMenuItem1";
             this.视图1ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.视图1ToolStripMenuItem1.Text = "视图1";
-            this.视图1ToolStripMenuItem1.Click += new System.EventHandler(this.视图1ToolStripMenuItem1_Click);
+            this.视图1ToolStripMenuItem1.Click += new System.EventHandler(this.视图1ToolStripMenuItem_Click);
             // 
             // 视图2ToolStripMenuItem1
             // 
             this.视图2ToolStripMenuItem1.Name = "视图2ToolStripMenuItem1";
             this.视图2ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.视图2ToolStripMenuItem1.Text = "视图2";
-            this.视图2ToolStripMenuItem1.Click += new System.EventHandler(this.视图2ToolStripMenuItem1_Click);
+            this.视图2ToolStripMenuItem1.Click += new System.EventHandler(this.视图2ToolStripMenuItem_Click);
             // 
             // test1ToolStripMenuItem
             // 
             this.test1ToolStripMenuItem.Name = "test1ToolStripMenuItem";
             this.test1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.test1ToolStripMenuItem.Text = "视图3";
-            this.test1ToolStripMenuItem.Click += new System.EventHandler(this.视图3ToolStripMenuItem1_Click);
+            this.test1ToolStripMenuItem.Click += new System.EventHandler(this.视图3ToolStripMenuItem_Click);
             // 
             // test2ToolStripMenuItem
             // 

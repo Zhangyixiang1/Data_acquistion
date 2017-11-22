@@ -70,6 +70,7 @@
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("宋体", 15F);
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(231, 248);
             this.label2.Name = "label2";
@@ -81,6 +82,7 @@
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("宋体", 15F);
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(24, 248);
             this.label1.Name = "label1";

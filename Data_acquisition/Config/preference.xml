@@ -4,7 +4,7 @@
     <!--首界面-->
     <Name>Form_Main</Name>
     <Controlsline>
-      <Control name="paraLine1" tagname="井口油压" min="0" max="50" unit="Mpa" index="36" color="255,0,0" />
+      <Control name="paraLine1" tagname="井口油压" min="0" max="50" unit="Mpa" index="36" color="0,0,255" />
       <Control name="paraLine2" tagname="井口套压" min="0" max="1000" unit="Mpa" index="37" color="255,255,0" />
       <Control name="paraLine3" tagname="井口密度" min="-2" max="2" unit="Mpa" index="38" color="0,0,255" />
       <Control name="paraLine4" tagname="井口排出流量" min="0" max="300" unit="m3/min" index="39" color="0,255,0" />
@@ -112,7 +112,6 @@
       <Control name="parashownew60" tagname="备用" unit="/" index="9" color="128,0,64" />
     </Controlsshow>
   </Form>
-
   <Form>
     <!--数字参数界面2-->
     <Name>Frm_Paradigital2</Name>
@@ -179,7 +178,6 @@
       <Control name="parashownew60" tagname="备用" unit="/" index="9" color="128,0,64" />
     </Controlsshow>
   </Form>
-
   <Form>
     <!--模拟参数界面-->
     <Name>Frm_Paraanalog</Name>
@@ -231,7 +229,6 @@
       <Control name="gauge6" tagname="砂密度" min="0" max="50" unit="KgPA" index="7" />
     </Controlsgauge>
   </Form>
-
   <Form>
     <!--模拟参数界面2-->
     <Name>Frm_Paraanalog2</Name>
@@ -282,5 +279,29 @@
       <Control name="gauge5" tagname="混合液密度" min="0" max="100" unit="g/cc" index="6" />
       <Control name="gauge6" tagname="砂密度" min="0" max="50" unit="KgPA" index="7" />
     </Controlsgauge>
+  </Form>
+  <Form>
+    <!--曲线界面1-->
+    <Name>Frm_Realtrend</Name>
+    <Controlsline>
+      <Control name="paraLine1" tagname="井口油压" min="0" max="50" unit="Mpa" index="36" color="255,0,0" />
+      <Control name="paraLine2" tagname="井口套压" min="0" max="1000" unit="Mpa" index="37" color="255,255,0" />
+      <Control name="paraLine3" tagname="井口密度" min="-2" max="2" unit="Mpa" index="38" color="0,0,255" />
+      <Control name="paraLine4" tagname="井口排出流量" min="0" max="300" unit="m3/min" index="39" color="0,255,0" />
+      <Control name="paraLine5" tagname="混合液密度" min="0" max="400" unit="g/cc" index="40" color="107,142,35" />
+      <Control name="paraLine6" tagname="砂密度" min="0" max="200" unit="KgPA" index="41" color="218,112,214" />
+    </Controlsline>
+  </Form>
+  <Form>
+    <!--曲线界面2-->
+    <Name>Frm_Realtrend2</Name>
+    <Controlsline>
+      <Control name="paraLine1" tagname="井口油压" min="0" max="500" unit="Mpa" index="36" color="255,0,0" />
+      <Control name="paraLine2" tagname="井口套压" min="0" max="30" unit="Mpa" index="37" color="255,255,0" />
+      <Control name="paraLine3" tagname="井口密度" min="-2" max="2" unit="Mpa" index="38" color="0,0,255" />
+      <Control name="paraLine4" tagname="井口排出流量" min="0" max="300" unit="m3/min" index="39" color="0,255,0" />
+      <Control name="paraLine5" tagname="混合液密度" min="0" max="400" unit="g/cc" index="40" color="107,142,35" />
+      <Control name="paraLine6" tagname="砂密度" min="0" max="200" unit="KgPA" index="41" color="218,112,214" />
+    </Controlsline>
   </Form>
 </root>

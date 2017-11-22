@@ -168,6 +168,7 @@ namespace Data_acquisition
                     ctr_line.Unit = message[2];
                     ctr_line.Max = txb_max.Text;
                     ctr_line.Min = txb_min.Text;
+                    ctr_line.Color=tag_color;
                     //保存修改到偏好配置文件
 
                     string path = Application.StartupPath + "\\Config\\preference.xml";
@@ -196,7 +197,12 @@ namespace Data_acquisition
 
 
                     ctr_line.refresh();
-                    ((Form_Main)Application.OpenForms["Form_Main"]).trend_refresh(ctr_line.Name);
+                    switch (Frm_name) {
+                        case "Form_Main": ((Form_Main)Application.OpenForms[Frm_name]).trend_refresh(ctr_line.Name);break;
+                        case "Frm_Realtrend": ((Frm_Realtrend)Application.OpenForms[Frm_name]).trend_refresh(ctr_line.Name); break;
+                        case "Frm_Realtrend2": ((Frm_Realtrend2)Application.OpenForms[Frm_name]).trend_refresh(ctr_line.Name); break;
+                    }
+                    
                 }
                 if (ctr_show != null)
                 {

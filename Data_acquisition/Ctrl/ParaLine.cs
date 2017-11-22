@@ -62,6 +62,15 @@ namespace Data_acquisition.Ctrl
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox ctr = sender as CheckBox;
+            string Frm_name = this.ParentForm.Name;
+           switch (Frm_name)
+           {
+               case "Form_Main": ((Form_Main)Application.OpenForms[Frm_name]).trend_refresh(ctr.Checked, this.Name); break;
+               case "Frm_Realtrend": ((Frm_Realtrend)Application.OpenForms[Frm_name]).trend_refresh(ctr.Checked, this.Name); break;
+               case "Frm_Realtrend2": ((Frm_Realtrend2)Application.OpenForms[Frm_name]).trend_refresh(ctr.Checked, this.Name); break;
+           }
+
+
             if (Application.OpenForms["Form_Main"] != null)
             {
                 ((Form_Main)Application.OpenForms["Form_Main"]).trend_refresh(ctr.Checked, this.Name);

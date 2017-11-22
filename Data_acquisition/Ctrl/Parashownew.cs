@@ -32,7 +32,7 @@ namespace Data_acquisition.Ctrl
                 double H, S, B;
                 int R, G, BB;
                 RGB2HSB(tagcolor.R, tagcolor.G, tagcolor.B, out H, out S, out B);
-                HSB2RGB(H, 0.2, B - 0.2, out R, out G, out BB);
+                HSB2RGB(H, S*0.2, B*0.2 , out R, out G, out BB);
                 this.radPanel1.PanelElement.PanelFill.BackColor = Color.FromArgb(R, G, BB);
                 this.radPanel1.PanelElement.PanelFill.BackColor2 = tagcolor;
                 this.radPanel1.PanelElement.PanelFill.BackColor3 = tagcolor;
