@@ -65,9 +65,8 @@
             this.office2013DarkTheme1 = new Telerik.WinControls.Themes.Office2013DarkTheme();
             this.windows8Theme1 = new Telerik.WinControls.Themes.Windows8Theme();
             this.timer_log = new System.Windows.Forms.Timer(this.components);
-            this.radButton8 = new Telerik.WinControls.UI.RadButton();
+            this.btn_next = new Telerik.WinControls.UI.RadButton();
             this.timer_now = new System.Windows.Forms.Timer(this.components);
-            this.timer_trend = new System.Windows.Forms.Timer(this.components);
             this.radButton7 = new Telerik.WinControls.UI.RadButton();
             this.pnl_setting = new System.Windows.Forms.Panel();
             this.btn_cancel = new System.Windows.Forms.Button();
@@ -109,7 +108,6 @@
             this.关于ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbl_stage = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbl_stagetime = new System.Windows.Forms.ToolStripStatusLabel();
@@ -124,7 +122,7 @@
             this.toolStripStatusLabel7 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel12 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel13 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssl_log = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btn_schedulesave = new Telerik.WinControls.UI.RadButton();
             this.radButton9 = new Telerik.WinControls.UI.RadButton();
@@ -158,7 +156,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.radButton5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_start)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_next)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton7)).BeginInit();
             this.pnl_setting.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -416,26 +414,22 @@
             this.timer_log.Interval = 1000;
             this.timer_log.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // radButton8
+            // btn_next
             // 
-            this.radButton8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.radButton8.ForeColor = System.Drawing.Color.White;
-            this.radButton8.Location = new System.Drawing.Point(470, 36);
-            this.radButton8.Name = "radButton8";
-            this.radButton8.Size = new System.Drawing.Size(40, 40);
-            this.radButton8.TabIndex = 14;
-            this.radButton8.Text = "<html><p>下一</p><p>阶段</p></html>";
+            this.btn_next.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.btn_next.ForeColor = System.Drawing.Color.White;
+            this.btn_next.Location = new System.Drawing.Point(470, 36);
+            this.btn_next.Name = "btn_next";
+            this.btn_next.Size = new System.Drawing.Size(40, 40);
+            this.btn_next.TabIndex = 14;
+            this.btn_next.Text = "<html><p>下一</p><p>阶段</p></html>";
+            this.btn_next.Click += new System.EventHandler(this.btn_next_Click);
             // 
             // timer_now
             // 
             this.timer_now.Enabled = true;
             this.timer_now.Interval = 1000;
             this.timer_now.Tick += new System.EventHandler(this.timer_now_Tick);
-            // 
-            // timer_trend
-            // 
-            this.timer_trend.Interval = 1000;
-            this.timer_trend.Tick += new System.EventHandler(this.timer_trend_Tick);
             // 
             // radButton7
             // 
@@ -742,25 +736,27 @@
             // 新建施工ToolStripMenuItem
             // 
             this.新建施工ToolStripMenuItem.Name = "新建施工ToolStripMenuItem";
-            this.新建施工ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.新建施工ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.新建施工ToolStripMenuItem.Text = "新建施工";
+            this.新建施工ToolStripMenuItem.Click += new System.EventHandler(this.新建施工ToolStripMenuItem_Click);
             // 
             // 追加施工ToolStripMenuItem
             // 
             this.追加施工ToolStripMenuItem.Name = "追加施工ToolStripMenuItem";
-            this.追加施工ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.追加施工ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.追加施工ToolStripMenuItem.Text = "追加施工";
+            this.追加施工ToolStripMenuItem.Click += new System.EventHandler(this.追加施工ToolStripMenuItem_Click);
             // 
             // 结束施工ToolStripMenuItem
             // 
             this.结束施工ToolStripMenuItem.Name = "结束施工ToolStripMenuItem";
-            this.结束施工ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.结束施工ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.结束施工ToolStripMenuItem.Text = "结束施工";
             // 
             // 退出ToolStripMenuItem2
             // 
             this.退出ToolStripMenuItem2.Name = "退出ToolStripMenuItem2";
-            this.退出ToolStripMenuItem2.Size = new System.Drawing.Size(124, 22);
+            this.退出ToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.退出ToolStripMenuItem2.Text = "退出";
             this.退出ToolStripMenuItem2.Click += new System.EventHandler(this.退出ToolStripMenuItem2_Click);
             // 
@@ -777,19 +773,19 @@
             // 系统设置ToolStripMenuItem1
             // 
             this.系统设置ToolStripMenuItem1.Name = "系统设置ToolStripMenuItem1";
-            this.系统设置ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.系统设置ToolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
             this.系统设置ToolStripMenuItem1.Text = "系统设置";
             // 
             // 通道设置ToolStripMenuItem
             // 
             this.通道设置ToolStripMenuItem.Name = "通道设置ToolStripMenuItem";
-            this.通道设置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.通道设置ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.通道设置ToolStripMenuItem.Text = "通道设置";
             // 
             // 图像编辑ToolStripMenuItem1
             // 
             this.图像编辑ToolStripMenuItem1.Name = "图像编辑ToolStripMenuItem1";
-            this.图像编辑ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.图像编辑ToolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
             this.图像编辑ToolStripMenuItem1.Text = "图像编辑";
             this.图像编辑ToolStripMenuItem1.Click += new System.EventHandler(this.图像编辑ToolStripMenuItem_Click);
             // 
@@ -807,28 +803,28 @@
             // 视图1ToolStripMenuItem1
             // 
             this.视图1ToolStripMenuItem1.Name = "视图1ToolStripMenuItem1";
-            this.视图1ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.视图1ToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
             this.视图1ToolStripMenuItem1.Text = "视图1";
             this.视图1ToolStripMenuItem1.Click += new System.EventHandler(this.视图1ToolStripMenuItem_Click);
             // 
             // 视图2ToolStripMenuItem1
             // 
             this.视图2ToolStripMenuItem1.Name = "视图2ToolStripMenuItem1";
-            this.视图2ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.视图2ToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
             this.视图2ToolStripMenuItem1.Text = "视图2";
             this.视图2ToolStripMenuItem1.Click += new System.EventHandler(this.视图2ToolStripMenuItem_Click);
             // 
             // test1ToolStripMenuItem
             // 
             this.test1ToolStripMenuItem.Name = "test1ToolStripMenuItem";
-            this.test1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.test1ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.test1ToolStripMenuItem.Text = "视图3";
             this.test1ToolStripMenuItem.Click += new System.EventHandler(this.视图3ToolStripMenuItem_Click);
             // 
             // test2ToolStripMenuItem
             // 
             this.test2ToolStripMenuItem.Name = "test2ToolStripMenuItem";
-            this.test2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.test2ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.test2ToolStripMenuItem.Text = "视图4";
             this.test2ToolStripMenuItem.Click += new System.EventHandler(this.视图4ToolStripMenuItem_Click);
             // 
@@ -849,7 +845,6 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
             this.lbl_stage,
             this.toolStripStatusLabel2,
             this.lbl_stagetime,
@@ -864,26 +859,19 @@
             this.toolStripStatusLabel7,
             this.toolStripStatusLabel6,
             this.toolStripStatusLabel12,
-            this.toolStripStatusLabel13});
+            this.tssl_log});
             this.statusStrip1.Location = new System.Drawing.Point(0, 1058);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1920, 22);
             this.statusStrip1.TabIndex = 24;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(56, 17);
-            this.toolStripStatusLabel1.Text = "阶段号：";
-            // 
             // lbl_stage
             // 
             this.lbl_stage.BackColor = System.Drawing.Color.Transparent;
             this.lbl_stage.Name = "lbl_stage";
-            this.lbl_stage.Size = new System.Drawing.Size(15, 17);
-            this.lbl_stage.Text = "1";
+            this.lbl_stage.Size = new System.Drawing.Size(32, 17);
+            this.lbl_stage.Text = "###";
             // 
             // toolStripStatusLabel2
             // 
@@ -917,7 +905,7 @@
             // 
             this.toolStripStatusLabel4.BackColor = System.Drawing.Color.Transparent;
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(1346, 17);
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(1385, 17);
             this.toolStripStatusLabel4.Spring = true;
             // 
             // toolStripStatusLabel5
@@ -982,13 +970,13 @@
             this.toolStripStatusLabel12.Size = new System.Drawing.Size(32, 17);
             this.toolStripStatusLabel12.Text = "记录";
             // 
-            // toolStripStatusLabel13
+            // tssl_log
             // 
-            this.toolStripStatusLabel13.BackColor = System.Drawing.Color.Lime;
-            this.toolStripStatusLabel13.Margin = new System.Windows.Forms.Padding(2);
-            this.toolStripStatusLabel13.Name = "toolStripStatusLabel13";
-            this.toolStripStatusLabel13.Size = new System.Drawing.Size(12, 18);
-            this.toolStripStatusLabel13.Text = " ";
+            this.tssl_log.BackColor = System.Drawing.Color.Red;
+            this.tssl_log.Margin = new System.Windows.Forms.Padding(2);
+            this.tssl_log.Name = "tssl_log";
+            this.tssl_log.Size = new System.Drawing.Size(12, 18);
+            this.tssl_log.Text = " ";
             // 
             // groupBox4
             // 
@@ -1340,7 +1328,7 @@
             this.Controls.Add(this.paraLine3);
             this.Controls.Add(this.paraLine2);
             this.Controls.Add(this.radButton7);
-            this.Controls.Add(this.radButton8);
+            this.Controls.Add(this.btn_next);
             this.Controls.Add(this.lbl_time);
             this.Controls.Add(this.radButton6);
             this.Controls.Add(this.radButton5);
@@ -1372,7 +1360,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.radButton5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_start)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_next)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton7)).EndInit();
             this.pnl_setting.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
@@ -1409,7 +1397,6 @@
         private Telerik.WinControls.UI.RadButton radButton4;
         private Telerik.WinControls.UI.RadButton radButton5;
         private Telerik.WinControls.UI.RadButton radButton6;
-        private Telerik.WinControls.UI.RadButton btn_start;
         private System.Windows.Forms.Label lbl_time;
         private Telerik.WinControls.Themes.HighContrastBlackTheme highContrastBlackTheme1;
         private Telerik.WinControls.Themes.Office2013DarkTheme office2013DarkTheme1;
@@ -1427,7 +1414,7 @@
         private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 说明文档ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
-        private Telerik.WinControls.UI.RadButton radButton8;
+        private Telerik.WinControls.UI.RadButton btn_next;
         private System.Windows.Forms.Timer timer_now;
         private Ctrl.ParaLine paraLine2;
         private Ctrl.ParaLine paraLine3;
@@ -1435,7 +1422,6 @@
         private Ctrl.ParaLine paraLine5;
         private Ctrl.ParaLine paraLine6;
         private Ctrl.ParaLine paraLine1;
-        private System.Windows.Forms.Timer timer_trend;
         private Telerik.WinControls.UI.RadButton radButton7;
         private System.Windows.Forms.ToolStripMenuItem 图像编辑ToolStripMenuItem;
         private System.Windows.Forms.Panel pnl_setting;
@@ -1491,7 +1477,6 @@
         private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 帮助ToolStripMenuItem1;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel lbl_stage;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel lbl_stagetime;
@@ -1506,12 +1491,13 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel7;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel12;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel13;
+        private System.Windows.Forms.ToolStripStatusLabel tssl_log;
         private System.Windows.Forms.ToolStripMenuItem 图像编辑ToolStripMenuItem1;
         private System.Windows.Forms.GroupBox groupBox4;
         private Telerik.WinControls.UI.RadButton btn_schedulesave;
         private Telerik.WinControls.UI.RadButton radButton9;
         private System.Windows.Forms.ToolStripMenuItem test1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem test2ToolStripMenuItem;
+        private Telerik.WinControls.UI.RadButton btn_start;
     }
 }

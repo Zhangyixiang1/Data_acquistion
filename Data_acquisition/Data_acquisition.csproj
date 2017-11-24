@@ -55,6 +55,10 @@
       <HintPath>C:\Users\zhangyx1\Desktop\driver_mysql\v4.0\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\bin\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="NPOI">
       <HintPath>C:\Users\zhangyx1\Downloads\NPOI-Lib\NPOI.dll</HintPath>
     </Reference>
@@ -113,6 +117,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comm\Ctr_change.cs" />
+    <Compile Include="Comm\Datamodel.cs" />
+    <Compile Include="Comm\JsonHelper.cs" />
     <Compile Include="Comm\Kep_initial.cs" />
     <Compile Include="Comm\ReadColor.cs" />
     <Compile Include="Ctrl\Gauge.cs">
@@ -164,6 +170,18 @@
     </Compile>
     <Compile Include="Form_Main.Designer.cs">
       <DependentUpon>Form_Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_add.Designer.cs">
+      <DependentUpon>Frm_add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_craet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_craet.Designer.cs">
+      <DependentUpon>Frm_craet.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_Paraanalog2.cs">
       <SubType>Form</SubType>
@@ -233,6 +251,12 @@
     <EmbeddedResource Include="Form_Main.resx">
       <DependentUpon>Form_Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_add.resx">
+      <DependentUpon>Frm_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_craet.resx">
+      <DependentUpon>Frm_craet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Paraanalog.resx">
       <DependentUpon>Frm_Paraanalog.cs</DependentUpon>
     </EmbeddedResource>
@@ -287,6 +311,7 @@
     </Content>
     <Content Include="Config\preference.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Config\test.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

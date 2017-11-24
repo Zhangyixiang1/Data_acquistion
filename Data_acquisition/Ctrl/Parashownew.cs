@@ -112,7 +112,7 @@ namespace Data_acquisition.Ctrl
             try
             {
                 int num = Convert.ToInt16(this.Tag);
-                radPanel1.Text = Form_Main.Paralist.Values.Last()[num].ToString();
+                radPanel1.Text = Form_Main.Paralist.Values.Last().DATA[num].ToString();
             }
 
             catch { }

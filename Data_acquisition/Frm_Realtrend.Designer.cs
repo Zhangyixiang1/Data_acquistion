@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
             this.paraLine1 = new Data_acquisition.Ctrl.ParaLine();
             this.paraLine6 = new Data_acquisition.Ctrl.ParaLine();
@@ -38,14 +37,15 @@
             this.paraLine3 = new Data_acquisition.Ctrl.ParaLine();
             this.paraLine2 = new Data_acquisition.Ctrl.ParaLine();
             this.parashow6 = new Data_acquisition.Ctrl.Parashow();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_stage = new System.Windows.Forms.Label();
+            this.lbl_wellnum = new System.Windows.Forms.Label();
+            this.lbl_stagebig = new System.Windows.Forms.Label();
             this.lbl_wellinfo = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 500;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // zedGraphControl1
             // 
@@ -163,16 +163,93 @@
             this.parashow6.Tagname = null;
             this.parashow6.Unit = null;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(274, 44);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 20);
+            this.label4.TabIndex = 41;
+            this.label4.Text = "阶段:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(73, 44);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 20);
+            this.label3.TabIndex = 42;
+            this.label3.Text = "段:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(274, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 20);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "井号:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(52, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 20);
+            this.label1.TabIndex = 44;
+            this.label1.Text = "油田:";
+            // 
+            // lbl_stage
+            // 
+            this.lbl_stage.AutoSize = true;
+            this.lbl_stage.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
+            this.lbl_stage.ForeColor = System.Drawing.Color.White;
+            this.lbl_stage.Location = new System.Drawing.Point(353, 44);
+            this.lbl_stage.Name = "lbl_stage";
+            this.lbl_stage.Size = new System.Drawing.Size(20, 20);
+            this.lbl_stage.TabIndex = 45;
+            this.lbl_stage.Text = "1";
+            // 
+            // lbl_wellnum
+            // 
+            this.lbl_wellnum.AutoSize = true;
+            this.lbl_wellnum.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
+            this.lbl_wellnum.ForeColor = System.Drawing.Color.White;
+            this.lbl_wellnum.Location = new System.Drawing.Point(353, 12);
+            this.lbl_wellnum.Name = "lbl_wellnum";
+            this.lbl_wellnum.Size = new System.Drawing.Size(42, 20);
+            this.lbl_wellnum.TabIndex = 46;
+            this.lbl_wellnum.Text = "194";
+            // 
+            // lbl_stagebig
+            // 
+            this.lbl_stagebig.AutoSize = true;
+            this.lbl_stagebig.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
+            this.lbl_stagebig.ForeColor = System.Drawing.Color.White;
+            this.lbl_stagebig.Location = new System.Drawing.Point(120, 44);
+            this.lbl_stagebig.Name = "lbl_stagebig";
+            this.lbl_stagebig.Size = new System.Drawing.Size(20, 20);
+            this.lbl_stagebig.TabIndex = 47;
+            this.lbl_stagebig.Text = "1";
+            // 
             // lbl_wellinfo
             // 
             this.lbl_wellinfo.AutoSize = true;
-            this.lbl_wellinfo.Font = new System.Drawing.Font("宋体", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_wellinfo.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
             this.lbl_wellinfo.ForeColor = System.Drawing.Color.White;
-            this.lbl_wellinfo.Location = new System.Drawing.Point(12, 13);
+            this.lbl_wellinfo.Location = new System.Drawing.Point(120, 12);
             this.lbl_wellinfo.Name = "lbl_wellinfo";
-            this.lbl_wellinfo.Size = new System.Drawing.Size(429, 40);
-            this.lbl_wellinfo.TabIndex = 35;
-            this.lbl_wellinfo.Text = "南川194第五段：阶段1";
+            this.lbl_wellinfo.Size = new System.Drawing.Size(51, 20);
+            this.lbl_wellinfo.TabIndex = 48;
+            this.lbl_wellinfo.Text = "南川";
             // 
             // Frm_Realtrend
             // 
@@ -180,6 +257,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(29)))), ((int)(((byte)(31)))));
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbl_stage);
+            this.Controls.Add(this.lbl_wellnum);
+            this.Controls.Add(this.lbl_stagebig);
             this.Controls.Add(this.lbl_wellinfo);
             this.Controls.Add(this.paraLine1);
             this.Controls.Add(this.paraLine6);
@@ -204,7 +288,6 @@
         #endregion
 
         private Ctrl.Parashow parashow6;
-        private System.Windows.Forms.Timer timer1;
         private ZedGraph.ZedGraphControl zedGraphControl1;
         private Ctrl.ParaLine paraLine1;
         private Ctrl.ParaLine paraLine6;
@@ -212,6 +295,13 @@
         private Ctrl.ParaLine paraLine4;
         private Ctrl.ParaLine paraLine3;
         private Ctrl.ParaLine paraLine2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_stage;
+        private System.Windows.Forms.Label lbl_wellnum;
+        private System.Windows.Forms.Label lbl_stagebig;
         private System.Windows.Forms.Label lbl_wellinfo;
     }
 }

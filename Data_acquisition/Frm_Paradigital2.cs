@@ -23,7 +23,7 @@ namespace Data_acquisition
         private void Frm_Paradigital2_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
-                this.Location = new Point(3842, 0); this.BringToFront();
+                this.Location = new Point(3840, 0); this.BringToFront();
         }
 
         private void parashow4_Load(object sender, EventArgs e)

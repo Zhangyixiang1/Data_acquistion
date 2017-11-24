@@ -27,6 +27,8 @@ namespace Data_acquisition
             tag_num = ctr.Tag.ToString();
             tag_color = ctr.Color;
             InitializeComponent();
+            txb_max.Text=ctr.Max;
+            txb_min.Text=ctr.Min;
         }
         public Para_choose(Parashow ctr, string name)
         {
@@ -35,6 +37,8 @@ namespace Data_acquisition
             tag_num = ctr.Tag.ToString();
             tag_color = ctr.Color;
             InitializeComponent();
+            //如果是数字显示控件，不开放上下限设置
+            txb_max.Enabled = false; txb_min.Enabled = false;
         }
         public Para_choose(Parashownew ctr, string name)
         {
@@ -55,6 +59,8 @@ namespace Data_acquisition
             InitializeComponent();
             //如果是数字显示控件，不开放颜色选取
             btn_color.Visible = false;
+            txb_max.Text = ctr.Max;
+            txb_min.Text = ctr.Min;
         }
         public Para_choose(Gauge_mid ctr, string name)
         {
@@ -64,6 +70,8 @@ namespace Data_acquisition
             InitializeComponent();
             //如果是数字显示控件，不开放颜色选取
             btn_color.Visible = false;
+            txb_max.Text = ctr.Max;
+            txb_min.Text = ctr.Min;
         }
 
 
@@ -144,7 +152,7 @@ namespace Data_acquisition
             if (btn_s != null)
             {
                 string[] message = btn_s.Tag.ToString().Split(',');
-                txb_max.Text = message[3]; txb_min.Text = message[4];
+               // txb_max.Text = message[3]; txb_min.Text = message[4];
             }
         }
         private void btnClick(object sender, EventArgs e)

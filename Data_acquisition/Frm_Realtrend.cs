@@ -156,33 +156,33 @@ namespace Data_acquisition
             // 根据配置信息，生成曲线坐标轴的样式
             LineItem myCurve = myPane.AddCurve(paraLine3.Tagname,
                List1, paraLine3.Color, SymbolType.None);
-            myCurve.Line.Width = 2;
+            myCurve.Line.Width = 1;
 
             myCurve = myPane.AddCurve(paraLine4.Tagname,
                List2, paraLine4.Color, SymbolType.None);
-            myCurve.Line.Width = 2;
+            myCurve.Line.Width = 1;
             myCurve.IsY2Axis = true;
 
 
             myCurve = myPane.AddCurve(paraLine2.Tagname,
                List3, paraLine2.Color, SymbolType.None);
-            myCurve.Line.Width = 2;
+            myCurve.Line.Width = 1;
             myCurve.YAxisIndex = 1;
 
             myCurve = myPane.AddCurve(paraLine5.Tagname,
     List4, paraLine5.Color, SymbolType.None);
-            myCurve.Line.Width = 2;
+            myCurve.Line.Width = 1;
             myCurve.IsY2Axis = true;
             myCurve.YAxisIndex = 1;
 
             myCurve = myPane.AddCurve(paraLine1.Tagname,
                List5, paraLine1.Color, SymbolType.None);
-            myCurve.Line.Width = 2;
+            myCurve.Line.Width = 1;
             myCurve.YAxisIndex = 2;
 
             myCurve = myPane.AddCurve(paraLine6.Tagname,
        List6, paraLine6.Color, SymbolType.None);
-            myCurve.Line.Width = 2;
+            myCurve.Line.Width = 1;
             myCurve.IsY2Axis = true;
             myCurve.YAxisIndex = 2;
 
@@ -310,13 +310,16 @@ namespace Data_acquisition
             // Fill the axis background with a gradient
             //  myPane.Chart.Fill = new Fill(Color.White, Color.LightGoldenrodYellow, 45.0f);
 
-            //新增，y轴不显示名称
+
+            //新增，y轴不显示名称及零线
             foreach (YAxis y in myPane.YAxisList)
             {
+                y.MajorGrid.IsZeroLine = false;
                 y.Title.IsVisible = false;
             }
             foreach (Y2Axis y in myPane.Y2AxisList)
             {
+                y.MajorGrid.IsZeroLine = false;
                 y.Title.IsVisible = false;
             }
             //新增，读取配置文件的曲线颜色信息，更新曲线
@@ -424,25 +427,90 @@ namespace Data_acquisition
         {
             if (e.KeyCode == Keys.Escape)
             {
-                this.Location = new Point(1921, 0);
+                this.Location = new Point(1920, 0);
                 this.BringToFront();
             }
         }
+        /// <summary>
+        /// 更新井号信息
+        /// </summary>
+        public void wellinfo_refresh()
+        { lbl_wellinfo.Text=Form_Main.wellname;
+        lbl_wellnum.Text = Form_Main.wellnum;
+        lbl_stagebig.Text = Form_Main.stage_big;
 
 
+        }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
+        public void timer_trend()
+        {  //阶段号更新
+
+            lbl_stage.Text = Form_Main.num_stage.ToString();
+
+
+            //取Graph第一个曲线，也就是第一步:在GraphPane.CurveList集合中查找CurveItem
+            LineItem curve1 = zedGraphControl1.GraphPane.CurveList[0] as LineItem;
+            LineItem curve2 = zedGraphControl1.GraphPane.CurveList[1] as LineItem;
+            LineItem curve3 = zedGraphControl1.GraphPane.CurveList[2] as LineItem;
+            LineItem curve4 = zedGraphControl1.GraphPane.CurveList[3] as LineItem;
+            LineItem curve5 = zedGraphControl1.GraphPane.CurveList[4] as LineItem;
+            LineItem curve6 = zedGraphControl1.GraphPane.CurveList[5] as LineItem;
+            if (curve1 == null)
+            {
+                return;
+            }
+
+            //第二步:在CurveItem中访问PointPairList(或者其它的IPointList)，根据自己的需要增加新数据或修改已存在的数据
+            IPointListEdit list1 = curve1.Points as IPointListEdit;
+            IPointListEdit list2 = curve2.Points as IPointListEdit;
+            IPointListEdit list3 = curve3.Points as IPointListEdit;
+            IPointListEdit list4 = curve4.Points as IPointListEdit;
+            IPointListEdit list5 = curve5.Points as IPointListEdit;
+            IPointListEdit list6 = curve6.Points as IPointListEdit;
+
+            if (list1 == null)
+            {
+                return;
+            }
+
             Scale xScale = zedGraphControl1.GraphPane.XAxis.Scale;
             double factor = 60;
-            // factor = 1; //测试用
-            if (zedGraphControl1.GraphPane.CurveList[0].Points.Count / factor > xScale.Max)
+            int num1 = int.Parse(paraLine3.Tag.ToString());
+            int num2 = int.Parse(paraLine4.Tag.ToString());
+            int num3 = int.Parse(paraLine2.Tag.ToString());
+            int num4 = int.Parse(paraLine5.Tag.ToString());
+            int num5 = int.Parse(paraLine1.Tag.ToString());
+            int num6 = int.Parse(paraLine6.Tag.ToString());
+
+            //  factor = 1;//测试用
+            //添加数据
+            list1.Add(Form_Main.count / factor, Form_Main.Paralist[Form_Main.count.ToString()].DATA[num1]);
+            list2.Add(Form_Main.count / factor, Form_Main.Paralist[Form_Main.count.ToString()].DATA[num1]);
+            list3.Add(Form_Main.count / factor, Form_Main.Paralist[Form_Main.count.ToString()].DATA[num1]);
+            list4.Add(Form_Main.count / factor, Form_Main.Paralist[Form_Main.count.ToString()].DATA[num1]);
+            list5.Add(Form_Main.count / factor, Form_Main.Paralist[Form_Main.count.ToString()].DATA[num1]);
+            list6.Add(Form_Main.count / factor, Form_Main.Paralist[Form_Main.count.ToString()].DATA[num1]);
+
+
+            if (Form_Main.count / factor > xScale.Max)
             {
                 xScale.Max = xScale.Max + 30;
                 xScale.MajorStep = xScale.Max / 6;//X轴大步长为5，也就是显示文字的大间隔
             }
+
+
+            //Scale xScale = zedGraphControl1.GraphPane.XAxis.Scale;
+            //if (time > xScale.Max - xScale.MajorStep)
+            //{
+            //xScale.Max = time + xScale.MajorStep;
+            //xScale.Min = xScale.Max - 30.0;
+
+
+            //第三步:调用ZedGraphControl.AxisChange()方法更新X和Y轴的范围
             zedGraphControl1.AxisChange();
-            zedGraphControl1.Refresh();
+
+            //第四步:调用Form.Invalidate()方法更新图表
+            zedGraphControl1.Invalidate();
         }
 
         #endregion

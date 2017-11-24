@@ -22,7 +22,7 @@ namespace Data_acquisition
 
         private void Frm_Paraanalog2_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape) this.Location = new Point(3842, 0); this.BringToFront();
+            if (e.KeyCode == Keys.Escape) this.Location = new Point(3840, 0); this.BringToFront();
         }
 
         private void Frm_Paraanalog2_Load(object sender, EventArgs e)
