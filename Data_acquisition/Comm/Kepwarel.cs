@@ -8,23 +8,22 @@ using System.Windows.Forms;
 
 namespace Data_acquisition.Comm
 { //Kepware相关类，初始化以及读取
-
-    class Kep_initial
+    class Kepware
     {      //kepware相关变量
-        static public OPCServer KepServer;
-        static public OPCGroups KepGroups;
-        static public OPCGroup KepGroup;
-        static public OPCItems KepItems;
-        static public OPCItem KepItem;
-        static public int[] Item_serverhandle1_To_PC = new int[65536];
-        static public int item_oder_To_PC = 1;
-        static public int item_oder = 1;
-        static public Array kepvalue;
-        static public Array keperr;
-        static public object kepqua;
-        static public object kepstamp;
-        static public bool kepconn;
-        public void kep_initial()
+        public OPCServer KepServer;
+        public OPCGroups KepGroups;
+        public OPCGroup KepGroup;
+        public OPCItems KepItems;
+        public OPCItem KepItem;
+        public int[] Item_serverhandle1_To_PC = new int[65536];
+        public int item_oder_To_PC = 1;
+        public int item_oder = 1;
+        public Array kepvalue;
+        public Array keperr;
+        public object kepqua;
+        public object kepstamp;
+        public bool kepconn;
+        public bool kep_initial(string path)
         {
             try
             {
@@ -41,8 +40,9 @@ namespace Data_acquisition.Comm
                 KepGroup.UpdateRate = 250;
                 KepServer.OPCGroups.DefaultGroupDeadband = 0;
                 KepItems = KepGroup.OPCItems; //建立opc标签集合
-                string path = System.Environment.CurrentDirectory;
-                StreamReader sr = new StreamReader(path + @"\Kepware.txt");
+               
+                //string path = System.Environment.CurrentDirectory;
+                StreamReader sr = new StreamReader(path);
                 string content = sr.ReadToEnd();
                 string[] str = content.Split(new string[] { "\r\n" }, StringSplitOptions.None);
 
@@ -50,17 +50,18 @@ namespace Data_acquisition.Comm
                 {
                     string temp1 = temp0.ToString();
                     string temp = temp1.Replace("\t", "");
-                    KepItems.AddItem("Channel1." + temp.ToString(), item_oder);
+                    KepItems.AddItem("iFrac.Blender." + temp.ToString(), item_oder);
                     Item_serverhandle1_To_PC[item_oder_To_PC] = KepItems.Item(item_oder).ServerHandle;
                     item_oder_To_PC = item_oder_To_PC + 1;
                     item_oder = item_oder + 1;
 
                 }
 
+                return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                return false;
             }
 
         }
@@ -74,4 +75,6 @@ namespace Data_acquisition.Comm
 
         }
     }
+
 }
+

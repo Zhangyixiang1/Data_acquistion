@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
+using ZcLibrary;
 using ZedGraph;
 namespace Data_acquisition
 {

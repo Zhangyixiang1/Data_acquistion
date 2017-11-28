@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Xml;
 using Telerik.WinControls;
 using ZedGraph;
+using ZcLibrary;
 using NPOI;
 using Data_acquisition.DAL;
 using MySql.Data.MySqlClient;
@@ -25,7 +26,8 @@ namespace Data_acquisition
     {
 
         #region 变量声明
-
+        Kepware kep1;//混砂车
+        Kepware kep2;//压力泵
         ToolTip toolTip1;
         public static DateTime time; //当前时间
         public static DateTime time_stage;//阶段时间
@@ -39,7 +41,7 @@ namespace Data_acquisition
         public static double count;//数据条目
         public static Dictionary<string, Datamodel> Paralist; //实时数据缓存
         public static Dictionary<string, Datamodel> Loglist; //记录数据缓存
-       
+
         #endregion
 
         #region 方法
@@ -73,8 +75,21 @@ namespace Data_acquisition
                         test[i] = i + rd.Next(0, 10);
                         //  if (count > 600) { test[i] = count / 10 + rd.Next(0, 10); }
                     }
+                    //测试用，读取混砂车数据
+             //Array value_blender= kep1.kep_read();
+             //test[36]=Convert.ToDouble( value_blender.GetValue(1));
+             //test[37] = Convert.ToDouble(value_blender.GetValue(2));
+             //test[38] = Convert.ToDouble(value_blender.GetValue(3));
+             //test[39] = Convert.ToDouble(value_blender.GetValue(4));
+             //test[42] = Convert.ToDouble(value_blender.GetValue(5));
+             //test[43] = Convert.ToDouble(value_blender.GetValue(6));
+             //test[44] = Convert.ToDouble(value_blender.GetValue(7));
+             //test[45] = Convert.ToDouble(value_blender.GetValue(8));
+             //test[46] = Convert.ToDouble(value_blender.GetValue(9));
+             //test[47] = Convert.ToDouble(value_blender.GetValue(10));
+             //test[48] = Convert.ToDouble(value_blender.GetValue(11));
 
-                    Paralist.Add(DateTime.Now.ToString(), new Datamodel((int)count, test));
+                                 Paralist.Add(DateTime.Now.ToString(), new Datamodel((int)count, test));
                     //实时数据缓存只有一百条，用于参数的刷新
                     if (Paralist.Count > 10) Paralist.Remove(Paralist.ElementAt(0).Key);
 
@@ -112,6 +127,23 @@ namespace Data_acquisition
                 }
             }
         }
+        /// <summary>
+        /// 初始化plc相关变量
+        /// </summary>
+        private void Kep_initial()
+        {
+            //先注册混砂车
+            kep1 = new Kepware();
+            string path = Application.StartupPath + "\\Config\\Blender.txt";
+            if (!kep1.kep_initial(path))
+            {
+                MessageBox.Show("混砂车PLC变量注册失败，请检查kepware相关设置，随后重启软件！");
+                Application.Exit();
+            }
+
+
+        }
+
         /// <summary>
         /// 曲线刷新
         /// </summary>
@@ -318,7 +350,7 @@ namespace Data_acquisition
             //曲线面板属性
             myPane.Fill = new Fill(Color.FromArgb(28, 29, 31));
             myPane.Chart.Fill = new Fill(Color.Black);
-            myPane.Chart.Border.Color=Color.Gray;
+            myPane.Chart.Border.Color = Color.Gray;
             myPane.IsFontsScaled = false;
             myPane.Border.Color = Color.White;
             myPane.Legend.IsVisible = false;
@@ -346,7 +378,7 @@ namespace Data_acquisition
             myPane.Y2Axis.MajorTic.IsInside = false;
             myPane.Y2Axis.MajorGrid.Color = Color.White;
             myPane.Y2Axis.MinorTic.IsInside = false;
-       
+
 
             // 添加6条曲线
             PointPairList List1 = new PointPairList();
@@ -745,6 +777,10 @@ namespace Data_acquisition
 
             xml_load();//读取偏好设置文件
             chart_initial();//初始化图表控件
+       //     Kep_initial();//注册通讯变量
+
+          //设置dgv的列头字体大小
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.ColumnHeadersDefaultCellStyle.Font.FontFamily, 10);
 
             //测试用，在子线程中生成随机数填充paralist
             Thread th = new Thread(intialdata);
@@ -850,7 +886,7 @@ namespace Data_acquisition
 
 
         }
-        
+
 
         private void pnl_setting_VisibleChanged(object sender, EventArgs e)
         {
@@ -978,6 +1014,12 @@ namespace Data_acquisition
                     dataGridView1.Columns[11].HeaderText = "";
                     dataGridView1.Columns[12].HeaderText = "";
                     dataGridView1.Columns[3].FillWeight = 150;
+                    dataGridView1.DefaultCellStyle.Font = new Font(dataGridView1.DefaultCellStyle.Font.FontFamily, 10);
+                    dataGridView1.RowsDefaultCellStyle.Font=new Font( dataGridView1.RowsDefaultCellStyle.Font.FontFamily,10);
+                    foreach(DataGridViewColumn item in dataGridView1.Columns){
+                    item.SortMode=DataGridViewColumnSortMode.NotSortable;
+                    }
+
                 }
             }
             catch (Exception ex)
@@ -1017,7 +1059,7 @@ namespace Data_acquisition
                 zedGraphControl1.GetImage().Save(name);
             }
         }
-    
+
         /// <summary>
         /// 下一阶段
         /// </summary>
@@ -1083,7 +1125,7 @@ namespace Data_acquisition
                 Pub_func.grid_clear(((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).dataGridView1);
                 ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).wellinfo_refresh();
                 ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).wellinfo_refresh();
-               
+
                 Form_Main.count = 0;
                 foreach (LineItem line in ((Form_Main)Application.OpenForms["Form_Main"]).zedGraphControl1.GraphPane.CurveList)
                 {

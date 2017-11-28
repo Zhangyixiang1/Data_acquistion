@@ -36,7 +36,12 @@ namespace Data_acquisition
             dataGridView1.Columns[11].HeaderText = "";
             dataGridView1.Columns[12].HeaderText = "";
             dataGridView1.Columns[3].FillWeight = 150;
-
+            dataGridView1.DefaultCellStyle.Font = new Font(dataGridView1.DefaultCellStyle.Font.FontFamily, 10);
+            dataGridView1.RowsDefaultCellStyle.Font = new Font(dataGridView1.RowsDefaultCellStyle.Font.FontFamily, 10);
+            foreach (DataGridViewColumn item in dataGridView1.Columns)
+            {
+                item.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         /// <summary>
         /// 曲线刷新
@@ -440,7 +445,8 @@ namespace Data_acquisition
         {
             xml_load();
             chart_initial();
-
+            //设置dgv的列头字体大小
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.ColumnHeadersDefaultCellStyle.Font.FontFamily, 10);
         }
         private void Frm_Realtrend2_KeyDown(object sender, KeyEventArgs e)
         {

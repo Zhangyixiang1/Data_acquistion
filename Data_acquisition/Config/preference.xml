@@ -15,11 +15,11 @@
       <Control name="parashow1" tagname="井口油压" unit="Mpa" index="36" color="255,0,0" />
       <Control name="parashow2" tagname="井口套压" unit="Mpa" index="37" color="255,0,0" />
       <Control name="parashow3" tagname="井口密度" unit="Mpa" index="38" color="255,255,0" />
-      <Control name="parashow4" tagname="井口排除流量" unit="m3/min" index="39" color="128,128,255" />
+      <Control name="parashow4" tagname="井口排出流量" unit="m3/min" index="39" color="128,128,255" />
       <Control name="parashow5" tagname="混合液密度" unit="g/cc" index="40" color="255,128,0" />
       <Control name="parashow6" tagname="砂密度" unit="KgPA" index="41" color="0,255,0" />
       <Control name="parashow7" tagname="吸入压力" unit="Mpa" index="42" color="0,128,128" />
-      <Control name="parashow8" tagname="排除压力" unit="Mpa" index="43" color="128,0,255" />
+      <Control name="parashow8" tagname="排出压力" unit="Mpa" index="43" color="128,0,255" />
       <Control name="parashow9" tagname="吸入排量" unit="m3/min" index="44" color="255,128,255" />
       <Control name="parashow10" tagname="排出排量" unit="m3/min" index="45" color="255,128,192" />
       <Control name="parashow11" tagname="绞龙1转速" unit="RPM" index="46" color="0,0,255" />
@@ -57,7 +57,7 @@
       <Control name="parashownew5" tagname="泵1累计" unit="m3" index="111" color="0,0,255" />
       <Control name="parashownew6" tagname="砂密度" unit="KgPA" index="7" color="0,0,255" />
       <Control name="parashownew7" tagname="井口油压" unit="Mpa" index="36" color="0,0,255" />
-      <Control name="parashownew8" tagname="排除压力" unit="Mpa" index="9" color="0,0,255" />
+      <Control name="parashownew8" tagname="排出压力" unit="Mpa" index="9" color="0,0,255" />
       <Control name="parashownew9" tagname="泵2排量" unit="m3" index="114" color="255,0,0" />
       <Control name="parashownew10" tagname="泵2压力" unit="Mpa" index="112" color="255,0,0" />
       <Control name="parashownew11" tagname="泵2阶段累计" unit="m3" index="115" color="255,0,0" />
@@ -123,7 +123,7 @@
       <Control name="parashownew5" tagname="泵1累计" unit="m3" index="111" color="0,0,255" />
       <Control name="parashownew6" tagname="砂密度" unit="KgPA" index="7" color="0,0,255" />
       <Control name="parashownew7" tagname="井口油压" unit="Mpa" index="36" color="0,0,255" />
-      <Control name="parashownew8" tagname="排除压力" unit="Mpa" index="9" color="0,0,255" />
+      <Control name="parashownew8" tagname="排出压力" unit="Mpa" index="9" color="0,0,255" />
       <Control name="parashownew9" tagname="泵2排量" unit="m3" index="114" color="255,0,0" />
       <Control name="parashownew10" tagname="泵2压力" unit="Mpa" index="112" color="255,0,0" />
       <Control name="parashownew11" tagname="泵2阶段累计" unit="m3" index="115" color="255,0,0" />
