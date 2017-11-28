@@ -168,7 +168,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(274, 44);
+            this.label4.Location = new System.Drawing.Point(274, 38);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 20);
             this.label4.TabIndex = 41;
@@ -179,7 +179,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(73, 44);
+            this.label3.Location = new System.Drawing.Point(73, 38);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 20);
             this.label3.TabIndex = 42;
@@ -212,11 +212,11 @@
             this.lbl_stage.AutoSize = true;
             this.lbl_stage.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
             this.lbl_stage.ForeColor = System.Drawing.Color.White;
-            this.lbl_stage.Location = new System.Drawing.Point(353, 44);
+            this.lbl_stage.Location = new System.Drawing.Point(353, 38);
             this.lbl_stage.Name = "lbl_stage";
-            this.lbl_stage.Size = new System.Drawing.Size(20, 20);
+            this.lbl_stage.Size = new System.Drawing.Size(31, 20);
             this.lbl_stage.TabIndex = 45;
-            this.lbl_stage.Text = "1";
+            this.lbl_stage.Text = "##";
             // 
             // lbl_wellnum
             // 
@@ -225,20 +225,20 @@
             this.lbl_wellnum.ForeColor = System.Drawing.Color.White;
             this.lbl_wellnum.Location = new System.Drawing.Point(353, 12);
             this.lbl_wellnum.Name = "lbl_wellnum";
-            this.lbl_wellnum.Size = new System.Drawing.Size(42, 20);
+            this.lbl_wellnum.Size = new System.Drawing.Size(31, 20);
             this.lbl_wellnum.TabIndex = 46;
-            this.lbl_wellnum.Text = "194";
+            this.lbl_wellnum.Text = "##";
             // 
             // lbl_stagebig
             // 
             this.lbl_stagebig.AutoSize = true;
             this.lbl_stagebig.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
             this.lbl_stagebig.ForeColor = System.Drawing.Color.White;
-            this.lbl_stagebig.Location = new System.Drawing.Point(120, 44);
+            this.lbl_stagebig.Location = new System.Drawing.Point(120, 38);
             this.lbl_stagebig.Name = "lbl_stagebig";
-            this.lbl_stagebig.Size = new System.Drawing.Size(20, 20);
+            this.lbl_stagebig.Size = new System.Drawing.Size(31, 20);
             this.lbl_stagebig.TabIndex = 47;
-            this.lbl_stagebig.Text = "1";
+            this.lbl_stagebig.Text = "##";
             // 
             // lbl_wellinfo
             // 
@@ -247,9 +247,9 @@
             this.lbl_wellinfo.ForeColor = System.Drawing.Color.White;
             this.lbl_wellinfo.Location = new System.Drawing.Point(120, 12);
             this.lbl_wellinfo.Name = "lbl_wellinfo";
-            this.lbl_wellinfo.Size = new System.Drawing.Size(51, 20);
+            this.lbl_wellinfo.Size = new System.Drawing.Size(31, 20);
             this.lbl_wellinfo.TabIndex = 48;
-            this.lbl_wellinfo.Text = "南川";
+            this.lbl_wellinfo.Text = "##";
             // 
             // Frm_Realtrend
             // 
@@ -288,7 +288,6 @@
         #endregion
 
         private Ctrl.Parashow parashow6;
-        private ZedGraph.ZedGraphControl zedGraphControl1;
         private Ctrl.ParaLine paraLine1;
         private Ctrl.ParaLine paraLine6;
         private Ctrl.ParaLine paraLine5;
@@ -299,9 +298,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lbl_stage;
         private System.Windows.Forms.Label lbl_wellnum;
         private System.Windows.Forms.Label lbl_stagebig;
         private System.Windows.Forms.Label lbl_wellinfo;
+        public ZedGraph.ZedGraphControl zedGraphControl1;
+        public System.Windows.Forms.Label lbl_stage;
     }
 }

@@ -67,6 +67,7 @@ namespace Data_acquisition
                     Form_Main.wellname=txt_wellname.Text;
                     Form_Main.wellnum=txt_wellnum.Text;
                     Form_Main.stage_big=txt_stage.Text;
+                  
                     ((Form_Main)Application.OpenForms["Form_Main"]).wellinfo_refresh();
                     ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).wellinfo_refresh();
                     ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).wellinfo_refresh();

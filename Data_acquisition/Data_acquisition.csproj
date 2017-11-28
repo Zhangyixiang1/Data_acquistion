@@ -120,6 +120,7 @@
     <Compile Include="Comm\Datamodel.cs" />
     <Compile Include="Comm\JsonHelper.cs" />
     <Compile Include="Comm\Kep_initial.cs" />
+    <Compile Include="Comm\Pub_func.cs" />
     <Compile Include="Comm\ReadColor.cs" />
     <Compile Include="Ctrl\Gauge.cs">
       <SubType>UserControl</SubType>

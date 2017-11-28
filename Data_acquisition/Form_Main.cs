@@ -25,9 +25,10 @@ namespace Data_acquisition
     {
 
         #region 变量声明
+
         ToolTip toolTip1;
-        DateTime time; //当前时间
-        DateTime time_stage;//阶段时间
+        public static DateTime time; //当前时间
+        public static DateTime time_stage;//阶段时间
         public static int num_stage = 1;//阶段号
         public static string wellname;//油田名
         public static string wellnum;//井队号
@@ -35,15 +36,16 @@ namespace Data_acquisition
         public static bool iscnndatabase; //是否有新建施工和追加施工
         public static string tbname;//当前使用的数据库表单名
         bool run;//是否记录数据
-
-
-        public static double count;//测试用
+        public static double count;//数据条目
         public static Dictionary<string, Datamodel> Paralist; //实时数据缓存
         public static Dictionary<string, Datamodel> Loglist; //记录数据缓存
-        public static Dictionary<string, Datamodel> Log_editlist;//记录修改后缓存
+       
         #endregion
 
         #region 方法
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public Form_Main()
         {
             InitializeComponent();
@@ -54,7 +56,7 @@ namespace Data_acquisition
 
         }
         /// <summary>
-        /// 产生测试用随机数
+        /// 子线程，实现数据的归档与曲线的刷新
         /// </summary>
         private void intialdata()
         {
@@ -72,7 +74,10 @@ namespace Data_acquisition
                         //  if (count > 600) { test[i] = count / 10 + rd.Next(0, 10); }
                     }
 
-                    Paralist.Add(DateTime.Now.ToString(), new Datamodel(count.ToString(), test));
+                    Paralist.Add(DateTime.Now.ToString(), new Datamodel((int)count, test));
+                    //实时数据缓存只有一百条，用于参数的刷新
+                    if (Paralist.Count > 10) Paralist.Remove(Paralist.ElementAt(0).Key);
+
                     //模拟用
                     // Paralist.Add(count.ToString(), test);
 
@@ -81,19 +86,23 @@ namespace Data_acquisition
                     if (run)
                     {
 
-                        Loglist.Add(DateTime.Now.ToString(), new Datamodel(count.ToString(), test));
-                        //若添加成功，将最新值插入到数据库  
+                        Loglist.Add(DateTime.Now.ToString(), new Datamodel((int)count, test));
+                        //测试用，后续要保存该数据对图像进行修改
+                        if (Loglist.Count > 3600) Paralist.Remove(Paralist.ElementAt(0).Key);
 
+
+                        //若添加成功，将最新值插入到数据库  
                         string json = JsonConvert.SerializeObject(Loglist.Last());
                         DbManager db = new DbManager();
                         db.ConnStr = "Data Source=localhost;" +
                         "Initial Catalog=ifracviewdata;User Id=root;Password=hhdq;";
-                        string sql = "insert into " + tbname + " values ( 0, " + count + "," + "'" + json + "'" + ")";
+                        string sql = "insert into " + tbname + " values ( 0, " + num_stage.ToString() + "," + "'" + json + "'" + ")";
                         int result = db.ExecuteNonquery(sql);
-                        this.timer_trend((double)count);
+
+                        this.timer_trend((double)count, true);//主界面曲线刷新
+                        ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).timer_trend(count, true);//界面1曲线刷新
+                        ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).timer_trend(count, true);////界面2曲线刷新
                         count++;
-                        //    ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).timer_trend();
-                        //    ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).timer_trend();
                     }
 
                 }
@@ -103,6 +112,10 @@ namespace Data_acquisition
                 }
             }
         }
+        /// <summary>
+        /// 曲线刷新
+        /// </summary>
+        /// <param name="num_line">曲线编号</param>
         public void trend_refresh(string num_line)
         {
             string num = num_line.Substring(num_line.Length - 1);
@@ -297,17 +310,17 @@ namespace Data_acquisition
         /// </summary>
         private void chart_initial()
         {
+            //修改，开放主界面的放大、缩小以及滑轮功能
             // zedGraphControl1.IsShowContextMenu = false;
             // zedGraphControl1.IsEnableHPan = false; zedGraphControl1.IsEnableVPan = false;
             // zedGraphControl1.IsEnableHZoom = false; zedGraphControl1.IsEnableZoom = false;
             GraphPane myPane = zedGraphControl1.GraphPane;
+            //曲线面板属性
             myPane.Fill = new Fill(Color.FromArgb(28, 29, 31));
-            // myPane.Chart.Fill = new Fill(Color.FromArgb(49, 49, 49));
             myPane.Chart.Fill = new Fill(Color.Black);
+            myPane.Chart.Border.Color=Color.Gray;
             myPane.IsFontsScaled = false;
-            //  myPane.Border.IsVisible = false;
             myPane.Border.Color = Color.White;
-            // Set the titles and axis labels
             myPane.Legend.IsVisible = false;
             myPane.Title.Text = "";
             //x轴
@@ -333,39 +346,24 @@ namespace Data_acquisition
             myPane.Y2Axis.MajorTic.IsInside = false;
             myPane.Y2Axis.MajorGrid.Color = Color.White;
             myPane.Y2Axis.MinorTic.IsInside = false;
-            //  myPane.YAxis.Title.Text = paraLine3.Tagname + "(" + paraLine3.Unit + ")";
-            //  myPane.Y2Axis.Title.Text = paraLine4.Tagname + "(" + paraLine4.Unit + ")";
+       
 
-            // Make up some data points based on the Sine function
+            // 添加6条曲线
             PointPairList List1 = new PointPairList();
             PointPairList List2 = new PointPairList();
             PointPairList List3 = new PointPairList();
             PointPairList List4 = new PointPairList();
             PointPairList List5 = new PointPairList();
             PointPairList List6 = new PointPairList();
-            // 测试用
-            //Random rd = new Random();
-            //for (int i = 0; i <= 1800; i++)
-            //{
-            //    List1.Add(i / 60, i/10  + 10);
-            //    List2.Add(i / 60, i / 10 + 10);
-            //    List3.Add(i / 60, i / 10 + 10);
-            //    List4.Add(i / 60, i / 10 + 10);
-            //    List5.Add(i / 60, i / 10 + 10);
-            //    List6.Add(i / 60, i / 10 + 10);
 
-            //}
-
-            //}
-
-            // Generate a blue curve with diamond symbols, and "Velocity" in the legend
+            // 第1条线的标号为3
             LineItem myCurve = myPane.AddCurve(paraLine3.Tagname,
                List1, Color.Blue, SymbolType.None);
             myCurve.Line.Width = 1;
             // Fill the symbols with white
             // myCurve.Symbol.Fill = new Fill(Color.White);
 
-            // Generate a Lime curve with circle symbols, and "Acceleration" in the legend
+            //第2条线的标号为4
             myCurve = myPane.AddCurve(paraLine4.Tagname,
                List2, Color.Lime, SymbolType.None);
             myCurve.Line.Width = 1;
@@ -374,7 +372,7 @@ namespace Data_acquisition
             // Associate this curve with the Y2 axis
             myCurve.IsY2Axis = true;
 
-            // Generate a Yellow curve with square symbols, and "Distance" in the legend
+            // 第3条线的标号为2
             myCurve = myPane.AddCurve(paraLine2.Tagname,
                List3, Color.Yellow, SymbolType.None);
             myCurve.Line.Width = 1;
@@ -383,7 +381,7 @@ namespace Data_acquisition
             // Associate this curve with the second Y axis
             myCurve.YAxisIndex = 1;
 
-            // Generate a green curve with triangle symbols, and "Energy" in the legend
+            // 第4条线的标号为5
             myCurve = myPane.AddCurve(paraLine5.Tagname,
                List4, Color.SeaGreen, SymbolType.None);
             myCurve.Line.Width = 1;
@@ -394,7 +392,7 @@ namespace Data_acquisition
             // Associate this curve with the second Y2 axis
             myCurve.YAxisIndex = 1;
 
-            // Generate a red curve with square symbols, and "Distance" in the legend
+            // 第5条线的标号为1
             myCurve = myPane.AddCurve(paraLine1.Tagname,
                List5, Color.Red, SymbolType.None);
             myCurve.Line.Width = 1;
@@ -403,7 +401,7 @@ namespace Data_acquisition
             // Associate this curve with the second Y axis
             myCurve.YAxisIndex = 2;
 
-            // Generate a Skyblue curve with triangle symbols, and "Energy" in the legend
+            // 第6条线的标号为6
             myCurve = myPane.AddCurve(paraLine6.Tagname,
                List6, Color.SkyBlue, SymbolType.None);
             myCurve.Line.Width = 1;
@@ -418,7 +416,7 @@ namespace Data_acquisition
             // Show the x axis grid
             myPane.XAxis.MajorGrid.IsVisible = true;
 
-            // Make the Y axis blue
+            // 6条y轴的颜色，文字大小等相关属性
             myPane.YAxis.Scale.FontSpec.FontColor = Color.Blue;
             myPane.YAxis.Scale.FontSpec.Size = 15;
             myPane.YAxis.Title.FontSpec.FontColor = Color.Blue;
@@ -435,6 +433,7 @@ namespace Data_acquisition
             myPane.YAxis.Scale.Align = AlignP.Inside;
             myPane.YAxis.Scale.Max = int.Parse(paraLine3.Max);
             myPane.YAxis.Scale.Min = int.Parse(paraLine3.Min);
+
 
             // Enable the Y2 axis Lime
             myPane.Y2Axis.IsVisible = true;
@@ -556,8 +555,6 @@ namespace Data_acquisition
             //新增，读取配置文件的曲线颜色信息，更新曲线
             trend_refresh("1"); trend_refresh("2"); trend_refresh("3");
             trend_refresh("4"); trend_refresh("5"); trend_refresh("6");
-
-
             zedGraphControl1.AxisChange();
 
 
@@ -643,6 +640,99 @@ namespace Data_acquisition
             zedGraphControl1.Invalidate();
         }
         #endregion
+
+        /// <summary>
+        /// 更新井号信息
+        /// </summary>
+        public void wellinfo_refresh()
+        {
+
+            lbl_stage.Text = wellname + wellnum + "第" + stage_big + "段  " + "阶段:" + num_stage;
+            if (lbl_time.InvokeRequired) { lbl_time.Invoke(new Action(() => lbl_time.Text = string.Format("{0:T}", time))); }
+            else { lbl_time.Text = string.Format("{0:T}", time); }
+            lbl_stagetime.Text = string.Format("{0:T}", time_stage);
+        }
+        /// <summary>
+        /// 曲线更新
+        /// </summary>
+        /// <param name="count">x轴坐标</param>
+        /// <param name="refresh">是否刷新</param>
+        private void timer_trend(double count, bool refresh)
+        {
+            //取Graph第一个曲线，也就是第一步:在GraphPane.CurveList集合中查找CurveItem
+            LineItem curve1 = zedGraphControl1.GraphPane.CurveList[0] as LineItem;
+            LineItem curve2 = zedGraphControl1.GraphPane.CurveList[1] as LineItem;
+            LineItem curve3 = zedGraphControl1.GraphPane.CurveList[2] as LineItem;
+            LineItem curve4 = zedGraphControl1.GraphPane.CurveList[3] as LineItem;
+            LineItem curve5 = zedGraphControl1.GraphPane.CurveList[4] as LineItem;
+            LineItem curve6 = zedGraphControl1.GraphPane.CurveList[5] as LineItem;
+            if (curve1 == null)
+            {
+                return;
+            }
+
+            //第二步:在CurveItem中访问PointPairList(或者其它的IPointList)，根据自己的需要增加新数据或修改已存在的数据
+            IPointListEdit list1 = curve1.Points as IPointListEdit;
+            IPointListEdit list2 = curve2.Points as IPointListEdit;
+            IPointListEdit list3 = curve3.Points as IPointListEdit;
+            IPointListEdit list4 = curve4.Points as IPointListEdit;
+            IPointListEdit list5 = curve5.Points as IPointListEdit;
+            IPointListEdit list6 = curve6.Points as IPointListEdit;
+
+            if (list1 == null)
+            {
+                return;
+            }
+
+            Scale xScale = zedGraphControl1.GraphPane.XAxis.Scale;
+            double factor = 60;
+            int num1 = int.Parse(paraLine3.Tag.ToString());
+            int num2 = int.Parse(paraLine4.Tag.ToString());
+            int num3 = int.Parse(paraLine2.Tag.ToString());
+            int num4 = int.Parse(paraLine5.Tag.ToString());
+            int num5 = int.Parse(paraLine1.Tag.ToString());
+            int num6 = int.Parse(paraLine6.Tag.ToString());
+
+            //  factor = 1;//测试用
+            //添加数据
+            //list1.Add(count / factor, Form_Main.Paralist.Values.Last()[num1]);
+            //list2.Add(count / factor, Form_Main.Paralist.Values.Last()[num2]);
+            //list3.Add(count / factor, Form_Main.Paralist.Values.Last()[num3]);
+            //list4.Add(count / factor, Form_Main.Paralist.Values.Last()[num4]);
+            //list5.Add(count / factor, Form_Main.Paralist.Values.Last()[num5]);
+            //list6.Add(count / factor, Form_Main.Paralist.Values.Last()[num6]);
+
+            list1.Add(count / factor, Form_Main.Loglist.Values.ElementAt((int)count).DATA[num1]);
+            list2.Add(count / factor, Form_Main.Loglist.Values.ElementAt((int)count).DATA[num2]);
+            list3.Add(count / factor, Form_Main.Loglist.Values.ElementAt((int)count).DATA[num3]);
+            list4.Add(count / factor, Form_Main.Loglist.Values.ElementAt((int)count).DATA[num4]);
+            list5.Add(count / factor, Form_Main.Loglist.Values.ElementAt((int)count).DATA[num5]);
+            list6.Add(count / factor, Form_Main.Loglist.Values.ElementAt((int)count).DATA[num6]);
+
+
+            if (count / factor > xScale.Max)
+            {
+                xScale.Max = xScale.Max + 30;
+                xScale.MajorStep = xScale.Max / 6;//X轴大步长为5，也就是显示文字的大间隔
+            }
+
+
+            //Scale xScale = zedGraphControl1.GraphPane.XAxis.Scale;
+            //if (time > xScale.Max - xScale.MajorStep)
+            //{
+            //xScale.Max = time + xScale.MajorStep;
+            //xScale.Min = xScale.Max - 30.0;
+
+            if (refresh)
+            {
+                //第三步:调用ZedGraphControl.AxisChange()方法更新X和Y轴的范围
+                zedGraphControl1.AxisChange();
+
+                //第四步:调用Form.Invalidate()方法更新图表
+                zedGraphControl1.Invalidate();
+            }
+        }
+
         #endregion
 
         #region 控件事件
@@ -695,31 +785,44 @@ namespace Data_acquisition
         /// <param name="list"></param>
         public void list_add(Dictionary<string, Datamodel> list)
         {
-            //清空现有的list的数据，以及曲线的list,更新井队信息
-         //   Paralist.Clear(); Loglist.Clear(); 
-            count = list.Count; iscnndatabase = true;
-            foreach (LineItem line in zedGraphControl1.GraphPane.CurveList)
-            {
-                line.Clear();
-            }
-        //    Paralist = list; Loglist = list;
-        Paralist.Clear();
-         
-
 
             //重新描绘曲线
+            bool isrefresh = false; ;
             for (int i = 0; i < count; i++)
-            {    Paralist.Add(list.Keys.ElementAt(i),list.Values.ElementAt(i));
-                timer_trend((double)i);
+            {
+                Loglist.Add(list.Keys.ElementAt(i), list.Values.ElementAt(i));
+                if (i == count - 1) isrefresh = true;
+                timer_trend((double)i, isrefresh);
+                ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).timer_trend(i, isrefresh);
+                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).timer_trend(i, isrefresh);
+                if (((Frm_add)Application.OpenForms["Frm_add"]).progressBar1.InvokeRequired)
+                {
+                    ((Frm_add)Application.OpenForms["Frm_add"]).progressBar1.Invoke(new Action(() => ((Frm_add)Application.OpenForms["Frm_add"]).progressBar1.Value = i));
+                }
             }
+
             count++;
 
         }
 
-
+        /// <summary>
+        /// 开始记录，曲线开始刷新
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_start_Click(object sender, EventArgs e)
         {
-
+            //阶段号更新
+            ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).lbl_stage.Text = Form_Main.num_stage.ToString();
+            ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).lbl_stage.Text = Form_Main.num_stage.ToString();
+            //计划表选取更新
+            if (dataGridView1.Rows.Count >= num_stage)
+            {
+                dataGridView1.ClearSelection();
+                dataGridView1.Rows[num_stage - 1].Selected = true;
+                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).dataGridView1.ClearSelection();
+                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).dataGridView1.Rows[num_stage - 1].Selected = true;
+            }
             if (!iscnndatabase) { MessageBox.Show("请新建一个施工文件或者追加施工，以便开始记录数据！"); return; }
             if (run) { timer_log.Enabled = false; run = false; btn_start.Text = "继续"; tssl_log.BackColor = Color.Red; }
             else if (!run) { timer_log.Enabled = true; run = true; btn_start.Text = "暂停"; tssl_log.BackColor = Color.Lime; }
@@ -747,88 +850,7 @@ namespace Data_acquisition
 
 
         }
-        /// <summary>
-        /// 更新井号信息
-        /// </summary>
-        public void wellinfo_refresh()
-        {
-
-            lbl_stage.Text = wellname + wellnum + "第" + stage_big + "段  " + "阶段:" + num_stage;
-        }
-
-        private void timer_trend(double count)
-        {
-            //取Graph第一个曲线，也就是第一步:在GraphPane.CurveList集合中查找CurveItem
-            LineItem curve1 = zedGraphControl1.GraphPane.CurveList[0] as LineItem;
-            LineItem curve2 = zedGraphControl1.GraphPane.CurveList[1] as LineItem;
-            LineItem curve3 = zedGraphControl1.GraphPane.CurveList[2] as LineItem;
-            LineItem curve4 = zedGraphControl1.GraphPane.CurveList[3] as LineItem;
-            LineItem curve5 = zedGraphControl1.GraphPane.CurveList[4] as LineItem;
-            LineItem curve6 = zedGraphControl1.GraphPane.CurveList[5] as LineItem;
-            if (curve1 == null)
-            {
-                return;
-            }
-
-            //第二步:在CurveItem中访问PointPairList(或者其它的IPointList)，根据自己的需要增加新数据或修改已存在的数据
-            IPointListEdit list1 = curve1.Points as IPointListEdit;
-            IPointListEdit list2 = curve2.Points as IPointListEdit;
-            IPointListEdit list3 = curve3.Points as IPointListEdit;
-            IPointListEdit list4 = curve4.Points as IPointListEdit;
-            IPointListEdit list5 = curve5.Points as IPointListEdit;
-            IPointListEdit list6 = curve6.Points as IPointListEdit;
-
-            if (list1 == null)
-            {
-                return;
-            }
-
-            Scale xScale = zedGraphControl1.GraphPane.XAxis.Scale;
-            double factor = 60;
-            int num1 = int.Parse(paraLine3.Tag.ToString());
-            int num2 = int.Parse(paraLine4.Tag.ToString());
-            int num3 = int.Parse(paraLine2.Tag.ToString());
-            int num4 = int.Parse(paraLine5.Tag.ToString());
-            int num5 = int.Parse(paraLine1.Tag.ToString());
-            int num6 = int.Parse(paraLine6.Tag.ToString());
-
-            //  factor = 1;//测试用
-            //添加数据
-            //list1.Add(count / factor, Form_Main.Paralist.Values.Last()[num1]);
-            //list2.Add(count / factor, Form_Main.Paralist.Values.Last()[num2]);
-            //list3.Add(count / factor, Form_Main.Paralist.Values.Last()[num3]);
-            //list4.Add(count / factor, Form_Main.Paralist.Values.Last()[num4]);
-            //list5.Add(count / factor, Form_Main.Paralist.Values.Last()[num5]);
-            //list6.Add(count / factor, Form_Main.Paralist.Values.Last()[num6]);
-
-            list1.Add(count / factor, Form_Main.Paralist.Values.ElementAt((int)count).DATA[num1]);
-            list2.Add(count / factor, Form_Main.Paralist.Values.ElementAt((int)count).DATA[num2]);
-            list3.Add(count / factor, Form_Main.Paralist.Values.ElementAt((int)count).DATA[num3]);
-            list4.Add(count / factor, Form_Main.Paralist.Values.ElementAt((int)count).DATA[num4]);
-            list5.Add(count / factor, Form_Main.Paralist.Values.ElementAt((int)count).DATA[num5]);
-            list6.Add(count / factor, Form_Main.Paralist.Values.ElementAt((int)count).DATA[num6]);
-
-
-            if (count / factor > xScale.Max)
-            {
-                xScale.Max = xScale.Max + 30;
-                xScale.MajorStep = xScale.Max / 6;//X轴大步长为5，也就是显示文字的大间隔
-            }
-
-
-            //Scale xScale = zedGraphControl1.GraphPane.XAxis.Scale;
-            //if (time > xScale.Max - xScale.MajorStep)
-            //{
-            //xScale.Max = time + xScale.MajorStep;
-            //xScale.Min = xScale.Max - 30.0;
-
-
-            //第三步:调用ZedGraphControl.AxisChange()方法更新X和Y轴的范围
-            zedGraphControl1.AxisChange();
-
-            //第四步:调用Form.Invalidate()方法更新图表
-            zedGraphControl1.Invalidate();
-        }
+        
 
         private void pnl_setting_VisibleChanged(object sender, EventArgs e)
         {
@@ -891,7 +913,7 @@ namespace Data_acquisition
             Application.OpenForms["Frm_Paraanalog2"].BringToFront();
         }
 
-        private void btn_schedulesave_Click(object sender, EventArgs e)
+        private void btn_send_Click(object sender, EventArgs e)
         {
 
             try
@@ -916,18 +938,20 @@ namespace Data_acquisition
                     Paramter.Add(new MySqlParameter("@vol", dataGridView1.Rows[i].Cells[7].Value.ToString()));
                     db.ExecuteNonquery(sql2, Paramter.ToArray());
                 }
-                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).grid_refresh();
+
 
             }
             catch (Exception ex)
             {
-                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).grid_refresh();
+
                 //MessageBox.Show(ex.ToString());
             }
         }
 
-        private void radButton9_Click(object sender, EventArgs e)
+        private void btn_import_Click(object sender, EventArgs e)
         {
+
+
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.Filter = "Excel(*.xlsx)|*.xlsx|Excel(*.xls)|*.xls";
             openFile.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -943,8 +967,17 @@ namespace Data_acquisition
                 using (ExcelHelper excelHelper = new ExcelHelper(filePath))
                 {
                     DataTable dt = excelHelper.ExcelToDataTable("MySheet", true);
-
+                    DataColumn cln1 = new DataColumn();
+                    DataColumn cln2 = new DataColumn();
+                    DataColumn cln3 = new DataColumn();
+                    dt.Columns.Add(cln1); dt.Columns.Add(cln2); dt.Columns.Add(cln3);
+                    dataGridView1.Columns.Clear();
                     dataGridView1.DataSource = dt;
+                    ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).grid_refresh(dt);
+                    dataGridView1.Columns[10].HeaderText = "";
+                    dataGridView1.Columns[11].HeaderText = "";
+                    dataGridView1.Columns[12].HeaderText = "";
+                    dataGridView1.Columns[3].FillWeight = 150;
                 }
             }
             catch (Exception ex)
@@ -984,12 +1017,31 @@ namespace Data_acquisition
                 zedGraphControl1.GetImage().Save(name);
             }
         }
-        #endregion
-
+    
+        /// <summary>
+        /// 下一阶段
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_next_Click(object sender, EventArgs e)
         {
+            if (!iscnndatabase) return;
             num_stage++;
             time_stage = Convert.ToDateTime("00:00:00");
+            //计划表选取更新
+            if (dataGridView1.Rows.Count >= num_stage)
+            {
+                dataGridView1.ClearSelection();
+                dataGridView1.Rows[num_stage - 1].Selected = true;
+
+                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).dataGridView1.ClearSelection();
+                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).dataGridView1.Rows[num_stage - 1].Selected = true;
+            }
+            //阶段号更新
+            this.wellinfo_refresh();
+            ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).lbl_stage.Text = Form_Main.num_stage.ToString();
+            ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).lbl_stage.Text = Form_Main.num_stage.ToString();
+
         }
 
         private void 新建施工ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1002,11 +1054,68 @@ namespace Data_acquisition
 
         private void 追加施工ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (run) { MessageBox.Show("当前正在施工，请先关闭该施工！"); return; }
             Frm_add frm = new Frm_add();
             frm.ShowDialog();
         }
 
+        private void 结束施工ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!iscnndatabase) { MessageBox.Show("请先开始一个施工或者追加一个施工!"); return; }
+            DialogResult result = MessageBox.Show("确定要结束当前施工吗!", "警告", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+            {
+                run = false;
+                //主界面显示参数恢复到默认值
+                timer_log.Enabled = false;
+                btn_start.Text = "开始";
+                lbl_time.Text = "00:00:00";
+                lbl_stagetime.Text = "00:00:00";
+                time = Convert.ToDateTime("00:00:00");//运行时间
+                time_stage = Convert.ToDateTime("00:00:00");//阶段时间
+                num_stage = 1;//阶段号
+                wellname = "##";//油田名
+                wellnum = "##";//井队号
+                stage_big = "##";//第几大段
+                this.wellinfo_refresh();
+                //混砂车计划信息清空
+                Pub_func.grid_clear(this.dataGridView1);
+                Pub_func.grid_clear(((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).dataGridView1);
+                ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).wellinfo_refresh();
+                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).wellinfo_refresh();
+               
+                Form_Main.count = 0;
+                foreach (LineItem line in ((Form_Main)Application.OpenForms["Form_Main"]).zedGraphControl1.GraphPane.CurveList)
+                {
+                    line.Clear();
+                }
+                foreach (LineItem line in ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).zedGraphControl1.GraphPane.CurveList)
+                {
+                    line.Clear();
+                }
+                foreach (LineItem line in ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).zedGraphControl1.GraphPane.CurveList)
+                {
+                    line.Clear();
+                }
+                Form_Main.Paralist.Clear(); Form_Main.Loglist.Clear();
+                Form_Main.iscnndatabase = false;
+                //刷新各个页面的曲线
+                zedGraphControl1.GraphPane.XAxis.Scale.Min = 0; zedGraphControl1.GraphPane.XAxis.Scale.Max = 30;
+                ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).zedGraphControl1.GraphPane.XAxis.Scale.Min = 0;
+                ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).zedGraphControl1.GraphPane.XAxis.Scale.Max = 30;
+                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).zedGraphControl1.GraphPane.XAxis.Scale.Min = 0;
+                ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).zedGraphControl1.GraphPane.XAxis.Scale.Max = 30;
+                zedGraphControl1.AxisChange();
+                zedGraphControl1.Invalidate();
+                ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).zedGraphControl1.AxisChange();
+                ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).zedGraphControl1.Invalidate();
+                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).zedGraphControl1.AxisChange();
+                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).zedGraphControl1.Invalidate();
+            }
+            else if (result == DialogResult.Cancel) { return; }
+        }
 
+        #endregion
 
     }
 

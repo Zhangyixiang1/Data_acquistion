@@ -90,6 +90,19 @@
             this.txb_end = new System.Windows.Forms.TextBox();
             this.txb_start = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.新建施工ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -124,8 +137,8 @@
             this.toolStripStatusLabel12 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssl_log = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btn_schedulesave = new Telerik.WinControls.UI.RadButton();
-            this.radButton9 = new Telerik.WinControls.UI.RadButton();
+            this.btn_send = new Telerik.WinControls.UI.RadButton();
+            this.btn_import = new Telerik.WinControls.UI.RadButton();
             this.parashow16 = new Data_acquisition.Ctrl.Parashow();
             this.parashow15 = new Data_acquisition.Ctrl.Parashow();
             this.parashow14 = new Data_acquisition.Ctrl.Parashow();
@@ -166,8 +179,8 @@
             this.menuStrip2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_schedulesave)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_send)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_import)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -680,6 +693,20 @@
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeight = 40;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8,
+            this.Column9,
+            this.Column10,
+            this.Column11,
+            this.Column12,
+            this.Column13});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 15F);
@@ -709,6 +736,72 @@
             this.dataGridView1.Size = new System.Drawing.Size(1585, 371);
             this.dataGridView1.TabIndex = 18;
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "阶段号";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "名称";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "净液量(m3)";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.FillWeight = 150F;
+            this.Column4.HeaderText = "砂浓度(kg/m3)";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "干添1(g)";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "干添2(g)";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "液添1(mL)";
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "液添2(mL)";
+            this.Column8.Name = "Column8";
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "液添3(mL)";
+            this.Column9.Name = "Column9";
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "支撑剂类型";
+            this.Column10.Name = "Column10";
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "";
+            this.Column11.Name = "Column11";
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "";
+            this.Column12.Name = "Column12";
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "";
+            this.Column13.Name = "Column13";
+            // 
             // menuStrip2
             // 
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -736,27 +829,28 @@
             // 新建施工ToolStripMenuItem
             // 
             this.新建施工ToolStripMenuItem.Name = "新建施工ToolStripMenuItem";
-            this.新建施工ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.新建施工ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.新建施工ToolStripMenuItem.Text = "新建施工";
             this.新建施工ToolStripMenuItem.Click += new System.EventHandler(this.新建施工ToolStripMenuItem_Click);
             // 
             // 追加施工ToolStripMenuItem
             // 
             this.追加施工ToolStripMenuItem.Name = "追加施工ToolStripMenuItem";
-            this.追加施工ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.追加施工ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.追加施工ToolStripMenuItem.Text = "追加施工";
             this.追加施工ToolStripMenuItem.Click += new System.EventHandler(this.追加施工ToolStripMenuItem_Click);
             // 
             // 结束施工ToolStripMenuItem
             // 
             this.结束施工ToolStripMenuItem.Name = "结束施工ToolStripMenuItem";
-            this.结束施工ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.结束施工ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.结束施工ToolStripMenuItem.Text = "结束施工";
+            this.结束施工ToolStripMenuItem.Click += new System.EventHandler(this.结束施工ToolStripMenuItem_Click);
             // 
             // 退出ToolStripMenuItem2
             // 
             this.退出ToolStripMenuItem2.Name = "退出ToolStripMenuItem2";
-            this.退出ToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.退出ToolStripMenuItem2.Size = new System.Drawing.Size(124, 22);
             this.退出ToolStripMenuItem2.Text = "退出";
             this.退出ToolStripMenuItem2.Click += new System.EventHandler(this.退出ToolStripMenuItem2_Click);
             // 
@@ -784,6 +878,7 @@
             // 
             // 图像编辑ToolStripMenuItem1
             // 
+            this.图像编辑ToolStripMenuItem1.Enabled = false;
             this.图像编辑ToolStripMenuItem1.Name = "图像编辑ToolStripMenuItem1";
             this.图像编辑ToolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
             this.图像编辑ToolStripMenuItem1.Text = "图像编辑";
@@ -980,8 +1075,8 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.btn_schedulesave);
-            this.groupBox4.Controls.Add(this.radButton9);
+            this.groupBox4.Controls.Add(this.btn_send);
+            this.groupBox4.Controls.Add(this.btn_import);
             this.groupBox4.Controls.Add(this.dataGridView1);
             this.groupBox4.Font = new System.Drawing.Font("宋体", 15F);
             this.groupBox4.ForeColor = System.Drawing.Color.White;
@@ -992,27 +1087,27 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "计划";
             // 
-            // btn_schedulesave
+            // btn_send
             // 
-            this.btn_schedulesave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.btn_schedulesave.ForeColor = System.Drawing.Color.White;
-            this.btn_schedulesave.Location = new System.Drawing.Point(1607, 75);
-            this.btn_schedulesave.Name = "btn_schedulesave";
-            this.btn_schedulesave.Size = new System.Drawing.Size(106, 40);
-            this.btn_schedulesave.TabIndex = 19;
-            this.btn_schedulesave.Text = "保存";
-            this.btn_schedulesave.Click += new System.EventHandler(this.btn_schedulesave_Click);
+            this.btn_send.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.btn_send.ForeColor = System.Drawing.Color.White;
+            this.btn_send.Location = new System.Drawing.Point(1607, 75);
+            this.btn_send.Name = "btn_send";
+            this.btn_send.Size = new System.Drawing.Size(106, 40);
+            this.btn_send.TabIndex = 19;
+            this.btn_send.Text = "发送";
+            this.btn_send.Click += new System.EventHandler(this.btn_send_Click);
             // 
-            // radButton9
+            // btn_import
             // 
-            this.radButton9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.radButton9.ForeColor = System.Drawing.Color.White;
-            this.radButton9.Location = new System.Drawing.Point(1607, 29);
-            this.radButton9.Name = "radButton9";
-            this.radButton9.Size = new System.Drawing.Size(106, 40);
-            this.radButton9.TabIndex = 19;
-            this.radButton9.Text = "导入";
-            this.radButton9.Click += new System.EventHandler(this.radButton9_Click);
+            this.btn_import.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.btn_import.ForeColor = System.Drawing.Color.White;
+            this.btn_import.Location = new System.Drawing.Point(1607, 29);
+            this.btn_import.Name = "btn_import";
+            this.btn_import.Size = new System.Drawing.Size(106, 40);
+            this.btn_import.TabIndex = 19;
+            this.btn_import.Text = "导入";
+            this.btn_import.Click += new System.EventHandler(this.btn_import_Click);
             // 
             // parashow16
             // 
@@ -1348,7 +1443,7 @@
             // 
             this.RootElement.ApplyShapeToControl = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Form_Main";
+            this.Text = " ";
             this.ThemeName = "Office2013Dark";
             this.Load += new System.EventHandler(this.Form_Main_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -1375,8 +1470,8 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btn_schedulesave)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_send)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_import)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1385,7 +1480,6 @@
 
         #endregion
 
-        private ZedGraph.ZedGraphControl zedGraphControl1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 文件ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 设置ToolStripMenuItem;
@@ -1397,7 +1491,6 @@
         private Telerik.WinControls.UI.RadButton radButton4;
         private Telerik.WinControls.UI.RadButton radButton5;
         private Telerik.WinControls.UI.RadButton radButton6;
-        private System.Windows.Forms.Label lbl_time;
         private Telerik.WinControls.Themes.HighContrastBlackTheme highContrastBlackTheme1;
         private Telerik.WinControls.Themes.Office2013DarkTheme office2013DarkTheme1;
         private Telerik.WinControls.Themes.Windows8Theme windows8Theme1;
@@ -1479,7 +1572,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lbl_stage;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.ToolStripStatusLabel lbl_stagetime;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripStatusLabel lbl_now;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
@@ -1494,10 +1586,26 @@
         private System.Windows.Forms.ToolStripStatusLabel tssl_log;
         private System.Windows.Forms.ToolStripMenuItem 图像编辑ToolStripMenuItem1;
         private System.Windows.Forms.GroupBox groupBox4;
-        private Telerik.WinControls.UI.RadButton btn_schedulesave;
-        private Telerik.WinControls.UI.RadButton radButton9;
+        private Telerik.WinControls.UI.RadButton btn_send;
+        private Telerik.WinControls.UI.RadButton btn_import;
         private System.Windows.Forms.ToolStripMenuItem test1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem test2ToolStripMenuItem;
         private Telerik.WinControls.UI.RadButton btn_start;
+        public ZedGraph.ZedGraphControl zedGraphControl1;
+        public System.Windows.Forms.Label lbl_time;
+        public System.Windows.Forms.ToolStripStatusLabel lbl_stagetime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
     }
 }

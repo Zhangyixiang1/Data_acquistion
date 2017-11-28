@@ -116,6 +116,7 @@ namespace Data_acquisition
             myPane.Chart.Fill = new Fill(Color.Black);
             myPane.IsFontsScaled = false;
             myPane.Border.Color = Color.White;
+            myPane.Chart.Border.Color = Color.Gray;
             // Set the titles and axis labels
             myPane.Legend.IsVisible = false;
             myPane.Title.Text = "";
@@ -435,17 +436,24 @@ namespace Data_acquisition
         /// 更新井号信息
         /// </summary>
         public void wellinfo_refresh()
-        { lbl_wellinfo.Text=Form_Main.wellname;
-        lbl_wellnum.Text = Form_Main.wellnum;
-        lbl_stagebig.Text = Form_Main.stage_big;
+        { 
+        if(lbl_wellinfo.InvokeRequired){lbl_wellinfo.Invoke(new Action(()=> lbl_wellinfo.Text=Form_Main.wellname));}
+        else{lbl_wellinfo.Text=Form_Main.wellname;}
 
+        if (lbl_wellnum.InvokeRequired) { lbl_wellnum.Invoke(new Action(() => lbl_wellnum.Text = Form_Main.wellnum)); }
+        else { lbl_wellnum.Text = Form_Main.wellnum; }
+
+        if (lbl_stagebig.InvokeRequired) { lbl_stagebig.Invoke(new Action(() => lbl_stagebig.Text = Form_Main.stage_big)); }
+        else { lbl_stagebig.Text = Form_Main.stage_big; }
+
+        if (lbl_stage.InvokeRequired) { lbl_stage.Invoke(new Action(() => lbl_stage.Text = Form_Main.num_stage.ToString())); }
+        else { lbl_stage.Text = Form_Main.num_stage.ToString(); }
+       
 
         }
 
-        public void timer_trend()
-        {  //阶段号更新
-
-            lbl_stage.Text = Form_Main.num_stage.ToString();
+        public void timer_trend(double count,bool refresh)
+        {  
 
 
             //取Graph第一个曲线，也就是第一步:在GraphPane.CurveList集合中查找CurveItem
@@ -484,12 +492,12 @@ namespace Data_acquisition
 
             //  factor = 1;//测试用
             //添加数据
-            list1.Add(Form_Main.count / factor, Form_Main.Paralist[Form_Main.count.ToString()].DATA[num1]);
-            list2.Add(Form_Main.count / factor, Form_Main.Paralist[Form_Main.count.ToString()].DATA[num1]);
-            list3.Add(Form_Main.count / factor, Form_Main.Paralist[Form_Main.count.ToString()].DATA[num1]);
-            list4.Add(Form_Main.count / factor, Form_Main.Paralist[Form_Main.count.ToString()].DATA[num1]);
-            list5.Add(Form_Main.count / factor, Form_Main.Paralist[Form_Main.count.ToString()].DATA[num1]);
-            list6.Add(Form_Main.count / factor, Form_Main.Paralist[Form_Main.count.ToString()].DATA[num1]);
+            list1.Add(count / factor, Form_Main.Loglist.Values.ElementAt((int)count).DATA[num1]);
+            list2.Add(count / factor, Form_Main.Loglist.Values.ElementAt((int)count).DATA[num2]);
+            list3.Add(count / factor, Form_Main.Loglist.Values.ElementAt((int)count).DATA[num3]);
+            list4.Add(count / factor, Form_Main.Loglist.Values.ElementAt((int)count).DATA[num4]);
+            list5.Add(count / factor, Form_Main.Loglist.Values.ElementAt((int)count).DATA[num5]);
+            list6.Add(count / factor, Form_Main.Loglist.Values.ElementAt((int)count).DATA[num6]);
 
 
             if (Form_Main.count / factor > xScale.Max)
@@ -505,12 +513,12 @@ namespace Data_acquisition
             //xScale.Max = time + xScale.MajorStep;
             //xScale.Min = xScale.Max - 30.0;
 
-
+            if(refresh){
             //第三步:调用ZedGraphControl.AxisChange()方法更新X和Y轴的范围
             zedGraphControl1.AxisChange();
 
             //第四步:调用Form.Invalidate()方法更新图表
-            zedGraphControl1.Invalidate();
+            zedGraphControl1.Invalidate();}
         }
 
         #endregion
