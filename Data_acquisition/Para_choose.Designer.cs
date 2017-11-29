@@ -40,6 +40,7 @@
             this.txb_max = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btn_color = new System.Windows.Forms.Button();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,6 +49,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -82,7 +84,7 @@
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(552, 353);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "压裂泵";
+            this.tabPage3.Text = "电动压裂泵";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // btn_OK
@@ -145,6 +147,15 @@
             this.btn_color.UseVisualStyleBackColor = true;
             this.btn_color.Click += new System.EventHandler(this.btn_color_Click);
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(552, 353);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "传统压裂泵";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
             // Para_choose
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -183,5 +194,6 @@
         private System.Windows.Forms.TextBox txb_max;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button btn_color;
+        private System.Windows.Forms.TabPage tabPage4;
     }
 }

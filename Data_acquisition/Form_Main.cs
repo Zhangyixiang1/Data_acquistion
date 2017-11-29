@@ -41,7 +41,7 @@ namespace Data_acquisition
         public static double count;//数据条目
         public static Dictionary<string, Datamodel> Paralist; //实时数据缓存
         public static Dictionary<string, Datamodel> Loglist; //记录数据缓存
-
+        double[] test = new double[200]; //测试数据
         #endregion
 
         #region 方法
@@ -53,6 +53,7 @@ namespace Data_acquisition
             InitializeComponent();
             time = Convert.ToDateTime("00:00:00");
             time_stage = Convert.ToDateTime("00:00:00");
+            this.Size = new Size(1920, 1080);
             this.Location = new Point(0, 0);
 
 
@@ -62,34 +63,56 @@ namespace Data_acquisition
         /// </summary>
         private void intialdata()
         {
-            double[] test = new double[200];
+           
             Random rd = new Random();
             while (true)
             {
                 try
                 {
                     Thread.Sleep(500);
-                    for (int i = 0; i < 200; i++)
-                    {
+                    //for (int i = 0; i < 200; i++)
+                    //{
 
-                        test[i] = i + rd.Next(0, 10);
-                        //  if (count > 600) { test[i] = count / 10 + rd.Next(0, 10); }
-                    }
+                    //    test[i] = i + rd.Next(0, 10);
+                    //    //  if (count > 600) { test[i] = count / 10 + rd.Next(0, 10); }
+                    //}
                     //测试用，读取混砂车数据
-             //Array value_blender= kep1.kep_read();
-             //test[36]=Convert.ToDouble( value_blender.GetValue(1));
-             //test[37] = Convert.ToDouble(value_blender.GetValue(2));
-             //test[38] = Convert.ToDouble(value_blender.GetValue(3));
-             //test[39] = Convert.ToDouble(value_blender.GetValue(4));
-             //test[42] = Convert.ToDouble(value_blender.GetValue(5));
-             //test[43] = Convert.ToDouble(value_blender.GetValue(6));
-             //test[44] = Convert.ToDouble(value_blender.GetValue(7));
-             //test[45] = Convert.ToDouble(value_blender.GetValue(8));
-             //test[46] = Convert.ToDouble(value_blender.GetValue(9));
-             //test[47] = Convert.ToDouble(value_blender.GetValue(10));
-             //test[48] = Convert.ToDouble(value_blender.GetValue(11));
+                    Array value_blender = kep1.kep_read();
+                    for (int i = 31; i <= 49; i++)
+                    {
+                        test[i] = Convert.ToDouble(value_blender.GetValue(i - 30));
+                    }
 
-                                 Paralist.Add(DateTime.Now.ToString(), new Datamodel((int)count, test));
+                    test[50] = test[47] + test[48] + test[49]; //液添当前总流量
+                    test[51] = Convert.ToDouble(value_blender.GetValue(20));//干添1
+                    test[52] = Convert.ToDouble(value_blender.GetValue(21));//干添2
+                    test[53] = test[51] + test[52]; //干添当前总流量
+                    //  井口排出阶段总量,来自beff尚未采集
+                    test[55] = test[38] / 60 + test[55];            //吸入阶段总量
+                    test[56] = test[39] / 60 + test[56];          //排出阶段总量
+                    test[57] = (test[43] / 60 /1000+ test[57]); //绞龙1阶段总量
+                    test[58] = (test[44] / 60 / 1000 + test[58]); //绞龙2阶段总量
+                    test[59] = (test[45] / 60 / 1000 + test[59]); //绞龙3阶段总量
+                    test[60] = (test[46] / 60 / 1000 + test[60]);//输砂阶段总量
+                    test[61] = (test[47] / 60 / 1000 + test[61]);//液添1阶段总量
+                    test[62] = (test[48] / 60 / 1000 + test[62]);//液添2阶段总量
+                    test[63] = (test[49] / 60 / 1000 + test[63]);//液添3阶段总量
+                    test[64] = test[61] + test[62] + test[63];//液添阶段总量
+                    test[65] = (test[51] / 60 + test[65]); //干添1阶段总量
+                    test[66] = (test[52] / 60 + test[66]);//干添2阶段总量
+                    test[67] = test[65] + test[66];//干添阶段总量
+                    //井口排出总量,来自beff尚未采集
+                    for (int i = 69; i <= 77; i++)
+                    {
+                        test[i] = Convert.ToDouble(value_blender.GetValue(i - 47));
+                    }
+                    test[78] = test[75] + test[76] + test[77];
+                    test[79] = Convert.ToDouble(value_blender.GetValue(31)); //干添1总量
+                    test[80] = Convert.ToDouble(value_blender.GetValue(32));//干添2总量
+                    test[81] = test[79] + test[80];
+
+
+                    Paralist.Add(DateTime.Now.ToString(), new Datamodel((int)count, test));
                     //实时数据缓存只有一百条，用于参数的刷新
                     if (Paralist.Count > 10) Paralist.Remove(Paralist.ElementAt(0).Key);
 
@@ -777,9 +800,9 @@ namespace Data_acquisition
 
             xml_load();//读取偏好设置文件
             chart_initial();//初始化图表控件
-       //     Kep_initial();//注册通讯变量
+            Kep_initial();//注册通讯变量
 
-          //设置dgv的列头字体大小
+            //设置dgv的列头字体大小
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.ColumnHeadersDefaultCellStyle.Font.FontFamily, 10);
 
             //测试用，在子线程中生成随机数填充paralist
@@ -1015,9 +1038,10 @@ namespace Data_acquisition
                     dataGridView1.Columns[12].HeaderText = "";
                     dataGridView1.Columns[3].FillWeight = 150;
                     dataGridView1.DefaultCellStyle.Font = new Font(dataGridView1.DefaultCellStyle.Font.FontFamily, 10);
-                    dataGridView1.RowsDefaultCellStyle.Font=new Font( dataGridView1.RowsDefaultCellStyle.Font.FontFamily,10);
-                    foreach(DataGridViewColumn item in dataGridView1.Columns){
-                    item.SortMode=DataGridViewColumnSortMode.NotSortable;
+                    dataGridView1.RowsDefaultCellStyle.Font = new Font(dataGridView1.RowsDefaultCellStyle.Font.FontFamily, 10);
+                    foreach (DataGridViewColumn item in dataGridView1.Columns)
+                    {
+                        item.SortMode = DataGridViewColumnSortMode.NotSortable;
                     }
 
                 }
@@ -1067,6 +1091,10 @@ namespace Data_acquisition
         /// <param name="e"></param>
         private void btn_next_Click(object sender, EventArgs e)
         {
+            //阶段量清零
+            for(int i=54;i<=67;i++){
+            test[i]=0; 
+            }
             if (!iscnndatabase) return;
             num_stage++;
             time_stage = Convert.ToDateTime("00:00:00");
@@ -1146,7 +1174,7 @@ namespace Data_acquisition
                 ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).zedGraphControl1.GraphPane.XAxis.Scale.Min = 0;
                 ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).zedGraphControl1.GraphPane.XAxis.Scale.Max = 30;
                 ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).zedGraphControl1.GraphPane.XAxis.Scale.Min = 0;
-                ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).zedGraphControl1.GraphPane.XAxis.Scale.Max = 30;
+                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).zedGraphControl1.GraphPane.XAxis.Scale.Max = 30;
                 zedGraphControl1.AxisChange();
                 zedGraphControl1.Invalidate();
                 ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).zedGraphControl1.AxisChange();
@@ -1158,6 +1186,19 @@ namespace Data_acquisition
         }
 
         #endregion
+        /// <summary>
+        /// 阶段量清零
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_zero_Click(object sender, EventArgs e)
+        {
+            for(int i=54;i<=67;i++){
+            test[i]=0;
+            
+            }
+        }
+
 
     }
 

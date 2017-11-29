@@ -68,7 +68,7 @@
             this.timer_log = new System.Windows.Forms.Timer(this.components);
             this.btn_next = new Telerik.WinControls.UI.RadButton();
             this.timer_now = new System.Windows.Forms.Timer(this.components);
-            this.radButton7 = new Telerik.WinControls.UI.RadButton();
+            this.btn_zero = new Telerik.WinControls.UI.RadButton();
             this.pnl_setting = new System.Windows.Forms.Panel();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_ok = new System.Windows.Forms.Button();
@@ -171,7 +171,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.radButton6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_start)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_next)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_zero)).BeginInit();
             this.pnl_setting.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -445,15 +445,16 @@
             this.timer_now.Interval = 1000;
             this.timer_now.Tick += new System.EventHandler(this.timer_now_Tick);
             // 
-            // radButton7
+            // btn_zero
             // 
-            this.radButton7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.radButton7.ForeColor = System.Drawing.Color.White;
-            this.radButton7.Location = new System.Drawing.Point(516, 36);
-            this.radButton7.Name = "radButton7";
-            this.radButton7.Size = new System.Drawing.Size(40, 40);
-            this.radButton7.TabIndex = 14;
-            this.radButton7.Text = "清零";
+            this.btn_zero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.btn_zero.ForeColor = System.Drawing.Color.White;
+            this.btn_zero.Location = new System.Drawing.Point(516, 36);
+            this.btn_zero.Name = "btn_zero";
+            this.btn_zero.Size = new System.Drawing.Size(40, 40);
+            this.btn_zero.TabIndex = 14;
+            this.btn_zero.Text = "清零";
+            this.btn_zero.Click += new System.EventHandler(this.btn_zero_Click);
             // 
             // pnl_setting
             // 
@@ -1443,7 +1444,7 @@
             this.Controls.Add(this.paraLine4);
             this.Controls.Add(this.paraLine3);
             this.Controls.Add(this.paraLine2);
-            this.Controls.Add(this.radButton7);
+            this.Controls.Add(this.btn_zero);
             this.Controls.Add(this.btn_next);
             this.Controls.Add(this.lbl_time);
             this.Controls.Add(this.radButton6);
@@ -1477,7 +1478,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.radButton6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_start)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_next)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_zero)).EndInit();
             this.pnl_setting.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -1536,7 +1537,7 @@
         private Ctrl.ParaLine paraLine5;
         private Ctrl.ParaLine paraLine6;
         private Ctrl.ParaLine paraLine1;
-        private Telerik.WinControls.UI.RadButton radButton7;
+        private Telerik.WinControls.UI.RadButton btn_zero;
         private System.Windows.Forms.ToolStripMenuItem 图像编辑ToolStripMenuItem;
         private System.Windows.Forms.Panel pnl_setting;
         private System.Windows.Forms.TextBox txb_start;

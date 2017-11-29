@@ -29,6 +29,11 @@ namespace Data_acquisition
             InitializeComponent();
             txb_max.Text=ctr.Max;
             txb_min.Text=ctr.Min;
+           //如果已经开始施工，不能变换曲线参数
+           if(Form_Main.iscnndatabase){
+           tabControl1.Enabled=false;   
+           }
+
         }
         public Para_choose(Parashow ctr, string name)
         {
@@ -93,7 +98,7 @@ namespace Data_acquisition
             int x = 6, y = 6;
 
             //从配置文件中读取通道标签
-            string path = Application.StartupPath + "\\Config\\" + "test.xml";
+            string path = Application.StartupPath + "\\Config\\" + "Para.xml";
             XmlDocument xml = new XmlDocument();
             xml.Load(path);
             XmlNodeList list = xml.GetElementsByTagName("item");
@@ -111,7 +116,8 @@ namespace Data_acquisition
                 btn.Text = Name;
                 btn.Size = new Size(120, 23);
                 btn.Click += btnClick;
-                if (i >= 0 && i < 34)
+                //数据采集卡
+                if (i >= 0 && i <30)
                 {
                     btn.Location = new Point(x + 131 * (i % 4), y + 29 * (i / 4));
                     if (tabPage1.InvokeRequired)
@@ -120,23 +126,34 @@ namespace Data_acquisition
                         tabPage1.Invoke(new Action(() => { this.tabPage1.Controls.Add(btn); }));
                     }
                 }
-
-                if (i >= 34 && i < 106)
+                //混砂车
+                if (i >= 30 && i < 100)
                 {
-                    btn.Location = new Point(x + 131 * ((i - 34) % 4), y + 29 * ((i - 34) / 4));
+                    btn.Location = new Point(x + 131 * ((i - 30) % 4), y + 29 * ((i - 30) / 4));
                     if (tabPage2.InvokeRequired)
                     {
                         tabPage2.Invoke(new Action(() => { this.tabPage2.Controls.Add(btn); }));
                     }
                 }
-                if (i >= 106 && i < list.Count)
+                //传统压裂泵
+                if (i >= 101 && i < 150)
                 {
-                    btn.Location = new Point(x + 131 * ((i - 106) % 4), y + 29 * ((i - 106) / 4));
+                    btn.Location = new Point(x + 131 * ((i - 101) % 4), y + 29 * ((i - 101) / 4));
+                    if (tabPage4.InvokeRequired)
+                    {
+                        tabPage4.Invoke(new Action(() => { this.tabPage4.Controls.Add(btn); }));
+                    }
+                }
+                //电动压裂泵
+                if (i >= 151 && i < 200)
+                {
+                    btn.Location = new Point(x + 131 * ((i - 151) % 4), y + 29 * ((i - 151) / 4));
                     if (tabPage3.InvokeRequired)
                     {
                         tabPage3.Invoke(new Action(() => { this.tabPage3.Controls.Add(btn); }));
                     }
                 }
+
 
                 if (tag_num == Index)
                 {
@@ -352,7 +369,7 @@ namespace Data_acquisition
 
             //保存修改的量程到配置文件
 
-            string path2 = Application.StartupPath + "\\Config\\" + "test.xml";
+            string path2 = Application.StartupPath + "\\Config\\" + "Para.xml";
             XmlDocument xml = new XmlDocument();
             xml.Load(path2);
             XmlNodeList list = xml.GetElementsByTagName("item");
