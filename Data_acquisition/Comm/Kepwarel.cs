@@ -71,7 +71,7 @@ namespace Data_acquisition.Comm
             keperr = new Array[KepItems.Count];
             Array handle2 = (Array)Item_serverhandle1_To_PC;
             KepGroup.SyncRead(1, KepItems.Count, ref handle2, out kepvalue, out keperr, out kepqua, out kepstamp);
-            return kepvalue;
+                        return kepvalue;
 
         }
     }

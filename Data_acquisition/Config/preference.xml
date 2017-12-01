@@ -4,30 +4,30 @@
     <!--首界面-->
     <Name>Form_Main</Name>
     <Controlsline>
-      <Control name="paraLine1" tagname="井口油压" min="0" max="50" unit="Mpa" index="36" color="0,0,255" />
-      <Control name="paraLine2" tagname="井口套压" min="0" max="1000" unit="Mpa" index="37" color="255,255,0" />
-      <Control name="paraLine3" tagname="井口密度" min="-2" max="2" unit="Mpa" index="38" color="0,0,255" />
-      <Control name="paraLine4" tagname="井口排出流量" min="0" max="300" unit="m3/min" index="39" color="0,255,0" />
-      <Control name="paraLine5" tagname="混合液密度" min="0" max="400" unit="g/cc" index="40" color="107,142,35" />
-      <Control name="paraLine6" tagname="砂密度" min="0" max="200" unit="KgPA" index="41" color="218,112,214" />
+      <Control name="paraLine1" tagname="井口油压" min="0" max="100" unit="Mpa" index="31" color="255,0,0" />
+      <Control name="paraLine2" tagname="井口套压" min="0" max="1000" unit="Mpa" index="32" color="255,255,0" />
+      <Control name="paraLine3" tagname="井口密度" min="0" max="200" unit="g/cc" index="33" color="0,0,255" />
+      <Control name="paraLine4" tagname="井口排出流量" min="0" max="500" unit="m3/min" index="34" color="0,255,0" />
+      <Control name="paraLine5" tagname="吸入压力" min="0" max="1000" unit="Mpa" index="36" color="107,142,35" />
+      <Control name="paraLine6" tagname="排出压力" min="0" max="300" unit="Mpa" index="37" color="218,112,214" />
     </Controlsline>
     <Controlsshow>
-      <Control name="parashow1" tagname="井口油压" unit="Mpa" index="36" color="255,0,0" />
-      <Control name="parashow2" tagname="井口套压" unit="Mpa" index="37" color="255,0,0" />
-      <Control name="parashow3" tagname="井口密度" unit="Mpa" index="38" color="255,255,0" />
-      <Control name="parashow4" tagname="井口排出流量" unit="m3/min" index="39" color="128,128,255" />
-      <Control name="parashow5" tagname="混合液密度" unit="g/cc" index="40" color="255,128,0" />
-      <Control name="parashow6" tagname="砂密度" unit="KgPA" index="41" color="0,255,0" />
-      <Control name="parashow7" tagname="吸入压力" unit="Mpa" index="42" color="0,128,128" />
-      <Control name="parashow8" tagname="排出压力" unit="Mpa" index="43" color="128,0,255" />
-      <Control name="parashow9" tagname="吸入排量" unit="m3/min" index="44" color="255,128,255" />
-      <Control name="parashow10" tagname="排出排量" unit="m3/min" index="45" color="255,128,192" />
-      <Control name="parashow11" tagname="绞龙1转速" unit="RPM" index="46" color="0,0,255" />
-      <Control name="parashow12" tagname="绞龙2转速" unit="RPM" index="47" color="255,0,0" />
-      <Control name="parashow13" tagname="绞龙3转速" unit="RPM" index="48" color="255,255,0" />
-      <Control name="parashow14" tagname="输砂速率" unit="Kg/Min" index="52" color="255,128,255" />
-      <Control name="parashow15" tagname="泵1压力" unit="Mpa" index="107" color="0,255,0" />
-      <Control name="parashow16" tagname="泵1发动机转速" unit="RPM" index="108" color="0,128,128" />
+      <Control name="parashow1" tagname="干添1流量" unit="Kg/Min" index="51" color="255,0,0" />
+      <Control name="parashow2" tagname="干添2流量" unit="Kg/Min" index="52" color="255,0,0" />
+      <Control name="parashow3" tagname="干添流量" unit="Kg/Min" index="53" color="255,255,0" />
+      <Control name="parashow4" tagname="干添阶段总量" unit="Kg" index="67" color="128,128,255" />
+      <Control name="parashow5" tagname="液添1流量" unit="LPM" index="47" color="255,128,0" />
+      <Control name="parashow6" tagname="液添2流量" unit="LPM" index="48" color="0,255,0" />
+      <Control name="parashow7" tagname="液添3流量" unit="LPM" index="49" color="0,128,128" />
+      <Control name="parashow8" tagname="液添流量" unit="LPM" index="50" color="128,0,255" />
+      <Control name="parashow9" tagname="液添1阶段总量" unit="m3" index="61" color="255,128,255" />
+      <Control name="parashow10" tagname="液添2阶段总量" unit="m3" index="62" color="255,128,192" />
+      <Control name="parashow11" tagname="液添3阶段总量" unit="m3" index="63" color="0,0,255" />
+      <Control name="parashow12" tagname="液添阶段总量" unit="m3" index="64" color="255,0,0" />
+      <Control name="parashow13" tagname="干添流量" unit="Kg/Min" index="53" color="255,255,0" />
+      <Control name="parashow14" tagname="干添阶段总量" unit="Kg" index="67" color="255,128,255" />
+      <Control name="parashow15" tagname="干添1总量" unit="Kg" index="79" color="0,255,0" />
+      <Control name="parashow16" tagname="干添2总量" unit="Kg" index="80" color="0,128,128" />
       <Control name="parashow17" tagname="绞车" unit="" index="0" color="" />
       <Control name="parashow18" tagname="绞车" unit="" index="0" color="" />
       <Control name="parashow19" tagname="绞车" unit="" index="0" color="" />
@@ -130,7 +130,7 @@
       <Control name="parashownew12" tagname="泵2发动机转速" unit="RPM" index="113" color="255,0,0" />
       <Control name="parashownew13" tagname="泵2累计" unit="m3" index="116" color="255,0,0" />
       <Control name="parashownew14" tagname="吸入阶段总量" unit="m3" index="34" color="255,0,0" />
-      <Control name="parashownew15" tagname="液添3阶段总量" unit="m3" index="42" color="255,0,0" />
+      <Control name="parashownew15" tagname="液添3阶段总量" unit="m3" index="63" color="255,0,0" />
       <Control name="parashownew16" tagname="干添1流量" unit="Kg/Min" index="30" color="255,0,0" />
       <Control name="parashownew17" tagname="泵3排量" unit="m3" index="119" color="255,128,0" />
       <Control name="parashownew18" tagname="泵3压力" unit="Mpa" index="117" color="255,128,0" />
@@ -286,10 +286,10 @@
     <Controlsline>
       <Control name="paraLine1" tagname="井口油压" min="0" max="50" unit="Mpa" index="36" color="255,0,0" />
       <Control name="paraLine2" tagname="井口套压" min="0" max="1000" unit="Mpa" index="37" color="255,255,0" />
-      <Control name="paraLine3" tagname="井口密度" min="-2" max="2" unit="Mpa" index="38" color="0,0,255" />
+      <Control name="paraLine3" tagname="井口密度" min="0" max="150" unit="Mpa" index="38" color="0,0,255" />
       <Control name="paraLine4" tagname="井口排出流量" min="0" max="300" unit="m3/min" index="39" color="0,255,0" />
       <Control name="paraLine5" tagname="混合液密度" min="0" max="400" unit="g/cc" index="40" color="107,142,35" />
-      <Control name="paraLine6" tagname="砂密度" min="0" max="200" unit="KgPA" index="41" color="218,112,214" />
+      <Control name="paraLine6" tagname="砂浓度" min="0" max="200" unit="KgPA" index="41" color="218,112,214" />
     </Controlsline>
   </Form>
   <Form>
@@ -298,10 +298,10 @@
     <Controlsline>
       <Control name="paraLine1" tagname="井口油压" min="0" max="500" unit="Mpa" index="36" color="255,0,0" />
       <Control name="paraLine2" tagname="井口套压" min="0" max="30" unit="Mpa" index="37" color="255,255,0" />
-      <Control name="paraLine3" tagname="井口密度" min="-2" max="2" unit="Mpa" index="38" color="0,0,255" />
+      <Control name="paraLine3" tagname="井口密度" min="0" max="100" unit="Mpa" index="38" color="0,0,255" />
       <Control name="paraLine4" tagname="井口排出流量" min="0" max="300" unit="m3/min" index="39" color="0,255,0" />
       <Control name="paraLine5" tagname="混合液密度" min="0" max="400" unit="g/cc" index="40" color="107,142,35" />
-      <Control name="paraLine6" tagname="砂密度" min="0" max="200" unit="KgPA" index="41" color="218,112,214" />
+      <Control name="paraLine6" tagname="砂浓度" min="0" max="200" unit="KgPA" index="41" color="218,112,214" />
     </Controlsline>
   </Form>
 </root>

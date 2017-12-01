@@ -63,7 +63,7 @@ namespace Data_acquisition
         /// </summary>
         private void intialdata()
         {
-           
+
             Random rd = new Random();
             while (true)
             {
@@ -90,7 +90,7 @@ namespace Data_acquisition
                     //  井口排出阶段总量,来自beff尚未采集
                     test[55] = test[38] / 60 + test[55];            //吸入阶段总量
                     test[56] = test[39] / 60 + test[56];          //排出阶段总量
-                    test[57] = (test[43] / 60 /1000+ test[57]); //绞龙1阶段总量
+                    test[57] = (test[43] / 60 / 1000 + test[57]); //绞龙1阶段总量
                     test[58] = (test[44] / 60 / 1000 + test[58]); //绞龙2阶段总量
                     test[59] = (test[45] / 60 / 1000 + test[59]); //绞龙3阶段总量
                     test[60] = (test[46] / 60 / 1000 + test[60]);//输砂阶段总量
@@ -874,6 +874,8 @@ namespace Data_acquisition
             //阶段号更新
             ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).lbl_stage.Text = Form_Main.num_stage.ToString();
             ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).lbl_stage.Text = Form_Main.num_stage.ToString();
+            //发送阶段号到PLC
+            kep1.KepItems.Item(320).Write(Form_Main.num_stage);
             //计划表选取更新
             if (dataGridView1.Rows.Count >= num_stage)
             {
@@ -977,6 +979,32 @@ namespace Data_acquisition
 
             try
             {
+                if (dataGridView1.Rows.Count < 2) { MessageBox.Show("请现导入计划表！"); return; }
+
+                for (int i = 0; i <dataGridView1.Rows.Count; i++)
+                {
+                    DataGridViewRow dr = dataGridView1.Rows[i];
+                    int[] temp_handle = new int[]{0,kep1.Item_serverhandle1_To_PC[280+i],kep1.Item_serverhandle1_To_PC[34+i],kep1.Item_serverhandle1_To_PC[198+i],
+                   kep1.Item_serverhandle1_To_PC[239+i],kep1.Item_serverhandle1_To_PC[75+i],kep1.Item_serverhandle1_To_PC[116+i],kep1.Item_serverhandle1_To_PC[157+i]};
+                    object[] temp_value = new object[] { "", dr.Cells[2].Value, dr.Cells[3].Value, dr.Cells[4].Value, dr.Cells[5].Value, dr.Cells[6].Value, dr.Cells[7].Value, dr.Cells[8].Value };
+                    Array handle = (Array)temp_handle;
+                    Array value = (Array)temp_value;
+                    Array err;
+                    int id;
+                    kep1.KepGroup.AsyncWrite(handle.Length-1, ref handle, ref value, out err, 1, out id);
+                    GC.Collect();
+                }
+;
+                    
+
+                //object[] value = new object[] { "", 33 };
+                //Array value2 = (Array)value;
+                //int[] handle = new int[] { 0, kep1.Item_serverhandle1_To_PC[33] };
+                //Array handle2 = (Array)handle;
+
+
+                //kep1.KepGroup.AsyncWrite(1, ref handle2, ref value2, out err, id, out id);
+
                 //同步计划数据，先删除表中数据，再重新插入
                 DbManager db = new DbManager();
                 db.ConnStr = "Data Source=localhost;" +
@@ -997,6 +1025,13 @@ namespace Data_acquisition
                     Paramter.Add(new MySqlParameter("@vol", dataGridView1.Rows[i].Cells[7].Value.ToString()));
                     db.ExecuteNonquery(sql2, Paramter.ToArray());
                 }
+                //将计划数据发送到PLC
+
+                //砂浓度
+
+
+                //    kep1.KepGroup.AsyncWrite(1,kep1.Item_serverhandle1_To_PC[33],out );
+
 
 
             }
@@ -1092,8 +1127,9 @@ namespace Data_acquisition
         private void btn_next_Click(object sender, EventArgs e)
         {
             //阶段量清零
-            for(int i=54;i<=67;i++){
-            test[i]=0; 
+            for (int i = 54; i <= 67; i++)
+            {
+                test[i] = 0;
             }
             if (!iscnndatabase) return;
             num_stage++;
@@ -1111,6 +1147,8 @@ namespace Data_acquisition
             this.wellinfo_refresh();
             ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).lbl_stage.Text = Form_Main.num_stage.ToString();
             ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).lbl_stage.Text = Form_Main.num_stage.ToString();
+            //发送阶段号到PLC
+            kep1.KepItems.Item(320).Write(Form_Main.num_stage);
 
         }
 
@@ -1193,9 +1231,10 @@ namespace Data_acquisition
         /// <param name="e"></param>
         private void btn_zero_Click(object sender, EventArgs e)
         {
-            for(int i=54;i<=67;i++){
-            test[i]=0;
-            
+            for (int i = 54; i <= 67; i++)
+            {
+                test[i] = 0;
+
             }
         }
 

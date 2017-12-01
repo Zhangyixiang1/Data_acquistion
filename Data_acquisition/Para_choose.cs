@@ -291,8 +291,6 @@ namespace Data_acquisition
 
                     }
                     doc.Save(path);
-
-
                     ctr_show2.refresh();
                 }
 

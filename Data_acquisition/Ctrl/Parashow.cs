@@ -95,7 +95,7 @@ namespace Data_acquisition.Ctrl
         {   
         try{
         int num=Convert.ToInt16(this.Tag);
-        label2.Text = Form_Main.Paralist.Values.Last().DATA[num].ToString();
+        label2.Text = Form_Main.Paralist.Values.Last().DATA[num].ToString("#0.00");
         }
            
             catch{}
