@@ -32,11 +32,7 @@ namespace Data_acquisition
             //DataTable tb = db.ExcuteDataTable(sql);
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = dt;
-            dataGridView1.Columns[10].HeaderText = "";
-            dataGridView1.Columns[11].HeaderText = "";
-            dataGridView1.Columns[12].HeaderText = "";
-            dataGridView1.Columns[3].FillWeight = 150;
-            dataGridView1.DefaultCellStyle.Font = new Font(dataGridView1.DefaultCellStyle.Font.FontFamily, 10);
+              dataGridView1.DefaultCellStyle.Font = new Font(dataGridView1.DefaultCellStyle.Font.FontFamily, 10);
             dataGridView1.RowsDefaultCellStyle.Font = new Font(dataGridView1.RowsDefaultCellStyle.Font.FontFamily, 10);
             foreach (DataGridViewColumn item in dataGridView1.Columns)
             {

@@ -36,6 +36,7 @@ namespace Data_acquisition
         public static string wellnum;//井队号
         public static string stage_big;//第几大段
         public static bool iscnndatabase; //是否有新建施工和追加施工
+        public static bool stage_auto;
         public static string tbname;//当前使用的数据库表单名
         bool run;//是否记录数据
         public static double count;//数据条目
@@ -76,8 +77,44 @@ namespace Data_acquisition
                     //    test[i] = i + rd.Next(0, 10);
                     //    //  if (count > 600) { test[i] = count / 10 + rd.Next(0, 10); }
                     //}
-                    //测试用，读取混砂车数据
+
                     Array value_blender = kep1.kep_read();
+                    //如果是阶段自动切换状态
+                    if (stage_auto)
+                    {
+
+                        int temp = Convert.ToInt16(value_blender.GetValue(585));
+                        if (num_stage != temp)
+                        {
+                            num_stage = temp;
+                            //阶段量清零
+                            //for (int i = 54; i <= 67; i++)
+                            //{
+                            //    test[i] = 0;
+                            //}
+                            //if (!iscnndatabase) return;
+                           // num_stage++;
+                            time_stage = Convert.ToDateTime("00:00:00");
+                            //计划表选取更新
+                            if (dataGridView1.Rows.Count >= num_stage)
+                            {
+                                dataGridView1.ClearSelection();
+                                dataGridView1.Rows[num_stage - 1].Selected = true;
+
+                                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).dataGridView1.ClearSelection();
+                                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).dataGridView1.Rows[num_stage - 1].Selected = true;
+                            }
+                            //阶段号更新
+                            this.wellinfo_refresh();
+                            ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).lbl_stage.Text = Form_Main.num_stage.ToString();
+                            ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).lbl_stage.Text = Form_Main.num_stage.ToString();
+
+
+                        }
+
+                    }
+
+                    //测试用，读取混砂车数据,阶段统计量上位机计算
                     for (int i = 31; i <= 49; i++)
                     {
                         test[i] = Convert.ToDouble(value_blender.GetValue(i - 30));
@@ -87,21 +124,21 @@ namespace Data_acquisition
                     test[51] = Convert.ToDouble(value_blender.GetValue(20));//干添1
                     test[52] = Convert.ToDouble(value_blender.GetValue(21));//干添2
                     test[53] = test[51] + test[52]; //干添当前总流量
-                    //  井口排出阶段总量,来自beff尚未采集
-                    test[55] = test[38] / 60 + test[55];            //吸入阶段总量
-                    test[56] = test[39] / 60 + test[56];          //排出阶段总量
-                    test[57] = (test[43] / 60 / 1000 + test[57]); //绞龙1阶段总量
-                    test[58] = (test[44] / 60 / 1000 + test[58]); //绞龙2阶段总量
-                    test[59] = (test[45] / 60 / 1000 + test[59]); //绞龙3阶段总量
-                    test[60] = (test[46] / 60 / 1000 + test[60]);//输砂阶段总量
-                    test[61] = (test[47] / 60 / 1000 + test[61]);//液添1阶段总量
-                    test[62] = (test[48] / 60 / 1000 + test[62]);//液添2阶段总量
-                    test[63] = (test[49] / 60 / 1000 + test[63]);//液添3阶段总量
-                    test[64] = test[61] + test[62] + test[63];//液添阶段总量
-                    test[65] = (test[51] / 60 + test[65]); //干添1阶段总量
-                    test[66] = (test[52] / 60 + test[66]);//干添2阶段总量
-                    test[67] = test[65] + test[66];//干添阶段总量
-                    //井口排出总量,来自beff尚未采集
+                    ////  井口排出阶段总量,来自beff尚未采集
+                    //test[55] = test[38] / 60 + test[55];            //吸入阶段总量
+                    //test[56] = test[39] / 60 + test[56];          //排出阶段总量
+                    //test[57] = (test[43] / 60 / 1000 + test[57]); //绞龙1阶段总量
+                    //test[58] = (test[44] / 60 / 1000 + test[58]); //绞龙2阶段总量
+                    //test[59] = (test[45] / 60 / 1000 + test[59]); //绞龙3阶段总量
+                    //test[60] = (test[46] / 60 / 1000 + test[60]);//输砂阶段总量
+                    //test[61] = (test[47] / 60 / 1000 + test[61]);//液添1阶段总量
+                    //test[62] = (test[48] / 60 / 1000 + test[62]);//液添2阶段总量
+                    //test[63] = (test[49] / 60 / 1000 + test[63]);//液添3阶段总量
+                    //test[64] = test[61] + test[62] + test[63];//液添阶段总量
+                    //test[65] = (test[51] / 60 + test[65]); //干添1阶段总量
+                    //test[66] = (test[52] / 60 + test[66]);//干添2阶段总量
+                    //test[67] = test[65] + test[66];//干添阶段总量
+                    ////井口排出总量,来自beff尚未采集
                     for (int i = 69; i <= 77; i++)
                     {
                         test[i] = Convert.ToDouble(value_blender.GetValue(i - 47));
@@ -979,31 +1016,35 @@ namespace Data_acquisition
 
             try
             {
+                if (!(rdbtn_auto.Checked || rdbtn_hand.Checked)) { MessageBox.Show("请勾选阶段手自动模式！"); return; }
                 if (dataGridView1.Rows.Count < 2) { MessageBox.Show("请现导入计划表！"); return; }
 
-                for (int i = 0; i <dataGridView1.Rows.Count; i++)
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 {
                     DataGridViewRow dr = dataGridView1.Rows[i];
-                    int[] temp_handle = new int[]{0,kep1.Item_serverhandle1_To_PC[280+i],kep1.Item_serverhandle1_To_PC[34+i],kep1.Item_serverhandle1_To_PC[198+i],
-                   kep1.Item_serverhandle1_To_PC[239+i],kep1.Item_serverhandle1_To_PC[75+i],kep1.Item_serverhandle1_To_PC[116+i],kep1.Item_serverhandle1_To_PC[157+i]};
-                    object[] temp_value = new object[] { "", dr.Cells[2].Value, dr.Cells[3].Value, dr.Cells[4].Value, dr.Cells[5].Value, dr.Cells[6].Value, dr.Cells[7].Value, dr.Cells[8].Value };
+                    int[] temp_handle = new int[]{0,
+                    kep1.Item_serverhandle1_To_PC[299+i],//基液
+                    kep1.Item_serverhandle1_To_PC[53+i],kep1.Item_serverhandle1_To_PC[94+i], //砂浓度
+                    kep1.Item_serverhandle1_To_PC[381+i],kep1.Item_serverhandle1_To_PC[422+i],//干添1
+                    kep1.Item_serverhandle1_To_PC[463+i],kep1.Item_serverhandle1_To_PC[504+i], //干添2
+                    kep1.Item_serverhandle1_To_PC[135+i],kep1.Item_serverhandle1_To_PC[176+i],//液添1
+                    kep1.Item_serverhandle1_To_PC[217+i],kep1.Item_serverhandle1_To_PC[258+i],//液添2
+                    kep1.Item_serverhandle1_To_PC[299+i],kep1.Item_serverhandle1_To_PC[339+i]//液添3
+                    };
+
+                    object[] temp_value = new object[] { "", dr.Cells[2].Value, dr.Cells[3].Value, 
+                    dr.Cells[4].Value, dr.Cells[5].Value, 
+                    dr.Cells[6].Value, dr.Cells[7].Value, 
+                    dr.Cells[8].Value,dr.Cells[9].Value,
+                    dr.Cells[10].Value,dr.Cells[11].Value,
+                    dr.Cells[12].Value,dr.Cells[13].Value,dr.Cells[14].Value,};
                     Array handle = (Array)temp_handle;
                     Array value = (Array)temp_value;
                     Array err;
                     int id;
-                    kep1.KepGroup.AsyncWrite(handle.Length-1, ref handle, ref value, out err, 1, out id);
+                    kep1.KepGroup.AsyncWrite(handle.Length - 1, ref handle, ref value, out err, 1, out id);
                     GC.Collect();
                 }
-;
-                    
-
-                //object[] value = new object[] { "", 33 };
-                //Array value2 = (Array)value;
-                //int[] handle = new int[] { 0, kep1.Item_serverhandle1_To_PC[33] };
-                //Array handle2 = (Array)handle;
-
-
-                //kep1.KepGroup.AsyncWrite(1, ref handle2, ref value2, out err, id, out id);
 
                 //同步计划数据，先删除表中数据，再重新插入
                 DbManager db = new DbManager();
@@ -1061,17 +1102,17 @@ namespace Data_acquisition
                 using (ExcelHelper excelHelper = new ExcelHelper(filePath))
                 {
                     DataTable dt = excelHelper.ExcelToDataTable("MySheet", true);
-                    DataColumn cln1 = new DataColumn();
-                    DataColumn cln2 = new DataColumn();
-                    DataColumn cln3 = new DataColumn();
-                    dt.Columns.Add(cln1); dt.Columns.Add(cln2); dt.Columns.Add(cln3);
+                    //DataColumn cln1 = new DataColumn();
+                    //DataColumn cln2 = new DataColumn();
+                    //DataColumn cln3 = new DataColumn();
+                    //dt.Columns.Add(cln1); dt.Columns.Add(cln2); dt.Columns.Add(cln3);
                     dataGridView1.Columns.Clear();
                     dataGridView1.DataSource = dt;
                     ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).grid_refresh(dt);
-                    dataGridView1.Columns[10].HeaderText = "";
-                    dataGridView1.Columns[11].HeaderText = "";
-                    dataGridView1.Columns[12].HeaderText = "";
-                    dataGridView1.Columns[3].FillWeight = 150;
+                    //dataGridView1.Columns[10].HeaderText = "";
+                    //dataGridView1.Columns[11].HeaderText = "";
+                    //dataGridView1.Columns[12].HeaderText = "";
+                    //dataGridView1.Columns[3].FillWeight = 150;
                     dataGridView1.DefaultCellStyle.Font = new Font(dataGridView1.DefaultCellStyle.Font.FontFamily, 10);
                     dataGridView1.RowsDefaultCellStyle.Font = new Font(dataGridView1.RowsDefaultCellStyle.Font.FontFamily, 10);
                     foreach (DataGridViewColumn item in dataGridView1.Columns)
@@ -1147,8 +1188,8 @@ namespace Data_acquisition
             this.wellinfo_refresh();
             ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).lbl_stage.Text = Form_Main.num_stage.ToString();
             ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).lbl_stage.Text = Form_Main.num_stage.ToString();
-            //发送阶段号到PLC
-            kep1.KepItems.Item(320).Write(Form_Main.num_stage);
+            //发送下一阶段命令到PLC
+            kep1.KepItems.Item(586).Write(true);
 
         }
 
@@ -1236,6 +1277,12 @@ namespace Data_acquisition
                 test[i] = 0;
 
             }
+        }
+
+        private void rdbtn_auto_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbtn_auto.Checked) { stage_auto = true; btn_next.Enabled = false; kep1.KepItems.Item(587).Write(true);}
+            else { stage_auto = false; btn_next.Enabled = true; kep1.KepItems.Item(587).Write(false); }
         }
 
 

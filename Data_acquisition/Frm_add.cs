@@ -161,6 +161,7 @@ namespace Data_acquisition
         {
             try
             {
+                if (Form_Main.iscnndatabase) { MessageBox.Show("请删除前现结束施工！"); return;}
                 if (listBox1.SelectedIndex < 0) MessageBox.Show("请选择需要删除的数据包！");
                 else
                 {   //先删除wellinfo里面的信息
