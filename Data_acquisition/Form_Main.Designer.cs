@@ -124,11 +124,36 @@
             this.toolStripStatusLabel12 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssl_log = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.radProgressBar1 = new Telerik.WinControls.UI.RadProgressBar();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbl_stage2 = new System.Windows.Forms.Label();
             this.rdbtn_hand = new System.Windows.Forms.RadioButton();
             this.rdbtn_auto = new System.Windows.Forms.RadioButton();
             this.btn_send = new Telerik.WinControls.UI.RadButton();
             this.btn_import = new Telerik.WinControls.UI.RadButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.radButton7 = new Telerik.WinControls.UI.RadButton();
+            this.btn_blenderstop = new Telerik.WinControls.UI.RadButton();
+            this.btn_blenderhold = new Telerik.WinControls.UI.RadButton();
+            this.btn_blendernext = new Telerik.WinControls.UI.RadButton();
+            this.radProgressBar2 = new Telerik.WinControls.UI.RadProgressBar();
+            this.label1 = new System.Windows.Forms.Label();
             this.parashow16 = new Data_acquisition.Ctrl.Parashow();
             this.parashow15 = new Data_acquisition.Ctrl.Parashow();
             this.parashow14 = new Data_acquisition.Ctrl.Parashow();
@@ -151,22 +176,6 @@
             this.paraLine4 = new Data_acquisition.Ctrl.ParaLine();
             this.paraLine3 = new Data_acquisition.Ctrl.ParaLine();
             this.paraLine2 = new Data_acquisition.Ctrl.ParaLine();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton2)).BeginInit();
@@ -184,9 +193,15 @@
             this.menuStrip2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radProgressBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_send)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_import)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_blenderstop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_blenderhold)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_blendernext)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radProgressBar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -437,11 +452,12 @@
             // 
             this.btn_next.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.btn_next.ForeColor = System.Drawing.Color.White;
-            this.btn_next.Location = new System.Drawing.Point(470, 36);
+            this.btn_next.Location = new System.Drawing.Point(582, 36);
             this.btn_next.Name = "btn_next";
             this.btn_next.Size = new System.Drawing.Size(40, 40);
             this.btn_next.TabIndex = 14;
             this.btn_next.Text = "<html><p>下一</p><p>阶段</p></html>";
+            this.btn_next.Visible = false;
             this.btn_next.Click += new System.EventHandler(this.btn_next_Click);
             // 
             // timer_now
@@ -454,7 +470,7 @@
             // 
             this.btn_zero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.btn_zero.ForeColor = System.Drawing.Color.White;
-            this.btn_zero.Location = new System.Drawing.Point(516, 36);
+            this.btn_zero.Location = new System.Drawing.Point(470, 36);
             this.btn_zero.Name = "btn_zero";
             this.btn_zero.Size = new System.Drawing.Size(40, 40);
             this.btn_zero.TabIndex = 14;
@@ -839,7 +855,7 @@
             this.toolStripStatusLabel6,
             this.toolStripStatusLabel12,
             this.tssl_log});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 1048);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 1058);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1920, 22);
             this.statusStrip1.TabIndex = 24;
@@ -959,9 +975,18 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.radProgressBar2);
+            this.groupBox4.Controls.Add(this.radProgressBar1);
+            this.groupBox4.Controls.Add(this.label1);
+            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Controls.Add(this.lbl_stage2);
             this.groupBox4.Controls.Add(this.rdbtn_hand);
             this.groupBox4.Controls.Add(this.rdbtn_auto);
             this.groupBox4.Controls.Add(this.btn_send);
+            this.groupBox4.Controls.Add(this.btn_blendernext);
+            this.groupBox4.Controls.Add(this.btn_blenderhold);
+            this.groupBox4.Controls.Add(this.btn_blenderstop);
+            this.groupBox4.Controls.Add(this.radButton7);
             this.groupBox4.Controls.Add(this.btn_import);
             this.groupBox4.Controls.Add(this.dataGridView1);
             this.groupBox4.Font = new System.Drawing.Font("宋体", 15F);
@@ -973,37 +998,86 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "计划";
             // 
+            // radProgressBar1
+            // 
+            this.radProgressBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.radProgressBar1.ForeColor = System.Drawing.Color.White;
+            this.radProgressBar1.Location = new System.Drawing.Point(1295, 381);
+            this.radProgressBar1.Name = "radProgressBar1";
+            this.radProgressBar1.SeparatorColor1 = System.Drawing.Color.Black;
+            this.radProgressBar1.SeparatorColor2 = System.Drawing.Color.Black;
+            this.radProgressBar1.SeparatorColor3 = System.Drawing.Color.Black;
+            this.radProgressBar1.SeparatorColor4 = System.Drawing.Color.Black;
+            this.radProgressBar1.Size = new System.Drawing.Size(156, 18);
+            this.radProgressBar1.TabIndex = 23;
+            this.radProgressBar1.Text = "0%";
+            ((Telerik.WinControls.UI.RadProgressBarElement)(this.radProgressBar1.GetChildAt(0))).Text = "0%";
+            ((Telerik.WinControls.UI.ProgressIndicatorElement)(this.radProgressBar1.GetChildAt(0).GetChildAt(0))).BorderWidth = 1F;
+            ((Telerik.WinControls.UI.ProgressIndicatorElement)(this.radProgressBar1.GetChildAt(0).GetChildAt(0))).BorderInnerColor = System.Drawing.SystemColors.ControlDark;
+            ((Telerik.WinControls.UI.ProgressIndicatorElement)(this.radProgressBar1.GetChildAt(0).GetChildAt(0))).BorderInnerColor2 = System.Drawing.SystemColors.ControlDark;
+            ((Telerik.WinControls.UI.ProgressIndicatorElement)(this.radProgressBar1.GetChildAt(0).GetChildAt(0))).BorderInnerColor4 = System.Drawing.SystemColors.ControlDark;
+            ((Telerik.WinControls.UI.ProgressIndicatorElement)(this.radProgressBar1.GetChildAt(0).GetChildAt(0))).ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            ((Telerik.WinControls.UI.ProgressIndicatorElement)(this.radProgressBar1.GetChildAt(0).GetChildAt(0))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
+            ((Telerik.WinControls.UI.UpperProgressIndicatorElement)(this.radProgressBar1.GetChildAt(0).GetChildAt(1))).BorderInnerColor = System.Drawing.SystemColors.ControlDark;
+            ((Telerik.WinControls.UI.UpperProgressIndicatorElement)(this.radProgressBar1.GetChildAt(0).GetChildAt(1))).BorderInnerColor2 = System.Drawing.SystemColors.ControlDark;
+            ((Telerik.WinControls.UI.UpperProgressIndicatorElement)(this.radProgressBar1.GetChildAt(0).GetChildAt(1))).HorizontalLineColor = System.Drawing.SystemColors.ControlDark;
+            ((Telerik.WinControls.UI.UpperProgressIndicatorElement)(this.radProgressBar1.GetChildAt(0).GetChildAt(1))).ForeColor = System.Drawing.SystemColors.ControlDark;
+            ((Telerik.WinControls.UI.UpperProgressIndicatorElement)(this.radProgressBar1.GetChildAt(0).GetChildAt(1))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
+            ((Telerik.WinControls.UI.ProgressBarTextElement)(this.radProgressBar1.GetChildAt(0).GetChildAt(3))).BorderInnerColor = System.Drawing.SystemColors.ControlDark;
+            ((Telerik.WinControls.UI.ProgressBarTextElement)(this.radProgressBar1.GetChildAt(0).GetChildAt(3))).BorderInnerColor2 = System.Drawing.SystemColors.ControlDark;
+            ((Telerik.WinControls.UI.ProgressBarTextElement)(this.radProgressBar1.GetChildAt(0).GetChildAt(3))).Text = "0%";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("宋体", 10F);
+            this.label2.Location = new System.Drawing.Point(1226, 383);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 14);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "阶段进度";
+            // 
+            // lbl_stage2
+            // 
+            this.lbl_stage2.AutoSize = true;
+            this.lbl_stage2.Font = new System.Drawing.Font("宋体", 10F);
+            this.lbl_stage2.Location = new System.Drawing.Point(1099, 383);
+            this.lbl_stage2.Name = "lbl_stage2";
+            this.lbl_stage2.Size = new System.Drawing.Size(77, 14);
+            this.lbl_stage2.TabIndex = 22;
+            this.lbl_stage2.Text = "阶段: 1/1 ";
+            // 
             // rdbtn_hand
             // 
+            this.rdbtn_hand.AutoCheck = false;
             this.rdbtn_hand.AutoSize = true;
             this.rdbtn_hand.Font = new System.Drawing.Font("宋体", 10F);
-            this.rdbtn_hand.Location = new System.Drawing.Point(1607, 155);
+            this.rdbtn_hand.Location = new System.Drawing.Point(979, 381);
             this.rdbtn_hand.Name = "rdbtn_hand";
             this.rdbtn_hand.Size = new System.Drawing.Size(81, 18);
             this.rdbtn_hand.TabIndex = 20;
-            this.rdbtn_hand.TabStop = true;
             this.rdbtn_hand.Text = "阶段手动";
             this.rdbtn_hand.UseVisualStyleBackColor = true;
-            this.rdbtn_hand.CheckedChanged += new System.EventHandler(this.rdbtn_auto_CheckedChanged);
             // 
             // rdbtn_auto
             // 
+            this.rdbtn_auto.AutoCheck = false;
             this.rdbtn_auto.AutoSize = true;
+            this.rdbtn_auto.Checked = true;
             this.rdbtn_auto.Font = new System.Drawing.Font("宋体", 10F);
-            this.rdbtn_auto.Location = new System.Drawing.Point(1607, 131);
+            this.rdbtn_auto.Location = new System.Drawing.Point(880, 381);
             this.rdbtn_auto.Name = "rdbtn_auto";
             this.rdbtn_auto.Size = new System.Drawing.Size(81, 18);
             this.rdbtn_auto.TabIndex = 20;
             this.rdbtn_auto.TabStop = true;
             this.rdbtn_auto.Text = "阶段自动";
             this.rdbtn_auto.UseVisualStyleBackColor = true;
-            this.rdbtn_auto.CheckedChanged += new System.EventHandler(this.rdbtn_auto_CheckedChanged);
             // 
             // btn_send
             // 
             this.btn_send.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.btn_send.ForeColor = System.Drawing.Color.White;
-            this.btn_send.Location = new System.Drawing.Point(1607, 75);
+            this.btn_send.Location = new System.Drawing.Point(128, 370);
             this.btn_send.Name = "btn_send";
             this.btn_send.Size = new System.Drawing.Size(106, 40);
             this.btn_send.TabIndex = 19;
@@ -1014,7 +1088,7 @@
             // 
             this.btn_import.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.btn_import.ForeColor = System.Drawing.Color.White;
-            this.btn_import.Location = new System.Drawing.Point(1607, 29);
+            this.btn_import.Location = new System.Drawing.Point(16, 370);
             this.btn_import.Name = "btn_import";
             this.btn_import.Size = new System.Drawing.Size(106, 40);
             this.btn_import.TabIndex = 19;
@@ -1023,9 +1097,11 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.Black;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 15F);
@@ -1064,6 +1140,7 @@
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(16, 29);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 15F);
@@ -1079,8 +1156,207 @@
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1585, 371);
+            this.dataGridView1.Size = new System.Drawing.Size(1697, 335);
             this.dataGridView1.TabIndex = 18;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 10F);
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column1.HeaderText = "阶段号";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column1.Width = 75;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Column2.HeaderText = "名称";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column2.Width = 55;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "净液量(m3)";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "砂浓度起始(kg/m3)";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "砂浓度结束(kg/m3)";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "干添1起始(kg/m3)";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "干添1结束(kg/m3)";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            this.Column12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "干添2起始(kg/m3)";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "干添2结束(kg/m3)";
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            this.Column13.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "液添1起始(L/m3)";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "液添1结束(L/m3)";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "液添2起始(L/m3)";
+            this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "液添2结束(L/m3)";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column15
+            // 
+            this.Column15.HeaderText = "液添3起始(L/m3)";
+            this.Column15.Name = "Column15";
+            this.Column15.ReadOnly = true;
+            // 
+            // Column16
+            // 
+            this.Column16.HeaderText = "液添3结束(L/m3)";
+            this.Column16.Name = "Column16";
+            this.Column16.ReadOnly = true;
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "支撑剂类型";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // radButton7
+            // 
+            this.radButton7.BackColor = System.Drawing.Color.DarkGreen;
+            this.radButton7.ForeColor = System.Drawing.Color.White;
+            this.radButton7.Location = new System.Drawing.Point(300, 370);
+            this.radButton7.Name = "radButton7";
+            this.radButton7.Size = new System.Drawing.Size(106, 40);
+            this.radButton7.TabIndex = 19;
+            this.radButton7.Text = "开始";
+            this.radButton7.Click += new System.EventHandler(this.radButton7_Click);
+            // 
+            // btn_blenderstop
+            // 
+            this.btn_blenderstop.BackColor = System.Drawing.Color.Red;
+            this.btn_blenderstop.ForeColor = System.Drawing.Color.White;
+            this.btn_blenderstop.Location = new System.Drawing.Point(412, 370);
+            this.btn_blenderstop.Name = "btn_blenderstop";
+            this.btn_blenderstop.Size = new System.Drawing.Size(106, 40);
+            this.btn_blenderstop.TabIndex = 19;
+            this.btn_blenderstop.Text = "停止";
+            this.btn_blenderstop.Click += new System.EventHandler(this.btn_blenderstop_Click);
+            // 
+            // btn_blenderhold
+            // 
+            this.btn_blenderhold.BackColor = System.Drawing.Color.Navy;
+            this.btn_blenderhold.ForeColor = System.Drawing.Color.White;
+            this.btn_blenderhold.Location = new System.Drawing.Point(524, 370);
+            this.btn_blenderhold.Name = "btn_blenderhold";
+            this.btn_blenderhold.Size = new System.Drawing.Size(106, 40);
+            this.btn_blenderhold.TabIndex = 19;
+            this.btn_blenderhold.Text = "保持";
+            this.btn_blenderhold.Click += new System.EventHandler(this.btn_blenderhold_Click);
+            ((Telerik.WinControls.Primitives.BorderPrimitive)(this.btn_blenderhold.GetChildAt(0).GetChildAt(2))).BorderDashStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            // 
+            // btn_blendernext
+            // 
+            this.btn_blendernext.BackColor = System.Drawing.Color.Navy;
+            this.btn_blendernext.ForeColor = System.Drawing.Color.White;
+            this.btn_blendernext.Location = new System.Drawing.Point(636, 370);
+            this.btn_blendernext.Name = "btn_blendernext";
+            this.btn_blendernext.Size = new System.Drawing.Size(106, 40);
+            this.btn_blendernext.TabIndex = 19;
+            this.btn_blendernext.Text = "下一阶段";
+            this.btn_blendernext.Click += new System.EventHandler(this.btn_blendernext_Click);
+            // 
+            // radProgressBar2
+            // 
+            this.radProgressBar2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.radProgressBar2.ForeColor = System.Drawing.Color.White;
+            this.radProgressBar2.Location = new System.Drawing.Point(1557, 381);
+            this.radProgressBar2.Name = "radProgressBar2";
+            this.radProgressBar2.SeparatorColor1 = System.Drawing.Color.Black;
+            this.radProgressBar2.SeparatorColor2 = System.Drawing.Color.Black;
+            this.radProgressBar2.SeparatorColor3 = System.Drawing.Color.Black;
+            this.radProgressBar2.SeparatorColor4 = System.Drawing.Color.Black;
+            this.radProgressBar2.Size = new System.Drawing.Size(156, 18);
+            this.radProgressBar2.TabIndex = 23;
+            this.radProgressBar2.Text = "0%";
+            ((Telerik.WinControls.UI.RadProgressBarElement)(this.radProgressBar2.GetChildAt(0))).Text = "0%";
+            ((Telerik.WinControls.UI.ProgressIndicatorElement)(this.radProgressBar2.GetChildAt(0).GetChildAt(0))).BorderWidth = 1F;
+            ((Telerik.WinControls.UI.ProgressIndicatorElement)(this.radProgressBar2.GetChildAt(0).GetChildAt(0))).BorderInnerColor = System.Drawing.SystemColors.ControlDark;
+            ((Telerik.WinControls.UI.ProgressIndicatorElement)(this.radProgressBar2.GetChildAt(0).GetChildAt(0))).BorderInnerColor2 = System.Drawing.SystemColors.ControlDark;
+            ((Telerik.WinControls.UI.ProgressIndicatorElement)(this.radProgressBar2.GetChildAt(0).GetChildAt(0))).BorderInnerColor4 = System.Drawing.SystemColors.ControlDark;
+            ((Telerik.WinControls.UI.ProgressIndicatorElement)(this.radProgressBar2.GetChildAt(0).GetChildAt(0))).ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            ((Telerik.WinControls.UI.ProgressIndicatorElement)(this.radProgressBar2.GetChildAt(0).GetChildAt(0))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
+            ((Telerik.WinControls.UI.UpperProgressIndicatorElement)(this.radProgressBar2.GetChildAt(0).GetChildAt(1))).BorderInnerColor = System.Drawing.SystemColors.ControlDark;
+            ((Telerik.WinControls.UI.UpperProgressIndicatorElement)(this.radProgressBar2.GetChildAt(0).GetChildAt(1))).BorderInnerColor2 = System.Drawing.SystemColors.ControlDark;
+            ((Telerik.WinControls.UI.UpperProgressIndicatorElement)(this.radProgressBar2.GetChildAt(0).GetChildAt(1))).HorizontalLineColor = System.Drawing.SystemColors.ControlDark;
+            ((Telerik.WinControls.UI.UpperProgressIndicatorElement)(this.radProgressBar2.GetChildAt(0).GetChildAt(1))).ForeColor = System.Drawing.SystemColors.ControlDark;
+            ((Telerik.WinControls.UI.UpperProgressIndicatorElement)(this.radProgressBar2.GetChildAt(0).GetChildAt(1))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
+            ((Telerik.WinControls.UI.ProgressBarTextElement)(this.radProgressBar2.GetChildAt(0).GetChildAt(3))).BorderInnerColor = System.Drawing.SystemColors.ControlDark;
+            ((Telerik.WinControls.UI.ProgressBarTextElement)(this.radProgressBar2.GetChildAt(0).GetChildAt(3))).BorderInnerColor2 = System.Drawing.SystemColors.ControlDark;
+            ((Telerik.WinControls.UI.ProgressBarTextElement)(this.radProgressBar2.GetChildAt(0).GetChildAt(3))).Text = "0%";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("宋体", 10F);
+            this.label1.Location = new System.Drawing.Point(1474, 383);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 14);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "作业总进度";
             // 
             // parashow16
             // 
@@ -1364,111 +1640,12 @@
             this.paraLine2.Tagname = null;
             this.paraLine2.Unit = "Mpa";
             // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 10F);
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Column1.HeaderText = "阶段号";
-            this.Column1.Name = "Column1";
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column1.Width = 75;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Column2.HeaderText = "名称";
-            this.Column2.Name = "Column2";
-            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column2.Width = 55;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "净液量(m3)";
-            this.Column3.Name = "Column3";
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "砂浓度起始(kg/m3)";
-            this.Column4.Name = "Column4";
-            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "砂浓度结束(kg/m3)";
-            this.Column11.Name = "Column11";
-            this.Column11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "干添1起始(kg/m3)";
-            this.Column5.Name = "Column5";
-            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "干添1结束(kg/m3)";
-            this.Column12.Name = "Column12";
-            this.Column12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "干添2起始(kg/m3)";
-            this.Column6.Name = "Column6";
-            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "干添2结束(kg/m3)";
-            this.Column13.Name = "Column13";
-            this.Column13.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "液添1起始(L/m3)";
-            this.Column7.Name = "Column7";
-            this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "液添1结束(L/m3)";
-            this.Column8.Name = "Column8";
-            this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column14
-            // 
-            this.Column14.HeaderText = "液添2起始(L/m3)";
-            this.Column14.Name = "Column14";
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "液添2结束(L/m3)";
-            this.Column9.Name = "Column9";
-            this.Column9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column15
-            // 
-            this.Column15.HeaderText = "液添3起始(L/m3)";
-            this.Column15.Name = "Column15";
-            // 
-            // Column16
-            // 
-            this.Column16.HeaderText = "液添3结束(L/m3)";
-            this.Column16.Name = "Column16";
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "支撑剂类型";
-            this.Column10.Name = "Column10";
-            this.Column10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(29)))), ((int)(((byte)(31)))));
-            this.ClientSize = new System.Drawing.Size(1920, 1070);
+            this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.parashow16);
@@ -1542,9 +1719,15 @@
             this.statusStrip1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radProgressBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_send)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_import)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_blenderstop)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_blenderhold)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_blendernext)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radProgressBar2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1580,7 +1763,6 @@
         private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 说明文档ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
-        private Telerik.WinControls.UI.RadButton btn_next;
         private System.Windows.Forms.Timer timer_now;
         private Ctrl.ParaLine paraLine2;
         private Ctrl.ParaLine paraLine3;
@@ -1667,8 +1849,6 @@
         public System.Windows.Forms.Label lbl_time;
         public System.Windows.Forms.ToolStripStatusLabel lbl_stagetime;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.RadioButton rdbtn_hand;
-        private System.Windows.Forms.RadioButton rdbtn_auto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -1685,5 +1865,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        public System.Windows.Forms.RadioButton rdbtn_hand;
+        public System.Windows.Forms.RadioButton rdbtn_auto;
+        public Telerik.WinControls.UI.RadButton btn_next;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbl_stage2;
+        private Telerik.WinControls.UI.RadProgressBar radProgressBar1;
+        private Telerik.WinControls.UI.RadButton btn_blendernext;
+        private Telerik.WinControls.UI.RadButton btn_blenderhold;
+        private Telerik.WinControls.UI.RadButton btn_blenderstop;
+        private Telerik.WinControls.UI.RadButton radButton7;
+        private Telerik.WinControls.UI.RadProgressBar radProgressBar2;
+        private System.Windows.Forms.Label label1;
     }
 }

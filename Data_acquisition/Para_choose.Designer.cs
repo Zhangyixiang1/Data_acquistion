@@ -32,6 +32,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.btn_OK = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,7 +41,7 @@
             this.txb_max = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btn_color = new System.Windows.Forms.Button();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btn_clear = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,6 +88,15 @@
             this.tabPage3.Text = "电动压裂泵";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(552, 353);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "传统压裂泵";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
             // btn_OK
             // 
             this.btn_OK.Location = new System.Drawing.Point(12, 397);
@@ -109,7 +119,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(354, 405);
+            this.label1.Location = new System.Drawing.Point(340, 405);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 2;
@@ -118,7 +128,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(201, 405);
+            this.label2.Location = new System.Drawing.Point(187, 405);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 2;
@@ -126,14 +136,14 @@
             // 
             // txb_min
             // 
-            this.txb_min.Location = new System.Drawing.Point(248, 401);
+            this.txb_min.Location = new System.Drawing.Point(234, 401);
             this.txb_min.Name = "txb_min";
             this.txb_min.Size = new System.Drawing.Size(100, 21);
             this.txb_min.TabIndex = 3;
             // 
             // txb_max
             // 
-            this.txb_max.Location = new System.Drawing.Point(401, 401);
+            this.txb_max.Location = new System.Drawing.Point(387, 401);
             this.txb_max.Name = "txb_max";
             this.txb_max.Size = new System.Drawing.Size(100, 21);
             this.txb_max.TabIndex = 3;
@@ -147,20 +157,23 @@
             this.btn_color.UseVisualStyleBackColor = true;
             this.btn_color.Click += new System.EventHandler(this.btn_color_Click);
             // 
-            // tabPage4
+            // btn_clear
             // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(552, 353);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "传统压裂泵";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.btn_clear.Image = global::Data_acquisition.Properties.Resources.cancel;
+            this.btn_clear.Location = new System.Drawing.Point(502, 396);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(30, 30);
+            this.btn_clear.TabIndex = 5;
+            this.btn_clear.UseVisualStyleBackColor = true;
+            this.btn_clear.Visible = false;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
             // Para_choose
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 433);
+            this.Controls.Add(this.btn_clear);
             this.Controls.Add(this.btn_color);
             this.Controls.Add(this.txb_max);
             this.Controls.Add(this.label1);
@@ -195,5 +208,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button btn_color;
         private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Button btn_clear;
     }
 }

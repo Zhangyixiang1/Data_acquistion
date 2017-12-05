@@ -26,23 +26,25 @@ namespace Data_acquisition
     {
 
         #region 变量声明
-        Kepware kep1;//混砂车
-        Kepware kep2;//压力泵
+        public static Kepware kep1;//混砂车
+        public static Kepware kep2;//压力泵
         ToolTip toolTip1;
         public static DateTime time; //当前时间
         public static DateTime time_stage;//阶段时间
         public static int num_stage = 1;//阶段号
+        public static int num_totalstage;//总的阶段数，导入计划时赋值
         public static string wellname;//油田名
         public static string wellnum;//井队号
         public static string stage_big;//第几大段
         public static bool iscnndatabase; //是否有新建施工和追加施工
-        public static bool stage_auto;
+        public static bool stage_auto; //阶段切换模式
         public static string tbname;//当前使用的数据库表单名
         bool run;//是否记录数据
         public static double count;//数据条目
         public static Dictionary<string, Datamodel> Paralist; //实时数据缓存
         public static Dictionary<string, Datamodel> Loglist; //记录数据缓存
         double[] test = new double[200]; //测试数据
+         Array value_blender;//plc读到的原始值
         #endregion
 
         #region 方法
@@ -78,10 +80,16 @@ namespace Data_acquisition
                     //    //  if (count > 600) { test[i] = count / 10 + rd.Next(0, 10); }
                     //}
 
-                    Array value_blender = kep1.kep_read();
+                     value_blender = kep1.kep_read();
+                    //更新进度条
+                    int percent = Convert.ToInt16(value_blender.GetValue(589));
+                    percent_refresh(percent);
                     //如果是阶段自动切换状态
                     if (stage_auto)
-                    {
+                    {    //根据混砂车的信号，自动记录数据
+                        bool isrun=Convert.ToBoolean(value_blender.GetValue(590));
+                         if(run!=isrun){btn_start.PerformClick();run=isrun;}
+
 
                         int temp = Convert.ToInt16(value_blender.GetValue(585));
                         if (num_stage != temp)
@@ -93,7 +101,7 @@ namespace Data_acquisition
                             //    test[i] = 0;
                             //}
                             //if (!iscnndatabase) return;
-                           // num_stage++;
+                            // num_stage++;
                             time_stage = Convert.ToDateTime("00:00:00");
                             //计划表选取更新
                             if (dataGridView1.Rows.Count >= num_stage)
@@ -106,8 +114,8 @@ namespace Data_acquisition
                             }
                             //阶段号更新
                             this.wellinfo_refresh();
-                            ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).lbl_stage.Text = Form_Main.num_stage.ToString();
-                            ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).lbl_stage.Text = Form_Main.num_stage.ToString();
+                            ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).lbl_stage.Text = Form_Main.num_stage + "/" + Form_Main.num_totalstage;
+                            ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).lbl_stage.Text = Form_Main.num_stage + "/" + Form_Main.num_totalstage;
 
 
                         }
@@ -187,6 +195,34 @@ namespace Data_acquisition
                 }
             }
         }
+        /// <summary>
+        /// 更新进度条
+        /// </summary>
+        /// <param name="num">从plc读到的进度值</param>
+        private void percent_refresh(int num)
+        {
+            if (radProgressBar1.InvokeRequired)
+            {
+                radProgressBar1.Invoke(new Action(() => { radProgressBar1.Value1 = num; radProgressBar1.Text = num + "%"; }));
+            }
+            else { radProgressBar1.Value1 = num; radProgressBar1.Text = num + "%"; }
+
+            if (((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).radProgressBar1.InvokeRequired)
+            {
+                ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).radProgressBar1.Invoke(new Action(() => { ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).radProgressBar1.Value1 = num; ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).radProgressBar1.Text = num + "%"; }));
+            }
+            else { ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).radProgressBar1.Value1 = num; ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).radProgressBar1.Text = num + "%"; }
+
+            if (((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).radProgressBar1.InvokeRequired)
+            {
+                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).radProgressBar1.Invoke(new Action(() => { ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).radProgressBar1.Value1 = num; ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).radProgressBar1.Text = num + "%"; }));
+            }
+            else { ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).radProgressBar1.Value1 = num; ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).radProgressBar1.Text = num + "%"; }
+            
+
+        }
+
+
         /// <summary>
         /// 初始化plc相关变量
         /// </summary>
@@ -740,6 +776,9 @@ namespace Data_acquisition
         {
 
             lbl_stage.Text = wellname + wellnum + "第" + stage_big + "段  " + "阶段:" + num_stage;
+            if (lbl_stage2.InvokeRequired) { lbl_stage2.Invoke(new Action(() => { lbl_stage2.Text = "阶段: " + num_stage + "/" + num_totalstage; })); }
+            else{  lbl_stage2.Text = "阶段: " + num_stage + "/" + num_totalstage;}
+          
             if (lbl_time.InvokeRequired) { lbl_time.Invoke(new Action(() => lbl_time.Text = string.Format("{0:T}", time))); }
             else { lbl_time.Text = string.Format("{0:T}", time); }
             lbl_stagetime.Text = string.Format("{0:T}", time_stage);
@@ -912,10 +951,10 @@ namespace Data_acquisition
             ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).lbl_stage.Text = Form_Main.num_stage.ToString();
             ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).lbl_stage.Text = Form_Main.num_stage.ToString();
             //发送阶段号到PLC
-            kep1.KepItems.Item(320).Write(Form_Main.num_stage);
+            //kep1.KepItems.Item(320).Write(Form_Main.num_stage);
             //计划表选取更新
             if (dataGridView1.Rows.Count >= num_stage)
-            {
+            {   
                 dataGridView1.ClearSelection();
                 dataGridView1.Rows[num_stage - 1].Selected = true;
                 ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).dataGridView1.ClearSelection();
@@ -1013,74 +1052,10 @@ namespace Data_acquisition
 
         private void btn_send_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.Rows.Count < 2) { MessageBox.Show("请现导入计划表！"); return; }
+            Frm_send frm = new Frm_send(dataGridView1);
+            frm.ShowDialog();
 
-            try
-            {
-                if (!(rdbtn_auto.Checked || rdbtn_hand.Checked)) { MessageBox.Show("请勾选阶段手自动模式！"); return; }
-                if (dataGridView1.Rows.Count < 2) { MessageBox.Show("请现导入计划表！"); return; }
-
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    DataGridViewRow dr = dataGridView1.Rows[i];
-                    int[] temp_handle = new int[]{0,
-                    kep1.Item_serverhandle1_To_PC[299+i],//基液
-                    kep1.Item_serverhandle1_To_PC[53+i],kep1.Item_serverhandle1_To_PC[94+i], //砂浓度
-                    kep1.Item_serverhandle1_To_PC[381+i],kep1.Item_serverhandle1_To_PC[422+i],//干添1
-                    kep1.Item_serverhandle1_To_PC[463+i],kep1.Item_serverhandle1_To_PC[504+i], //干添2
-                    kep1.Item_serverhandle1_To_PC[135+i],kep1.Item_serverhandle1_To_PC[176+i],//液添1
-                    kep1.Item_serverhandle1_To_PC[217+i],kep1.Item_serverhandle1_To_PC[258+i],//液添2
-                    kep1.Item_serverhandle1_To_PC[299+i],kep1.Item_serverhandle1_To_PC[339+i]//液添3
-                    };
-
-                    object[] temp_value = new object[] { "", dr.Cells[2].Value, dr.Cells[3].Value, 
-                    dr.Cells[4].Value, dr.Cells[5].Value, 
-                    dr.Cells[6].Value, dr.Cells[7].Value, 
-                    dr.Cells[8].Value,dr.Cells[9].Value,
-                    dr.Cells[10].Value,dr.Cells[11].Value,
-                    dr.Cells[12].Value,dr.Cells[13].Value,dr.Cells[14].Value,};
-                    Array handle = (Array)temp_handle;
-                    Array value = (Array)temp_value;
-                    Array err;
-                    int id;
-                    kep1.KepGroup.AsyncWrite(handle.Length - 1, ref handle, ref value, out err, 1, out id);
-                    GC.Collect();
-                }
-
-                //同步计划数据，先删除表中数据，再重新插入
-                DbManager db = new DbManager();
-                db.ConnStr = "Data Source=localhost;" +
-                "Initial Catalog=ifracview;User Id=root;Password=hhdq;";
-                string sql = "delete from schedule";
-                db.ExecuteNonquery(sql);
-                string sql2 = "insert into schedule(Stage,Sand,LA1,LA2,LA3,LA4,DA1,Cleanvol) values(@stage,@sand,@la1,@la2,@la3,@la4,@da1,@vol)";
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    List<MySqlParameter> Paramter = new List<MySqlParameter>();
-                    Paramter.Add(new MySqlParameter("@stage", dataGridView1.Rows[i].Cells[0].Value.ToString()));
-                    Paramter.Add(new MySqlParameter("@sand", dataGridView1.Rows[i].Cells[1].Value.ToString()));
-                    Paramter.Add(new MySqlParameter("@la1", dataGridView1.Rows[i].Cells[2].Value.ToString()));
-                    Paramter.Add(new MySqlParameter("@la2", dataGridView1.Rows[i].Cells[3].Value.ToString()));
-                    Paramter.Add(new MySqlParameter("@la3", dataGridView1.Rows[i].Cells[4].Value.ToString()));
-                    Paramter.Add(new MySqlParameter("@la4", dataGridView1.Rows[i].Cells[5].Value.ToString()));
-                    Paramter.Add(new MySqlParameter("@da1", dataGridView1.Rows[i].Cells[6].Value.ToString()));
-                    Paramter.Add(new MySqlParameter("@vol", dataGridView1.Rows[i].Cells[7].Value.ToString()));
-                    db.ExecuteNonquery(sql2, Paramter.ToArray());
-                }
-                //将计划数据发送到PLC
-
-                //砂浓度
-
-
-                //    kep1.KepGroup.AsyncWrite(1,kep1.Item_serverhandle1_To_PC[33],out );
-
-
-
-            }
-            catch (Exception ex)
-            {
-
-                //MessageBox.Show(ex.ToString());
-            }
         }
 
         private void btn_import_Click(object sender, EventArgs e)
@@ -1108,6 +1083,7 @@ namespace Data_acquisition
                     //dt.Columns.Add(cln1); dt.Columns.Add(cln2); dt.Columns.Add(cln3);
                     dataGridView1.Columns.Clear();
                     dataGridView1.DataSource = dt;
+                    num_totalstage = dt.Rows.Count;
                     ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).grid_refresh(dt);
                     //dataGridView1.Columns[10].HeaderText = "";
                     //dataGridView1.Columns[11].HeaderText = "";
@@ -1186,8 +1162,8 @@ namespace Data_acquisition
             }
             //阶段号更新
             this.wellinfo_refresh();
-            ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).lbl_stage.Text = Form_Main.num_stage.ToString();
-            ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).lbl_stage.Text = Form_Main.num_stage.ToString();
+            ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).lbl_stage.Text = Form_Main.num_stage + "/" + Form_Main.num_totalstage;
+            ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).lbl_stage.Text = Form_Main.num_stage + "/" + Form_Main.num_totalstage;
             //发送下一阶段命令到PLC
             kep1.KepItems.Item(586).Write(true);
 
@@ -1272,18 +1248,38 @@ namespace Data_acquisition
         /// <param name="e"></param>
         private void btn_zero_Click(object sender, EventArgs e)
         {
-            for (int i = 54; i <= 67; i++)
-            {
-                test[i] = 0;
+            //for (int i = 54; i <= 67; i++)
+            //{
+            //    test[i] = 0;
 
-            }
+            //}
         }
 
-        private void rdbtn_auto_CheckedChanged(object sender, EventArgs e)
+        private void radButton7_Click(object sender, EventArgs e)
+        {    
+            
+            kep1.KepItems.Item(590).Write(true);
+        }
+
+        private void btn_blenderstop_Click(object sender, EventArgs e)
         {
-            if (rdbtn_auto.Checked) { stage_auto = true; btn_next.Enabled = false; kep1.KepItems.Item(587).Write(true);}
-            else { stage_auto = false; btn_next.Enabled = true; kep1.KepItems.Item(587).Write(false); }
+            kep1.KepItems.Item(590).Write(false);
         }
+
+        private void btn_blenderhold_Click(object sender, EventArgs e)
+        {
+            bool hold=Convert.ToBoolean(value_blender.GetValue(591));
+            if(hold){kep1.KepItems.Item(591).Write(false);btn_blenderhold.Text="保持";}
+            else { kep1.KepItems.Item(591).Write(true); btn_blenderhold.Text = "恢复"; }
+            
+        }
+
+        private void btn_blendernext_Click(object sender, EventArgs e)
+        {
+            kep1.KepItems.Item(586).Write(true);
+        }
+
+        
 
 
     }

@@ -260,6 +260,12 @@
     <Compile Include="Frm_Realtrend.Designer.cs">
       <DependentUpon>Frm_Realtrend.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_send.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_send.Designer.cs">
+      <DependentUpon>Frm_send.cs</DependentUpon>
+    </Compile>
     <Compile Include="Para_choose.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -316,6 +322,9 @@
     <EmbeddedResource Include="Frm_Realtrend2.resx">
       <DependentUpon>Frm_Realtrend2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_send.resx">
+      <DependentUpon>Frm_send.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Para_choose.resx">
       <DependentUpon>Para_choose.cs</DependentUpon>
     </EmbeddedResource>
@@ -358,6 +367,7 @@
     <Content Include="Config\Para.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\cancel.jpg" />
     <None Include="Resources\捕获.PNG" />
     <None Include="Resources\hhlogo.png" />
     <None Include="Resources\24压力泵.jpg" />

@@ -447,8 +447,8 @@ namespace Data_acquisition
         if (lbl_stagebig.InvokeRequired) { lbl_stagebig.Invoke(new Action(() => lbl_stagebig.Text = Form_Main.stage_big)); }
         else { lbl_stagebig.Text = Form_Main.stage_big; }
 
-        if (lbl_stage.InvokeRequired) { lbl_stage.Invoke(new Action(() => lbl_stage.Text = Form_Main.num_stage.ToString())); }
-        else { lbl_stage.Text = Form_Main.num_stage.ToString(); }
+        if (lbl_stage.InvokeRequired) { lbl_stage.Invoke(new Action(() => lbl_stage.Text = Form_Main.num_stage+"/"+Form_Main.num_totalstage)); }
+        else { lbl_stage.Text = Form_Main.num_stage + "/" + Form_Main.num_totalstage; }
        
 
         }

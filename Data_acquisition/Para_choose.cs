@@ -38,12 +38,13 @@ namespace Data_acquisition
         public Para_choose(Parashow ctr, string name)
         {
             Frm_name = name;
-            this.ctr_show = ctr;
+                       this.ctr_show = ctr;
             tag_num = ctr.Tag.ToString();
             tag_color = ctr.Color;
             InitializeComponent();
             //如果是数字显示控件，不开放上下限设置
             txb_max.Enabled = false; txb_min.Enabled = false;
+            btn_clear.Visible = true;
         }
         public Para_choose(Parashownew ctr, string name)
         {
@@ -258,8 +259,9 @@ namespace Data_acquisition
 
                     }
                     doc.Save(path);
-
-
+                     ctr_show.label1.Visible=true;
+                     ctr_show.label2.Visible = true;
+                     ctr_show.label3.Visible = true;
                     ctr_show.refresh();
                 }
 
@@ -399,6 +401,15 @@ namespace Data_acquisition
                 btn_color.BackColor = loColorForm.Color;
                 tag_color = loColorForm.Color;
             }
+        }
+
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            this.ctr_show.label1.Visible=false;
+            this.ctr_show.label2.Visible = false;
+            this.ctr_show.label3.Visible = false;
+            this.ctr_show.BackColor=Color.Transparent;
+            this.Close();
         }
     }
 }

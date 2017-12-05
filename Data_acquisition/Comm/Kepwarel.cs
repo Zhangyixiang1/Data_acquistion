@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Data_acquisition.Comm
 { //Kepware相关类，初始化以及读取
-    class Kepware
+   public class Kepware
     {      //kepware相关变量
         public OPCServer KepServer;
         public OPCGroups KepGroups;
