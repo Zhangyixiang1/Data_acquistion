@@ -45,11 +45,11 @@ namespace Data_acquisition
                     int[] temp_handle = new int[]{0,
                    Form_Main.kep1.Item_serverhandle1_To_PC[299+i],//基液
                     Form_Main.kep1.Item_serverhandle1_To_PC[53+i],Form_Main.kep1.Item_serverhandle1_To_PC[94+i], //砂浓度
-                    Form_Main.kep1.Item_serverhandle1_To_PC[381+i],Form_Main.kep1.Item_serverhandle1_To_PC[422+i],//干添1
-                    Form_Main.kep1.Item_serverhandle1_To_PC[463+i],Form_Main.kep1.Item_serverhandle1_To_PC[504+i], //干添2
-                    Form_Main.kep1.Item_serverhandle1_To_PC[135+i],Form_Main.kep1.Item_serverhandle1_To_PC[176+i],//液添1
+                   Form_Main.kep1.Item_serverhandle1_To_PC[135+i],Form_Main.kep1.Item_serverhandle1_To_PC[176+i],//液添1
                     Form_Main.kep1.Item_serverhandle1_To_PC[217+i],Form_Main.kep1.Item_serverhandle1_To_PC[258+i],//液添2
-                    Form_Main.kep1.Item_serverhandle1_To_PC[299+i],Form_Main.kep1.Item_serverhandle1_To_PC[339+i]//液添3
+                    Form_Main.kep1.Item_serverhandle1_To_PC[299+i],Form_Main.kep1.Item_serverhandle1_To_PC[339+i],//液添3
+                     Form_Main.kep1.Item_serverhandle1_To_PC[381+i],Form_Main.kep1.Item_serverhandle1_To_PC[422+i],//干添1
+                    Form_Main.kep1.Item_serverhandle1_To_PC[463+i],Form_Main.kep1.Item_serverhandle1_To_PC[504+i] //干添2
                     };
 
                     object[] temp_value = new object[] { "", dr.Cells[2].Value, dr.Cells[3].Value, 
@@ -65,9 +65,9 @@ namespace Data_acquisition
                     Form_Main.kep1.KepGroup.AsyncWrite(handle.Length - 1, ref handle, ref value, out err, 1, out id);
                     GC.Collect();
                 }
-           
-                 this.Close();    //发送总阶段数到PLC
-             //   Form_Main.kep1.KepItems.Item(588).Write(Form_Main.num_totalstage);
+
+                this.Close();    //发送总阶段数到PLC
+                //   Form_Main.kep1.KepItems.Item(588).Write(Form_Main.num_totalstage);
                 //同步计划数据，先删除表中数据，再重新插入
                 //DbManager db = new DbManager();
                 //db.ConnStr = "Data Source=localhost;" +

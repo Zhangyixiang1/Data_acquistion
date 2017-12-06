@@ -32,7 +32,7 @@ namespace Data_acquisition
             //DataTable tb = db.ExcuteDataTable(sql);
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = dt;
-              dataGridView1.DefaultCellStyle.Font = new Font(dataGridView1.DefaultCellStyle.Font.FontFamily, 10);
+            dataGridView1.DefaultCellStyle.Font = new Font(dataGridView1.DefaultCellStyle.Font.FontFamily, 10);
             dataGridView1.RowsDefaultCellStyle.Font = new Font(dataGridView1.RowsDefaultCellStyle.Font.FontFamily, 10);
             foreach (DataGridViewColumn item in dataGridView1.Columns)
             {
@@ -353,7 +353,30 @@ namespace Data_acquisition
 
 
         }
-
+        /// <summary>
+        /// 初始化gridview
+        /// </summary>
+        private void grid_intial()
+        {
+            //列标题字体
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.DefaultCellStyle.Font.FontFamily, 10);
+            dataGridView1.RowsDefaultCellStyle.Font = new Font(dataGridView1.RowsDefaultCellStyle.Font.FontFamily, 10);
+            foreach (DataGridViewColumn item in dataGridView1.Columns)
+            {
+                item.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+            
+            for(int i=0;i<5;i++){
+             DataGridViewRow dr1=new DataGridViewRow ();
+             DataGridViewRow dr2 = new DataGridViewRow();
+             dataGridView1.Rows.Add(dr1); 
+            }
+            dataGridView1.Rows[0].Cells[0].Value = "液添1"; 
+            dataGridView1.Rows[1].Cells[0].Value = "液添2"; 
+            dataGridView1.Rows[2].Cells[0].Value = "液添3"; 
+            dataGridView1.Rows[3].Cells[0].Value = "干添1"; 
+            dataGridView1.Rows[4].Cells[0].Value = "干添2"; 
+        }
 
 
 
@@ -441,8 +464,10 @@ namespace Data_acquisition
         {
             xml_load();
             chart_initial();
-            //设置dgv的列头字体大小
-            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.ColumnHeadersDefaultCellStyle.Font.FontFamily, 10);
+            //初始化dgv
+            grid_intial();
+         //   timer1.Enabled=true;
+
         }
         private void Frm_Realtrend2_KeyDown(object sender, KeyEventArgs e)
         {
@@ -469,9 +494,9 @@ namespace Data_acquisition
             else { lbl_stage.Text = Form_Main.num_stage + "/" + Form_Main.num_totalstage; }
 
         }
-        public void timer_trend(double count,bool isrefresh)
+        public void timer_trend(double count, bool isrefresh)
         {
-           
+
 
             //取Graph第一个曲线，也就是第一步:在GraphPane.CurveList集合中查找CurveItem
             LineItem curve1 = zedGraphControl1.GraphPane.CurveList[0] as LineItem;
@@ -531,13 +556,33 @@ namespace Data_acquisition
             if (isrefresh)
             {
 
-            //第三步:调用ZedGraphControl.AxisChange()方法更新X和Y轴的范围
-            zedGraphControl1.AxisChange();
+                //第三步:调用ZedGraphControl.AxisChange()方法更新X和Y轴的范围
+                zedGraphControl1.AxisChange();
 
-            //第四步:调用Form.Invalidate()方法更新图表
-            zedGraphControl1.Invalidate();}
+                //第四步:调用Form.Invalidate()方法更新图表
+                zedGraphControl1.Invalidate();
+            }
         }
         #endregion
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //更新gridview里面的内容
+            int stage=Form_Main.num_stage;
+            //液添1
+            dataGridView1.Rows[0].Cells[1].Value=Form_Main.value_blender.GetValue(598);
+            dataGridView1.Rows[0].Cells[2].Value = Form_Main.value_blender.GetValue(598); 
+        }
+
+        private void lbl_blender2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
 
 
 

@@ -17,6 +17,7 @@ using MySql.Data.MySqlClient;
 using System.Linq;
 using Newtonsoft.Json;
 using Data_acquisition.Comm;
+using System.Windows.Forms.DataVisualization.Charting;
 namespace Data_acquisition
 {
     /// <summary>
@@ -29,6 +30,7 @@ namespace Data_acquisition
         public static Kepware kep1;//混砂车
         public static Kepware kep2;//压力泵
         ToolTip toolTip1;
+        public static DataTable dt;//计划表
         public static DateTime time; //当前时间
         public static DateTime time_stage;//阶段时间
         public static int num_stage = 1;//阶段号
@@ -44,7 +46,7 @@ namespace Data_acquisition
         public static Dictionary<string, Datamodel> Paralist; //实时数据缓存
         public static Dictionary<string, Datamodel> Loglist; //记录数据缓存
         double[] test = new double[200]; //测试数据
-         Array value_blender;//plc读到的原始值
+        public static Array value_blender;//plc读到的原始值
         #endregion
 
         #region 方法
@@ -79,18 +81,14 @@ namespace Data_acquisition
                     //    test[i] = i + rd.Next(0, 10);
                     //    //  if (count > 600) { test[i] = count / 10 + rd.Next(0, 10); }
                     //}
-
-                     value_blender = kep1.kep_read();
+                    //读取plc数据
+                    value_blender = kep1.kep_read();
                     //更新进度条
                     int percent = Convert.ToInt16(value_blender.GetValue(589));
                     percent_refresh(percent);
                     //如果是阶段自动切换状态
                     if (stage_auto)
-                    {    //根据混砂车的信号，自动记录数据
-                        bool isrun=Convert.ToBoolean(value_blender.GetValue(590));
-                         if(run!=isrun){btn_start.PerformClick();run=isrun;}
-
-
+                    {
                         int temp = Convert.ToInt16(value_blender.GetValue(585));
                         if (num_stage != temp)
                         {
@@ -218,7 +216,7 @@ namespace Data_acquisition
                 ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).radProgressBar1.Invoke(new Action(() => { ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).radProgressBar1.Value1 = num; ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).radProgressBar1.Text = num + "%"; }));
             }
             else { ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).radProgressBar1.Value1 = num; ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).radProgressBar1.Text = num + "%"; }
-            
+
 
         }
 
@@ -777,8 +775,8 @@ namespace Data_acquisition
 
             lbl_stage.Text = wellname + wellnum + "第" + stage_big + "段  " + "阶段:" + num_stage;
             if (lbl_stage2.InvokeRequired) { lbl_stage2.Invoke(new Action(() => { lbl_stage2.Text = "阶段: " + num_stage + "/" + num_totalstage; })); }
-            else{  lbl_stage2.Text = "阶段: " + num_stage + "/" + num_totalstage;}
-          
+            else { lbl_stage2.Text = "阶段: " + num_stage + "/" + num_totalstage; }
+
             if (lbl_time.InvokeRequired) { lbl_time.Invoke(new Action(() => lbl_time.Text = string.Format("{0:T}", time))); }
             else { lbl_time.Text = string.Format("{0:T}", time); }
             lbl_stagetime.Text = string.Format("{0:T}", time_stage);
@@ -954,7 +952,7 @@ namespace Data_acquisition
             //kep1.KepItems.Item(320).Write(Form_Main.num_stage);
             //计划表选取更新
             if (dataGridView1.Rows.Count >= num_stage)
-            {   
+            {
                 dataGridView1.ClearSelection();
                 dataGridView1.Rows[num_stage - 1].Selected = true;
                 ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).dataGridView1.ClearSelection();
@@ -1076,7 +1074,7 @@ namespace Data_acquisition
             {
                 using (ExcelHelper excelHelper = new ExcelHelper(filePath))
                 {
-                    DataTable dt = excelHelper.ExcelToDataTable("MySheet", true);
+                    dt = excelHelper.ExcelToDataTable("MySheet", true);
                     //DataColumn cln1 = new DataColumn();
                     //DataColumn cln2 = new DataColumn();
                     //DataColumn cln3 = new DataColumn();
@@ -1084,7 +1082,7 @@ namespace Data_acquisition
                     dataGridView1.Columns.Clear();
                     dataGridView1.DataSource = dt;
                     num_totalstage = dt.Rows.Count;
-                    ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).grid_refresh(dt);
+                    // ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).grid_refresh(dt);
                     //dataGridView1.Columns[10].HeaderText = "";
                     //dataGridView1.Columns[11].HeaderText = "";
                     //dataGridView1.Columns[12].HeaderText = "";
@@ -1095,6 +1093,9 @@ namespace Data_acquisition
                     {
                         item.SortMode = DataGridViewColumnSortMode.NotSortable;
                     }
+                    //绑定数据源到曲线
+                    //Series s = chart1.Series[0];
+                  //  s.Points.DataBind(dt.AsEnumerable(), "净液量(m3)", "砂浓度起始(kg/m3)", "");
 
                 }
             }
@@ -1240,7 +1241,6 @@ namespace Data_acquisition
             else if (result == DialogResult.Cancel) { return; }
         }
 
-        #endregion
         /// <summary>
         /// 阶段量清零
         /// </summary>
@@ -1255,11 +1255,7 @@ namespace Data_acquisition
             //}
         }
 
-        private void radButton7_Click(object sender, EventArgs e)
-        {    
-            
-            kep1.KepItems.Item(590).Write(true);
-        }
+
 
         private void btn_blenderstop_Click(object sender, EventArgs e)
         {
@@ -1268,10 +1264,10 @@ namespace Data_acquisition
 
         private void btn_blenderhold_Click(object sender, EventArgs e)
         {
-            bool hold=Convert.ToBoolean(value_blender.GetValue(591));
-            if(hold){kep1.KepItems.Item(591).Write(false);btn_blenderhold.Text="保持";}
+            bool hold = Convert.ToBoolean(value_blender.GetValue(591));
+            if (hold) { kep1.KepItems.Item(591).Write(false); btn_blenderhold.Text = "保持"; }
             else { kep1.KepItems.Item(591).Write(true); btn_blenderhold.Text = "恢复"; }
-            
+
         }
 
         private void btn_blendernext_Click(object sender, EventArgs e)
@@ -1279,7 +1275,40 @@ namespace Data_acquisition
             kep1.KepItems.Item(586).Write(true);
         }
 
-        
+        private void btn_jobstart_Click(object sender, EventArgs e)
+        {
+            kep1.KepItems.Item(590).Write(true);
+        }
+
+        #endregion
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rd=sender as RadioButton;
+            //算的对应数组里的角标,index起始，index+1结束
+            int index=rd.TabIndex*2+1;
+            List<double> x = new List<double>();
+            List<double> y = new List<double>();
+            x.Add(0);
+           y.Add( Convert.ToDouble(Form_Main.dt.Rows[0][index]));
+            //x.Add( Convert.ToDouble(Form_Main.dt.Rows[0][2]));
+           // y.Add(Convert.ToDouble(Form_Main.dt.Rows[0][3]));
+            for (int i = 0; i <= Form_Main.dt.Rows.Count - 2; i++)
+            {
+                x.Add(Convert.ToDouble(Form_Main.dt.Rows[i][2]));
+                y.Add(Convert.ToDouble(Form_Main.dt.Rows[i][index+1]));
+                x.Add(Convert.ToDouble(Form_Main.dt.Rows[i][2]));
+                y.Add(Convert.ToDouble(Form_Main.dt.Rows[i + 1][index]));
+                
+            }
+            x.Add(Convert.ToDouble(Form_Main.dt.Rows[Form_Main.dt.Rows.Count - 1][2]));
+            y.Add(Convert.ToDouble(Form_Main.dt.Rows[Form_Main.dt.Rows.Count - 1][index+1]));
+            chart1.Series[0].Points.DataBindXY(x,y);
+
+        }
+
+
+
 
 
     }
