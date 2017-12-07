@@ -88,8 +88,12 @@ namespace Data_acquisition
                 //    Paramter.Add(new MySqlParameter("@vol", dataGridView1.Rows[i].Cells[7].Value.ToString()));
                 //    db.ExecuteNonquery(sql2, Paramter.ToArray());
                 //}
-                //将计划数据发送到PLC
-
+                
+                //打开trend2界面更新计划表的定时器
+                if (!((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).timer1.Enabled)
+                {
+                    ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).timer1.Enabled = true;
+                }
                 //砂浓度
 
 

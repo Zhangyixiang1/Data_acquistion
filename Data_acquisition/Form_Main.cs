@@ -18,6 +18,7 @@ using System.Linq;
 using Newtonsoft.Json;
 using Data_acquisition.Comm;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.IO;
 namespace Data_acquisition
 {
     /// <summary>
@@ -46,7 +47,15 @@ namespace Data_acquisition
         public static Dictionary<string, Datamodel> Paralist; //实时数据缓存
         public static Dictionary<string, Datamodel> Loglist; //记录数据缓存
         double[] test = new double[200]; //测试数据
-        public static Array value_blender;//plc读到的原始值
+        public static Array value_blender;//混砂车plc读到的原始值
+        public static Array value_frac01;//1号压力泵读到的原始值
+        public static Array value_frac02;//2号压力泵读到的原始值
+        public static Array value_frac03;//3号压力泵读到的原始值
+        public static Array value_frac04;//4号压力泵读到的原始值
+        public static Array value_frac05;//5号压力泵读到的原始值
+        public static Array value_frac06;//6号压力泵读到的原始值
+        public static Array value_frac07;//7号压力泵读到的原始值
+        public static Array value_frac08;//8号压力泵读到的原始值
         #endregion
 
         #region 方法
@@ -83,6 +92,8 @@ namespace Data_acquisition
                     //}
                     //读取plc数据
                     value_blender = kep1.kep_read();
+                    //读压力泵的数据
+                    //   value_frac01=kep2.kep_read();
                     //更新进度条
                     int percent = Convert.ToInt16(value_blender.GetValue(589));
                     percent_refresh(percent);
@@ -106,16 +117,13 @@ namespace Data_acquisition
                             {
                                 dataGridView1.ClearSelection();
                                 dataGridView1.Rows[num_stage - 1].Selected = true;
-
-                                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).dataGridView1.ClearSelection();
-                                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).dataGridView1.Rows[num_stage - 1].Selected = true;
                             }
                             //阶段号更新
                             this.wellinfo_refresh();
-                            ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).lbl_stage.Text = Form_Main.num_stage + "/" + Form_Main.num_totalstage;
-                            ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).lbl_stage.Text = Form_Main.num_stage + "/" + Form_Main.num_totalstage;
-
-
+                            //  ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).lbl_stage.Text = Form_Main.num_stage + "/" + Form_Main.num_totalstage;
+                            //  ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).lbl_stage.Text = Form_Main.num_stage + "/" + Form_Main.num_totalstage;
+                            ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).wellinfo_refresh();
+                            ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).wellinfo_refresh();
                         }
 
                     }
@@ -154,7 +162,10 @@ namespace Data_acquisition
                     test[80] = Convert.ToDouble(value_blender.GetValue(32));//干添2总量
                     test[81] = test[79] + test[80];
 
-
+                    //读取压裂泵数据,阶段统计量上位机
+                   // Frac_read(1);
+                    //Frac_read(2); Frac_read(3); Frac_read(4); Frac_read(5); Frac_read(6); Frac_read(7); Frac_read(8); 
+                   
                     Paralist.Add(DateTime.Now.ToString(), new Datamodel((int)count, test));
                     //实时数据缓存只有一百条，用于参数的刷新
                     if (Paralist.Count > 10) Paralist.Remove(Paralist.ElementAt(0).Key);
@@ -199,6 +210,7 @@ namespace Data_acquisition
         /// <param name="num">从plc读到的进度值</param>
         private void percent_refresh(int num)
         {
+            if (num >= 100) num = 100;
             if (radProgressBar1.InvokeRequired)
             {
                 radProgressBar1.Invoke(new Action(() => { radProgressBar1.Value1 = num; radProgressBar1.Text = num + "%"; }));
@@ -234,7 +246,14 @@ namespace Data_acquisition
                 MessageBox.Show("混砂车PLC变量注册失败，请检查kepware相关设置，随后重启软件！");
                 Application.Exit();
             }
-
+            //注册压裂泵
+            kep2 = new Kepware();
+            path = Application.StartupPath + "\\Config\\Frac01.txt";
+            if (!kep2.kep_initial(path))
+            {
+                MessageBox.Show("混砂车PLC变量注册失败，请检查kepware相关设置，随后重启软件！");
+                // Application.Exit();
+            }
 
         }
 
@@ -1095,7 +1114,7 @@ namespace Data_acquisition
                     }
                     //绑定数据源到曲线
                     //Series s = chart1.Series[0];
-                  //  s.Points.DataBind(dt.AsEnumerable(), "净液量(m3)", "砂浓度起始(kg/m3)", "");
+                    //  s.Points.DataBind(dt.AsEnumerable(), "净液量(m3)", "砂浓度起始(kg/m3)", "");
 
                 }
             }
@@ -1230,7 +1249,7 @@ namespace Data_acquisition
                 ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).zedGraphControl1.GraphPane.XAxis.Scale.Min = 0;
                 ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).zedGraphControl1.GraphPane.XAxis.Scale.Max = 30;
                 ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).zedGraphControl1.GraphPane.XAxis.Scale.Min = 0;
-                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).zedGraphControl1.GraphPane.XAxis.Scale.Max = 30;
+                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).zedGraphControl1.GraphPane.XAxis.Scale.Max = 50;
                 zedGraphControl1.AxisChange();
                 zedGraphControl1.Invalidate();
                 ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).zedGraphControl1.AxisChange();
@@ -1259,14 +1278,18 @@ namespace Data_acquisition
 
         private void btn_blenderstop_Click(object sender, EventArgs e)
         {
+           // btn_jobstart.Enabled = true;
             kep1.KepItems.Item(590).Write(false);
+            indicator_stop.BackColor = Color.Red;
+            indicator_start.BackColor = Color.FromArgb(49, 49, 49);
         }
 
         private void btn_blenderhold_Click(object sender, EventArgs e)
         {
+            if (btn_jobstart.Enabled) return;
             bool hold = Convert.ToBoolean(value_blender.GetValue(591));
-            if (hold) { kep1.KepItems.Item(591).Write(false); btn_blenderhold.Text = "保持"; }
-            else { kep1.KepItems.Item(591).Write(true); btn_blenderhold.Text = "恢复"; }
+            if (hold) { kep1.KepItems.Item(591).Write(false); indicator_hold.BackColor = Color.FromArgb(49, 49, 49); }
+            else { kep1.KepItems.Item(591).Write(true); indicator_hold.BackColor = Color.DodgerBlue; }
 
         }
 
@@ -1277,37 +1300,164 @@ namespace Data_acquisition
 
         private void btn_jobstart_Click(object sender, EventArgs e)
         {
+          //  btn_jobstart.Enabled = false;
             kep1.KepItems.Item(590).Write(true);
+            indicator_start.BackColor = Color.Lime;
+            indicator_stop.BackColor = Color.FromArgb(49, 49, 49);
         }
 
         #endregion
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            RadioButton rd=sender as RadioButton;
+            RadioButton rd = sender as RadioButton;
             //算的对应数组里的角标,index起始，index+1结束
-            int index=rd.TabIndex*2+1;
+            int index = rd.TabIndex * 2 + 1;
             List<double> x = new List<double>();
             List<double> y = new List<double>();
             x.Add(0);
-           y.Add( Convert.ToDouble(Form_Main.dt.Rows[0][index]));
+            y.Add(Convert.ToDouble(Form_Main.dt.Rows[0][index]));
             //x.Add( Convert.ToDouble(Form_Main.dt.Rows[0][2]));
-           // y.Add(Convert.ToDouble(Form_Main.dt.Rows[0][3]));
+            // y.Add(Convert.ToDouble(Form_Main.dt.Rows[0][3]));
             for (int i = 0; i <= Form_Main.dt.Rows.Count - 2; i++)
             {
                 x.Add(Convert.ToDouble(Form_Main.dt.Rows[i][2]));
-                y.Add(Convert.ToDouble(Form_Main.dt.Rows[i][index+1]));
+                y.Add(Convert.ToDouble(Form_Main.dt.Rows[i][index + 1]));
                 x.Add(Convert.ToDouble(Form_Main.dt.Rows[i][2]));
                 y.Add(Convert.ToDouble(Form_Main.dt.Rows[i + 1][index]));
-                
+
             }
             x.Add(Convert.ToDouble(Form_Main.dt.Rows[Form_Main.dt.Rows.Count - 1][2]));
-            y.Add(Convert.ToDouble(Form_Main.dt.Rows[Form_Main.dt.Rows.Count - 1][index+1]));
-            chart1.Series[0].Points.DataBindXY(x,y);
+            y.Add(Convert.ToDouble(Form_Main.dt.Rows[Form_Main.dt.Rows.Count - 1][index + 1]));
+            chart1.Series[0].Points.DataBindXY(x, y);
+            switch (rd.TabIndex)
+            {
+                case 1: chart1.ChartAreas[0].AxisY.Title = "砂浓度(kg/m3)"; break;
+                case 2: chart1.ChartAreas[0].AxisY.Title = "液添1(L/m3)"; break;
+                case 3: chart1.ChartAreas[0].AxisY.Title = "液添2(L/m3)"; break;
+                case 4: chart1.ChartAreas[0].AxisY.Title = "液添3(L/m3)"; break;
+                case 5: chart1.ChartAreas[0].AxisY.Title = "砂浓度(kg/m3)"; break;
+                case 6: chart1.ChartAreas[0].AxisY.Title = "砂浓度(kg/m3)"; break;
+
+            }
+        }
+
+        private void btn_override_Click(object sender, EventArgs e)
+        {
+            Frm_override frm = new Frm_override();
+            frm.ShowDialog();
+        }
+
+        private void btn_table_Click(object sender, EventArgs e)
+        {
+            btn_table.Image = imageList1.Images[0];
+            btn_chart.Image = imageList1.Images[1];
+            dataGridView1.Visible = true;
+            panel_curve.Visible = false;
+        }
+
+        private void btn_chart_Click(object sender, EventArgs e)
+        {
+            btn_table.Image = imageList1.Images[1];
+            btn_chart.Image = imageList1.Images[0];
+            dataGridView1.Visible = false;
+            panel_curve.Visible = true;
+        }
+        /// <summary>
+        /// 读取原始数据到缓存数据中
+        /// </summary>
+        /// <param name="index">混砂车编号</param>
+        private void Frac_read(int index)
+        {
+            Array value;
+            switch (index)
+            {
+                case 1: value = value_frac01; break;
+                //case 2: value = value_frac02; break;
+                //case 3: value = value_frac03; break;
+                //case 4: value = value_frac04; break;
+                //case 5: value = value_frac05; break;
+                //case 6: value = value_frac06; break;
+                //case 7: value = value_frac07; break;
+                //case 8: value = value_frac08; break;
+                default: value = value_frac01; break;
+            }
+           
+            for(int i=0;i<5;i++){
+            test[101+5*(index-1)+i]=Convert.ToDouble(value.GetValue(i+1));
+            
+            }
 
         }
 
+        private void btn_export_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sflg = new SaveFileDialog();
+            sflg.Filter = "Excel(*.xls)|*.xls|Excel(*.xlsx)|*.xlsx";
+            if (sflg.ShowDialog() == System.Windows.Forms.DialogResult.Cancel)
+            {
+                return;
+            }
+            //this.gridView1.ExportToXls(sflg.FileName);
+            //NPOI.xs book = new NPOI.HSSF.UserModel.HSSFWorkbook();
+            NPOI.SS.UserModel.IWorkbook book = null;
+            if (sflg.FilterIndex == 1)
+            {
+                book = new NPOI.HSSF.UserModel.HSSFWorkbook();
+            }
+            else
+            {
+                book = new NPOI.XSSF.UserModel.XSSFWorkbook();
+            }
 
+            NPOI.SS.UserModel.ISheet sheet = book.CreateSheet("test_001");
+
+            // 添加表头
+            NPOI.SS.UserModel.IRow row = sheet.CreateRow(0);
+            int index = 0;
+            foreach (DataGridViewColumn item in this.dataGridView1.Columns)
+            {
+                if (item.Visible)
+                {
+                    NPOI.SS.UserModel.ICell cell = row.CreateCell(index);
+                    cell.SetCellType(NPOI.SS.UserModel.CellType.STRING);
+                    cell.SetCellValue(item.HeaderText);
+                    index++;
+                }
+            }
+
+            // 添加数据
+
+            for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+            {
+                index = 0;
+                row = sheet.CreateRow(i + 1);
+                foreach (DataGridViewColumn item in this.dataGridView1.Columns)
+                {
+                    if (item.Visible)
+                    {
+                        NPOI.SS.UserModel.ICell cell = row.CreateCell(index);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.STRING);
+                        cell.SetCellValue(dataGridView1.Rows[i].Cells[item.Index].Value.ToString());
+                        index++;
+                    }
+                }
+            }
+            // 写入 
+            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            book.Write(ms);
+            book = null;
+
+            using (FileStream fs = new FileStream(sflg.FileName, FileMode.Create, FileAccess.Write))
+            {
+                byte[] data = ms.ToArray();
+                fs.Write(data, 0, data.Length);
+                fs.Flush();
+            }
+
+            ms.Close();
+            ms.Dispose();
+        }
 
 
 

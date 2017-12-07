@@ -226,6 +226,12 @@
     <Compile Include="Frm_craet.Designer.cs">
       <DependentUpon>Frm_craet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_override.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_override.Designer.cs">
+      <DependentUpon>Frm_override.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Paraanalog2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -306,6 +312,9 @@
     <EmbeddedResource Include="Frm_craet.resx">
       <DependentUpon>Frm_craet.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_override.resx">
+      <DependentUpon>Frm_override.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Paraanalog.resx">
       <DependentUpon>Frm_Paraanalog.cs</DependentUpon>
     </EmbeddedResource>
@@ -362,13 +371,19 @@
     <Content Include="Config\Blender.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Config\Frac01.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Config\preference.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Config\Para.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\按钮2.jpg" />
+    <None Include="Resources\按钮1.jpg" />
+    <None Include="Resources\按钮凸.jpg" />
     <None Include="Resources\cancel.jpg" />
     <None Include="Resources\捕获.PNG" />
     <None Include="Resources\hhlogo.png" />

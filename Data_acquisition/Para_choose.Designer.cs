@@ -81,6 +81,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.AutoScroll = true;
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(552, 353);
@@ -90,6 +91,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.AutoScroll = true;
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(552, 353);

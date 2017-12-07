@@ -123,7 +123,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 56);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 47);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -142,7 +142,7 @@
             this.dataGridView1.RowTemplate.Height = 20;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1899, 140);
+            this.dataGridView1.Size = new System.Drawing.Size(1899, 160);
             this.dataGridView1.TabIndex = 18;
             // 
             // zedGraphControl1
@@ -425,40 +425,44 @@
             // lbl_blender2
             // 
             this.lbl_blender2.AutoSize = true;
+            this.lbl_blender2.Font = new System.Drawing.Font("宋体", 10F);
             this.lbl_blender2.ForeColor = System.Drawing.Color.Red;
-            this.lbl_blender2.Location = new System.Drawing.Point(1812, 26);
+            this.lbl_blender2.Location = new System.Drawing.Point(1822, 26);
             this.lbl_blender2.Name = "lbl_blender2";
-            this.lbl_blender2.Size = new System.Drawing.Size(49, 20);
+            this.lbl_blender2.Size = new System.Drawing.Size(35, 14);
             this.lbl_blender2.TabIndex = 29;
             this.lbl_blender2.Text = "离线";
             // 
             // lbl_blender1
             // 
             this.lbl_blender1.AutoSize = true;
+            this.lbl_blender1.Font = new System.Drawing.Font("宋体", 10F);
             this.lbl_blender1.ForeColor = System.Drawing.Color.Lime;
-            this.lbl_blender1.Location = new System.Drawing.Point(1511, 26);
+            this.lbl_blender1.Location = new System.Drawing.Point(1660, 26);
             this.lbl_blender1.Name = "lbl_blender1";
-            this.lbl_blender1.Size = new System.Drawing.Size(49, 20);
+            this.lbl_blender1.Size = new System.Drawing.Size(35, 14);
             this.lbl_blender1.TabIndex = 30;
             this.lbl_blender1.Text = "在线";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1719, 26);
+            this.label7.Font = new System.Drawing.Font("宋体", 10F);
+            this.label7.Location = new System.Drawing.Point(1767, 26);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 20);
+            this.label7.Size = new System.Drawing.Size(49, 14);
             this.label7.TabIndex = 31;
-            this.label7.Text = "混砂2";
+            this.label7.Text = "混砂2:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1422, 26);
+            this.label8.Font = new System.Drawing.Font("宋体", 10F);
+            this.label8.Location = new System.Drawing.Point(1605, 26);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(59, 20);
+            this.label8.Size = new System.Drawing.Size(49, 14);
             this.label8.TabIndex = 32;
-            this.label8.Text = "混砂1";
+            this.label8.Text = "混砂1:";
             // 
             // Column1
             // 
@@ -570,7 +574,6 @@
         private System.Windows.Forms.Label label6;
         public Telerik.WinControls.UI.RadProgressBar radProgressBar2;
         public Telerik.WinControls.UI.RadProgressBar radProgressBar1;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lbl_blender2;
         private System.Windows.Forms.Label lbl_blender1;
         private System.Windows.Forms.Label label7;
@@ -582,6 +585,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        public System.Windows.Forms.Timer timer1;
 
     }
 }

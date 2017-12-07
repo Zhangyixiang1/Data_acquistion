@@ -103,7 +103,7 @@ namespace Data_acquisition
             XmlDocument xml = new XmlDocument();
             xml.Load(path);
             XmlNodeList list = xml.GetElementsByTagName("item");
-            for (int i = 0; i < list.Count; ++i)
+            for (int i = 0; i < list.Count; i++)
             {
                 XmlNode node = list.Item(i);
                 string Index = node.Attributes["序号"].Value;
@@ -137,18 +137,18 @@ namespace Data_acquisition
                     }
                 }
                 //传统压裂泵
-                if (i >= 101 && i < 150)
+                if (i >= 100 && i < 150)
                 {
-                    btn.Location = new Point(x + 131 * ((i - 101) % 4), y + 29 * ((i - 101) / 4));
+                    btn.Location = new Point(x + 131 * ((i - 100) % 4), y + 29 * ((i - 100) / 4));
                     if (tabPage4.InvokeRequired)
                     {
                         tabPage4.Invoke(new Action(() => { this.tabPage4.Controls.Add(btn); }));
                     }
                 }
                 //电动压裂泵
-                if (i >= 151 && i < 200)
+                if (i >= 150 && i < 200)
                 {
-                    btn.Location = new Point(x + 131 * ((i - 151) % 4), y + 29 * ((i - 151) / 4));
+                    btn.Location = new Point(x + 131 * ((i - 150) % 4), y + 29 * ((i - 150) / 4));
                     if (tabPage3.InvokeRequired)
                     {
                         tabPage3.Invoke(new Action(() => { this.tabPage3.Controls.Add(btn); }));
