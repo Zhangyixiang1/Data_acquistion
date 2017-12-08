@@ -43,7 +43,7 @@ namespace Data_acquisition
                 {
                     DataGridViewRow dr = dataGridView1.Rows[i];
                     int[] temp_handle = new int[]{0,
-                   Form_Main.kep1.Item_serverhandle1_To_PC[299+i],//基液
+                   Form_Main.kep1.Item_serverhandle1_To_PC[545+i],//基液
                     Form_Main.kep1.Item_serverhandle1_To_PC[53+i],Form_Main.kep1.Item_serverhandle1_To_PC[94+i], //砂浓度
                    Form_Main.kep1.Item_serverhandle1_To_PC[135+i],Form_Main.kep1.Item_serverhandle1_To_PC[176+i],//液添1
                     Form_Main.kep1.Item_serverhandle1_To_PC[217+i],Form_Main.kep1.Item_serverhandle1_To_PC[258+i],//液添2

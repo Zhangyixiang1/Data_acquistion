@@ -163,9 +163,9 @@ namespace Data_acquisition
                     test[81] = test[79] + test[80];
 
                     //读取压裂泵数据,阶段统计量上位机
-                   // Frac_read(1);
+                    // Frac_read(1);
                     //Frac_read(2); Frac_read(3); Frac_read(4); Frac_read(5); Frac_read(6); Frac_read(7); Frac_read(8); 
-                   
+
                     Paralist.Add(DateTime.Now.ToString(), new Datamodel((int)count, test));
                     //实时数据缓存只有一百条，用于参数的刷新
                     if (Paralist.Count > 10) Paralist.Remove(Paralist.ElementAt(0).Key);
@@ -1267,29 +1267,24 @@ namespace Data_acquisition
         /// <param name="e"></param>
         private void btn_zero_Click(object sender, EventArgs e)
         {
-            //for (int i = 54; i <= 67; i++)
-            //{
-            //    test[i] = 0;
-
-            //}
+            Form_Main.kep1.KepItems.Item(623).Write(true);
         }
 
 
 
         private void btn_blenderstop_Click(object sender, EventArgs e)
         {
-           // btn_jobstart.Enabled = true;
+
             kep1.KepItems.Item(590).Write(false);
-            indicator_stop.BackColor = Color.Red;
-            indicator_start.BackColor = Color.FromArgb(49, 49, 49);
+
         }
 
         private void btn_blenderhold_Click(object sender, EventArgs e)
         {
-            if (btn_jobstart.Enabled) return;
+
             bool hold = Convert.ToBoolean(value_blender.GetValue(591));
-            if (hold) { kep1.KepItems.Item(591).Write(false); indicator_hold.BackColor = Color.FromArgb(49, 49, 49); }
-            else { kep1.KepItems.Item(591).Write(true); indicator_hold.BackColor = Color.DodgerBlue; }
+            if (hold) { kep1.KepItems.Item(591).Write(false); }
+            else { kep1.KepItems.Item(591).Write(true); }
 
         }
 
@@ -1300,10 +1295,9 @@ namespace Data_acquisition
 
         private void btn_jobstart_Click(object sender, EventArgs e)
         {
-          //  btn_jobstart.Enabled = false;
+
             kep1.KepItems.Item(590).Write(true);
-            indicator_start.BackColor = Color.Lime;
-            indicator_stop.BackColor = Color.FromArgb(49, 49, 49);
+
         }
 
         #endregion
@@ -1382,10 +1376,11 @@ namespace Data_acquisition
                 //case 8: value = value_frac08; break;
                 default: value = value_frac01; break;
             }
-           
-            for(int i=0;i<5;i++){
-            test[101+5*(index-1)+i]=Convert.ToDouble(value.GetValue(i+1));
-            
+
+            for (int i = 0; i < 5; i++)
+            {
+                test[101 + 5 * (index - 1) + i] = Convert.ToDouble(value.GetValue(i + 1));
+
             }
 
         }
@@ -1457,6 +1452,18 @@ namespace Data_acquisition
 
             ms.Close();
             ms.Dispose();
+        }
+
+        private void timer_color_Tick(object sender, EventArgs e)
+        {
+            // 1208新增，修改混砂车控制按钮的状态显示
+            if ((bool)value_blender.GetValue(590)) { indicator_start.BackColor = Color.Lime; indicator_stop.BackColor = Color.FromArgb(49, 49, 49); }
+            else { indicator_start.BackColor = Color.FromArgb(49, 49, 49); indicator_stop.BackColor = Color.Red; }
+
+            if ((bool)value_blender.GetValue(591)) { indicator_hold.BackColor = Color.DodgerBlue; }
+            else { indicator_hold.BackColor = Color.FromArgb(49, 49, 49); }
+
+
         }
 
 
