@@ -49,9 +49,12 @@ namespace Data_acquisition
                 if (string.IsNullOrEmpty(txt_wellnum.Text)) Paramter.Add(new MySqlParameter("@txt_comment", DBNull.Value));
                 else Paramter.Add(new MySqlParameter("@txt_comment", txt_comment.Text));
                 db.ExecuteNonquery(sql, Paramter.ToArray());
+                //获得自增ID号
+                string sql2 = " SELECT LAST_INSERT_ID() ";
+                Form_Main.wellinfoID = Convert.ToInt32(db.ExecuteScalar(sql2));
                 DialogResult result = MessageBox.Show("创建施工成功！");
                 if (result == DialogResult.OK)
-                {  
+                {
                     //在数据库生成一个以时间为名的表单用以存储实时数据
                     DbManager db1 = new DbManager();
                     db1.ConnStr = "Data Source=localhost;" +
@@ -64,10 +67,10 @@ namespace Data_acquisition
                     //创建成功后，将值传给主界面并刷新显示井队信息信息
                     Form_Main.iscnndatabase = true;
                     Form_Main.tbname = tb_name;
-                    Form_Main.wellname=txt_wellname.Text;
-                    Form_Main.wellnum=txt_wellnum.Text;
-                    Form_Main.stage_big=txt_stage.Text;
-                  
+                    Form_Main.wellname = txt_wellname.Text;
+                    Form_Main.wellnum = txt_wellnum.Text;
+                    Form_Main.stage_big = txt_stage.Text;
+
                     ((Form_Main)Application.OpenForms["Form_Main"]).wellinfo_refresh();
                     ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).wellinfo_refresh();
                     ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).wellinfo_refresh();

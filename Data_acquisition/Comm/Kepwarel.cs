@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Data_acquisition.Comm
 { //Kepware相关类，初始化以及读取
-   public class Kepware
+    public class Kepware
     {      //kepware相关变量
         public OPCServer KepServer;
         public OPCGroups KepGroups;
@@ -23,10 +23,14 @@ namespace Data_acquisition.Comm
         public object kepqua;
         public object kepstamp;
         public bool kepconn;
-        public bool kep_initial(string path)
+        public bool kep_initial(string path, string devicesymbol)
         {
             try
             {
+
+                int num = path.LastIndexOf("\\Config");
+                string device = path.Substring(num + 8);
+
                 KepServer = new OPCServer();
                 ////连接opc server
                 KepServer.Connect("KEPware.KEPServerEx.V4", "");
@@ -40,23 +44,44 @@ namespace Data_acquisition.Comm
                 KepGroup.UpdateRate = 250;
                 KepServer.OPCGroups.DefaultGroupDeadband = 0;
                 KepItems = KepGroup.OPCItems; //建立opc标签集合
-               
+
                 //string path = System.Environment.CurrentDirectory;
                 StreamReader sr = new StreamReader(path);
                 string content = sr.ReadToEnd();
                 string[] str = content.Split(new string[] { "\r\n" }, StringSplitOptions.None);
-
-                foreach (object temp0 in str)
+                //混砂车标注名处理
+                if (devicesymbol == "B")
                 {
-                    string temp1 = temp0.ToString();
-                    string temp = temp1.Replace("\t", "");
-                    KepItems.AddItem("iFrac.Blender." + temp.ToString(), item_oder);
-                    Item_serverhandle1_To_PC[item_oder_To_PC] = KepItems.Item(item_oder).ServerHandle;
-                    item_oder_To_PC = item_oder_To_PC + 1;
-                    item_oder = item_oder + 1;
+                    foreach (object temp0 in str)
+                    {
+                        string temp1 = temp0.ToString();
+                        string temp = temp1.Replace("\t", "");
+                        KepItems.AddItem("iFrac.Blender." + temp.ToString(), item_oder);
+                        Item_serverhandle1_To_PC[item_oder_To_PC] = KepItems.Item(item_oder).ServerHandle;
+                        item_oder_To_PC = item_oder_To_PC + 1;
+                        item_oder = item_oder + 1;
+
+                    }
+
 
                 }
+                //压力泵标注名处理
+                if (devicesymbol == "F")
+                {
+                   for(int i=0;i<str.Length;i++){
+                       string temp1 = str[i].ToString();
+                       string temp = temp1.Replace("\t", "");
+                        int num1=i/4+1;int num2=i%4+1;
+                       KepItems.AddItem("iFrac.Frac" + num1.ToString("00")+".var"+num2, item_oder);
 
+
+                       Item_serverhandle1_To_PC[item_oder_To_PC] = KepItems.Item(item_oder).ServerHandle;
+                       item_oder_To_PC = item_oder_To_PC + 1;
+                       item_oder = item_oder + 1;
+                   
+                   }
+
+                } 
                 return true;
             }
             catch (Exception ex)
@@ -71,7 +96,7 @@ namespace Data_acquisition.Comm
             keperr = new Array[KepItems.Count];
             Array handle2 = (Array)Item_serverhandle1_To_PC;
             KepGroup.SyncRead(1, KepItems.Count, ref handle2, out kepvalue, out keperr, out kepqua, out kepstamp);
-                        return kepvalue;
+            return kepvalue;
 
         }
     }

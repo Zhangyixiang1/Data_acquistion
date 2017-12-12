@@ -15,7 +15,7 @@ namespace Data_acquisition
     {
         #region 变量
 
-        double discharge_total=10;//测试用
+        double discharge_total = 10;//测试用
 
         #endregion
 
@@ -134,14 +134,15 @@ namespace Data_acquisition
             zedGraphControl1.IsEnableHPan = false; zedGraphControl1.IsEnableVPan = false;
             zedGraphControl1.IsEnableHZoom = false; zedGraphControl1.IsEnableZoom = false;
             GraphPane myPane = zedGraphControl1.GraphPane;
-            myPane.Fill = new Fill(Color.FromArgb(28, 29, 31));
+            // myPane.Fill = new Fill(Color.FromArgb(28, 29, 31));
+            myPane.Fill = new Fill(Color.Black);
             myPane.Chart.Fill = new Fill(Color.Black);
             myPane.IsFontsScaled = false;
             myPane.Border.Color = Color.White;
             // Set the titles and axis labels
             myPane.Legend.IsVisible = false;
             myPane.Chart.Border.Color = Color.Gray;
-            myPane.Title.Text = "";
+            myPane.Title.Text = " ";
             //x轴
             myPane.XAxis.Title.Text = "排出总量(m3)";
             myPane.XAxis.MajorGrid.Color = Color.White;
@@ -470,13 +471,13 @@ namespace Data_acquisition
             chart_initial();
             //初始化dgv
             grid_intial();
-              // timer1.Enabled=true;
+            timer1.Enabled = true;
 
         }
         private void Frm_Realtrend2_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
-                this.Location = new Point(1920, 0); this.BringToFront();
+                this.Location = new Point(3840, 0); this.BringToFront();
         }
 
 
@@ -536,9 +537,9 @@ namespace Data_acquisition
             int num5 = int.Parse(paraLine1.Tag.ToString());
             int num6 = int.Parse(paraLine6.Tag.ToString());
 
-             //double discharge_total=Form_Main.Loglist.Values.ElementAt((int)count).DATA[70];
+            double discharge_total=Form_Main.Loglist.Values.ElementAt((int)count).DATA[70];
             //测试用
-              discharge_total=discharge_total+10;
+            //discharge_total = discharge_total + 10;
 
             //1207修改，横坐标为排出总量
             list1.Add(discharge_total, Form_Main.Loglist.Values.ElementAt((int)count).DATA[num1]);
@@ -570,54 +571,84 @@ namespace Data_acquisition
                 zedGraphControl1.Invalidate();
             }
         }
+        /// <summary>
+        /// plc的开关信号转换
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        private string trans_bool(object item)
+        {
+
+            if (item.ToString() == "True") return "自动";
+            else return "手动";
+
+        }
+        /// <summary>
+        /// 转换成两位字符串
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        private string trans_2point(object item)
+        {
+            double data = Convert.ToDouble(item);
+            return data.ToString("#0.00");
+
+        }
         #endregion
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //更新gridview里面的内容
-            int stage = Form_Main.num_stage;
-            //支撑剂
-            dataGridView1.Rows[0].Cells[2].Value = Form_Main.value_blender.GetValue(592);//实际浓度
-            dataGridView1.Rows[0].Cells[3].Value = Form_Main.dt.Rows[Form_Main.num_stage - 1][4];//阶段目标浓度
-            dataGridView1.Rows[0].Cells[4].Value = Form_Main.value_blender.GetValue(16);//当前排量
-            dataGridView1.Rows[0].Cells[5].Value = Form_Main.value_blender.GetValue(30);//阶段总量
-            dataGridView1.Rows[0].Cells[6].Value = Form_Main.value_blender.GetValue(44);//总量
-            //液添1
-            dataGridView1.Rows[1].Cells[1].Value = Form_Main.value_blender.GetValue(598);//模式
-            dataGridView1.Rows[1].Cells[2].Value = Form_Main.value_blender.GetValue(593);//实际浓度
-            dataGridView1.Rows[1].Cells[3].Value = Form_Main.dt.Rows[Form_Main.num_stage - 1][6];//阶段目标浓度
-            dataGridView1.Rows[1].Cells[4].Value = Form_Main.value_blender.GetValue(17);//当前排量
-            dataGridView1.Rows[1].Cells[5].Value = Form_Main.value_blender.GetValue(31);//阶段总量
-            dataGridView1.Rows[1].Cells[6].Value = Form_Main.value_blender.GetValue(45);//总量
-            //液添2
-            dataGridView1.Rows[2].Cells[1].Value = Form_Main.value_blender.GetValue(599);//模式
-            dataGridView1.Rows[2].Cells[2].Value = Form_Main.value_blender.GetValue(594);//实际浓度
-            dataGridView1.Rows[2].Cells[3].Value = Form_Main.dt.Rows[Form_Main.num_stage - 1][8];//阶段目标浓度
-            dataGridView1.Rows[2].Cells[4].Value = Form_Main.value_blender.GetValue(18);//当前排量
-            dataGridView1.Rows[2].Cells[5].Value = Form_Main.value_blender.GetValue(32);//阶段总量
-            dataGridView1.Rows[2].Cells[6].Value = Form_Main.value_blender.GetValue(46);//总量
-            //液添3
-            dataGridView1.Rows[3].Cells[1].Value = Form_Main.value_blender.GetValue(600);//模式
-            dataGridView1.Rows[3].Cells[2].Value = Form_Main.value_blender.GetValue(595);//实际浓度
-            dataGridView1.Rows[3].Cells[3].Value = Form_Main.dt.Rows[Form_Main.num_stage - 1][10];//阶段目标浓度
-            dataGridView1.Rows[3].Cells[4].Value = Form_Main.value_blender.GetValue(19);//当前排量
-            dataGridView1.Rows[3].Cells[5].Value = Form_Main.value_blender.GetValue(33);//阶段总量
-            dataGridView1.Rows[3].Cells[6].Value = Form_Main.value_blender.GetValue(47);//总量
-            //干添1
-            dataGridView1.Rows[4].Cells[1].Value = Form_Main.value_blender.GetValue(601);//模式
-            dataGridView1.Rows[4].Cells[2].Value = Form_Main.value_blender.GetValue(596);//实际浓度
-            dataGridView1.Rows[4].Cells[3].Value = Form_Main.dt.Rows[Form_Main.num_stage - 1][12];//阶段目标浓度
-            dataGridView1.Rows[4].Cells[4].Value = Form_Main.value_blender.GetValue(21);//当前排量
-            dataGridView1.Rows[4].Cells[5].Value = Form_Main.value_blender.GetValue(35);//阶段总量
-            dataGridView1.Rows[4].Cells[6].Value = Form_Main.value_blender.GetValue(49);//总量
-            //干添2
-            dataGridView1.Rows[5].Cells[1].Value = Form_Main.value_blender.GetValue(602);//模式
-            dataGridView1.Rows[5].Cells[2].Value = Form_Main.value_blender.GetValue(597);//实际浓度
-            dataGridView1.Rows[5].Cells[3].Value = Form_Main.dt.Rows[Form_Main.num_stage - 1][14];//阶段目标浓度
-            dataGridView1.Rows[5].Cells[4].Value = Form_Main.value_blender.GetValue(22);//当前排量
-            dataGridView1.Rows[5].Cells[5].Value = Form_Main.value_blender.GetValue(36);//阶段总量
-            dataGridView1.Rows[5].Cells[6].Value = Form_Main.value_blender.GetValue(50);//总量
+
+            try
+            {
+                //更新gridview里面的内容
+                int stage = Form_Main.num_stage;
+                //支撑剂
+                dataGridView1.Rows[0].Cells[1].Value = trans_bool(Form_Main.value_blender.GetValue(624));//模式
+                dataGridView1.Rows[0].Cells[3].Value = trans_2point(Form_Main.value_blender.GetValue(592));//实际浓度
+                dataGridView1.Rows[0].Cells[2].Value = trans_2point(Form_Main.value_blender.GetValue(625));//阶段目标浓度
+                dataGridView1.Rows[0].Cells[4].Value = trans_2point(Form_Main.value_blender.GetValue(16));//当前排量
+                dataGridView1.Rows[0].Cells[5].Value = trans_2point(Form_Main.value_blender.GetValue(30));//阶段总量
+                dataGridView1.Rows[0].Cells[6].Value = trans_2point(Form_Main.value_blender.GetValue(44));//总量
+                //液添1
+                dataGridView1.Rows[1].Cells[1].Value = trans_bool(Form_Main.value_blender.GetValue(598));//模式
+                dataGridView1.Rows[1].Cells[3].Value = trans_2point(Form_Main.value_blender.GetValue(593));//实际浓度
+                dataGridView1.Rows[1].Cells[2].Value = trans_2point(Form_Main.value_blender.GetValue(626));//阶段目标浓度
+                dataGridView1.Rows[1].Cells[4].Value = trans_2point(Form_Main.value_blender.GetValue(17));//当前排量
+                dataGridView1.Rows[1].Cells[5].Value = trans_2point(Form_Main.value_blender.GetValue(31));//阶段总量
+                dataGridView1.Rows[1].Cells[6].Value = trans_2point(Form_Main.value_blender.GetValue(45));//总量
+                //液添2
+                dataGridView1.Rows[2].Cells[1].Value = trans_bool(Form_Main.value_blender.GetValue(599));//模式
+                dataGridView1.Rows[2].Cells[3].Value = trans_2point(Form_Main.value_blender.GetValue(594));//实际浓度
+                dataGridView1.Rows[2].Cells[2].Value = trans_2point(Form_Main.value_blender.GetValue(627));//阶段目标浓度
+                dataGridView1.Rows[2].Cells[4].Value = trans_2point(Form_Main.value_blender.GetValue(18));//当前排量
+                dataGridView1.Rows[2].Cells[5].Value = trans_2point(Form_Main.value_blender.GetValue(32));//阶段总量
+                dataGridView1.Rows[2].Cells[6].Value = trans_2point(Form_Main.value_blender.GetValue(46));//总量
+                //液添3
+                dataGridView1.Rows[3].Cells[1].Value = trans_bool(Form_Main.value_blender.GetValue(600));//模式
+                dataGridView1.Rows[3].Cells[3].Value = trans_2point(Form_Main.value_blender.GetValue(595));//实际浓度
+                dataGridView1.Rows[3].Cells[2].Value = trans_2point(Form_Main.value_blender.GetValue(628));//阶段目标浓度
+                dataGridView1.Rows[3].Cells[4].Value = trans_2point(Form_Main.value_blender.GetValue(19));//当前排量
+                dataGridView1.Rows[3].Cells[5].Value = trans_2point(Form_Main.value_blender.GetValue(33));//阶段总量
+                dataGridView1.Rows[3].Cells[6].Value = trans_2point(Form_Main.value_blender.GetValue(47));//总量
+                //干添1
+                dataGridView1.Rows[4].Cells[1].Value = trans_bool(Form_Main.value_blender.GetValue(601));//模式
+                dataGridView1.Rows[4].Cells[3].Value = trans_2point(Form_Main.value_blender.GetValue(596));//实际浓度
+                dataGridView1.Rows[4].Cells[2].Value = trans_2point(Form_Main.value_blender.GetValue(629));//阶段目标浓度
+                dataGridView1.Rows[4].Cells[4].Value = trans_2point(Form_Main.value_blender.GetValue(21));//当前排量
+                dataGridView1.Rows[4].Cells[5].Value = trans_2point(Form_Main.value_blender.GetValue(35));//阶段总量
+                dataGridView1.Rows[4].Cells[6].Value = trans_2point(Form_Main.value_blender.GetValue(49));//总量
+                //干添2
+                dataGridView1.Rows[5].Cells[1].Value = trans_bool(Form_Main.value_blender.GetValue(602));//模式
+                dataGridView1.Rows[5].Cells[3].Value = trans_2point(Form_Main.value_blender.GetValue(597));//实际浓度
+                dataGridView1.Rows[5].Cells[2].Value = trans_2point(Form_Main.value_blender.GetValue(630));//阶段目标浓度
+                dataGridView1.Rows[5].Cells[4].Value = trans_2point(Form_Main.value_blender.GetValue(22));//当前排量
+                dataGridView1.Rows[5].Cells[5].Value = trans_2point(Form_Main.value_blender.GetValue(36));//阶段总量
+                dataGridView1.Rows[5].Cells[6].Value = trans_2point(Form_Main.value_blender.GetValue(50));//总量
+            }
+            catch (Exception ex) { }
         }
+
 
         private void lbl_blender2_Click(object sender, EventArgs e)
         {

@@ -19,7 +19,7 @@ namespace Data_acquisition
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
              index=((RadioButton)sender).TabIndex;
-            txb_old.Text=Form_Main.value_blender.GetValue(605+(index-1)*3).ToString();
+            txb_old.Text=Form_Main.value_blender.GetValue(625+(index-1)).ToString();
 
 
         }
@@ -36,7 +36,14 @@ namespace Data_acquisition
             Form_Main.kep1.KepItems.Item(603 + (index - 1) * 3).Write(true);  //发送overide信号
             if (rdbtn_stage.Checked) { Form_Main.kep1.KepItems.Item(621).Write(true); }
             if (rdbtn_job.Checked) { Form_Main.kep1.KepItems.Item(622).Write(true); }
-            Form_Main.kep1.KepItems.Item(604 + (index - 1) * 3).Write(value); 
+            Form_Main.kep1.KepItems.Item(604 + (index - 1) * 3).Write(value);
+            this.Close();
+        }
+
+        private void Frm_override_Load(object sender, EventArgs e)
+        {
+            
+            txb_old.Text = Form_Main.value_blender.GetValue(625 ).ToString();
         }
     }
 }

@@ -48,8 +48,12 @@ namespace Data_acquisition
             {
 
                 progressBar1.Visible = true;//显示进度条
-                btn_OK.Enabled=false;
-                btn_del.Enabled=false;
+                btn_OK.Enabled = false;
+                btn_del.Enabled = false;
+                //获取当前的ID号
+
+                Form_Main.wellinfoID = Convert.ToInt32(tb.Rows[listBox1.SelectedIndex][0]);
+
                 Thread th = new Thread(new ThreadStart(add));
                 th.Start();
 
@@ -108,16 +112,22 @@ namespace Data_acquisition
                 {
                     this.progressBar1.Maximum = data.Count;
                 }
-                if(listBox1.InvokeRequired){
-                listBox1.Invoke(new Action(()=>{Form_Main.wellname = tb.Rows[listBox1.SelectedIndex]["wellname"].ToString();
-                Form_Main.wellnum = tb.Rows[listBox1.SelectedIndex]["wellnum"].ToString();
-                Form_Main.stage_big = tb.Rows[listBox1.SelectedIndex]["wellstage"].ToString();}));
-                
+                if (listBox1.InvokeRequired)
+                {
+                    listBox1.Invoke(new Action(() =>
+                    {
+                        Form_Main.wellname = tb.Rows[listBox1.SelectedIndex]["wellname"].ToString();
+                        Form_Main.wellnum = tb.Rows[listBox1.SelectedIndex]["wellnum"].ToString();
+                        Form_Main.stage_big = tb.Rows[listBox1.SelectedIndex]["wellstage"].ToString();
+                    }));
+
                 }
-                else{
-                Form_Main.wellname = tb.Rows[listBox1.SelectedIndex]["wellname"].ToString();
-                Form_Main.wellnum = tb.Rows[listBox1.SelectedIndex]["wellnum"].ToString();
-                Form_Main.stage_big = tb.Rows[listBox1.SelectedIndex]["wellstage"].ToString();}
+                else
+                {
+                    Form_Main.wellname = tb.Rows[listBox1.SelectedIndex]["wellname"].ToString();
+                    Form_Main.wellnum = tb.Rows[listBox1.SelectedIndex]["wellnum"].ToString();
+                    Form_Main.stage_big = tb.Rows[listBox1.SelectedIndex]["wellstage"].ToString();
+                }
 
                 ((Form_Main)Application.OpenForms["Form_Main"]).wellinfo_refresh();
                 ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).wellinfo_refresh();
@@ -138,11 +148,12 @@ namespace Data_acquisition
                 }
                 Form_Main.Paralist.Clear(); Form_Main.Loglist.Clear();
                 ((Form_Main)Application.OpenForms["Form_Main"]).list_add(data);
-                if(this.InvokeRequired){
-                this.Invoke(new Action(()=>this.Close()));
+                if (this.InvokeRequired)
+                {
+                    this.Invoke(new Action(() => this.Close()));
                 }
-                else{ this.Close();}
-               
+                else { this.Close(); }
+
             }
             catch (Exception)
             {
@@ -153,7 +164,7 @@ namespace Data_acquisition
         }
 
         private void Frm_add_FormClosing(object sender, FormClosingEventArgs e)
-        {
+        {  
             if (progressBar1.Visible) return;
         }
 
@@ -161,7 +172,7 @@ namespace Data_acquisition
         {
             try
             {
-                if (Form_Main.iscnndatabase) { MessageBox.Show("请删除前现结束施工！"); return;}
+                if (Form_Main.iscnndatabase) { MessageBox.Show("请删除前现结束施工！"); return; }
                 if (listBox1.SelectedIndex < 0) MessageBox.Show("请选择需要删除的数据包！");
                 else
                 {   //先删除wellinfo里面的信息

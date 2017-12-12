@@ -74,8 +74,9 @@
     <Reference Include="Aspose.Cells">
       <HintPath>C:\Users\zhangyx1\Downloads\NPOI-Lib\Aspose.Cells.dll</HintPath>
     </Reference>
-    <Reference Include="Interop.OPCAutomation">
-      <HintPath>C:\Windows\System32\Interop.OPCAutomation.dll</HintPath>
+    <Reference Include="Interop.OPCAutomation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>E:\Interop.OPCAutomation.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
@@ -246,6 +247,12 @@
     <Compile Include="Frm_Paradigital2.Designer.cs">
       <DependentUpon>Frm_Paradigital2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_print.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_print.Designer.cs">
+      <DependentUpon>Frm_print.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Realtrend2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -329,6 +336,9 @@
     <EmbeddedResource Include="Frm_Paradigital2.resx">
       <DependentUpon>Frm_Paradigital2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_print.resx">
+      <DependentUpon>Frm_print.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Realtrend.resx">
       <DependentUpon>Frm_Realtrend.cs</DependentUpon>
     </EmbeddedResource>
@@ -373,7 +383,7 @@
     <Content Include="Config\Blender.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Config\Frac01.txt">
+    <Content Include="Config\Frac.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\preference.xml">

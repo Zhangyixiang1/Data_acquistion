@@ -19,6 +19,9 @@ using Newtonsoft.Json;
 using Data_acquisition.Comm;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.IO;
+using NPOI.SS.UserModel;
+using NPOI.HSSF.UserModel;
+using NPOI.SS.Util;
 namespace Data_acquisition
 {
     /// <summary>
@@ -29,13 +32,14 @@ namespace Data_acquisition
 
         #region 变量声明
         public static Kepware kep1;//混砂车
-        public static Kepware kep2;//压力泵
-        ToolTip toolTip1;
+        public static Kepware kep2;//压裂泵
+
         public static DataTable dt;//计划表
         public static DateTime time; //当前时间
         public static DateTime time_stage;//阶段时间
         public static int num_stage = 1;//阶段号
         public static int num_totalstage;//总的阶段数，导入计划时赋值
+        public static int wellinfoID;
         public static string wellname;//油田名
         public static string wellnum;//井队号
         public static string stage_big;//第几大段
@@ -48,14 +52,8 @@ namespace Data_acquisition
         public static Dictionary<string, Datamodel> Loglist; //记录数据缓存
         double[] test = new double[200]; //测试数据
         public static Array value_blender;//混砂车plc读到的原始值
-        public static Array value_frac01;//1号压力泵读到的原始值
-        public static Array value_frac02;//2号压力泵读到的原始值
-        public static Array value_frac03;//3号压力泵读到的原始值
-        public static Array value_frac04;//4号压力泵读到的原始值
-        public static Array value_frac05;//5号压力泵读到的原始值
-        public static Array value_frac06;//6号压力泵读到的原始值
-        public static Array value_frac07;//7号压力泵读到的原始值
-        public static Array value_frac08;//8号压力泵读到的原始值
+        public static Array value_frac;//压力泵读到的原始值
+        bool readfinish;
         #endregion
 
         #region 方法
@@ -84,89 +82,65 @@ namespace Data_acquisition
                 try
                 {
                     Thread.Sleep(500);
+                    //模拟数据
                     //for (int i = 0; i < 200; i++)
                     //{
 
                     //    test[i] = i + rd.Next(0, 10);
-                    //    //  if (count > 600) { test[i] = count / 10 + rd.Next(0, 10); }
+                    //    if (count > 600) { test[i] = count / 10 + rd.Next(0, 10); }
                     //}
-                    //读取plc数据
+                    //读取混砂车的数据
                     value_blender = kep1.kep_read();
-                    //读压力泵的数据
-                    //   value_frac01=kep2.kep_read();
+                    //读取压力泵的数据
+                    value_frac = kep2.kep_read();
+
                     //更新进度条
-                    int percent = Convert.ToInt16(value_blender.GetValue(589));
-                    percent_refresh(percent);
-                    //如果是阶段自动切换状态
-                    if (stage_auto)
+                    int percent1 = Convert.ToInt16(value_blender.GetValue(589));
+                    int percent2 = Convert.ToInt16(value_blender.GetValue(631));
+                    percent_refresh(percent1, percent2);
+
+                    //阶段号更新
+                    num_totalstage = Convert.ToInt16(value_blender.GetValue(588));//总的阶段号
+                    this.wellinfo_refresh();
+                    ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).wellinfo_refresh();
+                    ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).wellinfo_refresh();
+
+
+                    //切换阶段时
+                    int temp = Convert.ToInt16(value_blender.GetValue(585));
+                    if (num_stage != temp)
                     {
-                        int temp = Convert.ToInt16(value_blender.GetValue(585));
-                        if (num_stage != temp)
+                        num_stage = temp;
+                        //阶段量清零
+                        //for (int i = 54; i <= 67; i++)
+                        //{
+                        //    test[i] = 0;
+                        //}
+                        //if (!iscnndatabase) return;
+                        // num_stage++;
+                        //阶段时间清零
+                        time_stage = Convert.ToDateTime("00:00:00");
+                        //计划表选取更新
+                        if (dataGridView1.Rows.Count >= num_stage)
                         {
-                            num_stage = temp;
-                            //阶段量清零
-                            //for (int i = 54; i <= 67; i++)
-                            //{
-                            //    test[i] = 0;
-                            //}
-                            //if (!iscnndatabase) return;
-                            // num_stage++;
-                            time_stage = Convert.ToDateTime("00:00:00");
-                            //计划表选取更新
-                            if (dataGridView1.Rows.Count >= num_stage)
-                            {
-                                dataGridView1.ClearSelection();
-                                dataGridView1.Rows[num_stage - 1].Selected = true;
-                            }
-                            //阶段号更新
-                            this.wellinfo_refresh();
-                            //  ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).lbl_stage.Text = Form_Main.num_stage + "/" + Form_Main.num_totalstage;
-                            //  ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).lbl_stage.Text = Form_Main.num_stage + "/" + Form_Main.num_totalstage;
-                            ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).wellinfo_refresh();
-                            ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).wellinfo_refresh();
+                            dataGridView1.ClearSelection();
+                            dataGridView1.Rows[num_stage - 1].Selected = true;
                         }
-
+                        //阶段号更新
+                        this.wellinfo_refresh();
+                        ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).wellinfo_refresh();
+                        ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).wellinfo_refresh();
                     }
 
-                    //测试用，读取混砂车数据,阶段统计量上位机计算
-                    for (int i = 31; i <= 49; i++)
-                    {
-                        test[i] = Convert.ToDouble(value_blender.GetValue(i - 30));
-                    }
-
-                    test[50] = test[47] + test[48] + test[49]; //液添当前总流量
-                    test[51] = Convert.ToDouble(value_blender.GetValue(20));//干添1
-                    test[52] = Convert.ToDouble(value_blender.GetValue(21));//干添2
-                    test[53] = test[51] + test[52]; //干添当前总流量
-                    ////  井口排出阶段总量,来自beff尚未采集
-                    //test[55] = test[38] / 60 + test[55];            //吸入阶段总量
-                    //test[56] = test[39] / 60 + test[56];          //排出阶段总量
-                    //test[57] = (test[43] / 60 / 1000 + test[57]); //绞龙1阶段总量
-                    //test[58] = (test[44] / 60 / 1000 + test[58]); //绞龙2阶段总量
-                    //test[59] = (test[45] / 60 / 1000 + test[59]); //绞龙3阶段总量
-                    //test[60] = (test[46] / 60 / 1000 + test[60]);//输砂阶段总量
-                    //test[61] = (test[47] / 60 / 1000 + test[61]);//液添1阶段总量
-                    //test[62] = (test[48] / 60 / 1000 + test[62]);//液添2阶段总量
-                    //test[63] = (test[49] / 60 / 1000 + test[63]);//液添3阶段总量
-                    //test[64] = test[61] + test[62] + test[63];//液添阶段总量
-                    //test[65] = (test[51] / 60 + test[65]); //干添1阶段总量
-                    //test[66] = (test[52] / 60 + test[66]);//干添2阶段总量
-                    //test[67] = test[65] + test[66];//干添阶段总量
-                    ////井口排出总量,来自beff尚未采集
-                    for (int i = 69; i <= 77; i++)
-                    {
-                        test[i] = Convert.ToDouble(value_blender.GetValue(i - 47));
-                    }
-                    test[78] = test[75] + test[76] + test[77];
-                    test[79] = Convert.ToDouble(value_blender.GetValue(31)); //干添1总量
-                    test[80] = Convert.ToDouble(value_blender.GetValue(32));//干添2总量
-                    test[81] = test[79] + test[80];
-
-                    //读取压裂泵数据,阶段统计量上位机
-                    // Frac_read(1);
-                    //Frac_read(2); Frac_read(3); Frac_read(4); Frac_read(5); Frac_read(6); Frac_read(7); Frac_read(8); 
 
                     Paralist.Add(DateTime.Now.ToString(), new Datamodel((int)count, test));
+
+                    //读取混砂车数据,阶段统计量上位机
+                    Blender_read();
+                    //读取压裂泵数据,阶段统计量上位机
+                    Frac_read();
+                    //格式化为指定的小数位数
+                    trans_2point(test,2);
                     //实时数据缓存只有一百条，用于参数的刷新
                     if (Paralist.Count > 10) Paralist.Remove(Paralist.ElementAt(0).Key);
 
@@ -205,12 +179,31 @@ namespace Data_acquisition
             }
         }
         /// <summary>
-        /// 更新进度条
+        /// 控制输出小数位数
+        /// </summary>
+        /// <param name="item">array数组</param>
+        /// <param name="points">小数位数</param>
+        /// <returns>返回的Array</returns>
+        private double[] trans_2point(double []item, int points)
+        {
+            for (int i = 0; i <item.Length; i++)
+            {
+                Math.Round(item[i],2);
+            }
+            return item;
+        }
+
+
+
+
+        /// <summary>
+        /// 更新进度条和阶段号
         /// </summary>
         /// <param name="num">从plc读到的进度值</param>
-        private void percent_refresh(int num)
+        private void percent_refresh(int num, int num2)
         {
             if (num >= 100) num = 100;
+            if (num2 > 100) num2 = 100;
             if (radProgressBar1.InvokeRequired)
             {
                 radProgressBar1.Invoke(new Action(() => { radProgressBar1.Value1 = num; radProgressBar1.Text = num + "%"; }));
@@ -229,6 +222,24 @@ namespace Data_acquisition
             }
             else { ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).radProgressBar1.Value1 = num; ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).radProgressBar1.Text = num + "%"; }
 
+            if (radProgressBar2.InvokeRequired)
+            {
+                radProgressBar2.Invoke(new Action(() => { radProgressBar2.Value1 = num2; radProgressBar2.Text = num2 + "%"; }));
+            }
+            else { radProgressBar2.Value1 = num2; radProgressBar2.Text = num2 + "%"; }
+
+            if (((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).radProgressBar2.InvokeRequired)
+            {
+                ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).radProgressBar2.Invoke(new Action(() => { ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).radProgressBar2.Value1 = num2; ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).radProgressBar2.Text = num2 + "%"; }));
+            }
+            else { ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).radProgressBar2.Value1 = num2; ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).radProgressBar2.Text = num2 + "%"; }
+
+            if (((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).radProgressBar2.InvokeRequired)
+            {
+                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).radProgressBar2.Invoke(new Action(() => { ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).radProgressBar2.Value1 = num2; ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).radProgressBar2.Text = num2 + "%"; }));
+            }
+            else { ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).radProgressBar2.Value1 = num2; ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).radProgressBar2.Text = num2 + "%"; }
+
 
         }
 
@@ -241,17 +252,17 @@ namespace Data_acquisition
             //先注册混砂车
             kep1 = new Kepware();
             string path = Application.StartupPath + "\\Config\\Blender.txt";
-            if (!kep1.kep_initial(path))
+            if (!kep1.kep_initial(path, "B"))
             {
                 MessageBox.Show("混砂车PLC变量注册失败，请检查kepware相关设置，随后重启软件！");
                 Application.Exit();
             }
             //注册压裂泵
             kep2 = new Kepware();
-            path = Application.StartupPath + "\\Config\\Frac01.txt";
-            if (!kep2.kep_initial(path))
+            path = Application.StartupPath + "\\Config\\Frac.txt";
+            if (!kep2.kep_initial(path, "F"))
             {
-                MessageBox.Show("混砂车PLC变量注册失败，请检查kepware相关设置，随后重启软件！");
+                MessageBox.Show("压裂泵PLC变量注册失败，请检查kepware相关设置，随后重启软件！");
                 // Application.Exit();
             }
 
@@ -461,13 +472,14 @@ namespace Data_acquisition
             // zedGraphControl1.IsEnableHZoom = false; zedGraphControl1.IsEnableZoom = false;
             GraphPane myPane = zedGraphControl1.GraphPane;
             //曲线面板属性
-            myPane.Fill = new Fill(Color.FromArgb(28, 29, 31));
+            //myPane.Fill = new Fill(Color.FromArgb(28, 29, 31));
+            myPane.Fill = new Fill(Color.Black);
             myPane.Chart.Fill = new Fill(Color.Black);
             myPane.Chart.Border.Color = Color.Gray;
             myPane.IsFontsScaled = false;
             myPane.Border.Color = Color.White;
             myPane.Legend.IsVisible = false;
-            myPane.Title.Text = "";
+            myPane.Title.Text = " ";
             //x轴
             myPane.XAxis.Title.Text = "时间(分钟)";
             myPane.XAxis.MajorGrid.Color = Color.White;
@@ -881,13 +893,87 @@ namespace Data_acquisition
             }
         }
 
+        /// <summary>
+        /// 读取混砂车原始数据到缓存数据中
+        /// </summary>
+        private void Blender_read()
+        {
+
+            //读取混砂车数据,阶段统计量上位机计算
+            for (int i = 31; i <= 49; i++)
+            {
+                test[i] = Convert.ToDouble(value_blender.GetValue(i - 30));
+            }
+            
+            test[50] = test[47] + test[48] + test[49]; //液添当前总流量
+            test[51] = Convert.ToDouble(value_blender.GetValue(20));//干添1
+            test[52] = Convert.ToDouble(value_blender.GetValue(21));//干添2
+            test[53] = test[51] + test[52]; //干添当前总流量
+            ////  井口排出阶段总量,来自beff尚未采集
+            //test[55] = test[38] / 60 + test[55];            //吸入阶段总量
+            //test[56] = test[39] / 60 + test[56];          //排出阶段总量
+            //test[57] = (test[43] / 60 / 1000 + test[57]); //绞龙1阶段总量
+            //test[58] = (test[44] / 60 / 1000 + test[58]); //绞龙2阶段总量
+            //test[59] = (test[45] / 60 / 1000 + test[59]); //绞龙3阶段总量
+            //test[60] = (test[46] / 60 / 1000 + test[60]);//输砂阶段总量
+            //test[61] = (test[47] / 60 / 1000 + test[61]);//液添1阶段总量
+            //test[62] = (test[48] / 60 / 1000 + test[62]);//液添2阶段总量
+            //test[63] = (test[49] / 60 / 1000 + test[63]);//液添3阶段总量
+            //test[64] = test[61] + test[62] + test[63];//液添阶段总量
+            //test[65] = (test[51] / 60 + test[65]); //干添1阶段总量
+            //test[66] = (test[52] / 60 + test[66]);//干添2阶段总量
+            //test[67] = test[65] + test[66];//干添阶段总量
+            for (int i = 55; i <= 63; i++)
+            {
+                test[i] = Convert.ToDouble(value_blender.GetValue(i - 30));
+            }
+            test[64] = test[61] + test[62] + test[63];//液添阶段总量
+            test[65] = Convert.ToDouble(value_blender.GetValue(35));//干添1阶段总量
+            test[66] = Convert.ToDouble(value_blender.GetValue(36));//干添2阶段总量
+            test[67] = test[65] + test[66];//干添阶段总量
+            ////井口排出总量,来自beff尚未采集
+            for (int i = 69; i <= 77; i++)
+            {
+                test[i] = Convert.ToDouble(value_blender.GetValue(i - 30));
+            }
+            test[78] = test[75] + test[76] + test[77];
+            test[79] = Convert.ToDouble(value_blender.GetValue(49)); //干添1总量
+            test[80] = Convert.ToDouble(value_blender.GetValue(50));//干添2总量
+            test[81] = test[79] + test[80];
+
+        }
+
+        /// <summary>
+        /// 读取压力泵原始数据到缓存数据中
+        /// </summary>
+        /// <param name="index"></param>
+        private void Frac_read()
+        {    //外层循环8台泵
+            for (int i = 1; i <= 8; i++)
+            {
+                //内层循环4个变量
+                for (int j = 1; j <= 4; j++)
+                {
+                    if (j % 4 == 0)
+                    {   //每台泵的第四个参数要错位
+                        test[100 + (i - 1) * 5 + j + 1] = Convert.ToDouble(value_frac.GetValue((i - 1) * 4 + j));
+                        //阶段统计量
+                        test[100 + (i - 1) * 5 + j] = test[100 + (i - 1) * 5 + j - 1] / 60 + test[100 + (i - 1) * 5 + j];
+
+                    }
+                    else { test[100 + (i - 1) * 5 + j] = Convert.ToDouble(value_frac.GetValue((i - 1) * 4 + j)); }
+                }
+
+            }
+
+        }
         #endregion
 
         #region 控件事件
 
         private void Form_Main_Load(object sender, EventArgs e)
         {
-            toolTip1 = new ToolTip();
+
             Paralist = new Dictionary<string, Datamodel>();
             Loglist = new Dictionary<string, Datamodel>();
 
@@ -911,7 +997,8 @@ namespace Data_acquisition
                     ctr2.timer1.Enabled = true;
                 }
             }
-
+            //启动混砂车状态信号定时器
+            timer_color.Enabled = true;
             //主界面加载完成后，依次打开其他页面
 
             Frm_Realtrend frm1 = new Frm_Realtrend();
@@ -919,7 +1006,7 @@ namespace Data_acquisition
             frm1.Show();
 
             Frm_Realtrend2 frm2 = new Frm_Realtrend2();
-            frm2.Location = new Point(1920, 0);
+            frm2.Location = new Point(3840, 0);
             frm2.Show();
 
             Frm_Paradigital2 frm3 = new Frm_Paradigital2();
@@ -927,7 +1014,7 @@ namespace Data_acquisition
             frm3.Show();
 
             Frm_Paraanalog2 frm4 = new Frm_Paraanalog2();
-            frm4.Location = new Point(3840, 0);
+            frm4.Location = new Point(1920, 0);
             frm4.Show();
 
         }
@@ -970,13 +1057,13 @@ namespace Data_acquisition
             //发送阶段号到PLC
             //kep1.KepItems.Item(320).Write(Form_Main.num_stage);
             //计划表选取更新
-            if (dataGridView1.Rows.Count >= num_stage)
-            {
-                dataGridView1.ClearSelection();
-                dataGridView1.Rows[num_stage - 1].Selected = true;
-                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).dataGridView1.ClearSelection();
-                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).dataGridView1.Rows[num_stage - 1].Selected = true;
-            }
+            //if (dataGridView1.Rows.Count >= num_stage)
+            //{
+            //    dataGridView1.ClearSelection();
+            //    dataGridView1.Rows[num_stage - 1].Selected = true;
+            //    ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).dataGridView1.ClearSelection();
+            //    ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).dataGridView1.Rows[num_stage - 1].Selected = true;
+            //}
             if (!iscnndatabase) { MessageBox.Show("请新建一个施工文件或者追加施工，以便开始记录数据！"); return; }
             if (run) { timer_log.Enabled = false; run = false; btn_start.Text = "继续"; tssl_log.BackColor = Color.Red; }
             else if (!run) { timer_log.Enabled = true; run = true; btn_start.Text = "暂停"; tssl_log.BackColor = Color.Lime; }
@@ -1268,6 +1355,20 @@ namespace Data_acquisition
         private void btn_zero_Click(object sender, EventArgs e)
         {
             Form_Main.kep1.KepItems.Item(623).Write(true);
+            //上位机的统计量清零
+            test[50] = 0;  //液添流量
+            test[53] = 0;  //干添流量
+            test[64] = 0;//液添阶段流量
+            test[67] = 0;//干添阶段流量
+            test[78] = 0;// 液添总量
+            test[81] = 0;//干添总量 
+            //压力泵阶段统计量清零
+            for (int i = 0; i <= 7; i++)
+            {
+                test[104 + 5 * i] = 0;
+
+            }
+
         }
 
 
@@ -1290,6 +1391,7 @@ namespace Data_acquisition
 
         private void btn_blendernext_Click(object sender, EventArgs e)
         {
+            if (num_stage == num_totalstage) { return; }
             kep1.KepItems.Item(586).Write(true);
         }
 
@@ -1299,8 +1401,6 @@ namespace Data_acquisition
             kep1.KepItems.Item(590).Write(true);
 
         }
-
-        #endregion
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
@@ -1357,33 +1457,8 @@ namespace Data_acquisition
             dataGridView1.Visible = false;
             panel_curve.Visible = true;
         }
-        /// <summary>
-        /// 读取原始数据到缓存数据中
-        /// </summary>
-        /// <param name="index">混砂车编号</param>
-        private void Frac_read(int index)
-        {
-            Array value;
-            switch (index)
-            {
-                case 1: value = value_frac01; break;
-                //case 2: value = value_frac02; break;
-                //case 3: value = value_frac03; break;
-                //case 4: value = value_frac04; break;
-                //case 5: value = value_frac05; break;
-                //case 6: value = value_frac06; break;
-                //case 7: value = value_frac07; break;
-                //case 8: value = value_frac08; break;
-                default: value = value_frac01; break;
-            }
 
-            for (int i = 0; i < 5; i++)
-            {
-                test[101 + 5 * (index - 1) + i] = Convert.ToDouble(value.GetValue(i + 1));
 
-            }
-
-        }
 
         private void btn_export_Click(object sender, EventArgs e)
         {
@@ -1457,13 +1532,145 @@ namespace Data_acquisition
         private void timer_color_Tick(object sender, EventArgs e)
         {
             // 1208新增，修改混砂车控制按钮的状态显示
-            if ((bool)value_blender.GetValue(590)) { indicator_start.BackColor = Color.Lime; indicator_stop.BackColor = Color.FromArgb(49, 49, 49); }
-            else { indicator_start.BackColor = Color.FromArgb(49, 49, 49); indicator_stop.BackColor = Color.Red; }
+            try
+            {
+                if (readfinish)
+                {
 
-            if ((bool)value_blender.GetValue(591)) { indicator_hold.BackColor = Color.DodgerBlue; }
-            else { indicator_hold.BackColor = Color.FromArgb(49, 49, 49); }
+                    if ((bool)value_blender.GetValue(590)) { indicator_start.BackColor = Color.Lime; indicator_stop.BackColor = Color.FromArgb(49, 49, 49); }
+                    else { indicator_start.BackColor = Color.FromArgb(49, 49, 49); indicator_stop.BackColor = Color.Red; }
+
+                    if ((bool)value_blender.GetValue(591)) { indicator_hold.BackColor = Color.DodgerBlue; }
+                    else { indicator_hold.BackColor = Color.FromArgb(49, 49, 49); }
+
+                }
+            }
+            catch (Exception)
+            {
+
+                //   throw;
+            }
+
+        }
+        #endregion
+
+        private void btn_report_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sflg = new SaveFileDialog();
+            sflg.Filter = "Excel(*.xls)|*.xls|Excel(*.xlsx)|*.xlsx";
+            if (sflg.ShowDialog() == System.Windows.Forms.DialogResult.Cancel)
+            {
+                return;
+            }
+            //从数据库获得当前井队信息
+            DbManager db = new DbManager();
+            db.ConnStr = "Data Source=localhost;" +
+                            "Initial Catalog=ifracview;User Id=root;Password=hhdq;";
+            string sql = "select *  from wellinfo where id=@wellinfoid";
+            MySqlParameter par = new MySqlParameter("@wellinfoid", Form_Main.wellinfoID);
+            DataTable tb = db.ExcuteDataTable(sql, par);
+            DataRow tbinfo = tb.Rows[0];
+
+            //建立空白工作簿
+            IWorkbook workbook = new HSSFWorkbook();
+            //在工作簿中：建立空白工作表
+            ISheet sheet = workbook.CreateSheet();
+            //在工作表中：建立行，参数为行号，从0计
+            IRow row = sheet.CreateRow(0);
+            //在行中：建立单元格，参数为列号，从0计
+            ICell cell = row.CreateCell(0);
+            //设置单元格内容
+            cell.SetCellValue(wellname + wellnum + "井第" + stage_big + "段");
+            ICellStyle style = workbook.CreateCellStyle();
+            //设置单元格的样式：水平对齐居中
+            style.Alignment = NPOI.SS.UserModel.HorizontalAlignment.CENTER;
+            //新建一个字体样式对象
+            IFont font = workbook.CreateFont();
+            //设置字体加粗样式
+            font.Boldweight = short.MaxValue;
+            font.FontHeight = 22 * 20;
+            //使用SetFont方法将字体样式添加到单元格样式中 
+            style.SetFont(font);
+            //将新的样式赋给单元格
+            cell.CellStyle = style;
+
+            //设置单元格的高度
+            row.Height = 27 * 20;
+            //设置单元格的宽度
+            // sheet.SetColumnWidth(0, 15 * 256);
+            //设置一个合并单元格区域，使用上下左右定义CellRangeAddress区域
+            //CellRangeAddress四个参数为：起始行，结束行，起始列，结束列
+            sheet.AddMergedRegion(new CellRangeAddress(0, 0, 0, 10));
+
+            IRow row1 = sheet.CreateRow(1); ICell cell1 = row1.CreateCell(0);
+            cell1.SetCellValue("油田名称：  " + tbinfo[1]);
+            IRow row2 = sheet.CreateRow(2); ICell cell2 = row2.CreateCell(0);
+            cell2.SetCellValue("井号：  " + tbinfo[2]);
+            IRow row3 = sheet.CreateRow(3); ICell cell3 = row3.CreateCell(0);
+            cell3.SetCellValue("施工日期：  " + tbinfo[4]);
+            IRow row4 = sheet.CreateRow(4); ICell cell4 = row4.CreateCell(0);
+            cell4.SetCellValue("客户名称：  " + tbinfo[5]);
+            IRow row5 = sheet.CreateRow(5); ICell cell5 = row5.CreateCell(0);
+            cell5.SetCellValue("客户代表：  " + tbinfo[6]);
+            IRow row6 = sheet.CreateRow(6); ICell cell6 = row6.CreateCell(0);
+            cell6.SetCellValue("施工单位：  " + tbinfo[7]);
+            IRow row7 = sheet.CreateRow(7); ICell cell7 = row7.CreateCell(0);
+            cell7.SetCellValue("施工代表：  " + tbinfo[8]);
+            IRow row8 = sheet.CreateRow(8); ICell cell8 = row8.CreateCell(0);
+            cell8.SetCellValue("施工指挥：  " + tbinfo[9]);
+            IRow row9 = sheet.CreateRow(9); ICell cell9 = row9.CreateCell(0);
+            cell9.SetCellValue("备注：  " + tbinfo[10]);
+            //列标题
+            IRow row10 = sheet.CreateRow(10); row10.Height = 27 * 20;
+            ICell clname1 = row10.CreateCell(0); clname1.SetCellValue("阶段名");
+            ICell clname2 = row10.CreateCell(1); clname2.SetCellValue("时间");
+            ICell clname3 = row10.CreateCell(2); clname3.SetCellValue("油压(MPa)");
+            ICell clname4 = row10.CreateCell(3); clname4.SetCellValue("套压(MPa)");
+            ICell clname5 = row10.CreateCell(4); clname5.SetCellValue("排出排量(m3/min)");
+            ICell clname6 = row10.CreateCell(5); clname6.SetCellValue("砂浓度(kg/m3)");
+            ICell clname7 = row10.CreateCell(6); clname7.SetCellValue("总液量(m3)");
+            ICell clname8 = row10.CreateCell(7); clname8.SetCellValue("总砂量(m3)");
+            ICell clname9 = row10.CreateCell(8); clname9.SetCellValue("阶段液量(m3)");
+            ICell clname10 = row10.CreateCell(9); clname10.SetCellValue("阶段砂量(m3)");
+            //设置列宽
+            for (int i = 0; i < 10; i++) sheet.SetColumnWidth(i, 20 * 256);
+
+            //添加具体内容
+            DbManager db2 = new DbManager();
+            db.ConnStr = "Data Source=localhost;" +
+                            "Initial Catalog=ifracviewdata;User Id=root;Password=hhdq;";
+            string sql2 = "select *  from " + Form_Main.tbname;
+            DataTable value = db.ExcuteDataTable(sql2);
+            for (int i = 0; i < value.Rows.Count; i++)
+            {
+                string json = value.Rows[i]["value"].ToString();
+                KeyValuePair<string, Datamodel> _data = JsonConvert.DeserializeObject<KeyValuePair<string, Datamodel>>(json);
+                IRow rowtemp = sheet.CreateRow(12 + i);
+                ICell celltemp0 = rowtemp.CreateCell(0); celltemp0.SetCellValue(value.Rows[i][1].ToString());
+                ICell celltemp1 = rowtemp.CreateCell(1); celltemp1.SetCellValue(_data.Key);
+                ICell celltemp2 = rowtemp.CreateCell(2); celltemp2.SetCellValue(_data.Value.DATA.GetValue(31).ToString());
+                ICell celltemp3 = rowtemp.CreateCell(3); celltemp3.SetCellValue(_data.Value.DATA.GetValue(32).ToString());
+                ICell celltemp4 = rowtemp.CreateCell(4); celltemp4.SetCellValue(_data.Value.DATA.GetValue(39).ToString());
+                ICell celltemp5 = rowtemp.CreateCell(5); celltemp5.SetCellValue(_data.Value.DATA.GetValue(35).ToString());
+                ICell celltemp6 = rowtemp.CreateCell(6); celltemp6.SetCellValue(_data.Value.DATA.GetValue(78).ToString());
+                ICell celltemp7 = rowtemp.CreateCell(7); celltemp7.SetCellValue(_data.Value.DATA.GetValue(74).ToString());
+                ICell celltemp8 = rowtemp.CreateCell(8); celltemp8.SetCellValue(_data.Value.DATA.GetValue(64).ToString());
+                ICell celltemp9 = rowtemp.CreateCell(9); celltemp9.SetCellValue(_data.Value.DATA.GetValue(60).ToString());
+
+            }
 
 
+
+            using (FileStream fs = new FileStream(sflg.FileName, FileMode.Create, FileAccess.Write))
+            {
+                workbook.Write(fs);
+            }
+        }
+
+        private void btn_print_Click(object sender, EventArgs e)
+        {
+            Frm_print frm=new Frm_print ();
+            frm.Show();
         }
 
 

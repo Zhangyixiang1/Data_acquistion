@@ -33,12 +33,13 @@ namespace Data_acquisition
                 else
                 {
                     ((Form_Main)Application.OpenForms["Form_Main"]).btn_next.Enabled = false; Form_Main.kep1.KepItems.Item(587).Write(true);
+
                     Form_Main.stage_auto = true;
                     ((Form_Main)Application.OpenForms["Form_Main"]).rdbtn_auto.Checked = true;
                     ((Form_Main)Application.OpenForms["Form_Main"]).rdbtn_hand.Checked = false;
                 }
 
-
+                progressBar1.Maximum = dataGridView1.Rows.Count;
                 for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 {
                     DataGridViewRow dr = dataGridView1.Rows[i];
@@ -64,10 +65,13 @@ namespace Data_acquisition
                     int id;
                     Form_Main.kep1.KepGroup.AsyncWrite(handle.Length - 1, ref handle, ref value, out err, 1, out id);
                     GC.Collect();
+                    progressBar1.Value = i;
+                    
                 }
+                //发送总阶段数到PLC
+                Form_Main.kep1.KepItems.Item(588).Write(dataGridView1.Rows.Count);
+                this.Close();
 
-                this.Close();    //发送总阶段数到PLC
-                //   Form_Main.kep1.KepItems.Item(588).Write(Form_Main.num_totalstage);
                 //同步计划数据，先删除表中数据，再重新插入
                 //DbManager db = new DbManager();
                 //db.ConnStr = "Data Source=localhost;" +
@@ -88,12 +92,8 @@ namespace Data_acquisition
                 //    Paramter.Add(new MySqlParameter("@vol", dataGridView1.Rows[i].Cells[7].Value.ToString()));
                 //    db.ExecuteNonquery(sql2, Paramter.ToArray());
                 //}
-                
-                //打开trend2界面更新计划表的定时器
-                if (!((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).timer1.Enabled)
-                {
-                    ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).timer1.Enabled = true;
-                }
+
+
                 //砂浓度
 
 

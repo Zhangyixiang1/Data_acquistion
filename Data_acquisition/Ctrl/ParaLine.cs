@@ -20,6 +20,17 @@ namespace Data_acquisition.Ctrl
 
 
         }
+        public Color fontcolor
+        {
+            get { return label1.ForeColor; }
+            set
+            {
+                label1.ForeColor = value; label2.ForeColor = value; label3.ForeColor = value;
+                label4.ForeColor = value; label6.ForeColor = value;
+            }
+        }
+
+
         public Color Color
         {
             get { return lineShape1.BorderColor; }
@@ -63,12 +74,12 @@ namespace Data_acquisition.Ctrl
         {
             CheckBox ctr = sender as CheckBox;
             string Frm_name = this.ParentForm.Name;
-           switch (Frm_name)
-           {
-               case "Form_Main": ((Form_Main)Application.OpenForms[Frm_name]).trend_refresh(ctr.Checked, this.Name); break;
-               case "Frm_Realtrend": ((Frm_Realtrend)Application.OpenForms[Frm_name]).trend_refresh(ctr.Checked, this.Name); break;
-               case "Frm_Realtrend2": ((Frm_Realtrend2)Application.OpenForms[Frm_name]).trend_refresh(ctr.Checked, this.Name); break;
-           }
+            switch (Frm_name)
+            {
+                case "Form_Main": ((Form_Main)Application.OpenForms[Frm_name]).trend_refresh(ctr.Checked, this.Name); break;
+                case "Frm_Realtrend": ((Frm_Realtrend)Application.OpenForms[Frm_name]).trend_refresh(ctr.Checked, this.Name); break;
+                case "Frm_Realtrend2": ((Frm_Realtrend2)Application.OpenForms[Frm_name]).trend_refresh(ctr.Checked, this.Name); break;
+            }
 
 
             if (Application.OpenForms["Form_Main"] != null)

@@ -227,6 +227,7 @@ namespace Data_acquisition
                         case "Form_Main": ((Form_Main)Application.OpenForms[Frm_name]).trend_refresh(ctr_line.Name);break;
                         case "Frm_Realtrend": ((Frm_Realtrend)Application.OpenForms[Frm_name]).trend_refresh(ctr_line.Name); break;
                         case "Frm_Realtrend2": ((Frm_Realtrend2)Application.OpenForms[Frm_name]).trend_refresh(ctr_line.Name); break;
+                        case "Frm_print": ((Frm_print)Application.OpenForms[Frm_name]).trend_refresh(ctr_line.Name); break;
                     }
                     
                 }
