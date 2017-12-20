@@ -41,11 +41,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("宋体", 9F);
+            this.label1.Font = new System.Drawing.Font("宋体", 15F);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(3, 9);
+            this.label1.Location = new System.Drawing.Point(3, 2);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.Size = new System.Drawing.Size(89, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "套管压力";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -82,7 +82,7 @@
             // label6
             // 
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(90, 37);
+            this.label6.Location = new System.Drawing.Point(119, 36);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 12);
             this.label6.TabIndex = 2;
@@ -94,7 +94,7 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(135, 7);
+            this.checkBox1.Location = new System.Drawing.Point(156, 7);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(15, 14);
             this.checkBox1.TabIndex = 3;
@@ -108,7 +108,7 @@
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(150, 50);
+            this.shapeContainer1.Size = new System.Drawing.Size(174, 50);
             this.shapeContainer1.TabIndex = 1;
             this.shapeContainer1.TabStop = false;
             // 
@@ -117,7 +117,7 @@
             this.lineShape1.BorderWidth = 2;
             this.lineShape1.Name = "lineShape1";
             this.lineShape1.X1 = -3;
-            this.lineShape1.X2 = 100;
+            this.lineShape1.X2 = 130;
             this.lineShape1.Y1 = 28;
             this.lineShape1.Y2 = 28;
             // 
@@ -135,7 +135,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.shapeContainer1);
             this.Name = "ParaLine";
-            this.Size = new System.Drawing.Size(150, 50);
+            this.Size = new System.Drawing.Size(174, 50);
             this.ResumeLayout(false);
             this.PerformLayout();
 

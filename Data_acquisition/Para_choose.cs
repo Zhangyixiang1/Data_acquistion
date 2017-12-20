@@ -137,18 +137,18 @@ namespace Data_acquisition
                     }
                 }
                 //传统压裂泵
-                if (i >= 100 && i < 150)
+                if (i >= 150 && i < 200)
                 {
-                    btn.Location = new Point(x + 131 * ((i - 100) % 4), y + 29 * ((i - 100) / 4));
+                    btn.Location = new Point(x + 131 * ((i - 150) % 4), y + 29 * ((i - 150) / 4));
                     if (tabPage4.InvokeRequired)
                     {
                         tabPage4.Invoke(new Action(() => { this.tabPage4.Controls.Add(btn); }));
                     }
                 }
                 //电动压裂泵
-                if (i >= 150 && i < 200)
+                if (i >= 100 && i < 150)
                 {
-                    btn.Location = new Point(x + 131 * ((i - 150) % 4), y + 29 * ((i - 150) / 4));
+                    btn.Location = new Point(x + 131 * ((i - 100) % 4), y + 29 * ((i - 100) / 4));
                     if (tabPage3.InvokeRequired)
                     {
                         tabPage3.Invoke(new Action(() => { this.tabPage3.Controls.Add(btn); }));
@@ -319,7 +319,8 @@ namespace Data_acquisition
                         if (ctr_gauge.Name == node.SelectSingleNode("@name").InnerText)
                         {
                             node.SelectSingleNode("@tagname").InnerText = ctr_gauge.Tagname;
-
+                            node.SelectSingleNode("@min").InnerText = ctr_gauge.Min;
+                            node.SelectSingleNode("@max").InnerText = ctr_gauge.Max;
                             node.SelectSingleNode("@unit").InnerText = ctr_gauge.Unit;
                             node.SelectSingleNode("@index").InnerText = ctr_gauge.Tag.ToString();
 
@@ -345,17 +346,18 @@ namespace Data_acquisition
                     XmlDocument doc = new XmlDocument();
                     doc.Load(path);
                     XmlNode root = doc.DocumentElement;
-                    XmlNodeList nodeList = root.SelectNodes("Form[Name='" + Frm_name + "']//Controlgauge//Control");
+                    XmlNodeList nodeList = root.SelectNodes("Form[Name='" + Frm_name + "']//Controlsgauge//Control");
 
 
                     foreach (XmlNode node in nodeList)
                     {
-                        if (ctr_gauge.Name == node.SelectSingleNode("@name").InnerText)
+                        if (ctr_gaugemid.Name == node.SelectSingleNode("@name").InnerText)
                         {
-                            node.SelectSingleNode("@tagname").InnerText = ctr_gauge.Tagname;
-
-                            node.SelectSingleNode("@unit").InnerText = ctr_gauge.Unit;
-                            node.SelectSingleNode("@index").InnerText = ctr_gauge.Tag.ToString();
+                            node.SelectSingleNode("@tagname").InnerText = ctr_gaugemid.Tagname;
+                            node.SelectSingleNode("@min").InnerText = ctr_gaugemid.Min;
+                            node.SelectSingleNode("@max").InnerText = ctr_gaugemid.Max;
+                            node.SelectSingleNode("@unit").InnerText = ctr_gaugemid.Unit;
+                            node.SelectSingleNode("@index").InnerText = ctr_gaugemid.Tag.ToString();
 
                         }
 

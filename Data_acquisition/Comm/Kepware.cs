@@ -72,7 +72,7 @@ namespace Data_acquisition.Comm
                        string temp1 = str[i].ToString();
                        string temp = temp1.Replace("\t", "");
                         int num1=i/4+1;int num2=i%4+1;
-                       KepItems.AddItem("iFrac.Frac" + num1.ToString("00")+".var"+num2, item_oder);
+                       KepItems.AddItem("iFrac_F" + num1.ToString("00")+".Frac.var"+num2, item_oder);
 
 
                        Item_serverhandle1_To_PC[item_oder_To_PC] = KepItems.Item(item_oder).ServerHandle;

@@ -74,9 +74,8 @@
     <Reference Include="Aspose.Cells">
       <HintPath>C:\Users\zhangyx1\Downloads\NPOI-Lib\Aspose.Cells.dll</HintPath>
     </Reference>
-    <Reference Include="Interop.OPCAutomation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>E:\Interop.OPCAutomation.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Interop.OPCAutomation">
+      <HintPath>..\..\..\ifrac所需文档\Data_acquisition\Interop.OPCAutomation.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
@@ -164,7 +163,7 @@
     <Compile Include="Comm\Ctr_change.cs" />
     <Compile Include="Comm\Datamodel.cs" />
     <Compile Include="Comm\JsonHelper.cs" />
-    <Compile Include="Comm\Kepwarel.cs" />
+    <Compile Include="Comm\Kepware.cs" />
     <Compile Include="Comm\Pub_func.cs" />
     <Compile Include="Comm\ReadColor.cs" />
     <Compile Include="Ctrl\Gauge.cs">
@@ -386,12 +385,14 @@
     <Content Include="Config\Frac.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Config\Frac01.txt" />
     <Content Include="Config\preference.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Config\Para.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <None Include="Resources\按钮2.jpg" />
     <None Include="Resources\按钮1.jpg" />

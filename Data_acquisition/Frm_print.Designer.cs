@@ -129,14 +129,14 @@
             this.paraLine1.Color = System.Drawing.Color.Red;
             this.paraLine1.fontcolor = System.Drawing.Color.Black;
             this.paraLine1.Line_Enabled = true;
-            this.paraLine1.Location = new System.Drawing.Point(768, 12);
+            this.paraLine1.Location = new System.Drawing.Point(660, 12);
             this.paraLine1.Max = "50";
             this.paraLine1.Min = "0";
             this.paraLine1.Name = "paraLine1";
-            this.paraLine1.Size = new System.Drawing.Size(153, 52);
+            this.paraLine1.Size = new System.Drawing.Size(174, 50);
             this.paraLine1.TabIndex = 22;
             this.paraLine1.Tag = "31";
-            this.paraLine1.Tagname = "套压";
+            this.paraLine1.Tagname = "井口油压";
             this.paraLine1.Unit = null;
             // 
             // paraLine6
@@ -146,14 +146,14 @@
             this.paraLine6.Color = System.Drawing.Color.SkyBlue;
             this.paraLine6.fontcolor = System.Drawing.Color.Black;
             this.paraLine6.Line_Enabled = true;
-            this.paraLine6.Location = new System.Drawing.Point(1563, 12);
+            this.paraLine6.Location = new System.Drawing.Point(1540, 12);
             this.paraLine6.Max = "1000";
             this.paraLine6.Min = "0";
             this.paraLine6.Name = "paraLine6";
-            this.paraLine6.Size = new System.Drawing.Size(153, 52);
+            this.paraLine6.Size = new System.Drawing.Size(174, 50);
             this.paraLine6.TabIndex = 17;
             this.paraLine6.Tag = "74";
-            this.paraLine6.Tagname = "总砂量";
+            this.paraLine6.Tagname = "输砂总量";
             this.paraLine6.Unit = "m3";
             // 
             // paraLine5
@@ -163,14 +163,14 @@
             this.paraLine5.Color = System.Drawing.Color.SeaGreen;
             this.paraLine5.fontcolor = System.Drawing.Color.Black;
             this.paraLine5.Line_Enabled = true;
-            this.paraLine5.Location = new System.Drawing.Point(1404, 12);
+            this.paraLine5.Location = new System.Drawing.Point(1364, 12);
             this.paraLine5.Max = "1000";
             this.paraLine5.Min = "0";
             this.paraLine5.Name = "paraLine5";
-            this.paraLine5.Size = new System.Drawing.Size(153, 52);
+            this.paraLine5.Size = new System.Drawing.Size(174, 50);
             this.paraLine5.TabIndex = 18;
-            this.paraLine5.Tag = "78";
-            this.paraLine5.Tagname = "总液量";
+            this.paraLine5.Tag = "70";
+            this.paraLine5.Tagname = "排出总量";
             this.paraLine5.Unit = "m3";
             // 
             // paraLine4
@@ -180,14 +180,14 @@
             this.paraLine4.Color = System.Drawing.Color.Lime;
             this.paraLine4.fontcolor = System.Drawing.Color.Black;
             this.paraLine4.Line_Enabled = false;
-            this.paraLine4.Location = new System.Drawing.Point(1245, 12);
+            this.paraLine4.Location = new System.Drawing.Point(1188, 12);
             this.paraLine4.Max = "500";
             this.paraLine4.Min = "0";
             this.paraLine4.Name = "paraLine4";
-            this.paraLine4.Size = new System.Drawing.Size(153, 52);
+            this.paraLine4.Size = new System.Drawing.Size(174, 50);
             this.paraLine4.TabIndex = 19;
             this.paraLine4.Tag = "35";
-            this.paraLine4.Tagname = "砂浓度";
+            this.paraLine4.Tagname = "实际砂浓度";
             this.paraLine4.Unit = "kg/m3";
             // 
             // paraLine3
@@ -197,11 +197,11 @@
             this.paraLine3.Color = System.Drawing.Color.Blue;
             this.paraLine3.fontcolor = System.Drawing.Color.Black;
             this.paraLine3.Line_Enabled = true;
-            this.paraLine3.Location = new System.Drawing.Point(1086, 12);
+            this.paraLine3.Location = new System.Drawing.Point(1012, 12);
             this.paraLine3.Max = "50";
             this.paraLine3.Min = "0";
             this.paraLine3.Name = "paraLine3";
-            this.paraLine3.Size = new System.Drawing.Size(153, 52);
+            this.paraLine3.Size = new System.Drawing.Size(174, 50);
             this.paraLine3.TabIndex = 20;
             this.paraLine3.Tag = "39";
             this.paraLine3.Tagname = "排出排量";
@@ -214,14 +214,14 @@
             this.paraLine2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.paraLine2.fontcolor = System.Drawing.Color.Black;
             this.paraLine2.Line_Enabled = true;
-            this.paraLine2.Location = new System.Drawing.Point(927, 12);
+            this.paraLine2.Location = new System.Drawing.Point(836, 12);
             this.paraLine2.Max = "50";
             this.paraLine2.Min = "0";
             this.paraLine2.Name = "paraLine2";
-            this.paraLine2.Size = new System.Drawing.Size(153, 52);
+            this.paraLine2.Size = new System.Drawing.Size(174, 50);
             this.paraLine2.TabIndex = 21;
             this.paraLine2.Tag = "32";
-            this.paraLine2.Tagname = "油压";
+            this.paraLine2.Tagname = "井口套压";
             this.paraLine2.Unit = "Mpa";
             // 
             // Frm_print

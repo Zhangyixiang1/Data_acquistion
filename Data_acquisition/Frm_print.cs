@@ -45,11 +45,11 @@ namespace Data_acquisition
             myPane.Title.Text = " ";
             //x轴
             myPane.XAxis.Title.Text = "时间(分钟)";
-            myPane.XAxis.MajorGrid.Color = Color.White;
-            myPane.XAxis.Scale.FontSpec.FontColor = Color.White;
+            myPane.XAxis.MajorGrid.Color = Color.Black;
+            myPane.XAxis.Scale.FontSpec.FontColor = Color.Black;
             myPane.XAxis.Scale.FontSpec.Size = 15;
             myPane.XAxis.Title.FontSpec.Size = 15;
-            myPane.XAxis.Title.FontSpec.FontColor = Color.White;
+            myPane.XAxis.Title.FontSpec.FontColor = Color.Black;
             myPane.XAxis.Scale.Min = 0; //X轴最小值0
             myPane.XAxis.Scale.Max = 30; //X轴最大30
             myPane.XAxis.MajorTic.IsInside = false;
@@ -423,7 +423,7 @@ namespace Data_acquisition
             list6.Add(count / factor, Form_Main.Loglist.Values.ElementAt((int)count).DATA[num6]);
 
 
-            if (Form_Main.count / factor > xScale.Max)
+            if (count / factor > xScale.Max)
             {
                 xScale.Max = xScale.Max + 30;
                 xScale.MajorStep = xScale.Max / 6;//X轴大步长为5，也就是显示文字的大间隔
@@ -450,7 +450,7 @@ namespace Data_acquisition
             if (string.IsNullOrEmpty(textBox1.Text)) return;
             if (e.KeyCode == Keys.Enter)
             {
-                lbl_title.Text = textBox1.Text;
+                lbl_title.Text = textBox1.Text.Trim();
 
             }
         }
@@ -458,13 +458,13 @@ namespace Data_acquisition
         private void btn_print_Click(object sender, EventArgs e)
         {
             this.BringToFront();
-            img = new Bitmap(1720, this.Height);//实例化一个和窗体一样大的bitmap
+            img = new Bitmap(1720, this.Height-50);//实例化一个和窗体一样大的bitmap
             Graphics g = Graphics.FromImage(img);
             g.CompositingQuality = CompositingQuality.HighQuality;//质量设为最高
             g.SmoothingMode = SmoothingMode.HighQuality;
             g.PixelOffsetMode = PixelOffsetMode.HighQuality;
             g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            g.CopyFromScreen(15, 30, 0, 0, new Size(1720, this.Height));//保存整个窗体为图片
+            g.CopyFromScreen(15, 30, 0, 0, new Size(1720, this.Height-50));//保存整个窗体为图片
             printDocument1.DefaultPageSettings.Landscape = true;
             PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
             printPreviewDialog.Document = printDocument1;
@@ -478,14 +478,14 @@ namespace Data_acquisition
         {
 
             this.BringToFront();
-            Bitmap bit = new Bitmap(1720, this.Height);//实例化一个和窗体一样大的bitmap
+            Bitmap bit = new Bitmap(1720, this.Height-50);//实例化一个和窗体一样大的bitmap
             Graphics g = Graphics.FromImage(bit);
             g.CompositingQuality = CompositingQuality.HighQuality;//质量设为最高
             g.SmoothingMode = SmoothingMode.HighQuality;
-            g.CopyFromScreen(15, 30, 0, 0, new Size(1720, this.Height));//保存整个窗体为图片
+            g.CopyFromScreen(15, 35, 0, 0, new Size(1720, this.Height-50));//保存整个窗体为图片
             //g.CopyFromScreen(panel游戏区 .PointToScreen(Point.Empty), Point.Empty, panel游戏区.Size);//只保存某个控件（这里是panel游戏区）
             SaveFileDialog sflg = new SaveFileDialog();
-            sflg.Filter = "Png(*.png)|*.png|JPG(*.jpg)|*.jpg|Bmp(*.bmp)|*.bmp";
+            sflg.Filter = "Bmp(*.bmp)|*.bmp|Png(*.png)|*.png|JPG(*.jpg)|*.jpg";
             if (sflg.ShowDialog() == System.Windows.Forms.DialogResult.Cancel)
             {
                 return;

@@ -118,12 +118,16 @@
             this.lbl_now = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel11 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel10 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel9 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel8 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel7 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssl_DAQ = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssl_B = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssl_F1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssl_F2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssl_F3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssl_F4 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssl_F5 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssl_F6 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssl_F7 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssl_F8 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel12 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssl_log = new System.Windows.Forms.ToolStripStatusLabel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -408,7 +412,7 @@
             // 
             this.radButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.radButton2.ForeColor = System.Drawing.Color.White;
-            this.radButton2.Location = new System.Drawing.Point(556, 35);
+            this.radButton2.Location = new System.Drawing.Point(401, 36);
             this.radButton2.Name = "radButton2";
             this.radButton2.Size = new System.Drawing.Size(40, 40);
             this.radButton2.TabIndex = 2;
@@ -419,7 +423,7 @@
             // 
             this.radButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.radButton3.ForeColor = System.Drawing.Color.White;
-            this.radButton3.Location = new System.Drawing.Point(602, 35);
+            this.radButton3.Location = new System.Drawing.Point(447, 36);
             this.radButton3.Name = "radButton3";
             this.radButton3.Size = new System.Drawing.Size(40, 40);
             this.radButton3.TabIndex = 2;
@@ -430,7 +434,7 @@
             // 
             this.radButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.radButton4.ForeColor = System.Drawing.Color.White;
-            this.radButton4.Location = new System.Drawing.Point(648, 35);
+            this.radButton4.Location = new System.Drawing.Point(493, 36);
             this.radButton4.Name = "radButton4";
             this.radButton4.Size = new System.Drawing.Size(40, 40);
             this.radButton4.TabIndex = 2;
@@ -441,7 +445,7 @@
             // 
             this.radButton5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.radButton5.ForeColor = System.Drawing.Color.White;
-            this.radButton5.Location = new System.Drawing.Point(694, 35);
+            this.radButton5.Location = new System.Drawing.Point(539, 36);
             this.radButton5.Name = "radButton5";
             this.radButton5.Size = new System.Drawing.Size(40, 40);
             this.radButton5.TabIndex = 2;
@@ -494,7 +498,7 @@
             // 
             this.btn_next.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.btn_next.ForeColor = System.Drawing.Color.White;
-            this.btn_next.Location = new System.Drawing.Point(504, 35);
+            this.btn_next.Location = new System.Drawing.Point(349, 36);
             this.btn_next.Name = "btn_next";
             this.btn_next.Size = new System.Drawing.Size(40, 40);
             this.btn_next.TabIndex = 14;
@@ -815,8 +819,9 @@
             // 通道设置ToolStripMenuItem
             // 
             this.通道设置ToolStripMenuItem.Name = "通道设置ToolStripMenuItem";
-            this.通道设置ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.通道设置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.通道设置ToolStripMenuItem.Text = "通道设置";
+            this.通道设置ToolStripMenuItem.Click += new System.EventHandler(this.通道设置ToolStripMenuItem_Click);
             // 
             // 图像编辑ToolStripMenuItem1
             // 
@@ -889,12 +894,16 @@
             this.lbl_now,
             this.toolStripStatusLabel4,
             this.toolStripStatusLabel5,
-            this.toolStripStatusLabel11,
-            this.toolStripStatusLabel10,
-            this.toolStripStatusLabel9,
-            this.toolStripStatusLabel8,
-            this.toolStripStatusLabel7,
-            this.toolStripStatusLabel6,
+            this.tssl_DAQ,
+            this.tssl_B,
+            this.tssl_F1,
+            this.tssl_F2,
+            this.tssl_F3,
+            this.tssl_F4,
+            this.tssl_F5,
+            this.tssl_F6,
+            this.tssl_F7,
+            this.tssl_F8,
             this.toolStripStatusLabel12,
             this.tssl_log});
             this.statusStrip1.Location = new System.Drawing.Point(0, 1048);
@@ -942,7 +951,7 @@
             // 
             this.toolStripStatusLabel4.BackColor = System.Drawing.Color.Transparent;
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(1385, 17);
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(1321, 17);
             this.toolStripStatusLabel4.Spring = true;
             // 
             // toolStripStatusLabel5
@@ -952,53 +961,85 @@
             this.toolStripStatusLabel5.Size = new System.Drawing.Size(35, 17);
             this.toolStripStatusLabel5.Text = "设备:";
             // 
-            // toolStripStatusLabel11
+            // tssl_DAQ
             // 
-            this.toolStripStatusLabel11.BackColor = System.Drawing.Color.Lime;
-            this.toolStripStatusLabel11.Margin = new System.Windows.Forms.Padding(2);
-            this.toolStripStatusLabel11.Name = "toolStripStatusLabel11";
-            this.toolStripStatusLabel11.Size = new System.Drawing.Size(12, 18);
-            this.toolStripStatusLabel11.Text = " ";
+            this.tssl_DAQ.BackColor = System.Drawing.Color.Lime;
+            this.tssl_DAQ.Margin = new System.Windows.Forms.Padding(2);
+            this.tssl_DAQ.Name = "tssl_DAQ";
+            this.tssl_DAQ.Size = new System.Drawing.Size(12, 18);
+            this.tssl_DAQ.Text = " ";
             // 
-            // toolStripStatusLabel10
+            // tssl_B
             // 
-            this.toolStripStatusLabel10.BackColor = System.Drawing.Color.Lime;
-            this.toolStripStatusLabel10.Margin = new System.Windows.Forms.Padding(2);
-            this.toolStripStatusLabel10.Name = "toolStripStatusLabel10";
-            this.toolStripStatusLabel10.Size = new System.Drawing.Size(12, 18);
-            this.toolStripStatusLabel10.Text = " ";
+            this.tssl_B.BackColor = System.Drawing.Color.Lime;
+            this.tssl_B.Margin = new System.Windows.Forms.Padding(2);
+            this.tssl_B.Name = "tssl_B";
+            this.tssl_B.Size = new System.Drawing.Size(12, 18);
+            this.tssl_B.Text = " ";
             // 
-            // toolStripStatusLabel9
+            // tssl_F1
             // 
-            this.toolStripStatusLabel9.BackColor = System.Drawing.Color.Lime;
-            this.toolStripStatusLabel9.Margin = new System.Windows.Forms.Padding(2);
-            this.toolStripStatusLabel9.Name = "toolStripStatusLabel9";
-            this.toolStripStatusLabel9.Size = new System.Drawing.Size(12, 18);
-            this.toolStripStatusLabel9.Text = " ";
+            this.tssl_F1.BackColor = System.Drawing.Color.Lime;
+            this.tssl_F1.Margin = new System.Windows.Forms.Padding(2);
+            this.tssl_F1.Name = "tssl_F1";
+            this.tssl_F1.Size = new System.Drawing.Size(12, 18);
+            this.tssl_F1.Text = " ";
             // 
-            // toolStripStatusLabel8
+            // tssl_F2
             // 
-            this.toolStripStatusLabel8.BackColor = System.Drawing.Color.Lime;
-            this.toolStripStatusLabel8.Margin = new System.Windows.Forms.Padding(2);
-            this.toolStripStatusLabel8.Name = "toolStripStatusLabel8";
-            this.toolStripStatusLabel8.Size = new System.Drawing.Size(12, 18);
-            this.toolStripStatusLabel8.Text = " ";
+            this.tssl_F2.BackColor = System.Drawing.Color.Lime;
+            this.tssl_F2.Margin = new System.Windows.Forms.Padding(2);
+            this.tssl_F2.Name = "tssl_F2";
+            this.tssl_F2.Size = new System.Drawing.Size(12, 18);
+            this.tssl_F2.Text = " ";
             // 
-            // toolStripStatusLabel7
+            // tssl_F3
             // 
-            this.toolStripStatusLabel7.BackColor = System.Drawing.Color.Lime;
-            this.toolStripStatusLabel7.Margin = new System.Windows.Forms.Padding(2);
-            this.toolStripStatusLabel7.Name = "toolStripStatusLabel7";
-            this.toolStripStatusLabel7.Size = new System.Drawing.Size(12, 18);
-            this.toolStripStatusLabel7.Text = " ";
+            this.tssl_F3.BackColor = System.Drawing.Color.Lime;
+            this.tssl_F3.Margin = new System.Windows.Forms.Padding(2);
+            this.tssl_F3.Name = "tssl_F3";
+            this.tssl_F3.Size = new System.Drawing.Size(12, 18);
+            this.tssl_F3.Text = " ";
             // 
-            // toolStripStatusLabel6
+            // tssl_F4
             // 
-            this.toolStripStatusLabel6.BackColor = System.Drawing.Color.Lime;
-            this.toolStripStatusLabel6.Margin = new System.Windows.Forms.Padding(2);
-            this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
-            this.toolStripStatusLabel6.Size = new System.Drawing.Size(12, 18);
-            this.toolStripStatusLabel6.Text = " ";
+            this.tssl_F4.BackColor = System.Drawing.Color.Lime;
+            this.tssl_F4.Margin = new System.Windows.Forms.Padding(2);
+            this.tssl_F4.Name = "tssl_F4";
+            this.tssl_F4.Size = new System.Drawing.Size(12, 18);
+            this.tssl_F4.Text = " ";
+            // 
+            // tssl_F5
+            // 
+            this.tssl_F5.BackColor = System.Drawing.Color.Lime;
+            this.tssl_F5.Margin = new System.Windows.Forms.Padding(2);
+            this.tssl_F5.Name = "tssl_F5";
+            this.tssl_F5.Size = new System.Drawing.Size(12, 18);
+            this.tssl_F5.Text = " ";
+            // 
+            // tssl_F6
+            // 
+            this.tssl_F6.BackColor = System.Drawing.Color.Lime;
+            this.tssl_F6.Margin = new System.Windows.Forms.Padding(2);
+            this.tssl_F6.Name = "tssl_F6";
+            this.tssl_F6.Size = new System.Drawing.Size(12, 18);
+            this.tssl_F6.Text = " ";
+            // 
+            // tssl_F7
+            // 
+            this.tssl_F7.BackColor = System.Drawing.Color.Lime;
+            this.tssl_F7.Margin = new System.Windows.Forms.Padding(2);
+            this.tssl_F7.Name = "tssl_F7";
+            this.tssl_F7.Size = new System.Drawing.Size(12, 18);
+            this.tssl_F7.Text = " ";
+            // 
+            // tssl_F8
+            // 
+            this.tssl_F8.BackColor = System.Drawing.Color.Lime;
+            this.tssl_F8.Margin = new System.Windows.Forms.Padding(2);
+            this.tssl_F8.Name = "tssl_F8";
+            this.tssl_F8.Size = new System.Drawing.Size(12, 18);
+            this.tssl_F8.Text = " ";
             // 
             // toolStripStatusLabel12
             // 
@@ -1884,11 +1925,11 @@
             this.paraLine1.Color = System.Drawing.Color.Red;
             this.paraLine1.fontcolor = System.Drawing.Color.White;
             this.paraLine1.Line_Enabled = true;
-            this.paraLine1.Location = new System.Drawing.Point(783, 30);
+            this.paraLine1.Location = new System.Drawing.Point(635, 30);
             this.paraLine1.Max = null;
             this.paraLine1.Min = null;
             this.paraLine1.Name = "paraLine1";
-            this.paraLine1.Size = new System.Drawing.Size(153, 52);
+            this.paraLine1.Size = new System.Drawing.Size(174, 50);
             this.paraLine1.TabIndex = 16;
             this.paraLine1.Tagname = null;
             this.paraLine1.Unit = null;
@@ -1900,11 +1941,11 @@
             this.paraLine6.Color = System.Drawing.Color.SkyBlue;
             this.paraLine6.fontcolor = System.Drawing.Color.White;
             this.paraLine6.Line_Enabled = true;
-            this.paraLine6.Location = new System.Drawing.Point(1578, 30);
+            this.paraLine6.Location = new System.Drawing.Point(1555, 30);
             this.paraLine6.Max = "1000";
             this.paraLine6.Min = "0";
             this.paraLine6.Name = "paraLine6";
-            this.paraLine6.Size = new System.Drawing.Size(153, 52);
+            this.paraLine6.Size = new System.Drawing.Size(174, 50);
             this.paraLine6.TabIndex = 15;
             this.paraLine6.Tagname = null;
             this.paraLine6.Unit = "Mpa";
@@ -1916,11 +1957,11 @@
             this.paraLine5.Color = System.Drawing.Color.SeaGreen;
             this.paraLine5.fontcolor = System.Drawing.Color.White;
             this.paraLine5.Line_Enabled = true;
-            this.paraLine5.Location = new System.Drawing.Point(1419, 30);
+            this.paraLine5.Location = new System.Drawing.Point(1371, 30);
             this.paraLine5.Max = "1000";
             this.paraLine5.Min = "0";
             this.paraLine5.Name = "paraLine5";
-            this.paraLine5.Size = new System.Drawing.Size(153, 52);
+            this.paraLine5.Size = new System.Drawing.Size(174, 50);
             this.paraLine5.TabIndex = 15;
             this.paraLine5.Tagname = null;
             this.paraLine5.Unit = "Mpa";
@@ -1932,11 +1973,11 @@
             this.paraLine4.Color = System.Drawing.Color.Lime;
             this.paraLine4.fontcolor = System.Drawing.Color.White;
             this.paraLine4.Line_Enabled = false;
-            this.paraLine4.Location = new System.Drawing.Point(1260, 30);
+            this.paraLine4.Location = new System.Drawing.Point(1187, 30);
             this.paraLine4.Max = "1000";
             this.paraLine4.Min = "0";
             this.paraLine4.Name = "paraLine4";
-            this.paraLine4.Size = new System.Drawing.Size(153, 52);
+            this.paraLine4.Size = new System.Drawing.Size(174, 50);
             this.paraLine4.TabIndex = 15;
             this.paraLine4.Tagname = null;
             this.paraLine4.Unit = "Mpa";
@@ -1948,11 +1989,11 @@
             this.paraLine3.Color = System.Drawing.Color.Blue;
             this.paraLine3.fontcolor = System.Drawing.Color.White;
             this.paraLine3.Line_Enabled = true;
-            this.paraLine3.Location = new System.Drawing.Point(1101, 30);
+            this.paraLine3.Location = new System.Drawing.Point(1003, 30);
             this.paraLine3.Max = "1000";
             this.paraLine3.Min = "0";
             this.paraLine3.Name = "paraLine3";
-            this.paraLine3.Size = new System.Drawing.Size(153, 52);
+            this.paraLine3.Size = new System.Drawing.Size(174, 50);
             this.paraLine3.TabIndex = 15;
             this.paraLine3.Tagname = null;
             this.paraLine3.Unit = "Mpa";
@@ -1964,11 +2005,11 @@
             this.paraLine2.Color = System.Drawing.Color.Yellow;
             this.paraLine2.fontcolor = System.Drawing.Color.White;
             this.paraLine2.Line_Enabled = true;
-            this.paraLine2.Location = new System.Drawing.Point(942, 30);
+            this.paraLine2.Location = new System.Drawing.Point(819, 30);
             this.paraLine2.Max = "1000";
             this.paraLine2.Min = "0";
             this.paraLine2.Name = "paraLine2";
-            this.paraLine2.Size = new System.Drawing.Size(153, 52);
+            this.paraLine2.Size = new System.Drawing.Size(174, 50);
             this.paraLine2.TabIndex = 15;
             this.paraLine2.Tagname = null;
             this.paraLine2.Unit = "Mpa";
@@ -2027,6 +2068,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = " ";
             this.ThemeName = "Office2013Dark";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Main_FormClosed);
             this.Load += new System.EventHandler(this.Form_Main_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -2176,12 +2218,12 @@
         private System.Windows.Forms.ToolStripStatusLabel lbl_now;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel11;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel10;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel9;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel8;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel7;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
+        private System.Windows.Forms.ToolStripStatusLabel tssl_DAQ;
+        private System.Windows.Forms.ToolStripStatusLabel tssl_B;
+        private System.Windows.Forms.ToolStripStatusLabel tssl_F1;
+        private System.Windows.Forms.ToolStripStatusLabel tssl_F2;
+        private System.Windows.Forms.ToolStripStatusLabel tssl_F3;
+        private System.Windows.Forms.ToolStripStatusLabel tssl_F8;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel12;
         private System.Windows.Forms.ToolStripStatusLabel tssl_log;
         private System.Windows.Forms.ToolStripMenuItem 图像编辑ToolStripMenuItem1;
@@ -2244,5 +2286,9 @@
         private Telerik.WinControls.UI.RadButton btn_table;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Timer timer_color;
+        private System.Windows.Forms.ToolStripStatusLabel tssl_F4;
+        private System.Windows.Forms.ToolStripStatusLabel tssl_F5;
+        private System.Windows.Forms.ToolStripStatusLabel tssl_F6;
+        private System.Windows.Forms.ToolStripStatusLabel tssl_F7;
     }
 }

@@ -107,13 +107,13 @@ namespace Data_acquisition
         /// <summary>
         /// 初始化图表控件
         /// </summary>
-        private void chart_initial()
+        public void chart_initial()
         {
             zedGraphControl1.IsShowContextMenu = false;
             zedGraphControl1.IsEnableHPan = false; zedGraphControl1.IsEnableVPan = false;
             zedGraphControl1.IsEnableHZoom = false; zedGraphControl1.IsEnableZoom = false;
             GraphPane myPane = zedGraphControl1.GraphPane;
-           // myPane.Fill = new Fill(Color.FromArgb(28, 29, 31));
+            // myPane.Fill = new Fill(Color.FromArgb(28, 29, 31));
             myPane.Fill = new Fill(Color.Black);
             myPane.Chart.Fill = new Fill(Color.Black);
             myPane.IsFontsScaled = false;
@@ -438,24 +438,24 @@ namespace Data_acquisition
         /// 更新井号信息
         /// </summary>
         public void wellinfo_refresh()
-        { 
-        if(lbl_wellinfo.InvokeRequired){lbl_wellinfo.Invoke(new Action(()=> lbl_wellinfo.Text=Form_Main.wellname));}
-        else{lbl_wellinfo.Text=Form_Main.wellname;}
+        {
+            if (lbl_wellinfo.InvokeRequired) { lbl_wellinfo.Invoke(new Action(() => lbl_wellinfo.Text = Form_Main.wellname)); }
+            else { lbl_wellinfo.Text = Form_Main.wellname; }
 
-        if (lbl_wellnum.InvokeRequired) { lbl_wellnum.Invoke(new Action(() => lbl_wellnum.Text = Form_Main.wellnum)); }
-        else { lbl_wellnum.Text = Form_Main.wellnum; }
+            if (lbl_wellnum.InvokeRequired) { lbl_wellnum.Invoke(new Action(() => lbl_wellnum.Text = Form_Main.wellnum)); }
+            else { lbl_wellnum.Text = Form_Main.wellnum; }
 
-        if (lbl_stagebig.InvokeRequired) { lbl_stagebig.Invoke(new Action(() => lbl_stagebig.Text = Form_Main.stage_big)); }
-        else { lbl_stagebig.Text = Form_Main.stage_big; }
+            if (lbl_stagebig.InvokeRequired) { lbl_stagebig.Invoke(new Action(() => lbl_stagebig.Text = Form_Main.stage_big)); }
+            else { lbl_stagebig.Text = Form_Main.stage_big; }
 
-        if (lbl_stage.InvokeRequired) { lbl_stage.Invoke(new Action(() => lbl_stage.Text = Form_Main.num_stage+"/"+Form_Main.num_totalstage)); }
-        else { lbl_stage.Text = Form_Main.num_stage + "/" + Form_Main.num_totalstage; }
-       
+            if (lbl_stage.InvokeRequired) { lbl_stage.Invoke(new Action(() => lbl_stage.Text = Form_Main.num_stage + "/" + Form_Main.num_totalstage)); }
+            else { lbl_stage.Text = Form_Main.num_stage + "/" + Form_Main.num_totalstage; }
+
 
         }
 
-        public void timer_trend(double count,bool refresh)
-        {  
+        public void timer_trend(double count, bool refresh)
+        {
 
 
             //取Graph第一个曲线，也就是第一步:在GraphPane.CurveList集合中查找CurveItem
@@ -482,7 +482,7 @@ namespace Data_acquisition
             {
                 return;
             }
-            
+
             Scale xScale = zedGraphControl1.GraphPane.XAxis.Scale;
             double factor = 60;
             int num1 = int.Parse(paraLine3.Tag.ToString());
@@ -515,15 +515,23 @@ namespace Data_acquisition
             //xScale.Max = time + xScale.MajorStep;
             //xScale.Min = xScale.Max - 30.0;
 
-            if(refresh){
-            //第三步:调用ZedGraphControl.AxisChange()方法更新X和Y轴的范围
-            zedGraphControl1.AxisChange();
+            if (refresh)
+            {
+                //第三步:调用ZedGraphControl.AxisChange()方法更新X和Y轴的范围
+                zedGraphControl1.AxisChange();
 
-            //第四步:调用Form.Invalidate()方法更新图表
-            zedGraphControl1.Invalidate();}
+                //第四步:调用Form.Invalidate()方法更新图表
+                zedGraphControl1.Invalidate();
+            }
         }
 
         #endregion
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lbl_totaltime.Text = string.Format("{0:T}", Form_Main.time);
+            lbl_stagetime.Text = string.Format("{0:T}", Form_Main.time_stage);
+        }
 
 
 

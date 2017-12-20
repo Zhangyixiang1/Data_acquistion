@@ -34,8 +34,8 @@ namespace Data_acquisition
             //DataTable tb = db.ExcuteDataTable(sql);
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = dt;
-            dataGridView1.DefaultCellStyle.Font = new Font(dataGridView1.DefaultCellStyle.Font.FontFamily, 10);
-            dataGridView1.RowsDefaultCellStyle.Font = new Font(dataGridView1.RowsDefaultCellStyle.Font.FontFamily, 10);
+         //   dataGridView1.DefaultCellStyle.Font = new Font(dataGridView1.DefaultCellStyle.Font.FontFamily, 10);
+         //   dataGridView1.RowsDefaultCellStyle.Font = new Font(dataGridView1.RowsDefaultCellStyle.Font.FontFamily, 10);
             foreach (DataGridViewColumn item in dataGridView1.Columns)
             {
                 item.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -128,7 +128,7 @@ namespace Data_acquisition
         /// <summary>
         /// 初始化图表控件
         /// </summary>
-        private void chart_initial()
+        public  void chart_initial()
         {
             zedGraphControl1.IsShowContextMenu = false;
             zedGraphControl1.IsEnableHPan = false; zedGraphControl1.IsEnableVPan = false;
@@ -362,8 +362,8 @@ namespace Data_acquisition
         private void grid_intial()
         {
             //列标题字体
-            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.DefaultCellStyle.Font.FontFamily, 10);
-            dataGridView1.RowsDefaultCellStyle.Font = new Font(dataGridView1.RowsDefaultCellStyle.Font.FontFamily, 10);
+          //  dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.DefaultCellStyle.Font.FontFamily, 10);
+         //   dataGridView1.RowsDefaultCellStyle.Font = new Font(dataGridView1.RowsDefaultCellStyle.Font.FontFamily, 10);
             foreach (DataGridViewColumn item in dataGridView1.Columns)
             {
                 item.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -601,6 +601,10 @@ namespace Data_acquisition
 
             try
             {
+                //阶段时间更新
+                lbl_totaltime.Text = string.Format("{0:T}", Form_Main.time);
+                lbl_stagetime.Text = string.Format("{0:T}", Form_Main.time_stage);
+
                 //更新gridview里面的内容
                 int stage = Form_Main.num_stage;
                 //支撑剂
@@ -645,6 +649,8 @@ namespace Data_acquisition
                 dataGridView1.Rows[5].Cells[4].Value = trans_2point(Form_Main.value_blender.GetValue(22));//当前排量
                 dataGridView1.Rows[5].Cells[5].Value = trans_2point(Form_Main.value_blender.GetValue(36));//阶段总量
                 dataGridView1.Rows[5].Cells[6].Value = trans_2point(Form_Main.value_blender.GetValue(50));//总量
+
+               
             }
             catch (Exception ex) { }
         }

@@ -53,7 +53,8 @@ namespace Data_acquisition
         double[] test = new double[200]; //测试数据
         public static Array value_blender;//混砂车plc读到的原始值
         public static Array value_frac;//压力泵读到的原始值
-        bool readfinish;
+        bool readfinish; //读取完成
+        double volume_temp;
         #endregion
 
         #region 方法
@@ -75,8 +76,7 @@ namespace Data_acquisition
         /// </summary>
         private void intialdata()
         {
-
-            Random rd = new Random();
+            // Random rd = new Random();
             while (true)
             {
                 try
@@ -93,7 +93,7 @@ namespace Data_acquisition
                     value_blender = kep1.kep_read();
                     //读取压力泵的数据
                     value_frac = kep2.kep_read();
-
+                    readfinish = true;
                     //更新进度条
                     int percent1 = Convert.ToInt16(value_blender.GetValue(589));
                     int percent2 = Convert.ToInt16(value_blender.GetValue(631));
@@ -118,6 +118,14 @@ namespace Data_acquisition
                         //}
                         //if (!iscnndatabase) return;
                         // num_stage++;
+
+                        //压力泵阶段统计量清零
+                        for (int i = 0; i <= 7; i++)
+                        {
+                            test[104 + 5 * i] = 0;
+
+                        }
+                        test[142] = 0;//泵阶段累计量清零
                         //阶段时间清零
                         time_stage = Convert.ToDateTime("00:00:00");
                         //计划表选取更新
@@ -140,7 +148,7 @@ namespace Data_acquisition
                     //读取压裂泵数据,阶段统计量上位机
                     Frac_read();
                     //格式化为指定的小数位数
-                    trans_2point(test,2);
+                    trans_2point(test, 2);
                     //实时数据缓存只有一百条，用于参数的刷新
                     if (Paralist.Count > 10) Paralist.Remove(Paralist.ElementAt(0).Key);
 
@@ -184,14 +192,28 @@ namespace Data_acquisition
         /// <param name="item">array数组</param>
         /// <param name="points">小数位数</param>
         /// <returns>返回的Array</returns>
-        private double[] trans_2point(double []item, int points)
+        private double[] trans_2point(double[] item, int points)
         {
-            for (int i = 0; i <item.Length; i++)
+            for (int i = 0; i < item.Length; i++)
             {
-                Math.Round(item[i],2);
+                Math.Round(item[i], points);
             }
             return item;
         }
+        /// <summary>
+        /// 控制输出小数位数
+        /// </summary>
+        /// <param name="item">objec数</param>
+        /// <param name="points">小数位数</param>
+        /// <returns>返回的Array</returns>
+        private string trans_2point(object item, int points)
+        {
+            double temp = Convert.ToDouble(item);
+
+            return Math.Round(temp, points).ToString();
+        }
+
+
 
 
 
@@ -811,6 +833,9 @@ namespace Data_acquisition
             if (lbl_time.InvokeRequired) { lbl_time.Invoke(new Action(() => lbl_time.Text = string.Format("{0:T}", time))); }
             else { lbl_time.Text = string.Format("{0:T}", time); }
             lbl_stagetime.Text = string.Format("{0:T}", time_stage);
+
+
+
         }
         /// <summary>
         /// 曲线更新
@@ -904,10 +929,10 @@ namespace Data_acquisition
             {
                 test[i] = Convert.ToDouble(value_blender.GetValue(i - 30));
             }
-            
+
             test[50] = test[47] + test[48] + test[49]; //液添当前总流量
-            test[51] = Convert.ToDouble(value_blender.GetValue(20));//干添1
-            test[52] = Convert.ToDouble(value_blender.GetValue(21));//干添2
+            test[51] = Convert.ToDouble(value_blender.GetValue(21));//干添1
+            test[52] = Convert.ToDouble(value_blender.GetValue(22));//干添2
             test[53] = test[51] + test[52]; //干添当前总流量
             ////  井口排出阶段总量,来自beff尚未采集
             //test[55] = test[38] / 60 + test[55];            //吸入阶段总量
@@ -941,6 +966,10 @@ namespace Data_acquisition
             test[80] = Convert.ToDouble(value_blender.GetValue(50));//干添2总量
             test[81] = test[79] + test[80];
 
+            //输沙量用ton显示
+            test[46] = test[46] / 1000;
+            test[60] = test[60] / 1000;
+            test[74] = test[74] / 1000;
         }
 
         /// <summary>
@@ -965,7 +994,31 @@ namespace Data_acquisition
                 }
 
             }
+            //累计量
+            test[141] = test[103] + test[108] + test[113] + test[118] + test[123] + test[128] + test[133] + test[138]; //泵总排量
+            test[142] = test[104] + test[109] + test[114] + test[119] + test[124] + test[129] + test[134] + test[139]; //泵总阶段累计
+            test[143] = test[105] + test[110] + test[115] + test[120] + test[125] + test[130] + test[135] + test[140]; //泵总累计
+            //12019修改，泵阶段统计量与总累计量相同
+              test[142] = test[143]-volume_temp;
+            //井口变量模拟
+            //井口油压用冒泡算法取最大值
+            double[] sort = { test[101], test[106], test[111], test[116], test[126], test[131], test[136] };
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = i + 1; j < 7; j++)
+                {
+                    double temp;
+                    if (sort[i] > sort[j])
+                    {
+                        temp = sort[i];
+                        sort[i] = sort[j];
+                        sort[j] = temp;
+                    }
+                }
+            }
 
+            test[31] = sort[6];
+            test[34] = test[141]; //井口排出流量 
         }
         #endregion
 
@@ -1332,17 +1385,21 @@ namespace Data_acquisition
                 Form_Main.Paralist.Clear(); Form_Main.Loglist.Clear();
                 Form_Main.iscnndatabase = false;
                 //刷新各个页面的曲线
-                zedGraphControl1.GraphPane.XAxis.Scale.Min = 0; zedGraphControl1.GraphPane.XAxis.Scale.Max = 30;
-                ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).zedGraphControl1.GraphPane.XAxis.Scale.Min = 0;
-                ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).zedGraphControl1.GraphPane.XAxis.Scale.Max = 30;
-                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).zedGraphControl1.GraphPane.XAxis.Scale.Min = 0;
-                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).zedGraphControl1.GraphPane.XAxis.Scale.Max = 50;
-                zedGraphControl1.AxisChange();
-                zedGraphControl1.Invalidate();
-                ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).zedGraphControl1.AxisChange();
-                ((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).zedGraphControl1.Invalidate();
-                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).zedGraphControl1.AxisChange();
-                ((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).zedGraphControl1.Invalidate();
+                //zedGraphControl1.GraphPane.XAxis.Scale.Min = 0; zedGraphControl1.GraphPane.XAxis.Scale.Max = 30;
+                //zedGraphControl1.AxisChange();
+                //zedGraphControl1.Invalidate();
+                //((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).zedGraphControl1.GraphPane.XAxis.Scale.Min = 0;
+                //((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).zedGraphControl1.GraphPane.XAxis.Scale.Max = 30;
+                //((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).zedGraphControl1.AxisChange();
+                //((Frm_Realtrend)Application.OpenForms["Frm_Realtrend"]).zedGraphControl1.Invalidate();
+
+                //((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).zedGraphControl1.GraphPane.XAxis.Scale.Min = 0;
+                //((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).zedGraphControl1.GraphPane.XAxis.Scale.Max = 50;
+                //((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).zedGraphControl1.AxisChange();
+                //((Frm_Realtrend2)Application.OpenForms["Frm_Realtrend2"]).zedGraphControl1.Invalidate();
+
+                //曲线控件恢复初始值
+
             }
             else if (result == DialogResult.Cancel) { return; }
         }
@@ -1354,7 +1411,11 @@ namespace Data_acquisition
         /// <param name="e"></param>
         private void btn_zero_Click(object sender, EventArgs e)
         {
-            Form_Main.kep1.KepItems.Item(623).Write(true);
+            try
+            {
+                Form_Main.kep1.KepItems.Item(623).Write(true);
+            }
+            catch { }
             //上位机的统计量清零
             test[50] = 0;  //液添流量
             test[53] = 0;  //干添流量
@@ -1368,6 +1429,7 @@ namespace Data_acquisition
                 test[104 + 5 * i] = 0;
 
             }
+            test[141] = 0; test[142] = 0; test[143] = 0;
 
         }
 
@@ -1393,6 +1455,10 @@ namespace Data_acquisition
         {
             if (num_stage == num_totalstage) { return; }
             kep1.KepItems.Item(586).Write(true);
+            test[142] = 0;//泵阶段累计量清零
+            volume_temp = test[143];
+            //阶段时间清零
+            time_stage = Convert.ToDateTime("00:00:00");
         }
 
         private void btn_jobstart_Click(object sender, EventArgs e)
@@ -1413,15 +1479,23 @@ namespace Data_acquisition
             y.Add(Convert.ToDouble(Form_Main.dt.Rows[0][index]));
             //x.Add( Convert.ToDouble(Form_Main.dt.Rows[0][2]));
             // y.Add(Convert.ToDouble(Form_Main.dt.Rows[0][3]));
+            //基液量累加和
+            double sum = 0;
             for (int i = 0; i <= Form_Main.dt.Rows.Count - 2; i++)
             {
-                x.Add(Convert.ToDouble(Form_Main.dt.Rows[i][2]));
+                sum = Convert.ToDouble(Form_Main.dt.Rows[i][2]) + sum;
+
+                // x.Add(Convert.ToDouble(Form_Main.dt.Rows[i][2]));
+                x.Add(Convert.ToDouble(sum));
                 y.Add(Convert.ToDouble(Form_Main.dt.Rows[i][index + 1]));
-                x.Add(Convert.ToDouble(Form_Main.dt.Rows[i][2]));
+                //  x.Add(Convert.ToDouble(Form_Main.dt.Rows[i][2]));
+                x.Add(Convert.ToDouble(sum));
                 y.Add(Convert.ToDouble(Form_Main.dt.Rows[i + 1][index]));
 
             }
-            x.Add(Convert.ToDouble(Form_Main.dt.Rows[Form_Main.dt.Rows.Count - 1][2]));
+            //   x.Add(Convert.ToDouble(Form_Main.dt.Rows[Form_Main.dt.Rows.Count - 1][2]));
+            sum = sum + Convert.ToDouble(Form_Main.dt.Rows[Form_Main.dt.Rows.Count - 1][2]);
+            x.Add(Convert.ToDouble(sum));
             y.Add(Convert.ToDouble(Form_Main.dt.Rows[Form_Main.dt.Rows.Count - 1][index + 1]));
             chart1.Series[0].Points.DataBindXY(x, y);
             switch (rd.TabIndex)
@@ -1544,6 +1618,15 @@ namespace Data_acquisition
                     else { indicator_hold.BackColor = Color.FromArgb(49, 49, 49); }
 
                 }
+                //手自动模式
+                if (!(bool)value_blender.GetValue(587))
+                {
+
+                    rdbtn_hand.Checked = true; rdbtn_auto.Checked = false;
+
+                }
+                else { rdbtn_auto.Checked = true; rdbtn_hand.Checked = false; }
+
             }
             catch (Exception)
             {
@@ -1645,17 +1728,17 @@ namespace Data_acquisition
             {
                 string json = value.Rows[i]["value"].ToString();
                 KeyValuePair<string, Datamodel> _data = JsonConvert.DeserializeObject<KeyValuePair<string, Datamodel>>(json);
-                IRow rowtemp = sheet.CreateRow(12 + i);
+                IRow rowtemp = sheet.CreateRow(11 + i);
                 ICell celltemp0 = rowtemp.CreateCell(0); celltemp0.SetCellValue(value.Rows[i][1].ToString());
                 ICell celltemp1 = rowtemp.CreateCell(1); celltemp1.SetCellValue(_data.Key);
-                ICell celltemp2 = rowtemp.CreateCell(2); celltemp2.SetCellValue(_data.Value.DATA.GetValue(31).ToString());
-                ICell celltemp3 = rowtemp.CreateCell(3); celltemp3.SetCellValue(_data.Value.DATA.GetValue(32).ToString());
-                ICell celltemp4 = rowtemp.CreateCell(4); celltemp4.SetCellValue(_data.Value.DATA.GetValue(39).ToString());
-                ICell celltemp5 = rowtemp.CreateCell(5); celltemp5.SetCellValue(_data.Value.DATA.GetValue(35).ToString());
-                ICell celltemp6 = rowtemp.CreateCell(6); celltemp6.SetCellValue(_data.Value.DATA.GetValue(78).ToString());
-                ICell celltemp7 = rowtemp.CreateCell(7); celltemp7.SetCellValue(_data.Value.DATA.GetValue(74).ToString());
-                ICell celltemp8 = rowtemp.CreateCell(8); celltemp8.SetCellValue(_data.Value.DATA.GetValue(64).ToString());
-                ICell celltemp9 = rowtemp.CreateCell(9); celltemp9.SetCellValue(_data.Value.DATA.GetValue(60).ToString());
+                ICell celltemp2 = rowtemp.CreateCell(2); celltemp2.SetCellValue(trans_2point(_data.Value.DATA.GetValue(31), 2));
+                ICell celltemp3 = rowtemp.CreateCell(3); celltemp3.SetCellValue(trans_2point(_data.Value.DATA.GetValue(32), 2));
+                ICell celltemp4 = rowtemp.CreateCell(4); celltemp4.SetCellValue(trans_2point(_data.Value.DATA.GetValue(39), 2));
+                ICell celltemp5 = rowtemp.CreateCell(5); celltemp5.SetCellValue(trans_2point(_data.Value.DATA.GetValue(35), 2));
+                ICell celltemp6 = rowtemp.CreateCell(6); celltemp6.SetCellValue(trans_2point(_data.Value.DATA.GetValue(78), 2));
+                ICell celltemp7 = rowtemp.CreateCell(7); celltemp7.SetCellValue(trans_2point(_data.Value.DATA.GetValue(74), 2));
+                ICell celltemp8 = rowtemp.CreateCell(8); celltemp8.SetCellValue(trans_2point(_data.Value.DATA.GetValue(64), 2));
+                ICell celltemp9 = rowtemp.CreateCell(9); celltemp9.SetCellValue(trans_2point(_data.Value.DATA.GetValue(60), 2));
 
             }
 
@@ -1669,8 +1752,21 @@ namespace Data_acquisition
 
         private void btn_print_Click(object sender, EventArgs e)
         {
-            Frm_print frm=new Frm_print ();
+            Frm_print frm = new Frm_print();
             frm.Show();
+        }
+
+        private void Form_Main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //关闭程序时断开kepware的连接
+
+            kep1.KepServer.Disconnect();
+            kep2.KepServer.Disconnect();
+        }
+
+        private void 通道设置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
 
